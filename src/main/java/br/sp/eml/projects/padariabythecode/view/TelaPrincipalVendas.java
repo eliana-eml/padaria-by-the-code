@@ -56,8 +56,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbNomePadaria = new javax.swing.JLabel();
         lbLogotipo = new javax.swing.JLabel();
         pnlResumoDoPedido = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        lbValorTotalPedido = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnRealizarPagamento = new javax.swing.JButton();
         btnCancelarPedido = new javax.swing.JButton();
@@ -65,6 +63,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbNomeCliente = new javax.swing.JLabel();
         lbCPFCliente = new javax.swing.JLabel();
         lbTelefoneCliente = new javax.swing.JLabel();
+        lbNumeroPedido = new javax.swing.JLabel();
+        lbDataPedido = new javax.swing.JLabel();
+        lbValorTotalPedido = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
         mnuArquivos = new javax.swing.JMenu();
         mnuItemCadatroClientes = new javax.swing.JMenuItem();
@@ -147,27 +149,27 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         tblListaItensPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Cód. Produto", "Nome do Produto", "Qtd", "Valor Unitário"
+                "Cód. Produto", "Nome do Produto", "Qtd", "Valor Unitário", "Valor Total"
             }
         ));
         tblListaItensPedido.setName(""); // NOI18N
@@ -186,8 +188,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluirItemProduto))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -242,7 +244,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                                         .addComponent(txtQtdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnAdicionarProduto)))))
-                        .addGap(0, 57, Short.MAX_VALUE)))
+                        .addGap(0, 87, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -288,7 +290,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         btnNavBarProdutos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbNomePadaria.setText("Padaria By The Code");
+        lbNomePadaria.setText("By The Code Bakery");
 
         lbLogotipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbLogotipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -332,12 +334,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         pnlResumoDoPedido.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Valor Total:");
-
-        lbValorTotalPedido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbValorTotalPedido.setText("R$ 25,00");
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("RESUMO DO PEDIDO:");
 
@@ -356,46 +352,75 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbTelefoneCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbTelefoneCliente.setText("Telefone: (11) 7002-8922");
 
+        lbNumeroPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbNumeroPedido.setText("Nº PEDIDO: 1234");
+
+        lbDataPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbDataPedido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDataPedido.setText("23/09/2023 21:19");
+
+        lbValorTotalPedido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbValorTotalPedido.setText("R$ 30,00");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setText("Valor Total:");
+
         javax.swing.GroupLayout pnlDadosClienteLayout = new javax.swing.GroupLayout(pnlDadosCliente);
         pnlDadosCliente.setLayout(pnlDadosClienteLayout);
         pnlDadosClienteLayout.setHorizontalGroup(
             pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDadosClienteLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNomeCliente)
-                    .addComponent(lbCPFCliente)
-                    .addComponent(lbTelefoneCliente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlDadosClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)
+                        .addComponent(lbValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
+                        .addComponent(lbNumeroPedido)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbDataPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
+                        .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNomeCliente)
+                            .addComponent(lbCPFCliente)
+                            .addComponent(lbTelefoneCliente))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
         );
         pnlDadosClienteLayout.setVerticalGroup(
             pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNumeroPedido)
+                    .addComponent(lbDataPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbNomeCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbCPFCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbTelefoneCliente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lbValorTotalPedido))
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout pnlResumoDoPedidoLayout = new javax.swing.GroupLayout(pnlResumoDoPedido);
         pnlResumoDoPedido.setLayout(pnlResumoDoPedidoLayout);
         pnlResumoDoPedidoLayout.setHorizontalGroup(
             pnlResumoDoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResumoDoPedidoLayout.createSequentialGroup()
+            .addGroup(pnlResumoDoPedidoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlResumoDoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlDadosCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRealizarPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlResumoDoPedidoLayout.createSequentialGroup()
-                        .addGroup(pnlResumoDoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(lbValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResumoDoPedidoLayout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(106, 106, 106)))
                 .addContainerGap())
         );
         pnlResumoDoPedidoLayout.setVerticalGroup(
@@ -405,15 +430,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addGroup(pnlResumoDoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(lbValorTotalPedido))
                 .addGap(18, 18, 18)
                 .addComponent(btnRealizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(56, 56, 56))
         );
 
         mnuArquivos.setText("Arquivos");
@@ -527,9 +548,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCPFCliente;
     private javax.swing.JLabel lbDataAtual;
+    private javax.swing.JLabel lbDataPedido;
     private javax.swing.JLabel lbLogotipo;
     private javax.swing.JLabel lbNomeCliente;
     private javax.swing.JLabel lbNomePadaria;
+    private javax.swing.JLabel lbNumeroPedido;
     private javax.swing.JLabel lbTelefoneCliente;
     private javax.swing.JLabel lbTituloVendas;
     private javax.swing.JLabel lbValorTotalPedido;

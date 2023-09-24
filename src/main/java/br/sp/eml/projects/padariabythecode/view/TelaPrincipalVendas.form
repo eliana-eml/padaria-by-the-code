@@ -226,7 +226,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="87" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -337,8 +337,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" pref="468" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" pref="492" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnExcluirItemProduto" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -379,11 +379,12 @@
                 <Component class="javax.swing.JTable" name="tblListaItensPedido">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="18">
+                      <Table columnCount="5" rowCount="18">
                         <Column editable="true" title="C&#xf3;d. Produto" type="java.lang.Object"/>
                         <Column editable="true" title="Nome do Produto" type="java.lang.Object"/>
                         <Column editable="true" title="Qtd" type="java.lang.Object"/>
                         <Column editable="true" title="Valor Unit&#xe1;rio" type="java.lang.Object"/>
+                        <Column editable="true" title="Valor Total" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -502,7 +503,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Padaria By The Code"/>
+            <Property name="text" type="java.lang.String" value="By The Code Bakery"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbLogotipo">
@@ -534,19 +535,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnlDadosCliente" alignment="1" max="32767" attributes="0"/>
                       <Component id="btnRealizarPagamento" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnCancelarPedido" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel8" max="32767" attributes="0"/>
-                              <Component id="jLabel6" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
-                          <Component id="lbValorTotalPedido" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel8" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -560,37 +557,16 @@
                   <Component id="jLabel8" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlDadosCliente" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="112" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbValorTotalPedido" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnRealizarPagamento" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCancelarPedido" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Valor Total:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbValorTotalPedido">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="24" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="R$ 25,00"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -621,14 +597,29 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbNomeCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbCPFCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbTelefoneCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel6" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="lbValorTotalPedido" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbNumeroPedido" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lbDataPedido" pref="118" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbNomeCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbCPFCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbTelefoneCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -636,12 +627,22 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbNumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbDataPedido" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbNomeCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbCPFCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbTelefoneCliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbValorTotalPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -669,6 +670,39 @@
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Telefone: (11) 7002-8922"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbNumeroPedido">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="N&#xba; PEDIDO: 1234"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbDataPedido">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="23/09/2023 21:19"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lbValorTotalPedido">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="24" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="R$ 30,00"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel6">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Valor Total:"/>
               </Properties>
             </Component>
           </SubComponents>
