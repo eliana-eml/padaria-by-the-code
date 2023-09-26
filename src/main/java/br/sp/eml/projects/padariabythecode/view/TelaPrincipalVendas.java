@@ -4,6 +4,10 @@
  */
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.utils.Validador;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author emlel
@@ -47,6 +51,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         tblListaItensPedido = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         btnExcluirItemProduto = new javax.swing.JButton();
+        btnAdicionarCliente = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         pnlCabecalho = new javax.swing.JPanel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
@@ -140,32 +146,18 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         btnBuscarNomeProduto.setText("Buscar");
 
-        txtQtdProduto.setText("Quantidade");
-
         btnAdicionarProduto.setText("Adicionar Produto");
+        btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarProdutoActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tblListaItensPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cód. Produto", "Nome do Produto", "Qtd", "Valor Unitário", "Valor Total"
@@ -187,7 +179,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluirItemProduto))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -209,6 +201,15 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnAdicionarCliente.setText("Adicionar Cliente");
+        btnAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarClienteActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Quantidade:");
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -219,28 +220,36 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtNomeProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
                                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnBuscarCliente)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnRedirecionarTelaCadClientes))
+                                        .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnRedirecionarTelaCadClientes))))
+                            .addGroup(pnlPrincipalLayout.createSequentialGroup()
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
                                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
-                                        .addComponent(btnBuscarNomeProduto)
+                                        .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnBuscarNomeProduto)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(pnlPrincipalLayout.createSequentialGroup()
                                         .addComponent(txtQtdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAdicionarProduto)))))
-                        .addGap(0, 91, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -255,9 +264,12 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                     .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarCliente)
-                    .addComponent(btnRedirecionarTelaCadClientes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                    .addComponent(btnRedirecionarTelaCadClientes)
+                    .addComponent(btnAdicionarCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,10 +352,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         pnlDadosCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbNomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbNomeCliente.setText("Cliente: Wilson Johnathan Smith");
+        lbNomeCliente.setText("Cliente:");
 
         lbCPFCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbCPFCliente.setText("CPF: 888.888.888-88");
+        lbCPFCliente.setText("CPF:");
 
         lbTelefoneCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lbTelefoneCliente.setText("Telefone: (11) 7002-8922");
@@ -375,7 +387,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
                         .addComponent(lbNumeroPedido)
                         .addGap(18, 18, 18)
-                        .addComponent(lbDataPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                        .addComponent(lbDataPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
                         .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbNomeCliente)
@@ -495,6 +507,57 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
 
+    private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
+
+        //Método de validação somente para a validação de campos e apresentação na tela estática
+        /**
+        * O método atual só irá receber os parâmetros dos campos TextField de
+        * Nome e CPF e apresentá-los na tela.
+        *
+        * Quando o CRUD for implementado o mesmo deverá resgatar tais
+        * informações como idCliente, nomeCliente, cpfCliente e etc do Banco de
+        * Dados.
+        */
+        Validador validacao = new Validador();
+
+        validacao.validarTexto(txtNomeCliente);
+        validacao.validarTexto(txtCPF);
+
+        lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
+        lbCPFCliente.setText("CPF: " + txtCPF.getText());
+    }//GEN-LAST:event_btnAdicionarClienteActionPerformed
+
+    private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
+
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeProduto);
+        validacao.validarNumero(txtQtdProduto);
+
+        int codProduto = 1;
+        double valorUniProdRandom = Math.random() * 20;
+        int qtdProd = Integer.parseInt(txtQtdProduto.getText());
+        double totalProd = valorUniProdRandom * qtdProd;
+
+        String codigoProduto = String.valueOf(codProduto);
+        String nomeProduto = txtNomeProduto.getText();
+        String qtdProduto = txtQtdProduto.getText();
+        String valorUniProd = String.valueOf(valorUniProdRandom);
+        String valorTotalProd = String.valueOf(totalProd);
+
+        //cod, nome, qtd, valor unitario, valor total
+        DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+
+        //Adicionar uma linha à tabela
+        modelo.addRow(new String[]{
+            codigoProduto,
+            nomeProduto,
+            qtdProduto,
+            valorUniProd,
+            valorTotalProd
+        });
+
+    }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -531,6 +594,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionarCliente;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnBuscarNomeProduto;
@@ -545,6 +609,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
