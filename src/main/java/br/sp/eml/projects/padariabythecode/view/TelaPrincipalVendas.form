@@ -239,6 +239,10 @@
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnAdicionarPedido" min="-2" pref="148" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -274,6 +278,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnAdicionarPedido" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -315,6 +321,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeProduto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeProdutoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarNomeProduto">
           <Properties>
@@ -417,6 +426,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir Item"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirItemProdutoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -431,6 +443,11 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quantidade:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAdicionarPedido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Adicionar Pedido"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -603,7 +620,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRealizarPagamento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Realizar Pagamento"/>
+            <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelarPedido">

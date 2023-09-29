@@ -5,6 +5,7 @@
 package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -53,6 +54,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         btnExcluirItemProduto = new javax.swing.JButton();
         btnAdicionarCliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnAdicionarPedido = new javax.swing.JButton();
         pnlCabecalho = new javax.swing.JPanel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
@@ -144,6 +146,12 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         jLabel3.setText("Nome do Produto:");
 
+        txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeProdutoActionPerformed(evt);
+            }
+        });
+
         btnBuscarNomeProduto.setText("Buscar");
 
         btnAdicionarProduto.setText("Adicionar Produto");
@@ -170,6 +178,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel5.setText("Lista de Itens:");
 
         btnExcluirItemProduto.setText("Excluir Item");
+        btnExcluirItemProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirItemProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -210,6 +223,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         jLabel4.setText("Quantidade:");
 
+        btnAdicionarPedido.setText("Adicionar Pedido");
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -249,7 +264,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                                         .addComponent(txtQtdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAdicionarProduto)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -278,6 +296,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                     .addComponent(btnAdicionarProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -345,7 +365,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("RESUMO DO PEDIDO:");
 
-        btnRealizarPagamento.setText("Realizar Pagamento");
+        btnRealizarPagamento.setText("Finalizar Pedido");
 
         btnCancelarPedido.setText("Cancelar Pedido");
 
@@ -533,11 +553,13 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         validacao.validarTexto(txtNomeProduto);
         validacao.validarNumero(txtQtdProduto);
 
+//        int numeroItemTabela = 0;
         int codProduto = 1;
         double valorUniProdRandom = Math.random() * 20;
         int qtdProd = Integer.parseInt(txtQtdProduto.getText());
         double totalProd = valorUniProdRandom * qtdProd;
 
+//        String numItem = String.valueOf(numeroItemTabela);
         String codigoProduto = String.valueOf(codProduto);
         String nomeProduto = txtNomeProduto.getText();
         String qtdProduto = txtQtdProduto.getText();
@@ -549,14 +571,34 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         //Adicionar uma linha à tabela
         modelo.addRow(new String[]{
+//            numItem,
             codigoProduto,
             nomeProduto,
             qtdProduto,
             valorUniProd,
             valorTotalProd
         });
+        
+//        numeroItemTabela++;
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
+
+    private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
+        
+        int linhaSelecionada = tblListaItensPedido.getSelectedRow();
+        DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+        
+        if (linhaSelecionada >= 0) {
+            modelo.removeRow(linhaSelecionada);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
+        }
+        
+    }//GEN-LAST:event_btnExcluirItemProdutoActionPerformed
+
+    private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -595,6 +637,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarCliente;
+    private javax.swing.JButton btnAdicionarPedido;
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnBuscarNomeProduto;
