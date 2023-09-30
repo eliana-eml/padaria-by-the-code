@@ -5,6 +5,7 @@
 package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -307,6 +308,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarVendasActionPerformed(evt);
+            }
+        });
 
         btnNavBarClientes.setText("Clientes");
         btnNavBarClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -549,6 +555,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
+        DecimalFormat formatarNumero = new DecimalFormat("###.00");
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeProduto);
         validacao.validarNumero(txtQtdProduto);
@@ -563,8 +570,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         String codigoProduto = String.valueOf(codProduto);
         String nomeProduto = txtNomeProduto.getText();
         String qtdProduto = txtQtdProduto.getText();
-        String valorUniProd = String.valueOf(valorUniProdRandom);
-        String valorTotalProd = String.valueOf(totalProd);
+        String valorUniProd = String.valueOf(formatarNumero.format(valorUniProdRandom));
+        String valorTotalProd = String.valueOf(formatarNumero.format(totalProd));
 
         //cod, nome, qtd, valor unitario, valor total
         DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
@@ -599,6 +606,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeProdutoActionPerformed
+
+    private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     /**
      * @param args the command line arguments
