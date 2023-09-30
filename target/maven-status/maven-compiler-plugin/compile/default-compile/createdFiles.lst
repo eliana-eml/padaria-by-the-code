@@ -1,3 +1,4 @@
+br\sp\eml\projects\padariabythecode\view\TelaProdutos$7.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$2.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$6.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$1.class
@@ -10,6 +11,7 @@ br\sp\eml\projects\padariabythecode\view\TelaProdutos$3.class
 br\sp\eml\projects\padariabythecode\view\TelaProdutos$5.class
 br\sp\eml\projects\padariabythecode\model\Produto.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$2.class
+br\sp\eml\projects\padariabythecode\view\TelaProdutos$8.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$7.class
 br\sp\eml\projects\padariabythecode\view\TelaProdutos$1.class
@@ -17,6 +19,7 @@ br\sp\eml\projects\padariabythecode\utils\Validador.class
 br\sp\eml\projects\padariabythecode\model\Cliente.class
 br\sp\eml\projects\padariabythecode\PadariaByTheCode.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$5.class
+br\sp\eml\projects\padariabythecode\view\TelaProdutos$6.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$1.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$1.class
 br\sp\eml\projects\padariabythecode\view\TelaProdutos.class
