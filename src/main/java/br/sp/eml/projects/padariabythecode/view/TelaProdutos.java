@@ -5,6 +5,7 @@
 package br.sp.eml.projects.padariabythecode.view;
 
 import javax.swing.JOptionPane;
+import secondscreens.TelaEdit;
 
 /**
  *
@@ -70,7 +71,6 @@ public class TelaProdutos extends javax.swing.JFrame {
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
         btnNavBarRelatorio = new javax.swing.JButton();
-        btnNavBarProdutos = new javax.swing.JButton();
         lbNomePadaria = new javax.swing.JLabel();
         lbLogotipo = new javax.swing.JLabel();
         pnlRodape1 = new javax.swing.JPanel();
@@ -184,13 +184,9 @@ public class TelaProdutos extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap())))
+            .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +221,7 @@ public class TelaProdutos extends javax.swing.JFrame {
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(42, 42, 42))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -380,15 +376,27 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarVendasActionPerformed(evt);
+            }
+        });
 
         btnNavBarClientes.setText("Clientes");
         btnNavBarClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarClientesActionPerformed(evt);
+            }
+        });
 
         btnNavBarRelatorio.setText("Relatório de Vendas");
         btnNavBarRelatorio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        btnNavBarProdutos.setText("Produtos");
-        btnNavBarProdutos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarRelatorioActionPerformed(evt);
+            }
+        });
 
         lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbNomePadaria.setText("By The Code Bakery");
@@ -413,8 +421,6 @@ public class TelaProdutos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -424,7 +430,6 @@ public class TelaProdutos extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNavBarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -534,32 +539,47 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInputDialog(rootPane, "TEXT");
+        new TelaEdit().setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        
-        
-        if (txtProduto.getText().equals("")|| txtQuantidade.getText().equals("") || txtValorProduto.getText().equals("") || txtData.getText().equals("") ) {
+
+        if (txtProduto.getText().equals("") || txtQuantidade.getText().equals("") || txtValorProduto.getText().equals("") || txtData.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Insira todos os Valores");
-        
-        }
-        else  {
+
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Os produtos foram cadastrados");
         }
     }//GEN-LAST:event_btnCadastroActionPerformed
 
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
-        
-        
-        if (txtCodigo.getText().equals("") ) {
-        JOptionPane.showMessageDialog(rootPane, "Insira um valor");
+
+        if (txtCodigo.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Insira um valor");
         }
     }//GEN-LAST:event_btnBuscaActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-             
+
     }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        // TODO add your handling code here:
+        new TelaPrincipalVendas().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNavBarVendasActionPerformed
+
+    private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
+        // TODO add your handling code here:
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNavBarClientesActionPerformed
+
+    private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
+        // TODO add your handling code here:
+        new TelaRelatorio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -602,7 +622,6 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNavBarClientes;
-    private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarRelatorio;
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JLabel jLabel1;

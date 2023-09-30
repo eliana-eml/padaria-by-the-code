@@ -28,7 +28,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         pnlCabecalho = new javax.swing.JPanel();
         btnNavBarVendas = new javax.swing.JButton();
-        btnNavBarClientes = new javax.swing.JButton();
         btnNavBarRelatorio = new javax.swing.JButton();
         btnNavBarProdutos = new javax.swing.JButton();
         lbNomePadaria = new javax.swing.JLabel();
@@ -92,19 +91,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         mnuEditar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1013, 613));
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlCabecalho.setPreferredSize(new java.awt.Dimension(657, 63));
 
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        btnNavBarClientes.setText("Clientes");
-        btnNavBarClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnNavBarClientes.addActionListener(new java.awt.event.ActionListener() {
+        btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNavBarClientesActionPerformed(evt);
+                btnNavBarVendasActionPerformed(evt);
             }
         });
 
@@ -118,6 +113,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         btnNavBarProdutos.setText("Produtos");
         btnNavBarProdutos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarProdutosActionPerformed(evt);
+            }
+        });
 
         lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbNomePadaria.setText("By The Code Bakery");
@@ -140,8 +140,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,10 +156,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addGroup(pnlCabecalhoLayout.createSequentialGroup()
                         .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 11, Short.MAX_VALUE))))
         );
@@ -614,12 +611,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNavBarClientesActionPerformed
-
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
         // TODO add your handling code here:
+          new TelaRelatorio().setVisible(true);
+          this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
 
     private void txtEstadoCivilClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteActionPerformed
@@ -629,6 +624,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void txtUFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUFClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUFClienteActionPerformed
+
+    private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        // TODO add your handling code here:
+        new TelaPrincipalVendas().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNavBarVendasActionPerformed
+
+    private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
+        // TODO add your handling code here:
+        new TelaProdutos().setVisible(true);
+           this.setVisible(false);
+    }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -686,7 +693,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel UFCliente;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnNavBarClientes;
     private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarRelatorio;
     private javax.swing.JButton btnNavBarVendas;
