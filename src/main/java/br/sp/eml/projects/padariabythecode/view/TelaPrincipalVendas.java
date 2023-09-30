@@ -5,6 +5,7 @@
 package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -73,7 +74,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbTelefoneCliente = new javax.swing.JLabel();
         lbNumeroPedido = new javax.swing.JLabel();
         lbDataPedido = new javax.swing.JLabel();
-        lbValorTotalPedido = new javax.swing.JLabel();
+        lblValorTotalPedido = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
         mnuArquivos = new javax.swing.JMenu();
@@ -225,6 +226,16 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel4.setText("Quantidade:");
 
         btnAdicionarPedido.setText("Adicionar Pedido");
+        btnAdicionarPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAdicionarPedidoMousePressed(evt);
+            }
+        });
+        btnAdicionarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
@@ -393,8 +404,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbDataPedido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbDataPedido.setText("23/09/2023 21:19");
 
-        lbValorTotalPedido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbValorTotalPedido.setText("R$ 30,00");
+        lblValorTotalPedido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblValorTotalPedido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblValorTotalPedido.setText("R$ 0,00");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Valor Total:");
@@ -408,8 +420,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlDadosClienteLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(36, 36, 36)
-                        .addComponent(lbValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
                         .addComponent(lbNumeroPedido)
                         .addGap(18, 18, 18)
@@ -438,7 +450,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lbValorTotalPedido))
+                    .addComponent(lblValorTotalPedido))
                 .addGap(6, 6, 6))
         );
 
@@ -555,7 +567,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
-        DecimalFormat formatarNumero = new DecimalFormat("###.00");
+        DecimalFormat formatarNumero = new DecimalFormat();
+        formatarNumero.setMaximumFractionDigits(2);
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeProduto);
         validacao.validarNumero(txtQtdProduto);
@@ -590,6 +604,25 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
+    private void atualizarValorTotalPedido() {
+        
+        DecimalFormat formatarNumero = new DecimalFormat();
+        formatarNumero.setMaximumFractionDigits(2);
+//        formatarNumero.setRoundingMode(RoundingMode.UNNECESSARY);
+        
+        double produtoValor, pedidoValorTotal = 0;
+        int produtoQuantidade;
+        
+        for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
+            produtoValor = Double.parseDouble( String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 3)).replace(",", ".") );
+            produtoQuantidade = Integer.parseInt( String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 2)) );
+               
+            pedidoValorTotal += (produtoQuantidade * produtoValor);
+        }
+        
+        lblValorTotalPedido.setText("R$ " + String.valueOf(formatarNumero.format(pedidoValorTotal)).replace(".", ","));
+    }
+    
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
         
         int linhaSelecionada = tblListaItensPedido.getSelectedRow();
@@ -610,6 +643,25 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
+
+    private void btnAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPedidoActionPerformed
+        
+        /**
+         * Esse botão deverá criar uma lista com dados do cliente, lista de produtos e valorTotalVenda para ser
+         * finalmente enviado ao banco de dados com o botão finalizarPedido.
+         **/     
+        atualizarValorTotalPedido();
+    }//GEN-LAST:event_btnAdicionarPedidoActionPerformed
+
+    private void btnAdicionarPedidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarPedidoMousePressed
+
+        
+        /**
+         * Se o botão adicionarPedido for pressionado através do mouse, 
+         * os botões adicionarCliente e adicionarProduto e excluirItem deverão ser desabilitados.
+         **/
+        
+    }//GEN-LAST:event_btnAdicionarPedidoMousePressed
 
     /**
      * @param args the command line arguments
@@ -678,7 +730,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lbNumeroPedido;
     private javax.swing.JLabel lbTelefoneCliente;
     private javax.swing.JLabel lbTituloVendas;
-    private javax.swing.JLabel lbValorTotalPedido;
+    private javax.swing.JLabel lblValorTotalPedido;
     private javax.swing.JMenu mnuArquivos;
     private javax.swing.JMenuBar mnuBar;
     private javax.swing.JMenu mnuEditar;
