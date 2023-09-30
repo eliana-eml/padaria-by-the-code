@@ -474,8 +474,6 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lbNomePadaria" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnNavBarVendas" min="-2" pref="60" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNavBarClientes" min="-2" pref="62" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNavBarProdutos" min="-2" pref="63" max="-2" attributes="0"/>
@@ -497,7 +495,6 @@
                           <Component id="lbLogotipo" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="lbNomePadaria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btnNavBarVendas" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -505,19 +502,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnNavBarVendas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Vendas"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                <EmptyBorder/>
-              </Border>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavBarVendasActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnNavBarClientes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Clientes"/>
@@ -527,6 +511,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavBarClientesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNavBarRelatorio">
           <Properties>
@@ -537,6 +524,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavBarRelatorioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnNavBarProdutos">
           <Properties>
@@ -547,6 +537,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavBarProdutosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbNomePadaria">
           <Properties>
