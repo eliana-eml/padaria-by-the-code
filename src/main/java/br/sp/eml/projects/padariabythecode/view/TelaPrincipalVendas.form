@@ -67,7 +67,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlVendas" max="32767" attributes="0"/>
-                  <Component id="pnlCabecalho" max="32767" attributes="0"/>
+                  <Component id="pnlCabecalho" pref="1005" max="32767" attributes="0"/>
                   <Component id="pnlRodape" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlPrincipal" max="32767" attributes="0"/>
@@ -450,7 +450,6 @@
             <Property name="text" type="java.lang.String" value="Adicionar Pedido"/>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdicionarPedidoMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdicionarPedidoActionPerformed"/>
           </Events>
         </Component>
@@ -474,6 +473,8 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lbNomePadaria" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnNavBarVendas" min="-2" pref="70" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNavBarClientes" min="-2" pref="62" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNavBarProdutos" min="-2" pref="63" max="-2" attributes="0"/>
@@ -485,15 +486,22 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lbLogotipo" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="lbNomePadaria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnNavBarClientes" max="32767" attributes="0"/>
-                      <Component id="btnNavBarProdutos" max="32767" attributes="0"/>
-                      <Component id="btnNavBarRelatorio" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lbLogotipo" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="lbNomePadaria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnNavBarVendas" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnNavBarProdutos" max="32767" attributes="0"/>
+                          <Component id="btnNavBarRelatorio" max="32767" attributes="0"/>
+                          <Component id="btnNavBarClientes" alignment="1" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -564,6 +572,19 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnNavBarVendas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vendas"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNavBarVendasActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="pnlResumoDoPedido">
@@ -582,7 +603,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnlDadosCliente" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnRealizarPagamento" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnFinalizarPedido" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnCancelarPedido" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jLabel8" max="32767" attributes="0"/>
@@ -601,7 +622,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlDadosCliente" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnRealizarPagamento" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="btnFinalizarPedido" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCancelarPedido" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
@@ -618,15 +639,21 @@
             <Property name="text" type="java.lang.String" value="RESUMO DO PEDIDO:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRealizarPagamento">
+        <Component class="javax.swing.JButton" name="btnFinalizarPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="Finalizar Pedido"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalizarPedidoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelarPedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar Pedido"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarPedidoActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="pnlDadosCliente">
           <Properties>
@@ -712,7 +739,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Telefone: (11) 7002-8922"/>
+                <Property name="text" type="java.lang.String" value="Telefone:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbNumeroPedido">

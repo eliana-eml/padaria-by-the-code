@@ -4,12 +4,16 @@
  */
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import java.awt.Component;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import secondscreens.TelaConfirmacaoPedido;
 
 /**
  *
@@ -22,6 +26,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
      */
     public TelaPrincipalVendas() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -63,9 +68,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         btnNavBarProdutos = new javax.swing.JButton();
         lbNomePadaria = new javax.swing.JLabel();
         lbLogotipo = new javax.swing.JLabel();
+        btnNavBarVendas = new javax.swing.JButton();
         pnlResumoDoPedido = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        btnRealizarPagamento = new javax.swing.JButton();
+        btnFinalizarPedido = new javax.swing.JButton();
         btnCancelarPedido = new javax.swing.JButton();
         pnlDadosCliente = new javax.swing.JPanel();
         lbNomeCliente = new javax.swing.JLabel();
@@ -225,11 +231,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel4.setText("Quantidade:");
 
         btnAdicionarPedido.setText("Adicionar Pedido");
-        btnAdicionarPedido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAdicionarPedidoMousePressed(evt);
-            }
-        });
         btnAdicionarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarPedidoActionPerformed(evt);
@@ -349,6 +350,14 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbLogotipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         lbLogotipo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnNavBarVendas.setText("Vendas");
+        btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNavBarVendasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlCabecalhoLayout = new javax.swing.GroupLayout(pnlCabecalho);
         pnlCabecalho.setLayout(pnlCabecalhoLayout);
         pnlCabecalhoLayout.setHorizontalGroup(
@@ -359,6 +368,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbNomePadaria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,15 +379,20 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         );
         pnlCabecalhoLayout.setVerticalGroup(
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNomePadaria))
+                .addContainerGap())
             .addGroup(pnlCabecalhoLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNavBarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbNomePadaria)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNavBarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -385,9 +401,19 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("RESUMO DO PEDIDO:");
 
-        btnRealizarPagamento.setText("Finalizar Pedido");
+        btnFinalizarPedido.setText("Finalizar Pedido");
+        btnFinalizarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarPedidoActionPerformed(evt);
+            }
+        });
 
         btnCancelarPedido.setText("Cancelar Pedido");
+        btnCancelarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarPedidoActionPerformed(evt);
+            }
+        });
 
         pnlDadosCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -398,7 +424,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbCPFCliente.setText("CPF:");
 
         lbTelefoneCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lbTelefoneCliente.setText("Telefone: (11) 7002-8922");
+        lbTelefoneCliente.setText("Telefone:");
 
         lbNumeroPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbNumeroPedido.setText("Nº PEDIDO: 1234");
@@ -465,7 +491,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlResumoDoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlDadosCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRealizarPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFinalizarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResumoDoPedidoLayout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -480,7 +506,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnRealizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
@@ -517,7 +543,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
                     .addComponent(pnlRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -552,91 +578,103 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         //Método de validação somente para a validação de campos e apresentação na tela estática
         /**
-        * O método atual só irá receber os parâmetros dos campos TextField de
-        * Nome e CPF e apresentá-los na tela.
-        *
-        * Quando o CRUD for implementado o mesmo deverá resgatar tais
-        * informações como idCliente, nomeCliente, cpfCliente e etc do Banco de
-        * Dados.
-        */
-        Validador validacao = new Validador();
+         * O método atual só irá receber os parâmetros dos campos TextField de
+         * Nome e CPF e apresentá-los na tela.
+         *
+         * Quando o CRUD for implementado o mesmo deverá resgatar tais
+         * informações como idCliente, nomeCliente, cpfCliente e etc do Banco de
+         * Dados.
+         */
+        
+        try {
+            Validador validacao = new Validador();
+            validacao.validarTexto(txtNomeCliente);
+            validacao.validarTexto(txtCPF);
 
-        validacao.validarTexto(txtNomeCliente);
-        validacao.validarTexto(txtCPF);
+            lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
+            lbCPFCliente.setText("CPF: " + txtCPF.getText());
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos dos dados do cliente!");
+        }
 
-        lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
-        lbCPFCliente.setText("CPF: " + txtCPF.getText());
+
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
-        DecimalFormat formatarNumero = new DecimalFormat();
-        formatarNumero.setMaximumFractionDigits(2);
-        
-        Validador validacao = new Validador();
-        validacao.validarTexto(txtNomeProduto);
-        validacao.validarNumero(txtQtdProduto);
+        try {
+            DecimalFormat formatarNumero = new DecimalFormat();
+            formatarNumero.setMaximumFractionDigits(2);
+
+            Validador validacao = new Validador();
+            validacao.validarTexto(txtNomeProduto);
+            validacao.validarNumero(txtQtdProduto);
 
 //        int numeroItemTabela = 0;
-        int codProduto = 1;
-        double valorUniProdRandom = Math.random() * 20;
-        int qtdProd = Integer.parseInt(txtQtdProduto.getText());
-        double totalProd = valorUniProdRandom * qtdProd;
+            int codProduto = 1;
+            double valorUniProdRandom = Math.random() * 20;
+            int qtdProd = Integer.parseInt(txtQtdProduto.getText());
+            double totalProd = valorUniProdRandom * qtdProd;
 
 //        String numItem = String.valueOf(numeroItemTabela);
-        String codigoProduto = String.valueOf(codProduto);
-        String nomeProduto = txtNomeProduto.getText();
-        String qtdProduto = txtQtdProduto.getText();
-        String valorUniProd = String.valueOf(formatarNumero.format(valorUniProdRandom));
-        String valorTotalProd = String.valueOf(formatarNumero.format(totalProd));
+            String codigoProduto = String.valueOf(codProduto);
+            String nomeProduto = txtNomeProduto.getText();
+            String qtdProduto = txtQtdProduto.getText();
+            String valorUniProd = String.valueOf(formatarNumero.format(valorUniProdRandom));
+            String valorTotalProd = String.valueOf(formatarNumero.format(totalProd));
 
-        //cod, nome, qtd, valor unitario, valor total
-        DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+            //cod, nome, qtd, valor unitario, valor total
+            DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
-        //Adicionar uma linha à tabela
-        modelo.addRow(new String[]{
-//            numItem,
-            codigoProduto,
-            nomeProduto,
-            qtdProduto,
-            valorUniProd,
-            valorTotalProd
-        });
-        
+            //Adicionar uma linha à tabela
+            modelo.addRow(new String[]{
+                //            numItem,
+                codigoProduto,
+                nomeProduto,
+                qtdProduto,
+                valorUniProd,
+                valorTotalProd
+            });
+
 //        numeroItemTabela++;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Insira o nome do produto e a sua quantidade!");
+        }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
     private void atualizarValorTotalPedido() {
-        
+
         DecimalFormat formatarNumero = new DecimalFormat();
         formatarNumero.setMaximumFractionDigits(2);
 //        formatarNumero.setRoundingMode(RoundingMode.UNNECESSARY);
-        
+
         double produtoValor, pedidoValorTotal = 0;
         int produtoQuantidade;
-        
+
         for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
-            produtoValor = Double.parseDouble( String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 3)).replace(",", ".") );
-            produtoQuantidade = Integer.parseInt( String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 2)) );
-               
+            produtoValor = Double.parseDouble(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 3)).replace(",", "."));
+            produtoQuantidade = Integer.parseInt(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 2)));
+
             pedidoValorTotal += (produtoQuantidade * produtoValor);
         }
-        
+
         lblValorTotalPedido.setText("R$ " + String.valueOf(formatarNumero.format(pedidoValorTotal)).replace(".", ","));
     }
-    
+
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
-        
+
         int linhaSelecionada = tblListaItensPedido.getSelectedRow();
         DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
-        
+
         if (linhaSelecionada >= 0) {
             modelo.removeRow(linhaSelecionada);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
         }
-        
+
     }//GEN-LAST:event_btnExcluirItemProdutoActionPerformed
 
     private void txtNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeProdutoActionPerformed
@@ -651,8 +689,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
         // TODO add your handling code here:
-           new TelaProdutos().setVisible(true);
-           this.setVisible(false);
+        new TelaProdutos().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
@@ -662,23 +700,57 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
 
     private void btnAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPedidoActionPerformed
-        
+
         /**
-         * Esse botão deverá criar uma lista com dados do cliente, lista de produtos e valorTotalVenda para ser
-         * finalmente enviado ao banco de dados com o botão finalizarPedido.
-         **/     
+         * Esse botão deverá criar uma lista com dados do cliente, lista de
+         * produtos e valorTotalVenda para ser finalmente enviado ao banco de
+         * dados com o botão finalizarPedido.
+         *
+         */
         atualizarValorTotalPedido();
+
+//        Validador validacao = new Validador();
+//
+//        validacao.validarCamposPedido(txtNomeCliente, txtCPF, tblListaItensPedido);
+//
+//        try {
+//            lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
+//            lbCPFCliente.setText("CPF: " + txtCPF.getText());
+//            atualizarValorTotalPedido();
+//
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(rootPane, "Preencha corretamente os campos!");
+//        }
     }//GEN-LAST:event_btnAdicionarPedidoActionPerformed
 
-    private void btnAdicionarPedidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdicionarPedidoMousePressed
+    private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        // TODO add your handling code here:
 
-        
+    }//GEN-LAST:event_btnNavBarVendasActionPerformed
+
+    private void btnFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPedidoActionPerformed
+
         /**
-         * Se o botão adicionarPedido for pressionado através do mouse, 
-         * os botões adicionarCliente e adicionarProduto e excluirItem deverão ser desabilitados.
-         **/
+         * Além de validar o preenchimento dos campos e realizar o insert do
+         * pedido no banco de dados o botão finalizarPedido irá chamar a telinha
+         * de confirmação de pedido.
+         *
+         */
+        new TelaConfirmacaoPedido().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
+
+    private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
+
+        Utils limpar = new Utils();
+        limpar.limparCampos(pnlPrincipal);
+        limpar.limparTabela(tblListaItensPedido);
         
-    }//GEN-LAST:event_btnAdicionarPedidoMousePressed
+        lbNomeCliente.setText("Cliente: ");
+        lbCPFCliente.setText("CPF: ");
+        lbTelefoneCliente.setText("Telefone: ");
+        lblValorTotalPedido.setText("R$ 0,00");
+    }//GEN-LAST:event_btnCancelarPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -723,10 +795,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarNomeProduto;
     private javax.swing.JButton btnCancelarPedido;
     private javax.swing.JButton btnExcluirItemProduto;
+    private javax.swing.JButton btnFinalizarPedido;
     private javax.swing.JButton btnNavBarClientes;
     private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarRelatorio;
-    private javax.swing.JButton btnRealizarPagamento;
+    private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JButton btnRedirecionarTelaCadClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

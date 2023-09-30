@@ -7,6 +7,7 @@ package br.sp.eml.projects.padariabythecode.utils;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -62,6 +63,24 @@ public class Validador {
         }
 
     }
+
+    public void validarPreenchimentoTabela(JTable table) {
+
+        if (table.getRowCount() <= 0) {
+//            JOptionPane.showMessageDialog(table, "A tabela de itens vazia!");
+            this.mensagensErro.add("A tabela de itens vazia!");
+
+        }
+    }
+    
+//    public void validarCamposPedido(JTextField nomeCliente, JTextField cpfCliente, JTable tabelaItens) {
+//        
+//        Validador valide = new Validador();
+//        valide.validarTexto(nomeCliente);
+//        valide.validarTexto(cpfCliente);
+//        valide.validarPreenchimentoTabela(tabelaItens);
+//               
+//    }
 
     /**
      * Valida somente campos float
