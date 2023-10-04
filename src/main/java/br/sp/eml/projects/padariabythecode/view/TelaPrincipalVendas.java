@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import secondscreens.TelaConfirmacaoPedido;
+import secondscreens.TelaListagemClientes;
 
 /**
  *
@@ -148,8 +149,18 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         }
 
         btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteActionPerformed(evt);
+            }
+        });
 
         btnRedirecionarTelaCadClientes.setText("Cadastrar Novo Cliente");
+        btnRedirecionarTelaCadClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedirecionarTelaCadClientesActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Nome do Produto:");
 
@@ -543,7 +554,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -751,6 +762,17 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lbTelefoneCliente.setText("Telefone: ");
         lblValorTotalPedido.setText("R$ 0,00");
     }//GEN-LAST:event_btnCancelarPedidoActionPerformed
+
+    private void btnRedirecionarTelaCadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedirecionarTelaCadClientesActionPerformed
+
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRedirecionarTelaCadClientesActionPerformed
+
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+        // TODO add your handling code here:
+        new TelaListagemClientes().setVisible(true);
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments

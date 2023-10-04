@@ -67,7 +67,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlVendas" max="32767" attributes="0"/>
-                  <Component id="pnlCabecalho" pref="1005" max="32767" attributes="0"/>
+                  <Component id="pnlCabecalho" max="32767" attributes="0"/>
                   <Component id="pnlRodape" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlPrincipal" max="32767" attributes="0"/>
@@ -309,11 +309,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRedirecionarTelaCadClientes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar Novo Cliente"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRedirecionarTelaCadClientesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
