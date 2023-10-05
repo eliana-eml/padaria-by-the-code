@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import secondscreens.TelaConfirmacaoPedido;
 import secondscreens.TelaListagemClientes;
+import secondscreens.TelaListagemProdutos;
 
 /**
  *
@@ -171,6 +172,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         });
 
         btnBuscarNomeProduto.setText("Buscar");
+        btnBuscarNomeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarNomeProdutoActionPerformed(evt);
+            }
+        });
 
         btnAdicionarProduto.setText("Adicionar Produto");
         btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -526,6 +532,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         mnuArquivos.setText("Arquivos");
 
         mnuItemCadatroClientes.setText("Cadastro Clientes");
+        mnuItemCadatroClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCadatroClientesActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuItemCadatroClientes);
 
         mnuItemCadastroProdutos.setText("Cadastro Produtos");
@@ -537,6 +548,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         mnuArquivos.add(mnuItemCadastroProdutos);
 
         mnuItemRelatorioVendas.setText("Relatório de Vendas");
+        mnuItemRelatorioVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemRelatorioVendasActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuItemRelatorioVendas);
 
         mnuBar.add(mnuArquivos);
@@ -582,7 +598,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
-        // TODO add your handling code here:
+        
+        new TelaProdutos().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
 
     private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
@@ -718,6 +736,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
          * dados com o botão finalizarPedido.
          *
          */
+        
+        
         atualizarValorTotalPedido();
 
 //        Validador validacao = new Validador();
@@ -770,9 +790,26 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedirecionarTelaCadClientesActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        // TODO add your handling code here:
+        
         new TelaListagemClientes().setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
+
+    private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
+        
+        new TelaListagemProdutos().setVisible(true);
+    }//GEN-LAST:event_btnBuscarNomeProdutoActionPerformed
+
+    private void mnuItemCadatroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadatroClientesActionPerformed
+        
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuItemCadatroClientesActionPerformed
+
+    private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
+        
+        new TelaRelatorio().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
 
     /**
      * @param args the command line arguments
