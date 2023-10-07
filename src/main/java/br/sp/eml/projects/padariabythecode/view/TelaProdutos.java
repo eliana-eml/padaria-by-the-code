@@ -542,7 +542,21 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse produto?");
+       int resposta = JOptionPane.showOptionDialog(null, 
+        "Deseja realmente excluir?", 
+        "Feedback", 
+        JOptionPane.OK_CANCEL_OPTION, 
+        JOptionPane.INFORMATION_MESSAGE, 
+        null, 
+        new String[]{"Sim", "Não"},
+        "default");
+       
+       if (resposta == JOptionPane.YES_OPTION) {
+        JOptionPane.showMessageDialog(null, "OPÇÃO SIM");
+      }
+      else {
+         JOptionPane.showMessageDialog(null, "OPÇÃO NÃO");
+      }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataActionPerformed

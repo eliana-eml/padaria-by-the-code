@@ -177,6 +177,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel9.setText("BUSCA POR DATA");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("A:");
 
@@ -441,6 +446,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
            new TelaProdutos().setVisible(true);
            this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
