@@ -4,6 +4,7 @@
  */
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.utils.ValidateNumbers;
 import javax.swing.JOptionPane;
 import secondscreens.TelaEdit;
 
@@ -18,6 +19,10 @@ public class TelaProdutos extends javax.swing.JFrame {
      */
     public TelaProdutos() {
         initComponents();
+        setLocationRelativeTo(null);
+        txtQuantidade.setDocument(new ValidateNumbers());
+        txtValorProduto.setDocument(new ValidateNumbers());
+        txtCodigo.setDocument(new ValidateNumbers());
     }
 
     /**
@@ -295,6 +300,12 @@ public class TelaProdutos extends javax.swing.JFrame {
         jLabel11.setText("Valor do Produto:");
 
         jLabel12.setText("Quantidade:");
+
+        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeActionPerformed(evt);
+            }
+        });
 
         btnCadastro.setText("CADASTRAR");
         btnCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -580,6 +591,10 @@ public class TelaProdutos extends javax.swing.JFrame {
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
+
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments

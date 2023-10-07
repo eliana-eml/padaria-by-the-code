@@ -4,6 +4,7 @@
  */
 package secondscreens;
 
+import br.sp.eml.projects.padariabythecode.utils.ValidateNumbers;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +18,9 @@ public class TelaEdit extends javax.swing.JFrame {
      */
     public TelaEdit() {
         initComponents();
+        setLocationRelativeTo(null);
+        txtEditNomeQuantidade.setDocument(new ValidateNumbers());
+        txtEditUniqueValue.setDocument(new ValidateNumbers());
     }
 
     /**
@@ -48,7 +52,7 @@ public class TelaEdit extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("ALTERAR PRODUTO");
@@ -58,6 +62,12 @@ public class TelaEdit extends javax.swing.JFrame {
         jLabel2.setText("Quantidade:");
 
         jLabel4.setText("Valor Unitário:");
+
+        txtEditNomeQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEditNomeQuantidadeActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Salvar");
 
@@ -135,6 +145,10 @@ public class TelaEdit extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void txtEditNomeQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditNomeQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEditNomeQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments
