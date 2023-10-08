@@ -6,6 +6,7 @@ package br.sp.eml.projects.padariabythecode.utils;
 
 import java.awt.Component;
 import java.awt.Container;
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -38,5 +39,15 @@ public class Utils {
         
         DefaultTableModel tblModelo = (DefaultTableModel) tabela.getModel();
         tblModelo.setRowCount(0);
+    }
+    
+    public void habilitarBotoes(JButton botao) {
+        
+        botao.setEnabled(true);
+    }
+    
+    public void desabilitarBotoes(JButton botao) {
+        
+        botao.setEnabled(false);
     }
 }

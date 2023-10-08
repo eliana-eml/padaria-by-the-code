@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.utils;
 
 import java.awt.Color;
@@ -10,10 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author fernando.tfernandes
- */
 public class Validador {
 
     public ArrayList<String> mensagensErro = new ArrayList<>();
@@ -40,7 +32,7 @@ public class Validador {
             this.mensagensErro.add("Falha ao converter o valor do campo " + txt.getName() + " em inteiro");
             txt.setBackground(Color.red);
         } catch (IllegalArgumentException e) {
-            this.mensagensErro.add("Digite um valor para o campo " + txt.getName());
+            this.mensagensErro.add("Preencha o campo: " + txt.getName());
             txt.setBackground(Color.red);
         }
 
@@ -58,7 +50,7 @@ public class Validador {
             txt.setBackground(Color.white);
 
         } catch (IllegalArgumentException e) {
-            this.mensagensErro.add("Digite um valor para o campo " + txt.getName());
+            this.mensagensErro.add("Preencha o campo: " + txt.getName());
             txt.setBackground(Color.red);
         }
 
@@ -101,10 +93,10 @@ public class Validador {
 
         } catch (NumberFormatException e) {
 
-            this.mensagensErro.add("Falha ao converter o valor do campo " + txt.getName() + " em float");
+            this.mensagensErro.add("Falha ao converter o valor do campo: " + txt.getName() + " em float");
             txt.setBackground(Color.red);
         } catch (IllegalArgumentException e) {
-            this.mensagensErro.add("Digite um valor para o campo " + txt.getName());
+            this.mensagensErro.add("Preencha o campo: " + txt.getName());
             txt.setBackground(Color.red);
         }
 

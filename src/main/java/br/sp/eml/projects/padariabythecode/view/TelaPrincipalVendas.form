@@ -298,6 +298,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Nome Cliente" noResource="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -309,7 +312,11 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="CPF Cliente" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPFActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarCliente">
           <Properties>
@@ -333,6 +340,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeProduto">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Nome do Produto" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeProdutoActionPerformed"/>
           </Events>
@@ -346,6 +356,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtQtdProduto">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Quantidade Produto" noResource="true"/>
+          </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
           </AccessibilityProperties>

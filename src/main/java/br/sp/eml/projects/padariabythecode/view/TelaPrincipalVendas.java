@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Utils;
@@ -141,6 +137,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         jLabel1.setText("Nome do Cliente:");
 
+        txtNomeCliente.setName("Nome Cliente"); // NOI18N
+
         jLabel2.setText("CPF:");
 
         try {
@@ -148,6 +146,12 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCPF.setName("CPF Cliente"); // NOI18N
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFActionPerformed(evt);
+            }
+        });
 
         btnBuscarCliente.setText("Buscar");
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +169,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         jLabel3.setText("Nome do Produto:");
 
+        txtNomeProduto.setName("Nome do Produto"); // NOI18N
         txtNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeProdutoActionPerformed(evt);
@@ -177,6 +182,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 btnBuscarNomeProdutoActionPerformed(evt);
             }
         });
+
+        txtQtdProduto.setName("Quantidade Produto"); // NOI18N
 
         btnAdicionarProduto.setText("Adicionar Produto");
         btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -598,7 +605,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
-        
+
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
@@ -614,32 +621,32 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
          * informações como idCliente, nomeCliente, cpfCliente e etc do Banco de
          * Dados.
          */
-        
-        try {
-            Validador validacao = new Validador();
-            validacao.validarTexto(txtNomeCliente);
-            validacao.validarTexto(txtCPF);
+        Utils utilitario = new Utils();
 
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeCliente);
+        validacao.validarTexto(txtCPF);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+        } else {
             lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
             lbCPFCliente.setText("CPF: " + txtCPF.getText());
-            
-        } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos dos dados do cliente!");
+            utilitario.desabilitarBotoes(btnAdicionarCliente);
         }
-
 
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeProduto);
+        validacao.validarNumero(txtQtdProduto);
+
         try {
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
-
-            Validador validacao = new Validador();
-            validacao.validarTexto(txtNomeProduto);
-            validacao.validarNumero(txtQtdProduto);
 
 //        int numeroItemTabela = 0;
             int codProduto = 1;
@@ -647,7 +654,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             int qtdProd = Integer.parseInt(txtQtdProduto.getText());
             double totalProd = valorUniProdRandom * qtdProd;
 
-//        String numItem = String.valueOf(numeroItemTabela);
             String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
             String qtdProduto = txtQtdProduto.getText();
@@ -659,7 +665,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
             //Adicionar uma linha à tabela
             modelo.addRow(new String[]{
-                //            numItem,
                 codigoProduto,
                 nomeProduto,
                 qtdProduto,
@@ -667,9 +672,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 valorTotalProd
             });
 
-//        numeroItemTabela++;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Insira o nome do produto e a sua quantidade!");
+            if (validacao.hasErro()) {
+                String mensagensDeErro = validacao.getMensagensErro();
+                JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+            }
         }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
@@ -736,9 +743,22 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
          * dados com o botão finalizarPedido.
          *
          */
-        
-        
-        atualizarValorTotalPedido();
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeCliente);
+        validacao.validarTexto(txtCPF);
+        validacao.validarTexto(txtNomeProduto);
+        validacao.validarNumero(txtQtdProduto);
+        validacao.validarPreenchimentoTabela(tblListaItensPedido);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+        } else {
+            
+            Utils utilitario = new Utils();
+            utilitario.desabilitarBotoes(btnAdicionarProduto);
+            atualizarValorTotalPedido();
+        }
 
 //        Validador validacao = new Validador();
 //
@@ -773,14 +793,17 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
 
-        Utils limpar = new Utils();
-        limpar.limparCampos(pnlPrincipal);
-        limpar.limparTabela(tblListaItensPedido);
-        
+        Utils utilitario = new Utils();
+        utilitario.limparCampos(pnlPrincipal);
+        utilitario.limparTabela(tblListaItensPedido);
+
         lbNomeCliente.setText("Cliente: ");
         lbCPFCliente.setText("CPF: ");
         lbTelefoneCliente.setText("Telefone: ");
         lblValorTotalPedido.setText("R$ 0,00");
+
+        utilitario.habilitarBotoes(btnAdicionarCliente);
+        utilitario.habilitarBotoes(btnAdicionarProduto);
     }//GEN-LAST:event_btnCancelarPedidoActionPerformed
 
     private void btnRedirecionarTelaCadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedirecionarTelaCadClientesActionPerformed
@@ -790,26 +813,30 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedirecionarTelaCadClientesActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        
+
         new TelaListagemClientes().setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
-        
+
         new TelaListagemProdutos().setVisible(true);
     }//GEN-LAST:event_btnBuscarNomeProdutoActionPerformed
 
     private void mnuItemCadatroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadatroClientesActionPerformed
-        
+
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadatroClientesActionPerformed
 
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
-        
+
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
 
     /**
      * @param args the command line arguments
