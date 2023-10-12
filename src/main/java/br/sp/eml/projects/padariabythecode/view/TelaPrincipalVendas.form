@@ -159,24 +159,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lbDataAtual" min="-2" pref="135" max="-2" attributes="0"/>
+                  <Component id="lblDataAtual" min="-2" pref="253" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="lbDataAtual" alignment="0" pref="32" max="32767" attributes="0"/>
+              <Component id="lblDataAtual" alignment="0" pref="32" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbDataAtual">
+        <Component class="javax.swing.JLabel" name="lblDataAtual">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="23/09/2023"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>

@@ -2,12 +2,11 @@ package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
-import java.awt.Component;
-import java.math.RoundingMode;
+
 import java.text.DecimalFormat;
-import javax.swing.JFormattedTextField;
+//import java.time.LocalDateTime;
+//import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import secondscreens.TelaConfirmacaoPedido;
 import secondscreens.TelaListagemClientes;
@@ -25,6 +24,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     public TelaPrincipalVendas() {
         initComponents();
         setLocationRelativeTo(null);
+//        Date dataAtual = new Date();
+//        lblDataAtual.setText(dataAtual.toString());
     }
 
     /**
@@ -39,7 +40,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         pnlVendas = new javax.swing.JPanel();
         lbTituloVendas = new javax.swing.JLabel();
         pnlRodape = new javax.swing.JPanel();
-        lbDataAtual = new javax.swing.JLabel();
+        lblDataAtual = new javax.swing.JLabel();
         pnlPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNomeCliente = new javax.swing.JTextField();
@@ -113,10 +114,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         pnlRodape.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbDataAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbDataAtual.setText("23/09/2023");
-        lbDataAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblDataAtual.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDataAtual.setText("23/09/2023");
+        lblDataAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout pnlRodapeLayout = new javax.swing.GroupLayout(pnlRodape);
         pnlRodape.setLayout(pnlRodapeLayout);
@@ -124,12 +125,12 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodapeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlRodapeLayout.setVerticalGroup(
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(lblDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         );
 
         pnlPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -702,14 +703,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
 
-        int linhaSelecionada = tblListaItensPedido.getSelectedRow();
-        DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
-
-        if (linhaSelecionada >= 0) {
-            modelo.removeRow(linhaSelecionada);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
-        }
+        
 
     }//GEN-LAST:event_btnExcluirItemProdutoActionPerformed
 
@@ -897,7 +891,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbCPFCliente;
-    private javax.swing.JLabel lbDataAtual;
     private javax.swing.JLabel lbDataPedido;
     private javax.swing.JLabel lbLogotipo;
     private javax.swing.JLabel lbNomeCliente;
@@ -905,6 +898,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lbNumeroPedido;
     private javax.swing.JLabel lbTelefoneCliente;
     private javax.swing.JLabel lbTituloVendas;
+    private javax.swing.JLabel lblDataAtual;
     private javax.swing.JLabel lblValorTotalPedido;
     private javax.swing.JMenu mnuArquivos;
     private javax.swing.JMenuBar mnuBar;

@@ -61,7 +61,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnlCabecalho" pref="987" max="32767" attributes="0"/>
-                  <Component id="pnlRodape" pref="987" max="32767" attributes="0"/>
+                  <Component id="pnlRodape1" pref="987" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="pnlCadastroCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlCabecalho" min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="pnlCabecalho" min="-2" pref="75" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlClientes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
                   <Component id="pnlCadastroCliente" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlRodape" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="pnlRodape1" pref="26" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -118,12 +118,12 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblLogotipo" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblBTCBakery" min="-2" pref="225" max="-2" attributes="0"/>
-                  <EmptySpace pref="413" max="32767" attributes="0"/>
-                  <Component id="btnNavBarVendas" min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnNavBarVendas" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnNavBarProdutos" min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="btnNavBarProdutos" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnNavBarRelatorio" min="-2" pref="125" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -137,9 +137,9 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnNavBarRelatorio" max="32767" attributes="0"/>
                       <Component id="btnNavBarProdutos" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblBTCBakery" alignment="0" pref="41" max="32767" attributes="0"/>
+                      <Component id="lblBTCBakery" alignment="0" pref="59" max="32767" attributes="0"/>
                       <Component id="lblLogotipo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnNavBarVendas" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btnNavBarVendas" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -192,6 +192,7 @@
               <Font name="Segoe UI" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="By The Code Bakery"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblLogotipo">
@@ -234,7 +235,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblTituloClientes" max="32767" attributes="0"/>
+                  <Component id="lblTituloClientes" pref="31" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -269,15 +270,13 @@
                       <Component id="pnlDadosBasicos" alignment="0" max="32767" attributes="0"/>
                       <Component id="pnlEndereco" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnLimparCampos" min="-2" pref="267" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnCadastrar" min="-2" pref="284" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="lblCadastro" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnLimparCampos" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnCadastrar" min="-2" pref="272" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -289,16 +288,16 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblCadastro" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="pnlDadosBasicos" min="-2" pref="199" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnlDadosBasicos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlEndereco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnLimparCampos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnCadastrar" pref="36" max="32767" attributes="0"/>
+                      <Component id="btnLimparCampos" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -887,27 +886,20 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jSeparator1" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="lblBuscaCliente_ID" min="-2" pref="59" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtBuscaCliente_ID" max="32767" attributes="0"/>
+                                  <Component id="txtBuscaCliente_ID" min="-2" pref="77" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lblBuscaClienteCPF" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtBuscaCliente_CPF" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnBuscarCliente" min="-2" pref="96" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnBuscarCliente" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblBuscaNome" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblBuscaCPF" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblBuscaDtNasc" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -919,7 +911,7 @@
                                   <Component id="btnEditarCadastro" min="-2" pref="184" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -1049,7 +1041,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlRodape">
+    <Container class="javax.swing.JPanel" name="pnlRodape1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1073,7 +1065,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDataAtual" alignment="0" pref="26" max="32767" attributes="0"/>
+              <Component id="pnlDataAtual" alignment="0" pref="22" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
