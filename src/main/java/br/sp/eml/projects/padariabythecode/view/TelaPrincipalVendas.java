@@ -660,11 +660,16 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         validacao.validarTexto(txtNomeProduto);
         validacao.validarNumero(txtQtdProduto);
 
-        try {
+        if (validacao.hasErro()) {
+            
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+            
+        } else {
+            
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
 
-//        int numeroItemTabela = 0;
             int codProduto = 1;
             double valorUniProdRandom = Math.random() * 20;
             int qtdProd = Integer.parseInt(txtQtdProduto.getText());
@@ -676,7 +681,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             String valorUniProd = String.valueOf(formatarNumero.format(valorUniProdRandom));
             String valorTotalProd = String.valueOf(formatarNumero.format(totalProd));
 
-            //cod, nome, qtd, valor unitario, valor total
             DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
             //Adicionar uma linha à tabela
@@ -687,12 +691,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 valorUniProd,
                 valorTotalProd
             });
-
-        } catch (Exception e) {
-            if (validacao.hasErro()) {
-                String mensagensDeErro = validacao.getMensagensErro();
-                JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            }
         }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
@@ -856,21 +854,21 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
-        
+
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
     }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     private void txtQtdProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdProdutoKeyTyped
-        
+
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtQtdProduto);
-        validacao.limitarQuantidadeCaracteres(evt, txtQtdProduto, 10);
+        validacao.limitarQuantidadeCaracteres(evt, txtQtdProduto, 5);
     }//GEN-LAST:event_txtQtdProdutoKeyTyped
 
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
-        
+
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);
