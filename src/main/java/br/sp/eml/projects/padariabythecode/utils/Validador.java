@@ -1,6 +1,7 @@
 package br.sp.eml.projects.padariabythecode.utils;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -59,20 +60,42 @@ public class Validador {
     public void validarPreenchimentoTabela(JTable table) {
 
         if (table.getRowCount() <= 0) {
-//            JOptionPane.showMessageDialog(table, "A tabela de itens vazia!");
             this.mensagensErro.add("A tabela de itens vazia!");
-
         }
     }
     
-//    public void validarCamposPedido(JTextField nomeCliente, JTextField cpfCliente, JTable tabelaItens) {
-//        
-//        Validador valide = new Validador();
-//        valide.validarTexto(nomeCliente);
-//        valide.validarTexto(cpfCliente);
-//        valide.validarPreenchimentoTabela(tabelaItens);
-//               
-//    }
+    public void limitarQuantidadeCaracteres(java.awt.event.KeyEvent evt, JTextField txt, int qtdCaracteres) {
+        
+        if (txt.getText().length() >= qtdCaracteres) {
+            evt.consume();
+            JOptionPane.showMessageDialog(txt, "Máximo de " + qtdCaracteres + " caracteres atingido!");
+        }
+  
+    }
+    
+    public void limitarEntradaNumerica(java.awt.event.KeyEvent evt, JTextField txt) {
+        
+        char c = evt.getKeyChar();
+        
+        if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) ) {
+            evt.consume();
+            JOptionPane.showMessageDialog(txt, "Somente números no campo: " + txt.getName() + "!");
+        }
+    }
+    
+    public void limitarEntradaTexto(java.awt.event.KeyEvent evt, JTextField txt) {
+        
+        char c = evt.getKeyChar();
+        
+        try {
+            Integer.parseInt(Character.toString(c));
+            evt.consume();
+            JOptionPane.showMessageDialog(txt, "Somente texto no campo: " + txt.getName() + "!");
+        } catch (Exception e) {
+            //Somente texto está sendo aceito!
+        }
+        
+    }
 
     /**
      * Valida somente campos float

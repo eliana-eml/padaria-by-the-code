@@ -139,6 +139,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel1.setText("Nome do Cliente:");
 
         txtNomeCliente.setName("Nome Cliente"); // NOI18N
+        txtNomeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeClienteKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("CPF:");
 
@@ -176,6 +181,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 txtNomeProdutoActionPerformed(evt);
             }
         });
+        txtNomeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeProdutoKeyTyped(evt);
+            }
+        });
 
         btnBuscarNomeProduto.setText("Buscar");
         btnBuscarNomeProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +195,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         });
 
         txtQtdProduto.setName("Quantidade Produto"); // NOI18N
+        txtQtdProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdProdutoKeyTyped(evt);
+            }
+        });
 
         btnAdicionarProduto.setText("Adicionar Produto");
         btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -703,7 +718,15 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
 
-        
+        int linhaSelecionada = tblListaItensPedido.getSelectedRow();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+
+        if (linhaSelecionada >= 0) {
+            modelo.removeRow(linhaSelecionada);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+        }
 
     }//GEN-LAST:event_btnExcluirItemProdutoActionPerformed
 
@@ -748,7 +771,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
         } else {
-            
+
             Utils utilitario = new Utils();
             utilitario.desabilitarBotoes(btnAdicionarProduto);
             atualizarValorTotalPedido();
@@ -831,6 +854,27 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCPFActionPerformed
+
+    private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
+        validacao.limitarEntradaTexto(evt, txtNomeCliente);
+    }//GEN-LAST:event_txtNomeClienteKeyTyped
+
+    private void txtQtdProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdProdutoKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarEntradaNumerica(evt, txtQtdProduto);
+        validacao.limitarQuantidadeCaracteres(evt, txtQtdProduto, 10);
+    }//GEN-LAST:event_txtQtdProdutoKeyTyped
+
+    private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
+        validacao.limitarEntradaTexto(evt, txtNomeProduto);
+    }//GEN-LAST:event_txtNomeProdutoKeyTyped
 
     /**
      * @param args the command line arguments
