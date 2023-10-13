@@ -104,10 +104,20 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         jLabel2.setText("ID Produto:");
 
         txtIDProduto.setName("ID Produto"); // NOI18N
+        txtIDProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDProdutoKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Nome Produto:");
 
         txtNomeProduto.setName("Nome Produto"); // NOI18N
+        txtNomeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeProdutoKeyTyped(evt);
+            }
+        });
 
         btnBuscarProduto.setText("Buscar");
         btnBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +275,18 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
+    private void txtIDProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDProdutoKeyTyped
+        Validador validacao = new Validador();
+        validacao.limitarEntradaNumerica(evt, txtNomeProduto);
+    }//GEN-LAST:event_txtIDProdutoKeyTyped
+
+    private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
+        validacao.limitarEntradaTexto(evt, txtNomeProduto);
+    }//GEN-LAST:event_txtNomeProdutoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -303,7 +325,6 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnBuscarProduto;
-    private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarProdutos1;
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JLabel jLabel1;

@@ -108,6 +108,11 @@ public class TelaListagemClientes extends javax.swing.JFrame {
         jLabel3.setText("Nome Cliente:");
 
         txtNomeCliente.setName("Nome Cliente"); // NOI18N
+        txtNomeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeClienteKeyTyped(evt);
+            }
+        });
 
         btnBuscarCliente.setText("Buscar");
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +283,13 @@ public class TelaListagemClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
         }
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
+
+    private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
+        validacao.limitarEntradaTexto(evt, txtNomeCliente);
+    }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     /**
      * @param args the command line arguments

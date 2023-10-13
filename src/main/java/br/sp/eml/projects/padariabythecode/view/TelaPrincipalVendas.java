@@ -775,18 +775,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             atualizarValorTotalPedido();
         }
 
-//        Validador validacao = new Validador();
-//
-//        validacao.validarCamposPedido(txtNomeCliente, txtCPF, tblListaItensPedido);
-//
-//        try {
-//            lbNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
-//            lbCPFCliente.setText("CPF: " + txtCPF.getText());
-//            atualizarValorTotalPedido();
-//
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(rootPane, "Preencha corretamente os campos!");
-//        }
     }//GEN-LAST:event_btnAdicionarPedidoActionPerformed
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed

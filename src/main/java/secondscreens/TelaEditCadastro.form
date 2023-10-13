@@ -215,6 +215,7 @@
               <Format format="###.###.###-##" subtype="-1" type="5"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="CPF" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_dtNasc">
@@ -228,6 +229,7 @@
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="Data de Nascimento" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Genero">
@@ -236,6 +238,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGeneroCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="G&#xea;nero" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtGeneroClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_EstCivil">
           <Properties>
@@ -243,8 +251,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEstadoCivilCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Estado Civil" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstadoCivilClienteActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEstadoCivilClienteKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Nome">
@@ -253,6 +265,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Nome do Cliente" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_TelFixo">
           <Properties>
@@ -264,6 +282,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="(##) ####-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="Telefone Fixo" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Celular">
@@ -276,6 +295,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="(##) #####-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="Celular" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Email">
@@ -284,6 +304,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmailCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Email" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailClienteKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -424,6 +450,7 @@
               <Format format="#####-###" subtype="-1" type="5"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="CEP" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Log">
@@ -432,8 +459,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLogCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Logradouro" noResource="true"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLogClienteActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLogClienteKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Num">
@@ -446,7 +477,11 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
               <Format subtype="1" type="0"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="N&#xfa;mero" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNumClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Compl">
           <Properties>
@@ -454,6 +489,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtComplementoCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Complemento" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtComplementoClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Bairro">
           <Properties>
@@ -461,6 +502,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBairroCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Bairro" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBairroClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_Cid">
           <Properties>
@@ -468,6 +515,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCidadeCliente">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="Cidade" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCidadeClienteKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblCliente_UF">
           <Properties>
@@ -508,6 +561,7 @@
                 <StringItem index="27" value="TO"/>
               </StringArray>
             </Property>
+            <Property name="name" type="java.lang.String" value="UF" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUFClienteActionPerformed"/>

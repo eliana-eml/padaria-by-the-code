@@ -86,6 +86,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCPFCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCPFCliente.setName("CPF"); // NOI18N
 
         lblCliente_dtNasc.setText("Data de Nascimento:");
 
@@ -95,18 +96,39 @@ public class TelaEditCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtDtNascimentoCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDtNascimentoCliente.setName("Data de Nascimento"); // NOI18N
 
         lblCliente_Genero.setText("Gênero:");
 
+        txtGeneroCliente.setName("Gênero"); // NOI18N
+        txtGeneroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGeneroClienteKeyTyped(evt);
+            }
+        });
+
         lblCliente_EstCivil.setText("Estado Civil:");
 
+        txtEstadoCivilCliente.setName("Estado Civil"); // NOI18N
         txtEstadoCivilCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEstadoCivilClienteActionPerformed(evt);
             }
         });
+        txtEstadoCivilCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEstadoCivilClienteKeyTyped(evt);
+            }
+        });
 
         lblCliente_Nome.setText("Nome do Cliente:");
+
+        txtNomeCliente.setName("Nome do Cliente"); // NOI18N
+        txtNomeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeClienteKeyTyped(evt);
+            }
+        });
 
         lblCliente_TelFixo.setText("Telefone Fixo:");
 
@@ -115,6 +137,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtTelFixCliente.setName("Telefone Fixo"); // NOI18N
 
         lblCliente_Celular.setText("Celular:");
 
@@ -123,8 +146,16 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCelCliente.setName("Celular"); // NOI18N
 
         lblCliente_Email.setText("E-mail:");
+
+        txtEmailCliente.setName("Email"); // NOI18N
+        txtEmailCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailClienteKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDadosBasicosLayout = new javax.swing.GroupLayout(pnlDadosBasicos);
         pnlDadosBasicos.setLayout(pnlDadosBasicosLayout);
@@ -231,28 +262,63 @@ public class TelaEditCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCEPCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCEPCliente.setName("CEP"); // NOI18N
 
         lblCliente_Log.setText("Logradouro:");
 
+        txtLogCliente.setName("Logradouro"); // NOI18N
         txtLogCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLogClienteActionPerformed(evt);
+            }
+        });
+        txtLogCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLogClienteKeyTyped(evt);
             }
         });
 
         lblCliente_Num.setText("Nº:");
 
         txtNumCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+        txtNumCliente.setName("Número"); // NOI18N
+        txtNumCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumClienteKeyTyped(evt);
+            }
+        });
 
         lblCliente_Compl.setText("Complemento:");
 
+        txtComplementoCliente.setName("Complemento"); // NOI18N
+        txtComplementoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtComplementoClienteKeyTyped(evt);
+            }
+        });
+
         lblCliente_Bairro.setText("Bairro:");
 
+        txtBairroCliente.setName("Bairro"); // NOI18N
+        txtBairroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBairroClienteKeyTyped(evt);
+            }
+        });
+
         lblCliente_Cid.setText("Cidade:");
+
+        txtCidadeCliente.setName("Cidade"); // NOI18N
+        txtCidadeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCidadeClienteKeyTyped(evt);
+            }
+        });
 
         lblCliente_UF.setText("UF:");
 
         txtUFCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        txtUFCliente.setName("UF"); // NOI18N
         txtUFCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUFClienteActionPerformed(evt);
@@ -407,31 +473,31 @@ public class TelaEditCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUFClienteActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
-    int resposta = JOptionPane.showOptionDialog(null, 
-        "Deseja realmente excluir?", 
-        "Cadastro Cliente", 
-        JOptionPane.OK_CANCEL_OPTION, 
-        JOptionPane.INFORMATION_MESSAGE, 
-        null, 
-        new String[]{"Sim", "Não"},
-        "default");
- 
-    if (resposta == JOptionPane.YES_OPTION) {
-        JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
-        dispose();
-      } else {
+
+        int resposta = JOptionPane.showOptionDialog(null,
+                "Deseja realmente excluir?",
+                "Cadastro Cliente",
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                new String[]{"Sim", "Não"},
+                "default");
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
+            dispose();
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Cancelado");
             dispose();
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
-        
+
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        
+
         //Garante o preenchimento de todos os campos de cadastro, e se os campos estiverem vazios, pinta de vermelho.
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
@@ -460,6 +526,67 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
+    private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
+        validacao.limitarEntradaTexto(evt, txtNomeCliente);
+    }//GEN-LAST:event_txtNomeClienteKeyTyped
+
+    private void txtGeneroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroClienteKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtGeneroCliente, 20);
+        validacao.limitarEntradaTexto(evt, txtGeneroCliente);
+    }//GEN-LAST:event_txtGeneroClienteKeyTyped
+
+    private void txtEstadoCivilClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtEstadoCivilCliente, 20);
+        validacao.limitarEntradaTexto(evt, txtEstadoCivilCliente);
+    }//GEN-LAST:event_txtEstadoCivilClienteKeyTyped
+
+    private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtEmailCliente, 50);
+    }//GEN-LAST:event_txtEmailClienteKeyTyped
+
+    private void txtLogClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtLogCliente, 50);
+        validacao.limitarEntradaTexto(evt, txtLogCliente);
+    }//GEN-LAST:event_txtLogClienteKeyTyped
+
+    private void txtNumClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtNumCliente, 10);
+        validacao.limitarEntradaNumerica(evt, txtNumCliente);
+    }//GEN-LAST:event_txtNumClienteKeyTyped
+
+    private void txtComplementoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtComplementoCliente, 30);
+    }//GEN-LAST:event_txtComplementoClienteKeyTyped
+
+    private void txtBairroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtBairroCliente, 30);
+        validacao.limitarEntradaTexto(evt, txtBairroCliente);
+    }//GEN-LAST:event_txtBairroClienteKeyTyped
+
+    private void txtCidadeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeClienteKeyTyped
+        
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtCidadeCliente, 50);
+        validacao.limitarEntradaTexto(evt, txtCidadeCliente);
+    }//GEN-LAST:event_txtCidadeClienteKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -471,7 +598,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

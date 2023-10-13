@@ -8,18 +8,16 @@ public class Produto {
     private String nomeProduto;
     private double precoProduto;
     private int qtdEstoqueProduto;
-    private Date dataValidadeProduto;
 
     //Construtor vazio
     public Produto() {}
 
     //Construtor com parâmetros
-    public Produto(int idProduto, String nomeProduto, double precoProduto, int qtdEstoqueProduto, Date dataValidadeProduto) {
+    public Produto(int idProduto, String nomeProduto, double precoProduto, int qtdEstoqueProduto) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
         this.precoProduto = precoProduto;
         this.qtdEstoqueProduto = qtdEstoqueProduto;
-        this.dataValidadeProduto = dataValidadeProduto;
     }
     
     //Getters e Setters
@@ -55,12 +53,4 @@ public class Produto {
         this.qtdEstoqueProduto = qtdEstoqueProduto;
     }
 
-    public Date getDataValidadeProduto() {
-        return dataValidadeProduto;
-    }
-
-    public void setDataValidadeProduto(Date dataValidadeProduto) {
-        this.dataValidadeProduto = dataValidadeProduto;
-    }
-    
 }
