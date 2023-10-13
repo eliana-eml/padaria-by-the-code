@@ -7,6 +7,8 @@ package br.sp.eml.projects.padariabythecode.view;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import secondscreens.TelaEdit;
+import secondscreens.TelaRelatorioAnalitico;
 
 /**
  *
@@ -77,6 +79,12 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lbDataAtual1 = new javax.swing.JLabel();
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
+        mnuBar = new javax.swing.JMenuBar();
+        mnuArquivos = new javax.swing.JMenu();
+        mnuItemCadastroClientes = new javax.swing.JMenuItem();
+        mnuItemCadastroProdutos = new javax.swing.JMenuItem();
+        mnuRelatorioVendas = new javax.swing.JMenuItem();
+        mnuEditar = new javax.swing.JMenu();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -126,6 +134,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lblCPFCliente.setText("888.888.888-88");
 
         btnVisualizarRelatorioAnalitico.setText("Visualizar Relatório Analítico");
+        btnVisualizarRelatorioAnalitico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarRelatorioAnaliticoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDetalhesLayout = new javax.swing.GroupLayout(pnlDetalhes);
         pnlDetalhes.setLayout(pnlDetalhesLayout);
@@ -210,17 +223,21 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel1.setText("Data Final:");
 
         try {
-            txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDataInicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDataInicio.setText("");
         txtDataInicio.setName("Data Início"); // NOI18N
 
         try {
-            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/#/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDataFim.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDataFim.setText("");
         txtDataFim.setName("Data Fim"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -249,30 +266,32 @@ public class TelaRelatorio extends javax.swing.JFrame {
             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3)
+                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
+                                .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscarPorData, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
+                        .addComponent(txtIDVendaBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarVendaID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))
                     .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                         .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel2)
                             .addComponent(jLabel10))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8)
-                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                                    .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnBuscarPorData, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
-                            .addComponent(txtIDVendaBuscar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnBuscarVendaID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlBuscarPorDataLayout.setVerticalGroup(
@@ -289,12 +308,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarPorData))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
+                .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIDVendaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +327,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlDadosVendas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel7.setText("Lista de Vendas");
+        jLabel7.setText("LISTA DE VENDAS");
 
         btnVisualizarDetalhes.setText("Visualizar Detalhes");
         btnVisualizarDetalhes.addActionListener(new java.awt.event.ActionListener() {
@@ -335,12 +357,14 @@ public class TelaRelatorio extends javax.swing.JFrame {
             .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDadosVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                    .addGroup(pnlDadosVendasLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVisualizarDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVisualizarDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlDadosVendasLayout.setVerticalGroup(
             pnlDadosVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,9 +373,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDadosVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVisualizarDetalhes)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(pnlDadosVendasLayout.createSequentialGroup()
+                        .addComponent(btnVisualizarDetalhes)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -445,7 +471,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbTituloVendas2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbTituloVendas2.setText("RELATÓRIO");
+        lbTituloVendas2.setText("RELATÓRIOS");
 
         javax.swing.GroupLayout pnlProdutosLayout = new javax.swing.GroupLayout(pnlProdutos);
         pnlProdutos.setLayout(pnlProdutosLayout);
@@ -463,6 +489,39 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addComponent(lbTituloVendas2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        mnuArquivos.setText("Arquivos");
+
+        mnuItemCadastroClientes.setText("Cadastro Clientes");
+        mnuItemCadastroClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCadastroClientesActionPerformed(evt);
+            }
+        });
+        mnuArquivos.add(mnuItemCadastroClientes);
+
+        mnuItemCadastroProdutos.setText("Cadastro Produtos");
+        mnuItemCadastroProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCadastroProdutosActionPerformed(evt);
+            }
+        });
+        mnuArquivos.add(mnuItemCadastroProdutos);
+
+        mnuRelatorioVendas.setText("Relatório de Vendas");
+        mnuRelatorioVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuRelatorioVendasActionPerformed(evt);
+            }
+        });
+        mnuArquivos.add(mnuRelatorioVendas);
+
+        mnuBar.add(mnuArquivos);
+
+        mnuEditar.setText("Editar");
+        mnuBar.add(mnuEditar);
+
+        setJMenuBar(mnuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -490,15 +549,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlBuscarPorData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(pnlDadosVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRodape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -572,6 +631,33 @@ public class TelaRelatorio extends javax.swing.JFrame {
         validacao.limitarQuantidadeCaracteres(evt, txtIDVendaBuscar, 5);
     }//GEN-LAST:event_txtIDVendaBuscarKeyTyped
 
+    private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
+        
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_mnuItemCadastroClientesActionPerformed
+
+    private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
+               
+        new TelaProdutos().setVisible(true);
+        this.setVisible(false);
+       
+    }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
+
+    private void mnuRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatorioVendasActionPerformed
+                
+        new TelaRelatorio().setVisible(true);
+        this.setVisible(false);
+     
+    }//GEN-LAST:event_mnuRelatorioVendasActionPerformed
+
+    private void btnVisualizarRelatorioAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarRelatorioAnaliticoActionPerformed
+        new TelaRelatorioAnalitico().setVisible(true);
+        
+        //Vai puxar do banco o relatório preenchido com todas as informaçõe de comprar no período selecionado
+    }//GEN-LAST:event_btnVisualizarRelatorioAnaliticoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -644,6 +730,12 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel lblDataVenda;
     private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblValorTotalVenda;
+    private javax.swing.JMenu mnuArquivos;
+    private javax.swing.JMenuBar mnuBar;
+    private javax.swing.JMenu mnuEditar;
+    private javax.swing.JMenuItem mnuItemCadastroClientes;
+    private javax.swing.JMenuItem mnuItemCadastroProdutos;
+    private javax.swing.JMenuItem mnuRelatorioVendas;
     private javax.swing.JPanel pnlBuscarPorData;
     private javax.swing.JPanel pnlCabecalho;
     private javax.swing.JPanel pnlDadosVendas;

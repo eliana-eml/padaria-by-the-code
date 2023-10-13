@@ -242,6 +242,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCliente_Genero.setText("Gênero:");
 
         txtGeneroCliente.setName("Gênero"); // NOI18N
+        txtGeneroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroClienteActionPerformed(evt);
+            }
+        });
         txtGeneroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtGeneroClienteKeyTyped(evt);
@@ -712,6 +717,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(jSeparator1)
                     .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
                         .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarClienteLayout.createSequentialGroup()
+                                .addComponent(btnLimparBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblBuscarCliente)
                             .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
                                 .addComponent(lblBuscaCliente_Nome)
@@ -727,11 +736,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                             .addComponent(lblBuscaCPF)
                             .addComponent(lblBuscaDtNasc)
                             .addComponent(lblBuscaTel)
-                            .addComponent(lblBuscaEnd)
-                            .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
-                                .addComponent(btnLimparBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEditarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblBuscaEnd))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -789,17 +794,32 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         mnuArquivos.setText("Arquivos");
 
         mnuItemCadastroClientes.setText("Cadastro Cliente");
+        mnuItemCadastroClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCadastroClientesActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuItemCadastroClientes);
 
         mnuItemCadastroProdutos.setText("Cadastro Produto");
+        mnuItemCadastroProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCadastroProdutosActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuItemCadastroProdutos);
 
         mnuItemRelatorioVendas.setText("Relatório de Vendas");
+        mnuItemRelatorioVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemRelatorioVendasActionPerformed(evt);
+            }
+        });
         mnuArquivos.add(mnuItemRelatorioVendas);
 
         mnuBar.add(mnuArquivos);
 
-        mnuEditar.setText("Edit");
+        mnuEditar.setText("Editar");
         mnuBar.add(mnuEditar);
 
         setJMenuBar(mnuBar);
@@ -1035,6 +1055,30 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         validacao.limitarQuantidadeCaracteres(evt, txtBuscaCliente_Nome, 50);
         validacao.limitarEntradaTexto(evt, txtBuscaCliente_Nome);
     }//GEN-LAST:event_txtBuscaCliente_NomeKeyTyped
+
+    private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
+        
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_mnuItemCadastroClientesActionPerformed
+
+    private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
+        
+        new TelaProdutos().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
+
+    private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
+                
+        new TelaRelatorio().setVisible(true);
+        this.setVisible(false);
+      
+    }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
+
+    private void txtGeneroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroClienteActionPerformed
+        
+    }//GEN-LAST:event_txtGeneroClienteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  */
 package secondscreens;
 
+import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,7 +68,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlDadosBasicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -407,13 +408,22 @@ public class TelaEditCadastro extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         
-        int excluir = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse cadastro?");
-       
-       if(excluir == JOptionPane.YES_OPTION){
-         this.setVisible(false);
-       }else if(excluir == JOptionPane.NO_OPTION){
-          dispose();
-       } 
+    int resposta = JOptionPane.showOptionDialog(null, 
+        "Deseja realmente excluir?", 
+        "Cadastro Cliente", 
+        JOptionPane.OK_CANCEL_OPTION, 
+        JOptionPane.INFORMATION_MESSAGE, 
+        null, 
+        new String[]{"Sim", "Não"},
+        "default");
+ 
+    if (resposta == JOptionPane.YES_OPTION) {
+        JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
+        dispose();
+      } else {
+            JOptionPane.showMessageDialog(rootPane, "Cancelado");
+            dispose();
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
@@ -422,22 +432,32 @@ public class TelaEditCadastro extends javax.swing.JFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         
-        if (txtNomeCliente.getText().equals("") || txtCPFCliente.getText().equals("") || 
-            txtDtNascimentoCliente.getText().equals("") || txtGeneroCliente.getText().equals("") ||
-            txtEstadoCivilCliente.getText().equals("") || txtTelFixCliente.getText().equals("") ||
-            txtCelCliente.getText().equals("")|| txtEmailCliente.getText().equals("") || 
-            txtCEPCliente.getText().equals("") || txtLogCliente.getText().equals("") ||
-            txtNumCliente.getText().equals("") || txtBairroCliente.getText().equals("")||
-            txtCidadeCliente.getText().equals("")) {
-        
-            JOptionPane.showMessageDialog(rootPane, "Insira todos os valores para cadastrar");  
-        } 
-        
-        else {
-            JOptionPane.showMessageDialog(this,"Cadastro atualizado!");
+        //Garante o preenchimento de todos os campos de cadastro, e se os campos estiverem vazios, pinta de vermelho.
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeCliente);
+        validacao.validarTexto(txtCPFCliente);
+        validacao.validarTexto(txtDtNascimentoCliente);
+        validacao.validarTexto(txtGeneroCliente);
+        validacao.validarTexto(txtEstadoCivilCliente);
+        validacao.validarTexto(txtTelFixCliente);
+        validacao.validarTexto(txtCelCliente);
+        validacao.validarTexto(txtEmailCliente);
+        validacao.validarTexto(txtCEPCliente);
+        validacao.validarTexto(txtLogCliente);
+        validacao.validarTexto(txtNumCliente);
+        validacao.validarTexto(txtComplementoCliente);
+        validacao.validarTexto(txtBairroCliente);
+        validacao.validarTexto(txtCidadeCliente);
+        //validacao.validarTexto(txtUFCliente);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Cadastro atualizado com sucesso!");
             dispose();
         }
-        
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**

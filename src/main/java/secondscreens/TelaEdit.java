@@ -4,6 +4,7 @@
  */
 package secondscreens;
 
+import br.sp.eml.projects.padariabythecode.utils.Validador;
 import br.sp.eml.projects.padariabythecode.utils.ValidateNumbers;
 import javax.swing.JOptionPane;
 
@@ -19,8 +20,8 @@ public class TelaEdit extends javax.swing.JFrame {
     public TelaEdit() {
         initComponents();
         setLocationRelativeTo(null);
-        txtEditNomeQuantidade.setDocument(new ValidateNumbers());
-        txtEditUniqueValue.setDocument(new ValidateNumbers());
+        txtEditValorUni.setDocument(new ValidateNumbers());
+        txtEditQntdeProduto.setDocument(new ValidateNumbers());
     }
 
     /**
@@ -35,16 +36,16 @@ public class TelaEdit extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jLabel3 = new javax.swing.JLabel();
+        lblAttProdutos = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblNomeProduto = new javax.swing.JLabel();
+        lblValorUniProduto = new javax.swing.JLabel();
+        lblQntdeProduto = new javax.swing.JLabel();
         txtEditNomeProduto = new javax.swing.JTextField();
-        txtEditNomeQuantidade = new javax.swing.JTextField();
-        txtEditUniqueValue = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        txtEditValorUni = new javax.swing.JTextField();
+        txtEditQntdeProduto = new javax.swing.JTextField();
+        btnAtualizar = new javax.swing.JButton();
+        lblCliente_ID = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -54,101 +55,114 @@ public class TelaEdit extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("ALTERAR PRODUTO");
+        lblAttProdutos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAttProdutos.setText("ATUALIZAÇÃO DE PRODUTOS");
 
-        jLabel1.setText("Nome dos Produto:");
+        lblNomeProduto.setText("Nome do Prodiuto:");
 
-        jLabel2.setText("Quantidade:");
+        lblValorUniProduto.setText("Valor Unitário:");
 
-        jLabel4.setText("Valor Unitário:");
+        lblQntdeProduto.setText("Quantidade:");
 
-        txtEditNomeQuantidade.addActionListener(new java.awt.event.ActionListener() {
+        txtEditNomeProduto.setName("Nome do Produto"); // NOI18N
+
+        txtEditValorUni.setName("Valor Unitário"); // NOI18N
+        txtEditValorUni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEditNomeQuantidadeActionPerformed(evt);
+                txtEditValorUniActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Salvar");
+        txtEditQntdeProduto.setName("Quantidade"); // NOI18N
 
-        btnCancel.setText("Cancelar");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnAtualizarActionPerformed(evt);
             }
         });
+
+        lblCliente_ID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCliente_ID.setText("ID: 001");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtEditNomeProduto, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAtualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEditValorUni, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblValorUniProduto))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblQntdeProduto)
+                                    .addComponent(txtEditQntdeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblNomeProduto, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEditUniqueValue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEditNomeQuantidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEditNomeProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblAttProdutos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                        .addComponent(lblCliente_ID)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAttProdutos)
+                    .addComponent(lblCliente_ID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNomeProduto)
+                .addGap(3, 3, 3)
+                .addComponent(txtEditNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblValorUniProduto)
+                    .addComponent(lblQntdeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEditValorUni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEditQntdeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtEditNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEditNomeQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtEditUniqueValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnCancel))
-                .addContainerGap())
+                .addComponent(btnAtualizar)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void txtEditValorUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditValorUniActionPerformed
         // TODO add your handling code here:
-       int n = JOptionPane.showConfirmDialog(rootPane, "Deseja Cancelar?");
-       
-       if(n == JOptionPane.YES_OPTION){
-         this.setVisible(false);
-       }else if(n == JOptionPane.NO_OPTION){
-          dispose();
-       }    
-       
-       
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_txtEditValorUniActionPerformed
 
-    private void txtEditNomeQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditNomeQuantidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEditNomeQuantidadeActionPerformed
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtEditNomeProduto);
+        validacao.validarTexto(txtEditValorUni);
+        validacao.validarTexto(txtEditQntdeProduto);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Cadastro atualizado com sucesso!");
+            dispose();
+        }
+    }//GEN-LAST:event_btnAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,18 +200,18 @@ public class TelaEdit extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAttProdutos;
+    private javax.swing.JLabel lblCliente_ID;
+    private javax.swing.JLabel lblNomeProduto;
+    private javax.swing.JLabel lblQntdeProduto;
+    private javax.swing.JLabel lblValorUniProduto;
     private javax.swing.JTextField txtEditNomeProduto;
-    private javax.swing.JTextField txtEditNomeQuantidade;
-    private javax.swing.JTextField txtEditUniqueValue;
+    private javax.swing.JTextField txtEditQntdeProduto;
+    private javax.swing.JTextField txtEditValorUni;
     // End of variables declaration//GEN-END:variables
 }
