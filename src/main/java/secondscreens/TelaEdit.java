@@ -1,17 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package secondscreens;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
-import br.sp.eml.projects.padariabythecode.utils.ValidateNumbers;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author eduar
- */
 public class TelaEdit extends javax.swing.JFrame {
 
     /**
@@ -20,8 +11,6 @@ public class TelaEdit extends javax.swing.JFrame {
     public TelaEdit() {
         initComponents();
         setLocationRelativeTo(null);
-        txtEditValorUni.setDocument(new ValidateNumbers());
-        txtEditQntdeProduto.setDocument(new ValidateNumbers());
     }
 
     /**
@@ -58,13 +47,18 @@ public class TelaEdit extends javax.swing.JFrame {
         lblAttProdutos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAttProdutos.setText("ATUALIZAÇÃO DE PRODUTOS");
 
-        lblNomeProduto.setText("Nome do Prodiuto:");
+        lblNomeProduto.setText("Nome do Produto:");
 
         lblValorUniProduto.setText("Valor Unitário:");
 
         lblQntdeProduto.setText("Quantidade:");
 
         txtEditNomeProduto.setName("Nome do Produto"); // NOI18N
+        txtEditNomeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditNomeProdutoKeyTyped(evt);
+            }
+        });
 
         txtEditValorUni.setName("Valor Unitário"); // NOI18N
         txtEditValorUni.addActionListener(new java.awt.event.ActionListener() {
@@ -72,8 +66,18 @@ public class TelaEdit extends javax.swing.JFrame {
                 txtEditValorUniActionPerformed(evt);
             }
         });
+        txtEditValorUni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditValorUniKeyTyped(evt);
+            }
+        });
 
         txtEditQntdeProduto.setName("Quantidade"); // NOI18N
+        txtEditQntdeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEditQntdeProdutoKeyTyped(evt);
+            }
+        });
 
         btnAtualizar.setText("Atualizar");
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +168,27 @@ public class TelaEdit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
+    private void txtEditNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditNomeProdutoKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarQuantidadeCaracteres(evt, txtEditNomeProduto, 30);
+        validacao.limitarEntradaTexto(evt, txtEditNomeProduto);
+    }//GEN-LAST:event_txtEditNomeProdutoKeyTyped
+
+    private void txtEditValorUniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditValorUniKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarEntradaNumerica(evt, txtEditValorUni);
+        validacao.limitarQuantidadeCaracteres(evt, txtEditValorUni, 6);
+    }//GEN-LAST:event_txtEditValorUniKeyTyped
+
+    private void txtEditQntdeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditQntdeProdutoKeyTyped
+
+        Validador validacao = new Validador();
+        validacao.limitarEntradaNumerica(evt, txtEditQntdeProduto);
+        validacao.limitarQuantidadeCaracteres(evt, txtEditQntdeProduto, 5);
+    }//GEN-LAST:event_txtEditQntdeProdutoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -175,7 +200,7 @@ public class TelaEdit extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

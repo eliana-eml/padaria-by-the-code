@@ -77,7 +77,7 @@ public class Validador {
         
         char c = evt.getKeyChar();
         
-        if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) ) {
+        if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && (c != KeyEvent.VK_COMMA) ) {
             evt.consume();
             JOptionPane.showMessageDialog(txt, "Somente números no campo: " + txt.getName() + "!");
         }

@@ -92,8 +92,8 @@
                   <Component id="pnlProdutos" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlListaProdutos" max="32767" attributes="0"/>
                           <Component id="pnlCadastroProdutos" max="32767" attributes="0"/>
+                          <Component id="pnlListaProdutos" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -116,14 +116,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlProdutos" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="pnlCadastroProdutos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlListaProdutos" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlListaProdutos" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="pnlBuscaProdutos" max="32767" attributes="0"/>
+                      <Component id="pnlBuscaProdutos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlDetalhes" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -301,34 +301,34 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtNomeProduto" alignment="1" max="32767" attributes="0"/>
                       <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnLimparCampos" min="-2" pref="354" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" max="32767" attributes="0"/>
+                          <Component id="lblCadastroProdutos" min="-2" pref="228" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblCliente_ID" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblNomeProduto1" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnLimparCampos" pref="216" max="32767" attributes="0"/>
+                              <Component id="lblNomeProduto1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNomeProduto" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lblValorProduto" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtValorProduto" min="-2" pref="216" max="-2" attributes="0"/>
+                                      <Component id="txtValorProduto" pref="120" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblQntdeProduto" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtQntdeProduto" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="btnCadastrar" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblCadastroProdutos" min="-2" pref="228" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblCliente_ID" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -344,17 +344,22 @@
                       <Component id="lblCliente_ID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblNomeProduto1" min="-2" pref="16" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtNomeProduto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblQntdeProduto" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtQntdeProduto" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblNomeProduto1" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtNomeProduto" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblQntdeProduto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtQntdeProduto" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="lblValorProduto" min="-2" max="-2" attributes="0"/>
@@ -362,7 +367,7 @@
                           <Component id="txtValorProduto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnLimparCampos" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -400,11 +405,17 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="Nome do Produto" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeProdutoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtValorProduto">
           <Properties>
             <Property name="name" type="java.lang.String" value="Valor Unit&#xe1;rio do Produto" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtValorProdutoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblValorProduto">
           <Properties>
@@ -422,6 +433,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQntdeProdutoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtQntdeProdutoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCadastrar">
@@ -650,7 +662,7 @@
                       <Component id="btnLimpar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="btnBuscar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -675,6 +687,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodProdutoBuscaActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCodProdutoBuscaKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblProdutoBusca">
@@ -686,6 +699,9 @@
           <Properties>
             <Property name="name" type="java.lang.String" value="Nome do Produto" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtProdutoBuscaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
         </Component>
@@ -725,14 +741,11 @@
                       <Group type="102" attributes="0">
                           <Component id="tblCadastroProdutos" min="-2" pref="582" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnExcluir" max="32767" attributes="0"/>
+                          <Component id="btnExcluir" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="lblListaProdutos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="lblListaProdutos" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -743,7 +756,7 @@
                   <Component id="lblListaProdutos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tblCadastroProdutos" pref="238" max="32767" attributes="0"/>
+                      <Component id="tblCadastroProdutos" pref="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="btnExcluir" min="-2" pref="32" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

@@ -120,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblNomeProduto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome do Prodiuto:"/>
+        <Property name="text" type="java.lang.String" value="Nome do Produto:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblValorUniProduto">
@@ -137,6 +137,9 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="Nome do Produto" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditNomeProdutoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEditValorUni">
       <Properties>
@@ -144,12 +147,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEditValorUniActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditValorUniKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEditQntdeProduto">
       <Properties>
         <Property name="name" type="java.lang.String" value="Quantidade" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditQntdeProdutoKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAtualizar">
       <Properties>

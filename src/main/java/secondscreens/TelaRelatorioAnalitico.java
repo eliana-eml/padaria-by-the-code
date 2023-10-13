@@ -28,44 +28,136 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlRelatorioAnalitico = new javax.swing.JPanel();
-        lblRelatorioAnalitico = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblPeriodo = new javax.swing.JLabel();
-        lblCliente = new javax.swing.JLabel();
-        lblDatas = new javax.swing.JLabel();
         tblRelAnalitco = new javax.swing.JScrollPane();
         tblRelatorioAnalitico = new javax.swing.JTable();
-        lblValorTotal = new javax.swing.JLabel();
+        pnlCabecalho = new javax.swing.JPanel();
+        lblRelatorioAnalitico = new javax.swing.JLabel();
+        pnlDadosVenda = new javax.swing.JPanel();
+        lblPeriodo = new javax.swing.JLabel();
+        lblDatas = new javax.swing.JLabel();
+        lblCliente = new javax.swing.JLabel();
+        lblNomeCliente = new javax.swing.JLabel();
+        lblCPFCliente = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblIDVenda = new javax.swing.JLabel();
+        pnlValorTotal = new javax.swing.JPanel();
         btnFechar = new javax.swing.JButton();
+        lblValorTotal = new javax.swing.JLabel();
+        lblValorTotalVenda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlRelatorioAnalitico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        lblRelatorioAnalitico.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRelatorioAnalitico.setText("RELATÓRIO ANALÍTICO");
-
-        lblPeriodo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblPeriodo.setText("Período:");
-
-        lblCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCliente.setText("Cliente:");
-
-        lblDatas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDatas.setText("10/01/2023 a 21/12/2023");
 
         tblRelatorioAnalitico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Venda", "Data da Venda", "Cliente", "Produto", "Quantidade", "Valor Unitário", "Valor Total"
+                "ID Produto", "Produto", "Quantidade", "Valor Unitário", "Valor Total"
             }
         ));
         tblRelAnalitco.setViewportView(tblRelatorioAnalitico);
 
-        lblValorTotal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblValorTotal.setText("VALOR TOTAL:");
+        pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblRelatorioAnalitico.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRelatorioAnalitico.setText("RELATÓRIO ANALÍTICO");
+
+        javax.swing.GroupLayout pnlCabecalhoLayout = new javax.swing.GroupLayout(pnlCabecalho);
+        pnlCabecalho.setLayout(pnlCabecalhoLayout);
+        pnlCabecalhoLayout.setHorizontalGroup(
+            pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCabecalhoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRelatorioAnalitico)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlCabecalhoLayout.setVerticalGroup(
+            pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRelatorioAnalitico, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlDadosVenda.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblPeriodo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblPeriodo.setText("Data da Venda:");
+
+        lblDatas.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblDatas.setText("13/10/2023 14:28");
+
+        lblCliente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblCliente.setText("Cliente:");
+
+        lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblNomeCliente.setText("Fernando Fernandes");
+
+        lblCPFCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblCPFCliente.setText("777.777.777-77");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setText("CPF:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("ID Venda:");
+
+        lblIDVenda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblIDVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIDVenda.setText("1234");
+
+        javax.swing.GroupLayout pnlDadosVendaLayout = new javax.swing.GroupLayout(pnlDadosVenda);
+        pnlDadosVenda.setLayout(pnlDadosVendaLayout);
+        pnlDadosVendaLayout.setHorizontalGroup(
+            pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                        .addComponent(lblCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNomeCliente)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCPFCliente))
+                    .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                        .addComponent(lblPeriodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDatas)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pnlDadosVendaLayout.setVerticalGroup(
+            pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                        .addGroup(pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPeriodo)
+                            .addComponent(lblDatas))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCliente)
+                            .addComponent(lblNomeCliente)
+                            .addComponent(jLabel2)
+                            .addComponent(lblCPFCliente))
+                        .addGap(18, 18, 18))
+                    .addGroup(pnlDadosVendaLayout.createSequentialGroup()
+                        .addGroup(pnlDadosVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(lblIDVenda))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        pnlValorTotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnFechar.setText("Fechar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,48 +166,61 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
             }
         });
 
+        lblValorTotal.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblValorTotal.setText("VALOR TOTAL:");
+
+        lblValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblValorTotalVenda.setText("R$ 0,00");
+
+        javax.swing.GroupLayout pnlValorTotalLayout = new javax.swing.GroupLayout(pnlValorTotal);
+        pnlValorTotal.setLayout(pnlValorTotalLayout);
+        pnlValorTotalLayout.setHorizontalGroup(
+            pnlValorTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlValorTotalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblValorTotalVenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pnlValorTotalLayout.setVerticalGroup(
+            pnlValorTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlValorTotalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlValorTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlValorTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblValorTotalVenda))
+                    .addComponent(btnFechar))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnlRelatorioAnaliticoLayout = new javax.swing.GroupLayout(pnlRelatorioAnalitico);
         pnlRelatorioAnalitico.setLayout(pnlRelatorioAnaliticoLayout);
         pnlRelatorioAnaliticoLayout.setHorizontalGroup(
             pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRelatorioAnaliticoLayout.createSequentialGroup()
+            .addGroup(pnlRelatorioAnaliticoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tblRelAnalitco, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlRelatorioAnaliticoLayout.createSequentialGroup()
-                        .addGroup(pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRelatorioAnalitico)
-                            .addGroup(pnlRelatorioAnaliticoLayout.createSequentialGroup()
-                                .addComponent(lblPeriodo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDatas))
-                            .addComponent(lblCliente)
-                            .addComponent(lblValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlDadosVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tblRelAnalitco, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         pnlRelatorioAnaliticoLayout.setVerticalGroup(
             pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRelatorioAnaliticoLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(lblRelatorioAnalitico)
+                .addContainerGap()
+                .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlDadosVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPeriodo)
-                    .addComponent(lblDatas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tblRelAnalitco, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,7 +254,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -175,13 +280,21 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFechar;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblCPFCliente;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblDatas;
+    private javax.swing.JLabel lblIDVenda;
+    private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblPeriodo;
     private javax.swing.JLabel lblRelatorioAnalitico;
     private javax.swing.JLabel lblValorTotal;
+    private javax.swing.JLabel lblValorTotalVenda;
+    private javax.swing.JPanel pnlCabecalho;
+    private javax.swing.JPanel pnlDadosVenda;
     private javax.swing.JPanel pnlRelatorioAnalitico;
+    private javax.swing.JPanel pnlValorTotal;
     private javax.swing.JScrollPane tblRelAnalitco;
     private javax.swing.JTable tblRelatorioAnalitico;
     // End of variables declaration//GEN-END:variables

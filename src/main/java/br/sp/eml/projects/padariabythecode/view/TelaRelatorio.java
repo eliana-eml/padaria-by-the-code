@@ -55,7 +55,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlBuscarPorData = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         btnBuscarPorData = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtDataInicio = new javax.swing.JFormattedTextField();
@@ -201,9 +200,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblValorTotalVenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVisualizarRelatorioAnalitico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(40, 40, 40))
         );
 
         pnlBuscarPorData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -266,10 +265,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +284,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         .addGap(6, 6, 6))
                     .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                         .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -308,15 +304,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarPorData))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarPorDataLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)))
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIDVendaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,7 +354,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVisualizarDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)))
+                        .addComponent(btnVisualizarDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlDadosVendasLayout.setVerticalGroup(
@@ -717,7 +708,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextArea jTextArea1;
