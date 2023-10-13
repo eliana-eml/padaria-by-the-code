@@ -109,7 +109,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblNomeCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNomeCliente.setText("João da Silva");
+        lblNomeCliente.setText("Fernando Fernandes");
 
         lblValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblValorTotalVenda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

@@ -801,7 +801,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     private void txtValorProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorProdutoKeyTyped
 
         Validador validacao = new Validador();
-        validacao.limitarEntradaNumerica(evt, txtValorProduto);
+        validacao.limitarEntradaNumericaDecimal(evt, txtValorProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtValorProduto, 6);
     }//GEN-LAST:event_txtValorProdutoKeyTyped
 

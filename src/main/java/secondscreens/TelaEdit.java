@@ -178,7 +178,7 @@ public class TelaEdit extends javax.swing.JFrame {
     private void txtEditValorUniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditValorUniKeyTyped
 
         Validador validacao = new Validador();
-        validacao.limitarEntradaNumerica(evt, txtEditValorUni);
+        validacao.limitarEntradaNumericaDecimal(evt, txtEditValorUni);
         validacao.limitarQuantidadeCaracteres(evt, txtEditValorUni, 6);
     }//GEN-LAST:event_txtEditValorUniKeyTyped
 
