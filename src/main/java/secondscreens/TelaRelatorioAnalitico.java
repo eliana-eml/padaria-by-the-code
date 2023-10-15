@@ -47,6 +47,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotalVenda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         pnlRelatorioAnalitico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -97,7 +98,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblNomeCliente.setText("Fernando Fernandes");
 
         lblCPFCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblCPFCliente.setText("777.777.777-77");
+        lblCPFCliente.setText("888.888.888-88");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setText("CPF:");
@@ -170,7 +171,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setText("VALOR TOTAL:");
 
         lblValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblValorTotalVenda.setText("R$ 0,00");
+        lblValorTotalVenda.setText("R$ 100,00");
 
         javax.swing.GroupLayout pnlValorTotalLayout = new javax.swing.GroupLayout(pnlValorTotal);
         pnlValorTotal.setLayout(pnlValorTotalLayout);

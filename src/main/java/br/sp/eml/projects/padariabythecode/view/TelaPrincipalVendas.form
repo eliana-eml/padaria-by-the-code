@@ -317,9 +317,6 @@
             </Property>
             <Property name="name" type="java.lang.String" value="CPF Cliente" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPFActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarCliente">
           <Properties>

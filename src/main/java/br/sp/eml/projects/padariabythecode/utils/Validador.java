@@ -3,6 +3,7 @@ package br.sp.eml.projects.padariabythecode.utils;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -61,6 +62,13 @@ public class Validador {
 
         if (table.getRowCount() <= 0) {
             this.mensagensErro.add("A tabela de itens vazia!");
+        }
+    }
+    
+    public void validarSelecaoComboBox(JComboBox comboBox) {
+        
+        if (comboBox.getSelectedIndex() == 0) {
+            this.mensagensErro.add( "Selecione uma opção para o seletor: " + comboBox.getName());
         }
     }
     

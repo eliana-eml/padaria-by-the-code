@@ -275,9 +275,7 @@ public class TelaListagemClientes extends javax.swing.JFrame {
              * Busca pelo ID no banco de dados ao ter a linha selecionada e
              * renderiza o nome e CPF do cadastro na tela principal de vendas.
              */
-
-            new TelaPrincipalVendas().setVisible(true);
-            this.setVisible(false);
+            this.dispose();
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");

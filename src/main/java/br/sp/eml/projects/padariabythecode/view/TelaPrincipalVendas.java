@@ -153,11 +153,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCPF.setName("CPF Cliente"); // NOI18N
-        txtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCPFActionPerformed(evt);
-            }
-        });
 
         btnBuscarCliente.setText("Buscar");
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -836,10 +831,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
-
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCPFActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
 

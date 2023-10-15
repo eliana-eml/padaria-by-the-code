@@ -267,8 +267,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
              * renderiza o nome e CPF do cadastro na tela principal de vendas.
              */
 
-            new TelaPrincipalVendas().setVisible(true);
-            this.setVisible(false);
+            this.dispose();
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");

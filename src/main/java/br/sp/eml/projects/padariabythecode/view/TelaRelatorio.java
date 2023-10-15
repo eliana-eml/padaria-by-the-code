@@ -120,7 +120,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         lblDataVenda.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblDataVenda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDataVenda.setText("30/04/2001");
+        lblDataVenda.setText("13/10/2023");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Valor Total:");
@@ -231,12 +231,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         txtDataInicio.setName("Data Início"); // NOI18N
 
         try {
-            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/#/####")));
+            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         txtDataFim.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDataFim.setText("");
         txtDataFim.setName("Data Fim"); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -352,9 +351,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlDadosVendasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnVisualizarDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnVisualizarDetalhes)))
                 .addContainerGap())
         );
         pnlDadosVendasLayout.setVerticalGroup(

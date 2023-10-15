@@ -93,7 +93,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlClientes" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="pnlBuscarCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -102,7 +102,7 @@
                   <Component id="pnlCadastroCliente" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnlRodape1" pref="26" max="32767" attributes="0"/>
+              <Component id="pnlRodape1" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -285,7 +285,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnLimparCampos" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnCadastrar" min="-2" pref="272" max="-2" attributes="0"/>
+                          <Component id="btnCadastrar" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -302,8 +302,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlEndereco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnCadastrar" pref="36" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnCadastrar" pref="42" max="32767" attributes="0"/>
                       <Component id="btnLimparCampos" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -636,7 +636,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblCliente_UF" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtUFCliente" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="cboUFCliente" min="-2" pref="56" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -668,14 +668,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtUFCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cboUFCliente" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtBairroCliente" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtCidadeCliente" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtBairroCliente" min="-2" pref="26" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="txtCidadeCliente" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -798,7 +796,7 @@
                 <Property name="text" type="java.lang.String" value="UF:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="txtUFCliente">
+            <Component class="javax.swing.JComboBox" name="cboUFCliente">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="28">
@@ -835,7 +833,7 @@
                 <Property name="name" type="java.lang.String" value="UF" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUFClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboUFClienteActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -917,10 +915,14 @@
             <Component class="javax.swing.JTable" name="tblCadClientes">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="3" rowCount="0">
+                  <Table columnCount="7" rowCount="0">
+                    <Column editable="true" title="ID Cliente" type="java.lang.Object"/>
                     <Column editable="true" title="Nome" type="java.lang.Object"/>
                     <Column editable="true" title="CPF" type="java.lang.Object"/>
+                    <Column editable="true" title="E-mail" type="java.lang.Object"/>
                     <Column editable="true" title="Telefone" type="java.lang.Object"/>
+                    <Column editable="true" title="Celular" type="java.lang.Object"/>
+                    <Column editable="true" title="Data Nascimento" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1134,7 +1136,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlDataAtual" alignment="0" pref="22" max="32767" attributes="0"/>
+              <Component id="pnlDataAtual" alignment="0" pref="30" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -1142,7 +1144,7 @@
         <Component class="javax.swing.JLabel" name="pnlDataAtual">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
+              <Font name="Segoe UI" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="26/09/2023"/>
           </Properties>
