@@ -291,7 +291,7 @@
               <Font name="Segoe UI" size="16" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="13/10/2023"/>
+            <Property name="text" type="java.lang.String" value="30/04/2001"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -449,7 +449,7 @@
         <Component class="javax.swing.JFormattedTextField" name="txtDataFim">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-              <Format format="##/##/####" subtype="-1" type="5"/>
+              <Format format="##/#/####" subtype="-1" type="5"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="name" type="java.lang.String" value="Data Fim" noResource="true"/>
@@ -786,7 +786,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="RELAT&#xd3;RIOS"/>
+            <Property name="text" type="java.lang.String" value="RELAT&#xd3;RIO"/>
           </Properties>
         </Component>
       </SubComponents>

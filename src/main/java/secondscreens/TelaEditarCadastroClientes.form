@@ -370,7 +370,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblCliente_UF" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtUFCliente" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="cboUFCliente" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -419,7 +419,7 @@
                           <Component id="lblCliente_UF" min="-2" pref="16" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtUFCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboUFCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCidadeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtBairroCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -527,7 +527,7 @@
             <Property name="text" type="java.lang.String" value="UF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="txtUFCliente">
+        <Component class="javax.swing.JComboBox" name="cboUFCliente">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="28">
@@ -564,7 +564,7 @@
             <Property name="name" type="java.lang.String" value="UF" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUFClienteActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboUFClienteActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

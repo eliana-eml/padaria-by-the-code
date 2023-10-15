@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author narum
  */
-public class TelaEditCadastro extends javax.swing.JFrame {
+public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaEditCadastro
      */
-    public TelaEditCadastro() {
+    public TelaEditarCadastroClientes() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -64,7 +64,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         lblCliente_Cid = new javax.swing.JLabel();
         txtCidadeCliente = new javax.swing.JTextField();
         lblCliente_UF = new javax.swing.JLabel();
-        txtUFCliente = new javax.swing.JComboBox<>();
+        cboUFCliente = new javax.swing.JComboBox<>();
         btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
@@ -317,11 +317,11 @@ public class TelaEditCadastro extends javax.swing.JFrame {
 
         lblCliente_UF.setText("UF:");
 
-        txtUFCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-        txtUFCliente.setName("UF"); // NOI18N
-        txtUFCliente.addActionListener(new java.awt.event.ActionListener() {
+        cboUFCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        cboUFCliente.setName("UF"); // NOI18N
+        cboUFCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUFClienteActionPerformed(evt);
+                cboUFClienteActionPerformed(evt);
             }
         });
 
@@ -365,7 +365,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCliente_UF)
-                            .addComponent(txtUFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cboUFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         pnlEnderecoLayout.setVerticalGroup(
@@ -402,7 +402,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
                         .addComponent(lblCliente_UF, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboUFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCidadeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBairroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -468,9 +468,9 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLogClienteActionPerformed
 
-    private void txtUFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUFClienteActionPerformed
+    private void cboUFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboUFClienteActionPerformed
         // TODO add your handling code here: 
-    }//GEN-LAST:event_txtUFClienteActionPerformed
+    }//GEN-LAST:event_cboUFClienteActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
@@ -514,7 +514,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
         validacao.validarTexto(txtComplementoCliente);
         validacao.validarTexto(txtBairroCliente);
         validacao.validarTexto(txtCidadeCliente);
-        //validacao.validarTexto(txtUFCliente);
+        validacao.validarSelecaoComboBox(cboUFCliente);
 
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
@@ -604,20 +604,21 @@ public class TelaEditCadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaEditCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaEditCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaEditCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaEditCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditarCadastroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaEditCadastro().setVisible(true);
+                new TelaEditarCadastroClientes().setVisible(true);
             }
         });
     }
@@ -625,6 +626,7 @@ public class TelaEditCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JComboBox<String> cboUFCliente;
     private javax.swing.JLabel lblCliente_Bairro;
     private javax.swing.JLabel lblCliente_CEP;
     private javax.swing.JLabel lblCliente_CPF;
@@ -659,6 +661,5 @@ public class TelaEditCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeCliente;
     private javax.swing.JFormattedTextField txtNumCliente;
     private javax.swing.JFormattedTextField txtTelFixCliente;
-    private javax.swing.JComboBox<String> txtUFCliente;
     // End of variables declaration//GEN-END:variables
 }

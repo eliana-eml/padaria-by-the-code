@@ -9,8 +9,8 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaEdit;
-import secondscreens.TelaEditCadastro;
+import secondscreens.TelaEditarCadastroProdutos;
+import secondscreens.TelaEditarCadastroClientes;
 
 /**
  *
@@ -912,7 +912,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void btnEditarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCadastroActionPerformed
 
         //Abre nova tela para Editar Cadastro
-        new TelaEditCadastro().setVisible(true);
+        new TelaEditarCadastroClientes().setVisible(true);
     }//GEN-LAST:event_btnEditarCadastroActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

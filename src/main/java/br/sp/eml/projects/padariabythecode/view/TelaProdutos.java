@@ -5,7 +5,7 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaEdit;
+import secondscreens.TelaEditarCadastroProdutos;
 
 /**
  *
@@ -669,7 +669,7 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed
 
-        new TelaEdit().setVisible(true);
+        new TelaEditarCadastroProdutos().setVisible(true);
     }//GEN-LAST:event_btnEditarProdutoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

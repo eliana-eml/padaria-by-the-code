@@ -7,7 +7,7 @@ package br.sp.eml.projects.padariabythecode.view;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaEdit;
+import secondscreens.TelaEditarCadastroProdutos;
 import secondscreens.TelaRelatorioAnalitico;
 
 /**
@@ -120,7 +120,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         lblDataVenda.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblDataVenda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDataVenda.setText("13/10/2023");
+        lblDataVenda.setText("30/04/2001");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Valor Total:");
@@ -231,7 +231,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         txtDataInicio.setName("Data Início"); // NOI18N
 
         try {
-            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/#/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -461,7 +461,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbTituloVendas2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbTituloVendas2.setText("RELATÓRIOS");
+        lbTituloVendas2.setText("RELATÓRIO");
 
         javax.swing.GroupLayout pnlProdutosLayout = new javax.swing.GroupLayout(pnlProdutos);
         pnlProdutos.setLayout(pnlProdutosLayout);
