@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Utils;
@@ -17,10 +13,13 @@ import secondscreens.TelaEditarCadastroClientes;
  * @author narum
  */
 public class TelaCadastroCliente extends javax.swing.JFrame {
-
+    
     /**
-     * Creates new form TelaCadastroCliente
+     * Construtor da classe TelaCadastroCliente.
+     * Inicializa os componentes gráficos gerados automaticamente.
+     * Em seguida, define a posição da janela ao centro da tela.
      */
+    
     public TelaCadastroCliente() {
         initComponents();
         setLocationRelativeTo(null);
@@ -864,7 +863,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
-        // TODO add your handling code here:
+        
+        /**
+         * Instancia um novo objeto da classe TelaRelatorio e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
@@ -878,13 +881,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cboUFClienteActionPerformed
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
-        // TODO add your handling code here:
+        
+        /**
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
-        // TODO add your handling code here:
+        
+        /**
+         * Instancia um novo objeto da classe TelaProdutos e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
@@ -894,11 +905,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLogClienteActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-
+       
+        /**
+         * Cria de uma instância da classe Validador para validar os campos de texto.
+         * Em seguida, verifica se ocorreram erros durante a validação.
+         */
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtBuscaCliente_Nome);
         validacao.validarTexto(txtBuscaCliente_CPF);
-
+        
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+         * Caso contrário, exibe os valores válidos nos rótulos correspondentes (lblBuscaNome & lblBuscaCPF).
+         */
+        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -910,14 +931,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnEditarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCadastroActionPerformed
-
-        //Abre nova tela para Editar Cadastro
+       
+        /**
+         * Instancia um novo objeto da classe TelaCadastroClientes e o torna visível.
+         */ 
+        
         new TelaEditarCadastroClientes().setVisible(true);
     }//GEN-LAST:event_btnEditarCadastroActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-
-        //Garante o preenchimento de todos os campos de cadastro, e se os campos estiverem vazios, pinta de vermelho.
+        
+        /**
+         * Cria uma instância da classe Validador para validar os campos de texto.
+         * Em seguida, verifica se ocorreram erros durante a validação.
+         */
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPFCliente);
@@ -935,6 +963,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         validacao.validarTexto(txtCidadeCliente);
         validacao.validarSelecaoComboBox(cboUFCliente);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+         * Caso contrário, exibe uma mensagem de cadastro bem-sucedido e adiciona os dados digitados à tabela.
+         */
+        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -943,7 +976,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
 
-            //Atribuindo valores digitados as variáveis para adicionar na lsita/tabela
+            //Atribui um ID fictício ao cliente e os valores digitados à variáveis auxiliares para inclusão na tabela.
             int idCliente = 100;
             String codigoCliente = String.valueOf(idCliente);
             String nomeCliente = txtNomeCliente.getText();
@@ -953,10 +986,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             String celularCliente = txtCelCliente.getText();
             String dataNascimento = txtDtNascimentoCliente.getText();
 
-
             DefaultTableModel tabelaCadCliente = (DefaultTableModel) tblCadClientes.getModel();
 
-            //Adicionar uma linha à tabela
+            //Adiciona uma linha à tabela com os dados do cliente.
             tabelaCadCliente.addRow(new String[]{
                 codigoCliente,
                 nomeCliente,
@@ -967,9 +999,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 dataNascimento
             });
 
-            Utils utilitario = new Utils();
-            utilitario.limparCampos(pnlDadosBasicos);
-            utilitario.limparCampos(pnlEndereco);
+            /**
+             * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+             * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlDadosBasicos e
+             * pnl Endereco.
+             */
+            
+            Utils limpar = new Utils();
+            limpar.limparCampos(pnlDadosBasicos);
+            limpar.limparCampos(pnlEndereco);
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -978,13 +1016,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscaCliente_CPFActionPerformed
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-
-        //"Seta" os valores vazios/em branco
+        
+        /**
+         * Atribui valores vazios aos rótulos para limpeza dos rótulos.
+         * E, cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+         * Por fim, utiliza dos métodos limparCampos para "apagar" os dados digitados no painel pnlBuscarCliente.
+         */
+        
         lblBuscaNome.setText("Cliente: ");
         lblBuscaCPF.setText("CPF: ");
         lblBuscaDtNasc.setText("Data de Nascimento: ");
         lblBuscaTel.setText("Telefone: ");
         lblBuscaEnd.setText("Endereço: ");
+        
+        Utils limpar = new Utils();
+        limpar.limparCampos(pnlBuscarCliente);
+        
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void txtCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFClienteActionPerformed
@@ -992,8 +1039,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFClienteActionPerformed
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
-
-        //Chama o método Utils para limpar todos os campos quando apertar em "Limpar Campos"
+        
+        /**
+        * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+        * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlDadosBasicos e
+        * pnl Endereco.
+        */
+            
         Utils limpar = new Utils();
         limpar.limparCampos(pnlDadosBasicos);
         limpar.limparCampos(pnlEndereco);
@@ -1002,12 +1054,24 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
     }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     private void txtGeneroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroClienteKeyTyped
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtGeneroCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtGeneroCliente.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtGeneroCliente, 20);
@@ -1016,6 +1080,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void txtEstadoCivilClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEstadoCivilCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtEstadoCivilCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEstadoCivilCliente, 20);
         validacao.limitarEntradaTexto(evt, txtEstadoCivilCliente);
@@ -1023,11 +1093,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEmailCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEmailCliente, 50);
     }//GEN-LAST:event_txtEmailClienteKeyTyped
 
     private void txtLogClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogClienteKeyTyped
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtLogCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtLogCliente.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtLogCliente, 50);
@@ -1035,13 +1116,25 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLogClienteKeyTyped
 
     private void txtNumClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumClienteKeyTyped
-
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNumCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNumCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNumCliente, 10);
         validacao.limitarEntradaNumerica(evt, txtNumCliente);
     }//GEN-LAST:event_txtNumClienteKeyTyped
 
     private void txtBairroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroClienteKeyTyped
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtBairroCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtBairroCliente.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtBairroCliente, 30);
@@ -1050,11 +1143,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void txtComplementoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtComplementoCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtComplementoCliente, 30);
     }//GEN-LAST:event_txtComplementoClienteKeyTyped
 
     private void txtCidadeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeClienteKeyTyped
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtCidadeCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCidadeCliente.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtCidadeCliente, 50);
@@ -1063,12 +1167,23 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void txtBuscaCliente_NomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaCliente_NomeKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtBuscaCliente_Nome.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtBuscaCliente_Nome.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtBuscaCliente_Nome, 50);
         validacao.limitarEntradaTexto(evt, txtBuscaCliente_Nome);
     }//GEN-LAST:event_txtBuscaCliente_NomeKeyTyped
 
     private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
+        
+        /**
+         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
@@ -1077,12 +1192,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
         
+        /**
+         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+        
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
 
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
-                
+        
+        /**
+         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+        
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
       

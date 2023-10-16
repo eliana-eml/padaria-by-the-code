@@ -11,11 +11,14 @@ import secondscreens.TelaEditarCadastroProdutos;
  *
  * @author eduar
  */
-public class TelaProdutos extends javax.swing.JFrame {
+    public class TelaProdutos extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaProdutos
+     * Construtor da classe TelaRelatorio.
+     * Inicializa os componentes gráficos gerados automaticamente.
+     * Em seguida, define a posição da janela ao centro da tela.
      */
+    
     public TelaProdutos() {
         initComponents();
         setLocationRelativeTo(null);
@@ -644,6 +647,11 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
+        /**
+         * Exibe uma tela de diálogo com opção de confirmação para exclusão do cadastro.
+         * Em seguida, verifica a opção selecionada pelo usuário:
+         */
+        
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja realmente excluir?",
                 "Cadastro Produto",
@@ -653,9 +661,20 @@ public class TelaProdutos extends javax.swing.JFrame {
                 new String[]{"Sim", "Não"},
                 "default");
 
+        
+        /**
+         * Obtém o índice da linha selecionada na tabela tblCadProdutos.
+         * Em seguida, obtém o modelo de tabela associado à tabela tblCadProdutos.
+         */
+        
         int linhaSelecionada = tblCadProdutos.getSelectedRow();
 
         DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
+        
+        /**
+         * Se a opção escolhida for SIM na tela de diálogo & uma linha for selecionada, remove uma linha/cadastro.
+         * Se a opção escolhida for NÃO na tela de diálogo , exibe uma mensagem de aviso para selecionar um cadastro.
+         */
 
         if (resposta == JOptionPane.YES_OPTION && linhaSelecionada >= 0) {
             
@@ -669,28 +688,43 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed
 
+        /**
+         * Instancia um novo objeto da classe TelaEditarCadastroProdutos e o torna visível.
+         */ 
+                
         new TelaEditarCadastroProdutos().setVisible(true);
     }//GEN-LAST:event_btnEditarProdutoActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
+        /**
+         * Cria uma instância da classe Validador para validar os campos de texto.
+         * Em seguida, verifica se ocorreram erros durante a validação.
+         */
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeProduto);
         validacao.validarTexto(txtValorProduto);
         validacao.validarTexto(txtQntdeProduto);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+         * Caso contrário, exibe uma mensagem de cadastro bem-sucedido e adiciona os dados digitados à tabela.
+         */
+        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
 
         } else {
 
+            //Formata os números com no máximo duas casas decimais
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
 
             JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
 
-            //Atribuindo valores digitados as variáveis para adicionar na lista/tabela
+            //Atribui um ID fictício ao cliente e os valores digitados à variáveis auxiliares para inclusão na tabela.
             int codProduto = 1;
             String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
@@ -700,13 +734,18 @@ public class TelaProdutos extends javax.swing.JFrame {
 
             DefaultTableModel tabelaCadProdutos = (DefaultTableModel) tblCadProdutos.getModel();
 
-            //Adicionar uma linha à tabela
+            //Adiciona uma linha à tabela com os dados do produto.
             tabelaCadProdutos.addRow(new String[]{
                 codigoProduto,
                 nomeProduto,
                 valorProduto,
                 qntdeProduto
             });
+            
+            /**
+             * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+             * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlCadastroProdutos.
+             */
             
             Utils utilitario = new Utils();
             utilitario.limparCampos(pnlCadastroProdutos);
@@ -716,10 +755,20 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
+        /**
+         * Cria de uma instância da classe Validador para validar os campos de texto.
+         * Em seguida, verifica se ocorreram erros durante a validação.
+         */
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtProdutoBusca);
         validacao.validarTexto(txtCodProdutoBusca);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+         * Caso contrário, exibe os valores válidos nos rótulos correspondentes (lblCodigo2 & lblNomeProduto2).
+         */
+        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -734,19 +783,34 @@ public class TelaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodProdutoBuscaActionPerformed
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
-        // TODO add your handling code here:
+        
+        /**
+         * Instancia um novo objeto da classe TelaPrincipalVendas através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+                
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
-        // TODO add your handling code here:
+        
+        /**
+         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */        
+        
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarClientesActionPerformed
 
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
-        // TODO add your handling code here:
+
+        /**
+         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */        
+        
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
@@ -763,7 +827,11 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
 
-        //Chama o método Utils para limpar todos os campos quando apertar em "Limpar Campos"
+        /**
+         * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+         * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlCadastroProdutos.
+         */
+            
         Utils limpar = new Utils();
         limpar.limparCampos(pnlCadastroProdutos);
 
@@ -771,15 +839,28 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void btnLimparDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparDetalhesActionPerformed
 
+        /**
+         * Atribui valores vazios aos rótulos para limpeza dos rótulos.
+         * E, cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
+         * Por fim, utiliza dos métodos limparCampos para "apagar" os dados digitados no painel pnlDetalhes.
+         */        
+        
         lblCodigo2.setText("Código:");
         lblNomeProduto2.setText("Nome do Produto:");
         lblQtdeEstoque.setText("Quantidade Estoque:");
         lblValorUni.setText("Valor Unitário:");
 
+        Utils limpar = new Utils();
+        limpar.limparCampos(pnlDetalhes);
     }//GEN-LAST:event_btnLimparDetalhesActionPerformed
 
     private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
-
+       
+        /**
+         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+        
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
 
@@ -787,6 +868,11 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
 
+        /**
+         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+        
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
 
@@ -794,6 +880,11 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
 
+        /**
+         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
+                
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
 
@@ -801,6 +892,12 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
 
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeProduto.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 30);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);
@@ -808,6 +905,12 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void txtValorProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorProdutoKeyTyped
 
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtValorProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtValorProduto.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumericaDecimal(evt, txtValorProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtValorProduto, 6);
@@ -815,18 +918,35 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     private void txtQntdeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntdeProdutoKeyTyped
 
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtQntdeProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtQntdeProduto.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtQntdeProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtQntdeProduto, 5);
     }//GEN-LAST:event_txtQntdeProdutoKeyTyped
 
     private void txtCodProdutoBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodProdutoBuscaKeyTyped
+
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCodProdutoBusca.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtCodProdutoBusca);
     }//GEN-LAST:event_txtCodProdutoBuscaKeyTyped
 
     private void txtProdutoBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdutoBuscaKeyTyped
+
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtProdutoBusca.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtProdutoBusca.
+         */
         
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtProdutoBusca, 30);

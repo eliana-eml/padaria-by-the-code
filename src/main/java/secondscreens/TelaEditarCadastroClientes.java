@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package secondscreens;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
@@ -12,10 +8,13 @@ import javax.swing.JOptionPane;
  * @author narum
  */
 public class TelaEditarCadastroClientes extends javax.swing.JFrame {
-
+    
     /**
-     * Creates new form TelaEditCadastro
+     * Construtor da classe TelaEditarCadastroClientes.
+     * Inicializa os componentes gráficos gerados automaticamente.
+     * Em seguida, define a posição da janela ao centro da tela.
      */
+    
     public TelaEditarCadastroClientes() {
         initComponents();
         setLocationRelativeTo(null);
@@ -473,7 +472,14 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_cboUFClienteActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-
+        
+        /**
+         * Exibe uma tela de diálogo com opção de confirmação para exclusão do cadastro.
+         * Em seguida, verifica a opção selecionada pelo usuário:
+         * Se a opção for SIM, exibe uma mensagem de sucesso e fecha a janela atual.
+         * Se a opção for NÃO, exibe uma mensagem de cancelamento e fecha a janela atual.
+         */
+        
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja realmente excluir?",
                 "Cadastro Cliente",
@@ -497,8 +503,12 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-
-        //Garante o preenchimento de todos os campos de cadastro, e se os campos estiverem vazios, pinta de vermelho.
+        
+        /**
+         * Cria uma instância da classe Validador para validar os campos de texto.
+         * Em seguida, verifica se ocorreram erros durante a validação.
+         */
+        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPFCliente);
@@ -516,6 +526,11 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         validacao.validarTexto(txtCidadeCliente);
         validacao.validarSelecaoComboBox(cboUFCliente);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+         * Caso contrário, exibe uma mensagem de cadastro bem-sucedido.
+         */
+        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -527,21 +542,39 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
-
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
     }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     private void txtGeneroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroClienteKeyTyped
-
+       
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtGeneroCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtGeneroCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtGeneroCliente, 20);
         validacao.limitarEntradaTexto(evt, txtGeneroCliente);
     }//GEN-LAST:event_txtGeneroClienteKeyTyped
 
     private void txtEstadoCivilClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteKeyTyped
-
+        
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEstadoCivilCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtEstadoCivilCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEstadoCivilCliente, 20);
         validacao.limitarEntradaTexto(evt, txtEstadoCivilCliente);
@@ -549,12 +582,23 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEmailCliente.
+         */
+                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEmailCliente, 50);
     }//GEN-LAST:event_txtEmailClienteKeyTyped
 
     private void txtLogClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtLogCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtLogCliente.
+         */
+                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtLogCliente, 50);
         validacao.limitarEntradaTexto(evt, txtLogCliente);
@@ -562,6 +606,12 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     private void txtNumClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNumCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNumCliente.
+         */
+                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNumCliente, 10);
         validacao.limitarEntradaNumerica(evt, txtNumCliente);
@@ -569,12 +619,23 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     private void txtComplementoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtComplementoCliente.
+         */
+        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtComplementoCliente, 30);
     }//GEN-LAST:event_txtComplementoClienteKeyTyped
 
     private void txtBairroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtBairroCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtBairroCliente.
+         */
+                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtBairroCliente, 30);
         validacao.limitarEntradaTexto(evt, txtBairroCliente);
@@ -582,6 +643,12 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     private void txtCidadeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeClienteKeyTyped
         
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtCidadeCliente.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCidadeCliente.
+         */
+                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtCidadeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtCidadeCliente);
