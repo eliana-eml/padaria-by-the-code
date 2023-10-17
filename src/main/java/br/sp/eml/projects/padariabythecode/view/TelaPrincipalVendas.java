@@ -8,9 +8,9 @@ import java.text.DecimalFormat;
 //import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaConfirmacaoPedido;
-import secondscreens.TelaListagemClientes;
-import secondscreens.TelaListagemProdutos;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaConfirmacaoPedido;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemClientes;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemProdutos;
 
 /**
  *

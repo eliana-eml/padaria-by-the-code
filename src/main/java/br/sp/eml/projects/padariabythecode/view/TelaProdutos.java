@@ -5,7 +5,7 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaEditarCadastroProdutos;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
 
 /**
  *

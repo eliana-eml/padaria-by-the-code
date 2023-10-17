@@ -3,8 +3,8 @@ package br.sp.eml.projects.padariabythecode.view;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import secondscreens.TelaEditarCadastroProdutos;
-import secondscreens.TelaRelatorioAnalitico;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
+import br.sp.eml.projects.padariabythecode.secondscreens.TelaRelatorioAnalitico;
 
 /**
  *
