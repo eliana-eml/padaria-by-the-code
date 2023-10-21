@@ -58,6 +58,11 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
         });
 
         txtEditValorUni.setName("Valor Unitário"); // NOI18N
+        txtEditValorUni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEditValorUniActionPerformed(evt);
+            }
+        });
         txtEditValorUni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtEditValorUniKeyTyped(evt);
@@ -137,6 +142,10 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEditValorUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditValorUniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEditValorUniActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         

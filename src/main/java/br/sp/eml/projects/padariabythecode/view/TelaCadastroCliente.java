@@ -222,6 +222,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
         txtCPFCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtCPFCliente.setName("CPF Cliente"); // NOI18N
+        txtCPFCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFClienteActionPerformed(evt);
+            }
+        });
 
         lblCliente_dtNasc.setText("Data de Nascimento:");
 
@@ -236,6 +241,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCliente_Genero.setText("Gênero:");
 
         txtGeneroCliente.setName("Gênero"); // NOI18N
+        txtGeneroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroClienteActionPerformed(evt);
+            }
+        });
         txtGeneroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtGeneroClienteKeyTyped(evt);
@@ -245,6 +255,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCliente_EstCivil.setText("Estado Civil:");
 
         txtEstadoCivilCliente.setName("Estado Civil"); // NOI18N
+        txtEstadoCivilCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstadoCivilClienteActionPerformed(evt);
+            }
+        });
         txtEstadoCivilCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtEstadoCivilClienteKeyTyped(evt);
@@ -397,6 +412,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCliente_Log.setText("Logradouro:");
 
         txtLogCliente.setName("Logradouro"); // NOI18N
+        txtLogCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLogClienteActionPerformed(evt);
+            }
+        });
         txtLogCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLogClienteKeyTyped(evt);
@@ -444,6 +464,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         cboUFCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cboUFCliente.setName("UF"); // NOI18N
+        cboUFCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboUFClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEnderecoLayout = new javax.swing.GroupLayout(pnlEndereco);
         pnlEndereco.setLayout(pnlEnderecoLayout);
@@ -643,6 +668,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
         txtBuscaCliente_CPF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscaCliente_CPF.setName("CPF Cliente"); // NOI18N
+        txtBuscaCliente_CPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaCliente_CPFActionPerformed(evt);
+            }
+        });
 
         btnBuscarCliente.setText("Buscar");
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -842,6 +872,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
 
+    private void txtEstadoCivilClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstadoCivilClienteActionPerformed
+
+    private void cboUFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboUFClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboUFClienteActionPerformed
+
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
         
         /**
@@ -862,10 +900,14 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
+    private void txtLogClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLogClienteActionPerformed
+
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
        
         /**
-         * Cria uma instância da classe Validador para validar os campos de texto.
+         * Cria de uma instância da classe Validador para validar os campos de texto.
          * Em seguida, verifica se ocorreram erros durante a validação.
          */
         
@@ -969,6 +1011,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void txtBuscaCliente_CPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaCliente_CPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaCliente_CPFActionPerformed
+
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         
         /**
@@ -987,6 +1033,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         limpar.limparCampos(pnlBuscarCliente);
         
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
+
+    private void txtCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFClienteActionPerformed
 
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
         
@@ -1162,6 +1212,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         this.setVisible(false);
       
     }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
+
+    private void txtGeneroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroClienteActionPerformed
+        
+    }//GEN-LAST:event_txtGeneroClienteActionPerformed
 
     /**
      * @param args the command line arguments

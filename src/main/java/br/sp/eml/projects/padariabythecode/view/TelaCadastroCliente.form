@@ -479,6 +479,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="name" type="java.lang.String" value="CPF Cliente" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCPFClienteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCliente_dtNasc">
               <Properties>
@@ -504,6 +507,7 @@
                 <Property name="name" type="java.lang.String" value="G&#xea;nero" noResource="true"/>
               </Properties>
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGeneroClienteActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtGeneroClienteKeyTyped"/>
               </Events>
             </Component>
@@ -517,6 +521,7 @@
                 <Property name="name" type="java.lang.String" value="Estado Civil" noResource="true"/>
               </Properties>
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstadoCivilClienteActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEstadoCivilClienteKeyTyped"/>
               </Events>
             </Component>
@@ -727,6 +732,7 @@
                 <Property name="name" type="java.lang.String" value="Logradouro" noResource="true"/>
               </Properties>
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLogClienteActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLogClienteKeyTyped"/>
               </Events>
             </Component>
@@ -826,6 +832,9 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="UF" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboUFClienteActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -1046,6 +1055,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="name" type="java.lang.String" value="CPF Cliente" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscaCliente_CPFActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarCliente">
           <Properties>

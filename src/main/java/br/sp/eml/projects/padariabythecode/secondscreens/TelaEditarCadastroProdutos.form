@@ -146,6 +146,7 @@
         <Property name="name" type="java.lang.String" value="Valor Unit&#xe1;rio" noResource="true"/>
       </Properties>
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEditValorUniActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEditValorUniKeyTyped"/>
       </Events>
     </Component>

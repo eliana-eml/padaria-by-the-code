@@ -219,6 +219,11 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         lblQntdeProduto.setText("Quantidade:");
 
         txtQntdeProduto.setName("Quantidade"); // NOI18N
+        txtQntdeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQntdeProdutoActionPerformed(evt);
+            }
+        });
         txtQntdeProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtQntdeProdutoKeyTyped(evt);
@@ -392,6 +397,11 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         lblCodigo1.setText("Código:");
 
         txtCodProdutoBusca.setName("Código"); // NOI18N
+        txtCodProdutoBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodProdutoBuscaActionPerformed(evt);
+            }
+        });
         txtCodProdutoBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodProdutoBuscaKeyTyped(evt);
@@ -626,7 +636,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlBuscaProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 284, Short.MAX_VALUE)))
+                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -644,7 +654,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja realmente excluir?",
-                "Exclusão de Produto",
+                "Cadastro Produto",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
@@ -711,12 +721,6 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
             //Formata os números com no máximo duas casas decimais
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
-            
-            //PROVISÓRIO - Formata a entrada numérica de valor em decimal
-            String valorProduto = txtValorProduto.getText();
-            double valorProduto1 = Double.parseDouble(valorProduto);
-            DecimalFormat df = new DecimalFormat("0.00");
-            String valorFormatado = df.format(valorProduto1);
 
             JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
 
@@ -724,15 +728,17 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
             int codProduto = 1;
             String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
+            String valorProduto = txtValorProduto.getText();
+            //String valorProduto2 = String.valueOf(formatarNumero.format(valorProduto));
             String qntdeProduto = txtQntdeProduto.getText();
-            
+
             DefaultTableModel tabelaCadProdutos = (DefaultTableModel) tblCadProdutos.getModel();
 
             //Adiciona uma linha à tabela com os dados do produto.
             tabelaCadProdutos.addRow(new String[]{
                 codigoProduto,
                 nomeProduto,
-                valorFormatado,
+                valorProduto,
                 qntdeProduto
             });
             
@@ -772,6 +778,10 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void txtCodProdutoBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProdutoBuscaActionPerformed
+
+    }//GEN-LAST:event_txtCodProdutoBuscaActionPerformed
+
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
         
         /**
@@ -805,13 +815,12 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
 
+    private void txtQntdeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQntdeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQntdeProdutoActionPerformed
+
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
-        /**
-         * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
-         * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlCadastroProdutos.
-         */
-        
+        //Chama o método Utils para limpar todos os campos quando apertar em "Limpar Campos"
         Utils limpar = new Utils();
         limpar.limparCampos(pnlBuscaProdutos);
     }//GEN-LAST:event_btnLimparActionPerformed
@@ -898,8 +907,8 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
 
         /**
          * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeNumericaDecimal para limitar a entrada de valores numéricos inseridos no campo txtValorProduto.
-         * Por fim, chama o método limitarQuantidadeCaracteres para limitar a quantidade de caracteres inseridos no campo txtValorProduto.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtValorProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtValorProduto.
          */
         
         Validador validacao = new Validador();
@@ -911,8 +920,8 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
 
         /**
          * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarEntradaNumerica para limitar o número de caracteres numéricos inseridos no campo txtQntdeProduto.
-         * Por fim, chama o método limitarQuantidadeCaracteres para limitar a quantidade de caracteres inseridos no campo txtQntdeProduto.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtQntdeProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtQntdeProduto.
          */
         
         Validador validacao = new Validador();
@@ -924,7 +933,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
 
         /**
          * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarEntradaNumerica para limitar o número de caracteres numéricos inseridos no campo txtCodProdutoBusca.
+         * Em seguida, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCodProdutoBusca.
          */
         
         Validador validacao = new Validador();
