@@ -19,7 +19,9 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemProdutos;
 public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaPrincipalVendas
+     * Construtor da classe TelaPrincipalVendas.
+     * Inicializa os componentes gráficos gerados automaticamente.
+     * Em seguida, define a posição da janela ao centro da tela.
      */
     public TelaPrincipalVendas() {
         initComponents();
@@ -603,32 +605,47 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
-
+        /**
+         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
 
     private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
-
-        //Método de validação somente para a validação de campos e apresentação na tela estática
         /**
+         * Método de validação somente para a validação de campos e apresentação na tela estática.
+         * 
          * O método atual só irá receber os parâmetros dos campos TextField de
          * Nome e CPF e apresentá-los na tela.
          *
          * Quando o CRUD for implementado o mesmo deverá resgatar tais
-         * informações como idCliente, nomeCliente, cpfCliente e etc do Banco de
-         * Dados.
+         * informações como idCliente, nomeCliente, cpfCliente e etc, do Banco
+         * de Dados.
          */
+        
+        //Instâncio um objeto da classe Utils
         Utils utilitario = new Utils();
 
+        //Instâncio um objeto da classe Validador e valido os campos txtNomeCliente e txtCPF.
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPF);
 
+        //Verifico se houve algum erro nessa validação
         if (validacao.hasErro()) {
+            //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+
         } else {
+
+            /**
+             * Se não houver erro, exibo os valores da entrada nos labels
+             * lblNomeCliente e lblCPFCliente e desabilito o botão
+             * btnAdicionarCliente.
+             */
             lblNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
             lblCPFCliente.setText("CPF: " + txtCPF.getText());
             utilitario.desabilitarBotoes(btnAdicionarCliente);
@@ -638,25 +655,30 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
+        //Instâncio um objeto da classe Validador e valido os campos txtNomeProduto e txtQtdProduto.
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeProduto);
         validacao.validarNumero(txtQtdProduto);
 
+        //Verifico se houve algum erro nessa validação
         if (validacao.hasErro()) {
-            
+            //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
-            
+
+            //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
 
+            //Declaro variáveis auxiliares para cada campo da nova linha na tabela
             int codProduto = 1;
             double valorUniProdRandom = Math.random() * 20;
             int qtdProd = Integer.parseInt(txtQtdProduto.getText());
             double totalProd = valorUniProdRandom * qtdProd;
 
+            //Converto essas variáveis para Strings
             String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
             String qtdProduto = txtQtdProduto.getText();
@@ -665,7 +687,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
             DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
-            //Adicionar uma linha à tabela
+            //Adiciono uma linha à tabela
             modelo.addRow(new String[]{
                 codigoProduto,
                 nomeProduto,
@@ -679,33 +701,44 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void atualizarValorTotalPedido() {
 
+        //Instâncio um objeto da classe DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
         DecimalFormat formatarNumero = new DecimalFormat();
         formatarNumero.setMaximumFractionDigits(2);
 //        formatarNumero.setRoundingMode(RoundingMode.UNNECESSARY);
 
+        //Declaro variáveis auxiliares para realizar o cálculo do valor total do pedido
         double produtoValor, pedidoValorTotal = 0;
         int produtoQuantidade;
 
+        //Percorro através do vetor todas as linhas da tabela de listaItensPedido
         for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
+
+            //Busco o valor da linha i e coluna 3 (Valor Unitário) da tabela, substituo as vírgulas por pontos e converto o valor de String para double, atribuindo à variável produtoValor.
             produtoValor = Double.parseDouble(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 3)).replace(",", "."));
+            //Busco o valor da linha i e coluna 2 (Qtd) da tabela, converto o valor de String para int, atribuindo à variável produtoQuantidade.
             produtoQuantidade = Integer.parseInt(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 2)));
 
+            //Realizo o cálculo do valor total do pedido
             pedidoValorTotal += (produtoQuantidade * produtoValor);
         }
 
+        //Exibo o valor total do pedido no label lblValorTotalPedido, depois de o formatar e o converter para String.
         lblValorTotalPedido.setText("R$ " + String.valueOf(formatarNumero.format(pedidoValorTotal)).replace(".", ","));
     }
 
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
 
+        //Declaro uma variável auxiliar para resgatar uma linha selecionada da tabela tblListaItensPedido
         int linhaSelecionada = tblListaItensPedido.getSelectedRow();
 
+        //Instâncio um objeto da classe DefaultTableModel para resgatar o modelo da tabela tblListaItensPedido
         DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
+        //Verifico se o índice da linha selecionada é maior ou igual a 0
         if (linhaSelecionada >= 0) {
-            modelo.removeRow(linhaSelecionada);
+            modelo.removeRow(linhaSelecionada); //Removo a linha selecionada se for maior ou igual a 0
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!"); //Solicito a seleção de uma linha, caso seja menor que 0
         }
 
     }//GEN-LAST:event_btnExcluirItemProdutoActionPerformed
@@ -715,19 +748,28 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeProdutoActionPerformed
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarClientesActionPerformed
 
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Instancia um novo objeto da classe TelaProdutos e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Instancia um novo objeto da classe TelaRelatorio e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
@@ -735,11 +777,13 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void btnAdicionarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarPedidoActionPerformed
 
         /**
-         * Esse botão deverá criar uma lista com dados do cliente, lista de
-         * produtos e valorTotalVenda para ser finalmente enviado ao banco de
-         * dados com o botão finalizarPedido.
+         * Esse botão deverá, quando implementado o CRUD, criar uma lista com
+         * dados do cliente, lista de produtos e valorTotalVenda para ser
+         * finalmente enviado ao banco de dados com o botão finalizarPedido. No
+         * momento os valores são estáticos.
          *
          */
+        //Intâncio um objeto da classe Validador e valido os campos txtNomeCliente, txtCPF, txtNomeProduto, txtQtdProduto e tblListaItensPedido.
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPF);
@@ -747,13 +791,16 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         validacao.validarNumero(txtQtdProduto);
         validacao.validarPreenchimentoTabela(tblListaItensPedido);
 
+        //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
         } else {
 
+            //Se não houver erro, instâncio um objeto da classe Utils, desabilito os botões btnAdicionarProduto e btnExcluirItemProduto e chamo o método atualizarValorTotalPedido.
             Utils utilitario = new Utils();
             utilitario.desabilitarBotoes(btnAdicionarProduto);
+            utilitario.desabilitarBotoes(btnExcluirItemProduto);
             atualizarValorTotalPedido();
         }
 
@@ -762,10 +809,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void btnFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPedidoActionPerformed
 
         /**
-         * Além de validar o preenchimento dos campos e realizar o insert do
-         * pedido no banco de dados o botão finalizarPedido irá chamar a telinha
-         * de confirmação de pedido.
+         * Além de realizar o insert do pedido no banco de dados
+         * o botão btnFinalizarPedido irá chamar a telinha de confirmação de pedido.
          *
+         * Como o banco de dados ainda não está implementado, o botão apenas
+         * habilita a TelaConfirmacaoPedido e desabilita a TelaPrincipalVendas.
          */
         new TelaConfirmacaoPedido().setVisible(true);
         this.setVisible(false);
@@ -773,56 +821,83 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
 
+        //Instâncio um objeto da classe Utils e utilizo os métodos limparCampos e limparTabela para limpar o pnlPrincipal e tblListaItensPedido.
         Utils utilitario = new Utils();
         utilitario.limparCampos(pnlPrincipal);
         utilitario.limparTabela(tblListaItensPedido);
 
+        //Retorno os labels do pnlResumoDoPedido para o seu estado inicial.
         lblNomeCliente.setText("Cliente: ");
         lblCPFCliente.setText("CPF: ");
         lblTelefoneCliente.setText("Telefone: ");
         lblValorTotalPedido.setText("R$ 0,00");
 
+        //Habilito os botões btnAdicionarCliente, btnAdicionarProduto e btnExcluirItemProduto novamente.
         utilitario.habilitarBotoes(btnAdicionarCliente);
         utilitario.habilitarBotoes(btnAdicionarProduto);
+        utilitario.habilitarBotoes(btnExcluirItemProduto);
     }//GEN-LAST:event_btnCancelarPedidoActionPerformed
 
     private void btnRedirecionarTelaCadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedirecionarTelaCadClientesActionPerformed
-
+        /**
+         * Instância um novo objeto da classe TelaCadastroCliente e o torna
+         * visível. Em seguida, oculta a janela atual.
+         */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnRedirecionarTelaCadClientesActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-
+        //Instância um novo objeto da classe TelaListagemClientes e o torna visível.
         new TelaListagemClientes().setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
-
+        //Instância um novo objeto da classe TelaListagemProdutos e o torna visível.
         new TelaListagemProdutos().setVisible(true);
     }//GEN-LAST:event_btnBuscarNomeProdutoActionPerformed
 
     private void mnuItemCadatroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadatroClientesActionPerformed
-
+        /**
+         * Instância um novo objeto da classe TelaCadastroCliente através do
+         * menubar e o torna visível. Em seguida, oculta a janela atual.
+         */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemCadatroClientesActionPerformed
 
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
-
+        /**
+         * Instância um novo objeto da classe TelaRelatorio através do
+         * menubar e o torna visível. Em seguida, oculta a janela atual.
+         */
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_mnuItemRelatorioVendasActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeCliente. 
+         * 
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtNomeCliente.
+         */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
     }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     private void txtQtdProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdProdutoKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarEntradaNumerica para restringir a
+         * entrada de números no campo txtQtdProduto. 
+         * 
+         * Por fim, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres
+         * inseridos no campo txtQtdProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtQtdProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtQtdProduto, 5);
@@ -830,6 +905,14 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
 
+        /**
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeProduto. 
+         * 
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtNomeProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);

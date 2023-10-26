@@ -3,7 +3,6 @@ package br.sp.eml.projects.padariabythecode.view;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaRelatorioAnalitico;
 
 /**
@@ -11,13 +10,12 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaRelatorioAnalitico;
  * @author eduar
  */
 public class TelaRelatorio extends javax.swing.JFrame {
-    
+
     /**
-     * Construtor da classe TelaRelatorio.
-     * Inicializa os componentes gráficos gerados automaticamente.
-     * Em seguida, define a posição da janela ao centro da tela.
+     * Construtor da classe TelaRelatorio. Inicializa os componentes gráficos
+     * gerados automaticamente. Em seguida, define a posição da janela ao centro
+     * da tela.
      */
-    
     public TelaRelatorio() {
         initComponents();
         setLocationRelativeTo(null);
@@ -553,54 +551,50 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna
+         * visível. Em seguida, oculta a janela atual.
          */
-        
-          new TelaPrincipalVendas().setVisible(true);
-          this.setVisible(false);
+        new TelaPrincipalVendas().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna
+         * visível. Em seguida, oculta a janela atual.
          */
-        
-           new TelaCadastroCliente().setVisible(true);
-           this.setVisible(false);
+        new TelaCadastroCliente().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNavBarClientesActionPerformed
 
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaProdutos e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaProdutos e o torna visível. Em
+         * seguida, oculta a janela atual.
          */
-        
-           new TelaProdutos().setVisible(true);
-           this.setVisible(false);
+        new TelaProdutos().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
     private void btnBuscarPorDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDataActionPerformed
-        
+
         /**
-         * Cria de uma instância da classe Validador para validar os campos de texto.
-         * Em seguida, verifica se ocorreram erros durante a validação.
+         * Cria de uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
-        
         Validador validacao = new Validador();
         validacao.validarTexto(txtDataInicio);
         validacao.validarTexto(txtDataFim);
-        
-        /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
-         * Caso contrário, buscará as informações no período informado no banco de dados.
-         */
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, buscará as informações no período informado no banco de
+         * dados.
+         */
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -610,42 +604,41 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarPorDataActionPerformed
 
     private void btnVisualizarDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarDetalhesActionPerformed
-        
+
         /**
-         * Obtém o índice de uma linha selecionada na tabela tblVendas.
-         * Em seguida, obtém o modelo de uma tabela associada à tabela tblVendas.
-         * 
-         * Por fim, verifica se a linha selecionada é maior ou igual a zero:
-         * Se sim, pode prosseguir com a visualização dos detalhe da venda puxando do banco de dados.
-         * Se não, obtém uma mensagem de erro e o exibe na tela.
+         * Obtém o índice de uma linha selecionada na tabela tblVendas. Em
+         * seguida, obtém o modelo de uma tabela associada à tabela tblVendas.
+         *
+         * Por fim, verifica se a linha selecionada é maior ou igual a zero: Se
+         * sim, pode prosseguir com a visualização dos detalhes da venda buscando
+         * do banco de dados. Se não, obtém uma mensagem de erro e o exibe na
+         * tela.
          */
-        
         int linhaSelecionada = tblVendas.getSelectedRow();
 
         DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
 
-        if (linhaSelecionada >= 0) { 
-            //Linha selecionada = registo de venda do banco de dados que será renderizado em detalhe
+        if (linhaSelecionada >= 0) {
+            //Linha selecionada = registo de venda do banco de dados que será renderizado em detalhes
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
         }
     }//GEN-LAST:event_btnVisualizarDetalhesActionPerformed
 
     private void btnBuscarVendaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVendaIDActionPerformed
-        
+
         /**
-         * Cria de uma instância da classe Validador para validar os campos de texto.
-         * Em seguida, verifica se ocorreram erros durante a validação.
+         * Cria de uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
-        
         Validador validacao = new Validador();
         validacao.validarTexto(txtIDVendaBuscar);
 
         /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
-         * Caso contrário, buscará as informações da venda com o ID informado no banco de dados.
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, buscará as informações da venda com o ID informado no
+         * banco de dados.
          */
-                
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -655,61 +648,56 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarVendaIDActionPerformed
 
     private void txtIDVendaBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDVendaBuscarKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtIDVendaBuscar.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtIDVendaBuscar.
+         * Cria uma instância da classe Validador para realizar validações. 
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada 
+         * de números no campo txtIDVendaBuscar.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtIDVendaBuscar);
-        validacao.limitarQuantidadeCaracteres(evt, txtIDVendaBuscar, 5);
     }//GEN-LAST:event_txtIDVendaBuscarKeyTyped
 
     private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaCadastroCliente através do
+         * menubar e o torna visível. Em seguida, oculta a janela atual.
          */
-        
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_mnuItemCadastroClientesActionPerformed
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaProdutos através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
-        
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
-       
+
     }//GEN-LAST:event_mnuItemCadastroProdutosActionPerformed
 
     private void mnuRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatorioVendasActionPerformed
-       
+
         /**
-         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaRelatorio através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
-        
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
-     
+
     }//GEN-LAST:event_mnuRelatorioVendasActionPerformed
 
     private void btnVisualizarRelatorioAnaliticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarRelatorioAnaliticoActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaRelatorioAnalitico e o torna visível.
-         * Essa tela vai puxar do banco o relatório preenchido com todas as informaçõe de comprar no período selecionado.
-         */ 
-        
+         * Instancia um novo objeto da classe TelaRelatorioAnalitico e o torna
+         * visível. Essa tela vai puxar do banco de dados o relatório preenchido com
+         * informações mais detalhadas da venda que foi buscada e exibida no campo de Detalhes.
+         */
         new TelaRelatorioAnalitico().setVisible(true);
     }//GEN-LAST:event_btnVisualizarRelatorioAnaliticoActionPerformed
 

@@ -14,7 +14,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     public class TelaProdutos extends javax.swing.JFrame {
 
     /**
-     * Construtor da classe TelaRelatorio.
+     * Construtor da classe TelaProdutos.
      * Inicializa os componentes gráficos gerados automaticamente.
      * Em seguida, define a posição da janela ao centro da tela.
      */
@@ -673,7 +673,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         
         /**
          * Se a opção escolhida for SIM na tela de diálogo & uma linha for selecionada, remove uma linha/cadastro.
-         * Se a opção escolhida for NÃO na tela de diálogo , exibe uma mensagem de aviso para selecionar um cadastro.
+         * Se a opção escolhida for NÃO na tela de diálogo, exibe uma mensagem de aviso para selecionar um cadastro.
          */
 
         if (resposta == JOptionPane.YES_OPTION && linhaSelecionada >= 0) {
@@ -687,11 +687,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed
-
-        /**
-         * Instancia um novo objeto da classe TelaEditarCadastroProdutos e o torna visível.
-         */ 
-                
+        //Instancia um novo objeto da classe TelaEditarCadastroProdutos e o torna visível.   
         new TelaEditarCadastroProdutos().setVisible(true);
     }//GEN-LAST:event_btnEditarProdutoActionPerformed
 
@@ -729,7 +725,6 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
             String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
             String valorProduto = txtValorProduto.getText();
-            //String valorProduto2 = String.valueOf(formatarNumero.format(valorProduto));
             String qntdeProduto = txtQntdeProduto.getText();
 
             DefaultTableModel tabelaCadProdutos = (DefaultTableModel) tblCadProdutos.getModel();
@@ -756,7 +751,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         /**
-         * Cria de uma instância da classe Validador para validar os campos de texto.
+         * Cria uma instância da classe Validador para validar os campos de texto.
          * Em seguida, verifica se ocorreram erros durante a validação.
          */
         
@@ -785,7 +780,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
         
         /**
-         * Instancia um novo objeto da classe TelaPrincipalVendas através do menubar e o torna visível.
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna visível.
          * Em seguida, oculta a janela atual.
          */
                 
@@ -796,7 +791,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
         
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna visível.
          * Em seguida, oculta a janela atual.
          */        
         
@@ -807,7 +802,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarRelatorioActionPerformed
 
         /**
-         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
+         * Instancia um novo objeto da classe TelaRelatorio e o torna visível.
          * Em seguida, oculta a janela atual.
          */        
         
@@ -820,7 +815,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     }//GEN-LAST:event_txtQntdeProdutoActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        //Chama o método Utils para limpar todos os campos quando apertar em "Limpar Campos"
+        //Instância um objeto da classe Utils para limpar todos os campos quando apertar em "Limpar Campos".
         Utils limpar = new Utils();
         limpar.limparCampos(pnlBuscaProdutos);
     }//GEN-LAST:event_btnLimparActionPerformed
@@ -857,7 +852,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
        
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
+         * Instância um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
          * Em seguida, oculta a janela atual.
          */
         
@@ -869,7 +864,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
 
         /**
-         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
+         * Instância um novo objeto da classe TelaProdutos através do menubar e o torna visível.
          * Em seguida, oculta a janela atual.
          */
         
@@ -908,7 +903,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         /**
          * Cria uma instância da classe Validador para realizar validações.
          * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtValorProduto.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtValorProduto.
+         * Por fim, chama o método limitarEntradaNumericaDecimal para restringir a entrada de números no campo txtValorProduto.
          */
         
         Validador validacao = new Validador();
@@ -921,7 +916,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         /**
          * Cria uma instância da classe Validador para realizar validações.
          * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtQntdeProduto.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtQntdeProduto.
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtQntdeProduto.
          */
         
         Validador validacao = new Validador();
@@ -933,7 +928,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
 
         /**
          * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCodProdutoBusca.
+         * Em seguida, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtCodProdutoBusca.
          */
         
         Validador validacao = new Validador();

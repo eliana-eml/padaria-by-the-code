@@ -609,7 +609,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         /**
          * Cria uma instância da classe Validador para realizar validações.
          * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNumCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNumCliente.
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtNumCliente.
          */
                 
         Validador validacao = new Validador();

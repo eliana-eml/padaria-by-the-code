@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.utils;
 
 import java.awt.Component;
@@ -18,36 +14,45 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Utils {
 
+    /**
+     * Recebe um objeto do tipo Container, neste caso, um painel, por parâmetro, e
+     * reseta os valores de cada campo do painel.
+     */
     public void limparCampos(Container painel) {
 
+        //Instâncio um vetor de objetos do tipo Component, e atribuo a ele todos os componentes do painel passado por parâmetro.
         Component componentes[] = painel.getComponents();
 
+        //Percorro o vetor componentes, e para cada campo, verifico a que tipo de instância ele pertence.
         for (Component campo : componentes) {
 
             if (campo instanceof JFormattedTextField) {
+                //Se o campo for uma instância do tipo JFormattedTextField, seto o seu valor como nulo.
                 JFormattedTextField txtFormatado = (JFormattedTextField) campo;
                 txtFormatado.setValue(null);
 
             } else if (campo instanceof JTextField) {
+                //Ou se o campo for uma instância do tipo JTextField, seto a String do mesmo com um valor vazio.
                 JTextField txt = (JTextField) campo;
                 txt.setText("");
             }
         }
     }
     
+    //Recebe um objeto do tipo JTable, e limpa todas as linhas da tabela passada por parâmetro.
     public void limparTabela(JTable tabela) {
         
         DefaultTableModel tblModelo = (DefaultTableModel) tabela.getModel();
         tblModelo.setRowCount(0);
     }
     
+    //Recebe um objeto do tipo JButton por parâmetro e o habilita para ser pressionado.
     public void habilitarBotoes(JButton botao) {
-        
         botao.setEnabled(true);
     }
     
+    //Recebe um objeto do tipo JButton por parâmetro e o desabilita para ser pressionado.
     public void desabilitarBotoes(JButton botao) {
-        
         botao.setEnabled(false);
     }
 }

@@ -10,12 +10,18 @@ import javax.swing.JTextField;
 
 public class Validador {
 
+    //Instâncio uma lista ArrayList de Strings para listagem de mensagens de erros.
     public ArrayList<String> mensagensErro = new ArrayList<>();
 
     /**
-     * Valida somente campos inteiros
+     * Valida somente campos inteiros.
      *
-     * @param txt Recebe um objeto do tipo JTextField
+     * Recebe um objeto do tipo JTextField, verifica se o campo está vazio e
+     * tenta converter o valor recebido para inteiro. Caso não consiga, emite
+     * uma mensagem de erro informando a falha ao converter o valor para int.
+     *
+     * Ou, se o campo estiver vazio, emite uma mensagem de erro solicitando a
+     * entrada de um valor para o campo.
      */
     public void validarNumero(JTextField txt) {
 
@@ -40,6 +46,14 @@ public class Validador {
 
     }
 
+    /**
+     * Recebe um objeto do tipo JTextField, verifica se o campo está vazio, e se
+     * houver algum ponto ou hífen e os substitui com um String vazio no lugar deles.
+     *
+     * Se o campo estiver vazio, ele muda o background do JTextField para
+     * vermelho e emite uma mensagem de erro, solicitando o preenchimento do
+     * campo.
+     */
     public void validarTexto(JTextField txt) {
 
         try {
@@ -59,9 +73,9 @@ public class Validador {
     }
 
     /**
-     * Valida o preenchimento de uma tabela passada por parâmetro, verificando 
+     * Valida o preenchimento de uma tabela passada por parâmetro, verificando
      * se a quantidade de linhas que a compõem é menor ou igual a 0.
-     * 
+     *
      * Caso essa condição seja verdadeira, emite uma mensagem de erro, indicando
      * que a tabela está vazia.
      */
@@ -71,11 +85,11 @@ public class Validador {
             this.mensagensErro.add("A tabela de itens vazia!");
         }
     }
-    
+
     /**
-     * Valida a seleção de um item de um comboBox passado por parâmetro, 
+     * Valida a seleção de um item de um comboBox passado por parâmetro,
      * verificando se o índice selecionado é igual a 0.
-     * 
+     *
      * Caso essa condição seja verdadeira, emite uma mensagem de erro, indicando
      * que o comboBox não teve um item da sua lista selecionado.
      */
@@ -88,17 +102,17 @@ public class Validador {
 
     /**
      * Limita a quantidade de caracteres que podem ser digitados dentro de um
-     * JTextField, passando por parâmetro um evento, instância da Classe KeyEvent,
-     * o JTextField em questão e a quantidade de caracteres limite para o campo.
-     * 
-     * Verifico se a quantidade de caracteres dentro do campo é maior ou igual
-     * a quantidade limite informada, e caso seja, utilizo o método consume() da 
+     * JTextField, passando por parâmetro um evento, instância da Classe
+     * KeyEvent, o objeto do tipo JTextField em questão e a quantidade de
+     * caracteres limite para o campo.
+     *
+     * Verifico se a quantidade de caracteres dentro do campo é maior ou igual a
+     * quantidade limite informada, e caso seja, utilizo o método consume() da
      * Classe KeyEvent para impedir a entrada de novos caracteres.
-     * 
+     *
      * Por fim, emito uma mensagem de erro, informando o máximo de caracteres
      * atingido e a quantidade limite estabelecida para o campo.
      */
-    
     public void limitarQuantidadeCaracteres(java.awt.event.KeyEvent evt, JTextField txt, int qtdCaracteres) {
 
         if (txt.getText().length() >= qtdCaracteres) {
@@ -107,18 +121,16 @@ public class Validador {
         }
 
     }
-    
-    /**
-     * Limita a entrada de caracteres apenas a caracteres númericos no JTextField passado
-     * por parâmetro, utilizando o método consume() da Classe KeyEvent para impedir
-     * a entrada de quaisquer caracteres diferentes de números de 0 a 9, ou da tecla
-     * de BACKSPACE (Apagar).
-     * 
-     * Caso haja a digitação de caracteres alfanuméricos no JTextField em questão,
-     * emito uma mensagem de erro, informando a limitação de entrada a apenas
-     * números.
-     */
 
+    /**
+     * Limita a entrada de valores apenas à caracteres numéricos de 0 a 9 e à
+     * tecla de BACKSPACE, utilizando o método consume() da classe KeyEvent para
+     * impedir a entrada de quaisquer caracteres diferentes dos mesmos.
+     *
+     * Caso haja a entrada de caracteres de texto, de caracteres especiais no JTextField
+     * passado por parâmetro, emito uma mensagem de erro, informando a limitação
+     * de tipo de entrada no campo.
+     */
     public void limitarEntradaNumerica(java.awt.event.KeyEvent evt, JTextField txt) {
 
         char c = evt.getKeyChar();
@@ -129,6 +141,15 @@ public class Validador {
         }
     }
 
+    /**
+     * Limita a entrada de valores apenas à caracteres numéricos de 0 a 9, à
+     * tecla de BACKSPACE e à tecla COMMA (VÍRGULA), utilizando o método
+     * consume() da classe KeyEvent para impedir a entrada de quaisquer
+     * caracteres diferentes dos mesmos.
+     *
+     * Caso haja a entrada de caracteres além dos permitidos pelo método, emito
+     * uma mensagem de erro, informando a limitação de tipo de entrada no campo.
+     */
     public void limitarEntradaNumericaDecimal(java.awt.event.KeyEvent evt, JTextField txt) {
 
         char c = evt.getKeyChar();
@@ -139,24 +160,47 @@ public class Validador {
         }
     }
 
+    /**
+     * Limita a entrada de valores apenas à texto/string, utilizando o método consume() da
+     * classe KeyEvent para impedir a entrada de quaisquer caracteres númericos,
+     * 
+     * Caso haja a entrada de caracteres além dos permitidos pelo método, emito
+     * uma mensagem de erro, informando a limitação de tipo de entrada no campo.
+     */
     public void limitarEntradaTexto(java.awt.event.KeyEvent evt, JTextField txt) {
 
         char c = evt.getKeyChar();
 
+        /**
+         * Tento realizar a conversão do caractere c digitado para inteiro, caso
+         * consigar realizar a conversão, significa que o caractere é um número,
+         * então utilizo o método consume() da classe KeyEvent para impedir a
+         * sua entrada no campo.
+         */
         try {
             Integer.parseInt(Character.toString(c));
             evt.consume();
             JOptionPane.showMessageDialog(txt, "Somente texto no campo: " + txt.getName() + "!");
-        } catch (Exception e) {
+        } 
+        /**
+         * Caso não consiga realizar essa conversão, significa que o caractere é
+         * do tipo texto, então ele permite a entrada do valor digitado.
+         */
+        catch (Exception e) {
             //Somente texto está sendo aceito!
         }
 
     }
 
     /**
-     * Valida somente campos float
+     * Valida somente campos float.
      *
-     * @param txt Recebe um objeto do tipo JTextField
+     * Recebe um objeto do tipo JTextField, verifica se o campo está vazio e
+     * tenta converter o valor recebido para float.
+     *
+     * Caso não consiga, emite uma mensagem de erro informando a falha ao
+     * converter o valor para float. Ou, se o campo estiver vazio, emite uma
+     * mensagem de erro solicitando a entrada de um valor para o campo.
      */
     public void validarFloat(JTextField txt) {
 
@@ -181,6 +225,10 @@ public class Validador {
 
     }
 
+    /**
+     * Limpa todos os elementos do ArrayList mensagensErro, removendo todas as
+     * mensagens de erro no mesmo usando o método clear().
+     */
     public void limparMensagens() {
 
         this.mensagensErro.clear();
@@ -226,6 +274,13 @@ public class Validador {
 
     }
 
+    /**
+     * Verifica se existe alguma mensagem de erro dentro do ArrayList
+     * mensagensErro ao validar se o tamanho da minha lista é maior do que 0,
+     * utilizando o método size().
+     *
+     * Se for maior, retorna true. Se for menor, retorna false.
+     */
     public boolean hasErro() {
 
         if (this.mensagensErro.size() > 0) {

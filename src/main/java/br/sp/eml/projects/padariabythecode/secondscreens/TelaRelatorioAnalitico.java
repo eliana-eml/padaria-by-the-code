@@ -5,15 +5,12 @@ package br.sp.eml.projects.padariabythecode.secondscreens;
  * @author narum
  */
 public class TelaRelatorioAnalitico extends javax.swing.JFrame {
-    
+
     /**
-     * Construtor da classe TelaRelatorioAnalitico.
-     * Inicializa os componentes gráficos gerados automaticamente.
-     * Em seguida, define a posição da janela ao centro da tela.
-     * 
-     * Essa tela vai puxar do banco o relatório preenchido com todas as informaçõe de comprar no período selecionado.
+     * Construtor da classe TelaRelatorioAnalitico. Inicializa os componentes
+     * gráficos gerados automaticamente. Em seguida, define a posição da janela
+     * ao centro da tela.
      */
-    
     public TelaRelatorioAnalitico() {
         initComponents();
         setLocationRelativeTo(null);
@@ -242,11 +239,8 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        
-        /**
-         * Fecha a tela ao clicar no botão "Fechar"
-         */
-        
+
+        //Fecha a tela ao clicar no botão "Fechar"
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 

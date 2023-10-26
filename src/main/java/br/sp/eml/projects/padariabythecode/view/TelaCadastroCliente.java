@@ -2,10 +2,8 @@ package br.sp.eml.projects.padariabythecode.view;
 
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroClientes;
 
 /**
@@ -907,7 +905,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
        
         /**
-         * Cria de uma instância da classe Validador para validar os campos de texto.
+         * Intâncio um objeto da classe Validador para validar os campos de texto.
          * Em seguida, verifica se ocorreram erros durante a validação.
          */
         
@@ -931,11 +929,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnEditarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCadastroActionPerformed
-       
-        /**
-         * Instancia um novo objeto da classe TelaCadastroClientes e o torna visível.
-         */ 
-        
+              
+        //Instancia um novo objeto da classe TelaCadastroClientes e o torna visível.        
         new TelaEditarCadastroClientes().setVisible(true);
     }//GEN-LAST:event_btnEditarCadastroActionPerformed
 
@@ -1002,7 +997,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             /**
              * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
              * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlDadosBasicos e
-             * pnl Endereco.
+             * pnlEndereco.
              */
             
             Utils limpar = new Utils();
@@ -1043,7 +1038,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         /**
         * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
         * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlDadosBasicos e
-        * pnl Endereco.
+        * pnlEndereco.
         */
             
         Utils limpar = new Utils();
@@ -1120,7 +1115,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         /**
          * Cria uma instância da classe Validador para realizar validações.
          * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNumCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNumCliente.
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtNumCliente.
          */
         
         Validador validacao = new Validador();

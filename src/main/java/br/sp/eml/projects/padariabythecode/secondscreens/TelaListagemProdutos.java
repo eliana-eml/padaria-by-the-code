@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
 import br.sp.eml.projects.padariabythecode.utils.Validador;
-import br.sp.eml.projects.padariabythecode.view.TelaCadastroCliente;
 import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
 import br.sp.eml.projects.padariabythecode.view.TelaProdutos;
 import javax.swing.JOptionPane;
@@ -18,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
 public class TelaListagemProdutos extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaListagemProdutos
+     * Construtor da classe TelaListagemProdutos. Inicializa os componentes
+     * gráficos gerados automaticamente. Em seguida, define a posição da janela
+     * ao centro da tela.
      */
     public TelaListagemProdutos() {
         initComponents();
@@ -229,57 +226,85 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        /**
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna
+         * visível. Em seguida, oculta a janela atual.
+         */
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdutoActionPerformed
 
+        /**
+         * Intâncio um objeto da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
+         */
         Validador validacao = new Validador();
         validacao.validarTexto(txtIDProduto);
         validacao.validarTexto(txtNomeProduto);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, realiza a busca no banco de dados.
+         */
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
 
         } else {
 
-            //Realizar busca no banco de dados.
+            //Realiza a busca no banco de dados.
         }
     }//GEN-LAST:event_btnBuscarProdutoActionPerformed
 
     private void btnNavBarProdutos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutos1ActionPerformed
-        // TODO add your handling code here:
+        /**
+         * Instancia um novo objeto da classe TelaProdutos e o torna visível. Em
+         * seguida, oculta a janela atual.
+         */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutos1ActionPerformed
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
+        //Declaro uma variável auxiliar para resgatar uma linha selecionada da tabela tblListagemProdutos
         int linhaSelecionada = tblListagemProdutos.getSelectedRow();
+        //Instâncio um objeto da classe DefaultTableModel para resgatar o modelo da tabela tblListagemProdutos
         DefaultTableModel modelo = (DefaultTableModel) tblListagemProdutos.getModel();
 
+        //Verifico se o índice da linha selecionada é maior ou igual a 0
         if (linhaSelecionada >= 0) {
             /**
-             * Busca pelo ID no banco de dados ao ter a linha selecionada e
-             * renderiza o nome e CPF do cadastro na tela principal de vendas.
+             * Busca pelo ID no banco de dados ao ter a linha de um registo de
+             * produto selecionada e renderiza o nome do produto e o valor do
+             * mesmo na tela principal de vendas.
              */
 
             this.dispose();
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
+            //Solicito a seleção de uma linha, caso seja menor que 0.
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
         }
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
 
     private void txtIDProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDProdutoKeyTyped
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtNomeProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtNomeProduto);
     }//GEN-LAST:event_txtIDProdutoKeyTyped
 
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);

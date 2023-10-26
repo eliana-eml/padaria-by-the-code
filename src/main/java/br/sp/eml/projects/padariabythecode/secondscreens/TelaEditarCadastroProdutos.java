@@ -5,6 +5,11 @@ import javax.swing.JOptionPane;
 
 public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
 
+    /**
+     * Construtor da classe TelaEditarCadastroProdutos. Inicializa os
+     * componentes gráficos gerados automaticamente. Em seguida, define a
+     * posição da janela ao centro da tela.
+     */
     public TelaEditarCadastroProdutos() {
         initComponents();
         setLocationRelativeTo(null);
@@ -148,39 +153,57 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEditValorUniActionPerformed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        
+
+        /**
+         * Cria uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
+         */
         Validador validacao = new Validador();
         validacao.validarTexto(txtEditNomeProduto);
         validacao.validarTexto(txtEditValorUni);
         validacao.validarTexto(txtEditQntdeProduto);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, exibe uma mensagem de atualização de cadastro bem-sucedida e fecha a tela atual.
+         */
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-        }
-        
-        else {
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Cadastro atualizado com sucesso!");
             dispose();
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtEditNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditNomeProdutoKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditNomeProduto.
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtEditNomeProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEditNomeProduto, 30);
         validacao.limitarEntradaTexto(evt, txtEditNomeProduto);
     }//GEN-LAST:event_txtEditNomeProdutoKeyTyped
 
     private void txtEditValorUniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditValorUniKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditValorUni.
+         * Por fim, chama o método limitarEntradaNumericaDecimal para restringir a entrada de números no campo txtEditValorUni.
+         */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumericaDecimal(evt, txtEditValorUni);
         validacao.limitarQuantidadeCaracteres(evt, txtEditValorUni, 6);
     }//GEN-LAST:event_txtEditValorUniKeyTyped
 
     private void txtEditQntdeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditQntdeProdutoKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações.
+         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditQntdeProduto.
+         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtEditQntdeProduto.
+         */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtEditQntdeProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtEditQntdeProduto, 5);

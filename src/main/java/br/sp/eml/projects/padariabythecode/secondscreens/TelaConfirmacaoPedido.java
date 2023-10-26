@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
 import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
@@ -13,7 +9,9 @@ import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
 public class TelaConfirmacaoPedido extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaConfirmacaoPedido
+     * Construtor da classe TelaConfirmacaoPedido.
+     * Inicializa os componentes gráficos gerados automaticamente.
+     * Em seguida, define a posição da janela ao centro da tela.
      */
     public TelaConfirmacaoPedido() {
         initComponents();
@@ -105,7 +103,10 @@ public class TelaConfirmacaoPedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPedidoRealizadoOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoRealizadoOKActionPerformed
-
+        /**
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna visível.
+         * Em seguida, oculta a janela atual.
+         */
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
         

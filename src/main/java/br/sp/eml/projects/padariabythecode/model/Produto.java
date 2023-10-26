@@ -1,7 +1,5 @@
 package br.sp.eml.projects.padariabythecode.model;
 
-import java.util.Date;
-
 public class Produto {
     
     private int idProduto;

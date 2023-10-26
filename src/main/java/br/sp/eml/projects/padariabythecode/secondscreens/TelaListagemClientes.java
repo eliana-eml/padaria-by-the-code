@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
-import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import br.sp.eml.projects.padariabythecode.view.TelaCadastroCliente;
 import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
@@ -18,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
 public class TelaListagemClientes extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaListagemClientes
+     * Construtor da classe TelaListagemClientes. Inicializa os componentes
+     * gráficos gerados automaticamente. Em seguida, define a posição da janela
+     * ao centro da tela.
      */
     public TelaListagemClientes() {
         initComponents();
@@ -236,28 +233,44 @@ public class TelaListagemClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
+        /**
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna
+         * visível. Em seguida, oculta a janela atual.
+         */
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
+        /**
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna
+         * visível. Em seguida, oculta a janela atual.
+         */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarClientesActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
 
+        /**
+         * Intâncio um objeto da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
+         */
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPF);
 
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, realiza a busca no banco de dados.
+         */
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
 
         } else {
 
-            //Realizar busca no banco de dados.
+            //Realiza a busca no banco de dados.
         }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
@@ -267,23 +280,35 @@ public class TelaListagemClientes extends javax.swing.JFrame {
 
     private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
 
+        //Declaro uma variável auxiliar para resgatar uma linha selecionada da tabela tblListagemClientes
         int linhaSelecionada = tblListagemClientes.getSelectedRow();
+        //Instâncio um objeto da classe DefaultTableModel para resgatar o modelo da tabela tblListagemClientes
         DefaultTableModel modelo = (DefaultTableModel) tblListagemClientes.getModel();
 
+        //Verifico se o índice da linha selecionada é maior ou igual a 0
         if (linhaSelecionada >= 0) {
             /**
-             * Busca pelo ID no banco de dados ao ter a linha selecionada e
-             * renderiza o nome e CPF do cadastro na tela principal de vendas.
+             * Busca pelo ID no banco de dados ao ter a linha de um registo de
+             * cliente selecionada e renderiza o nome e CPF do cadastro na tela
+             * principal de vendas.
              */
             this.dispose();
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma a linha!");
+            //Solicito a seleção de uma linha, caso seja menor que 0.
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
         }
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
-
+        /**
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeCliente.
+         *
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada
+         * de texto no campo txtNomeCliente.
+         */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
