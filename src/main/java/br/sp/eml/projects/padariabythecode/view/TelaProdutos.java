@@ -1,24 +1,29 @@
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.dao.PadariaDAO;
+import br.sp.eml.projects.padariabythecode.model.Produto;
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author eduar
  */
-    public class TelaProdutos extends javax.swing.JFrame {
+public class TelaProdutos extends javax.swing.JFrame {
 
     /**
-     * Construtor da classe TelaProdutos.
-     * Inicializa os componentes gráficos gerados automaticamente.
-     * Em seguida, define a posição da janela ao centro da tela.
+     * Construtor da classe TelaProdutos. Inicializa os componentes gráficos
+     * gerados automaticamente. Em seguida, define a posição da janela ao centro
+     * da tela.
      */
-    
     public TelaProdutos() {
         initComponents();
         setLocationRelativeTo(null);
@@ -495,9 +500,16 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
                 "Código do Produto", "Nome", "Valor", "Quantidade Estoque"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -636,7 +648,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlBuscaProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 284, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -648,10 +660,9 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         /**
-         * Exibe uma tela de diálogo com opção de confirmação para exclusão do cadastro.
-         * Em seguida, verifica a opção selecionada pelo usuário:
+         * Exibe uma tela de diálogo com opção de confirmação para exclusão do
+         * cadastro. Em seguida, verifica a opção selecionada pelo usuário:
          */
-        
         int resposta = JOptionPane.showOptionDialog(null,
                 "Deseja realmente excluir?",
                 "Cadastro Produto",
@@ -661,25 +672,40 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
                 new String[]{"Sim", "Não"},
                 "default");
 
-        
         /**
-         * Obtém o índice da linha selecionada na tabela tblCadProdutos.
-         * Em seguida, obtém o modelo de tabela associado à tabela tblCadProdutos.
+         * Obtém o índice da linha selecionada na tabela tblCadProdutos. Em
+         * seguida, obtém o modelo de tabela associado à tabela tblCadProdutos.
          */
+        int linhaSelecionada = tblCadProdutos.getSelectedRow();   
         
-        int linhaSelecionada = tblCadProdutos.getSelectedRow();
-
+  
+        //A Column em 0 é pra definir que quero pegar o ID dentro da row
+        //Esse número deve ser colocado no parâmetro da função que chama o comando de DELETE
+        int id = Integer.parseInt(tblCadProdutos.getValueAt(linhaSelecionada, 0).toString());
+      
+      
         DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
         
-        /**
-         * Se a opção escolhida for SIM na tela de diálogo & uma linha for selecionada, remove uma linha/cadastro.
-         * Se a opção escolhida for NÃO na tela de diálogo, exibe uma mensagem de aviso para selecionar um cadastro.
-         */
+        
+        
+    
 
+        /**
+         * Se a opção escolhida for SIM na tela de diálogo & uma linha for
+         * selecionada, remove uma linha/cadastro. Se a opção escolhida for NÃO
+         * na tela de diálogo, exibe uma mensagem de aviso para selecionar um
+         * cadastro.
+         */
         if (resposta == JOptionPane.YES_OPTION && linhaSelecionada >= 0) {
-            
-            modelo.removeRow(linhaSelecionada);
+            try {
+                //Chamando a função delete da DAO
+                PadariaDAO.excluirProduto(id);
+            } catch (SQLException ex) {
+               JOptionPane.showMessageDialog(null, "Não foi possível excluir.");
+            }
             JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
+            //Chamando a função para carregar novamente os dados da tabela
+            buscaProducts();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um cadastro!");
         }
@@ -694,76 +720,106 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         /**
-         * Cria uma instância da classe Validador para validar os campos de texto.
-         * Em seguida, verifica se ocorreram erros durante a validação.
+         * Cria uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
-        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeProduto);
         validacao.validarTexto(txtValorProduto);
         validacao.validarTexto(txtQntdeProduto);
 
         /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
-         * Caso contrário, exibe uma mensagem de cadastro bem-sucedido e adiciona os dados digitados à tabela.
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, exibe uma mensagem de cadastro bem-sucedido e adiciona os
+         * dados digitados à tabela.
          */
-        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
 
         } else {
-
             //Formata os números com no máximo duas casas decimais
             DecimalFormat formatarNumero = new DecimalFormat();
             formatarNumero.setMaximumFractionDigits(2);
 
-            JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
-
             //Atribui um ID fictício ao cliente e os valores digitados à variáveis auxiliares para inclusão na tabela.
-            int codProduto = 1;
-            String codigoProduto = String.valueOf(codProduto);
+            //int codProduto = 1;
+            //String codigoProduto = String.valueOf(codProduto);
             String nomeProduto = txtNomeProduto.getText();
             String valorProduto = txtValorProduto.getText();
             String qntdeProduto = txtQntdeProduto.getText();
 
+            int qtdProduct = Integer.parseInt(qntdeProduto);
+            double valorProduct = Double.parseDouble(valorProduto);
+
+            Produto produto = new Produto(nomeProduto, valorProduct, qtdProduct);
+            boolean retorno = PadariaDAO.salvarProduto(produto);
+
+            if (retorno == true) {
+                 JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Produto não foi cadastrado");
+            }
+
             DefaultTableModel tabelaCadProdutos = (DefaultTableModel) tblCadProdutos.getModel();
 
             //Adiciona uma linha à tabela com os dados do produto.
-            tabelaCadProdutos.addRow(new String[]{
-                codigoProduto,
-                nomeProduto,
-                valorProduto,
-                qntdeProduto
-            });
+            buscaProducts();
             
+            
+            
+            //tabelaCadProdutos.addRow(new String[]{
+            //  String.valueOf(1),
+            //    nomeProduto,
+            //    valorProduto,
+            //    qntdeProduto
+            // });
+
             /**
-             * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
-             * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlCadastroProdutos.
+             * Cria uma instância da classe Utils para utilização dos métodos de
+             * limpeza de campos. Utiliza dos métodos limparCampos para "apagar"
+             * os dados digitados nos painéis pnlCadastroProdutos.
              */
-            
             Utils utilitario = new Utils();
             utilitario.limparCampos(pnlCadastroProdutos);
-        }   
-        
+        }
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    //FUNÇÃO QUE FAZ A BUSCA DOS DADOS DA TABELA
+    //COMPONETIZADA PARA FACILITAR A CHAMADA
+        private static void buscaProducts() {
+            ///TODO: Chamar a DAO   
+            ArrayList<Produto> lista = PadariaDAO.listarProdutos();
+
+            DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
+            modelo.setRowCount(0);
+
+            //Para cada item na lista retornada do banco, adiciono a essa tabela
+            for (Produto item : lista) {
+                modelo.addRow(new String[]{
+                    String.valueOf(item.getIdProduto()),
+                    String.valueOf(item.getNomeProduto()),
+                    String.valueOf(item.getPrecoProduto()),
+                    String.valueOf(item.getQtdEstoqueProduto())
+                });
+            }
+        }
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         /**
-         * Cria uma instância da classe Validador para validar os campos de texto.
-         * Em seguida, verifica se ocorreram erros durante a validação.
+         * Cria uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
-        
         Validador validacao = new Validador();
         validacao.validarTexto(txtProdutoBusca);
         validacao.validarTexto(txtCodProdutoBusca);
 
         /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
-         * Caso contrário, exibe os valores válidos nos rótulos correspondentes (lblCodigo2 & lblNomeProduto2).
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, exibe os valores válidos nos rótulos correspondentes
+         * (lblCodigo2 & lblNomeProduto2).
          */
-        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -778,23 +834,20 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     }//GEN-LAST:event_txtCodProdutoBuscaActionPerformed
 
     private void btnNavBarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarVendasActionPerformed
-        
+
         /**
-         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaPrincipalVendas e o torna
+         * visível. Em seguida, oculta a janela atual.
          */
-                
         new TelaPrincipalVendas().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
-        
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente e o torna visível.
-         * Em seguida, oculta a janela atual.
-         */        
-        
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna
+         * visível. Em seguida, oculta a janela atual.
+         */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarClientesActionPerformed
@@ -804,8 +857,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
         /**
          * Instancia um novo objeto da classe TelaRelatorio e o torna visível.
          * Em seguida, oculta a janela atual.
-         */        
-        
+         */
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarRelatorioActionPerformed
@@ -823,10 +875,10 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
 
         /**
-         * Cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
-         * Utiliza dos métodos limparCampos para "apagar" os dados digitados nos painéis pnlCadastroProdutos.
+         * Cria uma instância da classe Utils para utilização dos métodos de
+         * limpeza de campos. Utiliza dos métodos limparCampos para "apagar" os
+         * dados digitados nos painéis pnlCadastroProdutos.
          */
-            
         Utils limpar = new Utils();
         limpar.limparCampos(pnlCadastroProdutos);
 
@@ -835,11 +887,11 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void btnLimparDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparDetalhesActionPerformed
 
         /**
-         * Atribui valores vazios aos rótulos para limpeza dos rótulos.
-         * E, cria uma instância da classe Utils para utilização dos métodos de limpeza de campos.
-         * Por fim, utiliza dos métodos limparCampos para "apagar" os dados digitados no painel pnlDetalhes.
-         */        
-        
+         * Atribui valores vazios aos rótulos para limpeza dos rótulos. E, cria
+         * uma instância da classe Utils para utilização dos métodos de limpeza
+         * de campos. Por fim, utiliza dos métodos limparCampos para "apagar" os
+         * dados digitados no painel pnlDetalhes.
+         */
         lblCodigo2.setText("Código:");
         lblNomeProduto2.setText("Nome do Produto:");
         lblQtdeEstoque.setText("Quantidade Estoque:");
@@ -850,12 +902,11 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     }//GEN-LAST:event_btnLimparDetalhesActionPerformed
 
     private void mnuItemCadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroClientesActionPerformed
-       
+
         /**
-         * Instância um novo objeto da classe TelaCadastroCliente através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instância um novo objeto da classe TelaCadastroCliente através do
+         * menubar e o torna visível. Em seguida, oculta a janela atual.
          */
-        
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
 
@@ -864,10 +915,9 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
 
         /**
-         * Instância um novo objeto da classe TelaProdutos através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instância um novo objeto da classe TelaProdutos através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
-        
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
 
@@ -876,10 +926,9 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
 
         /**
-         * Instancia um novo objeto da classe TelaRelatorio através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaRelatorio através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
-                
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
 
@@ -888,11 +937,12 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
 
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeProduto.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeProduto. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtNomeProduto.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 30);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);
@@ -901,11 +951,12 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void txtValorProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtValorProdutoKeyTyped
 
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtValorProduto.
-         * Por fim, chama o método limitarEntradaNumericaDecimal para restringir a entrada de números no campo txtValorProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtValorProduto. Por fim,
+         * chama o método limitarEntradaNumericaDecimal para restringir a
+         * entrada de números no campo txtValorProduto.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumericaDecimal(evt, txtValorProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtValorProduto, 6);
@@ -914,11 +965,12 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void txtQntdeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntdeProdutoKeyTyped
 
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtQntdeProduto.
-         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtQntdeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtQntdeProduto. Por fim,
+         * chama o método limitarEntradaNumerica para restringir a entrada de
+         * números no campo txtQntdeProduto.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtQntdeProduto);
         validacao.limitarQuantidadeCaracteres(evt, txtQntdeProduto, 5);
@@ -927,10 +979,10 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void txtCodProdutoBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodProdutoBuscaKeyTyped
 
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtCodProdutoBusca.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarEntradaNumerica para restringir a
+         * entrada de números no campo txtCodProdutoBusca.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtCodProdutoBusca);
     }//GEN-LAST:event_txtCodProdutoBuscaKeyTyped
@@ -938,50 +990,52 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private void txtProdutoBuscaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdutoBuscaKeyTyped
 
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtProdutoBusca.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtProdutoBusca.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtProdutoBusca. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtProdutoBusca.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtProdutoBusca, 30);
         validacao.limitarEntradaTexto(evt, txtProdutoBusca);
     }//GEN-LAST:event_txtProdutoBuscaKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /**
+         * @param args the command line arguments
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Windows".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
                 }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaProdutos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+            //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaProdutos().setVisible(true);
-            }
-        });
-    }
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new TelaProdutos().setVisible(true);
+                    buscaProducts();
+                }
+            });
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -1032,7 +1086,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdu
     private javax.swing.JPanel pnlListaProdutos;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlRodape;
-    private javax.swing.JTable tblCadProdutos;
+    private static javax.swing.JTable tblCadProdutos;
     private javax.swing.JScrollPane tblCadastroProdutos;
     private javax.swing.JTextField txtCodProdutoBusca;
     private javax.swing.JTextField txtNomeProduto;

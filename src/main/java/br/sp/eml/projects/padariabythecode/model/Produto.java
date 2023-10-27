@@ -18,6 +18,13 @@ public class Produto {
         this.qtdEstoqueProduto = qtdEstoqueProduto;
     }
     
+    //Construtor para salvar no banco de dados
+    public Produto(String nomeProduto, double precoProduto, int qtdEstoqueProduto){
+            this.nomeProduto = nomeProduto;
+            this.precoProduto = precoProduto;
+            this.qtdEstoqueProduto = qtdEstoqueProduto;
+    }
+    
     //Getters e Setters
     public int getIdProduto() {
         return idProduto;
