@@ -1,6 +1,6 @@
 package br.sp.eml.projects.padariabythecode.view;
 
-import br.sp.eml.projects.padariabythecode.dao.PadariaDAO;
+import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
 import br.sp.eml.projects.padariabythecode.model.Produto;
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
@@ -699,7 +699,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         if (resposta == JOptionPane.YES_OPTION && linhaSelecionada >= 0) {
             try {
                 //Chamando a função delete da DAO
-                PadariaDAO.excluirProduto(id);
+                ProdutoDAO.excluirProduto(id);
             } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null, "Não foi possível excluir.");
             }
@@ -753,7 +753,7 @@ public class TelaProdutos extends javax.swing.JFrame {
             double valorProduct = Double.parseDouble(valorProduto);
 
             Produto produto = new Produto(nomeProduto, valorProduct, qtdProduct);
-            boolean retorno = PadariaDAO.salvarProduto(produto);
+            boolean retorno = ProdutoDAO.salvarProduto(produto);
 
             if (retorno == true) {
                  JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
@@ -790,7 +790,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     //COMPONETIZADA PARA FACILITAR A CHAMADA
         private static void buscaProducts() {
             ///TODO: Chamar a DAO   
-            ArrayList<Produto> lista = PadariaDAO.listarProdutos();
+            ArrayList<Produto> lista = ProdutoDAO.listarProdutos();
 
             DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
             modelo.setRowCount(0);

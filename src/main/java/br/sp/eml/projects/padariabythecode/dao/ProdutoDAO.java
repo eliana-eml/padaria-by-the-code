@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author eduar
  */
-public class PadariaDAO {
+public class ProdutoDAO {
 
     //LOGIN PADRÃO DE ACESSO NO BANCO DE DADOS, VOCÊ VAI UTILIZAR ESSE MESMO LINK, DE ACORDO COM O NOME DA DATABASE 
     static String url = "jdbc:mysql://localhost:3306/padariacode";
@@ -60,7 +60,7 @@ public class PadariaDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(PadariaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -99,7 +99,7 @@ public class PadariaDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(PadariaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -143,15 +143,15 @@ public class PadariaDAO {
             }
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PadariaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(PadariaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (conexao != null) {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(PadariaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
