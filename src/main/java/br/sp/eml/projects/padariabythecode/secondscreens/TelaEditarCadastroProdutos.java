@@ -1,5 +1,7 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
+import br.sp.eml.projects.padariabythecode.model.Produto;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 
@@ -10,9 +12,23 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
      * componentes gráficos gerados automaticamente. Em seguida, define a
      * posição da janela ao centro da tela.
      */
+    Produto obj = null;
+
     public TelaEditarCadastroProdutos() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    public TelaEditarCadastroProdutos(Produto objAlterar) {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        this.obj = objAlterar;
+
+        lblCliente_ID.setText("ID: " + String.valueOf(obj.getIdProduto()));
+        txtEditNomeProduto.setText(String.valueOf(obj.getNomeProduto()));
+        txtEditValorUni.setText(String.valueOf(obj.getPrecoProduto()));
+        txtEditQntdeProduto.setText(String.valueOf(obj.getQtdEstoqueProduto()));
     }
 
     /**
@@ -154,33 +170,32 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
-        /**
-         * Cria uma instância da classe Validador para validar os campos de
-         * texto. Em seguida, verifica se ocorreram erros durante a validação.
-         */
-        Validador validacao = new Validador();
-        validacao.validarTexto(txtEditNomeProduto);
-        validacao.validarTexto(txtEditValorUni);
-        validacao.validarTexto(txtEditQntdeProduto);
+        String nomeProdutoAlterado = txtEditNomeProduto.getText();
+        Double valorProdutoAlterado = Double.parseDouble(txtEditValorUni.getText());
+        int qtdEstoqueProdutoAlterado = Integer.parseInt(txtEditQntdeProduto.getText());
 
-        /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
-         * contrário, exibe uma mensagem de atualização de cadastro bem-sucedida e fecha a tela atual.
-         */
-        if (validacao.hasErro()) {
-            String mensagensDeErro = validacao.getMensagensErro();
-            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+        obj.setNomeProduto(nomeProdutoAlterado);
+        obj.setPrecoProduto(valorProdutoAlterado);
+        obj.setQtdEstoqueProduto(qtdEstoqueProdutoAlterado);
+
+        boolean retorno = ProdutoDAO.alterar(obj);
+
+        if (retorno) {
+            JOptionPane.showMessageDialog(rootPane, "Cadastro de produto alterado com sucesso!");
+            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Cadastro atualizado com sucesso!");
-            dispose();
+            JOptionPane.showMessageDialog(rootPane, "Falha na alteração do cadastro!");
+            this.dispose();
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtEditNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditNomeProdutoKeyTyped
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditNomeProduto.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtEditNomeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtEditNomeProduto. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtEditNomeProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEditNomeProduto, 30);
@@ -189,9 +204,11 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
 
     private void txtEditValorUniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditValorUniKeyTyped
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditValorUni.
-         * Por fim, chama o método limitarEntradaNumericaDecimal para restringir a entrada de números no campo txtEditValorUni.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtEditValorUni. Por fim,
+         * chama o método limitarEntradaNumericaDecimal para restringir a
+         * entrada de números no campo txtEditValorUni.
          */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumericaDecimal(evt, txtEditValorUni);
@@ -200,9 +217,11 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
 
     private void txtEditQntdeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditQntdeProdutoKeyTyped
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEditQntdeProduto.
-         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtEditQntdeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtEditQntdeProduto. Por fim,
+         * chama o método limitarEntradaNumerica para restringir a entrada de
+         * números no campo txtEditQntdeProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtEditQntdeProduto);
