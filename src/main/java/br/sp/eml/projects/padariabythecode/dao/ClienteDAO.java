@@ -125,4 +125,57 @@ public class ClienteDAO {
 
         return listaClientes;
     }
+    
+    public static Cliente buscarPorCPFCliente(String cpfCliente) {
+
+        Cliente cliente = new Cliente();
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ResultSet rs = null;
+
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            //Passo 3 - Preparar o comando SQL
+            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, email_cliente, telefone_cliente FROM clientes WHERE cpf_cliente = ?");
+            comandoSQL.setString(1, cpfCliente);
+
+            //Passo 4 - Executar o comando SQL
+            rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+
+                //Percorrer as linhas do result set
+                while (rs.next()) {
+                    
+                    cliente.setIdCliente(rs.getInt("id_cliente"));
+                    cliente.setNomeCliente(rs.getString("nome_cliente"));
+                    cliente.setCpfCliente(rs.getString("cpf_cliente"));
+                    cliente.setEmailCliente(rs.getString("email_cliente"));
+                    cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+        
+                }
+
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return cliente;
+    }
 }

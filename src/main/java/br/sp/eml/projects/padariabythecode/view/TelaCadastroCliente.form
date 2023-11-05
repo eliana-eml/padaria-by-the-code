@@ -69,19 +69,26 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnlCabecalho" pref="1013" max="32767" attributes="0"/>
-                  <Component id="pnlRodape1" pref="1013" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnlCabecalho" pref="1052" max="32767" attributes="0"/>
+                          <Component id="pnlRodape1" pref="1052" max="32767" attributes="0"/>
+                          <Component id="pnlClientes" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
                       <Component id="pnlCadastroCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnlListaClientes" max="32767" attributes="0"/>
-                          <Component id="pnlBuscarCliente" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="pnlBuscarCliente" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <Component id="pnlClientes" alignment="1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -857,7 +864,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tblCadastoCliente" pref="0" max="32767" attributes="0"/>
+                      <Component id="tblCadastoCliente" pref="463" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="lblListaClientes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -935,36 +942,32 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnLimparBusca" min="-2" pref="211" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnEditarCadastro" min="-2" pref="201" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lblBuscaCliente_Nome" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtBuscaCliente_Nome" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblBuscaClienteCPF" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtBuscaCliente_CPF" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnBuscarCliente" min="-2" pref="96" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lblBuscaNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBuscaCPF" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBuscaDtNasc" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBuscaTel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblBuscaEnd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtBuscaCliente_Nome" max="32767" attributes="0"/>
+                              <Component id="lblBuscaCliente_Nome" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton1" alignment="0" pref="263" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblBuscaClienteCPF" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtBuscaCliente_CPF" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnBuscarCliente" min="-2" pref="179" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaCPF" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaDtNasc" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaTel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBuscaEnd" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnLimparBusca" min="-2" pref="211" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnEditarCadastro" min="-2" pref="201" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -976,14 +979,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblBuscaCliente_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtBuscaCliente_CPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBuscaClienteCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtBuscaCliente_Nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBuscaCliente_CPF" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblBuscaNome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblBuscaCPF" min="-2" max="-2" attributes="0"/>
@@ -1045,13 +1053,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarCliente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="text" type="java.lang.String" value="Buscar Por CPF"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarClienteActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
         <Component class="javax.swing.JLabel" name="lblBuscaNome">
           <Properties>
@@ -1093,6 +1099,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparBuscaActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar Por Nome"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
