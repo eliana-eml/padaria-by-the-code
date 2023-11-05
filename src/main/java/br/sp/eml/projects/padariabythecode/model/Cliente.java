@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Cliente {
@@ -7,7 +8,7 @@ public class Cliente {
     private int idCliente;
     private String nomeCliente;
     private String cpfCliente;
-    private Date dataNascimentoCliente;
+    private LocalDate dataNascimentoCliente;
     private String generoCliente;
     private String estadoCivilCliente;
     private String telefoneCliente;
@@ -23,8 +24,26 @@ public class Cliente {
     //Construtor vazio
     public Cliente() {}
 
+    public Cliente(String nomeCliente, String cpfCliente, LocalDate dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
+        this.nomeCliente = nomeCliente;
+        this.cpfCliente = cpfCliente;
+        this.dataNascimentoCliente = dataNascimentoCliente;
+        this.generoCliente = generoCliente;
+        this.estadoCivilCliente = estadoCivilCliente;
+        this.telefoneCliente = telefoneCliente;
+        this.emailCliente = emailCliente;
+        this.cepCliente = cepCliente;
+        this.logradouroCliente = logradouroCliente;
+        this.numeroCliente = numeroCliente;
+        this.complementoCliente = complementoCliente;
+        this.bairroCliente = bairroCliente;
+        this.cidadeCliente = cidadeCliente;
+        this.ufCliente = ufCliente;
+    }   
+
     //Construtor com parâmetros
-    public Cliente(int idCliente, String nomeCliente, String cpfCliente, Date dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
+
+    public Cliente(int idCliente, String nomeCliente, String cpfCliente, LocalDate dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
@@ -41,6 +60,8 @@ public class Cliente {
         this.cidadeCliente = cidadeCliente;
         this.ufCliente = ufCliente;
     }
+    
+    
 
     //Getters e Setters
     public int getIdCliente() {
@@ -67,11 +88,11 @@ public class Cliente {
         this.cpfCliente = cpfCliente;
     }
 
-    public Date getDataNascimentoCliente() {
+    public LocalDate getDataNascimentoCliente() {
         return dataNascimentoCliente;
     }
 
-    public void setDataNascimentoCliente(Date dataNascimentoCliente) {
+    public void setDataNascimentoCliente(LocalDate dataNascimentoCliente) {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
