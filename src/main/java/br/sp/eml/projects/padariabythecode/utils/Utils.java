@@ -1,7 +1,10 @@
 package br.sp.eml.projects.padariabythecode.utils;
 
+import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
+import br.sp.eml.projects.padariabythecode.model.Produto;
 import java.awt.Component;
 import java.awt.Container;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
@@ -13,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author emlel
  */
 public class Utils {
-
+   
     /**
      * Recebe um objeto do tipo Container, neste caso, um painel, por parâmetro, e
      * reseta os valores de cada campo do painel.

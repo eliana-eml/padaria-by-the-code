@@ -1,8 +1,12 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
+import br.sp.eml.projects.padariabythecode.model.Produto;
+import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
 import br.sp.eml.projects.padariabythecode.view.TelaProdutos;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,12 +40,14 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarProdutos1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pnlBuscaListagemProdutos = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtIDProduto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtNomeProduto = new javax.swing.JTextField();
-        btnBuscarProduto = new javax.swing.JButton();
+        btnBuscarNomeProduto = new javax.swing.JButton();
+        btnBuscarIDProduto = new javax.swing.JButton();
+        btnLimparBusca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListagemProdutos = new javax.swing.JTable();
         btnAdicionarProduto = new javax.swing.JButton();
@@ -95,7 +101,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlBuscaListagemProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("ID Produto:");
 
@@ -115,55 +121,75 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarProduto.setText("Buscar");
-        btnBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarNomeProduto.setText("Buscar");
+        btnBuscarNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarProdutoActionPerformed(evt);
+                btnBuscarNomeProdutoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        btnBuscarIDProduto.setText("Buscar");
+        btnBuscarIDProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarIDProdutoActionPerformed(evt);
+            }
+        });
+
+        btnLimparBusca.setText("Limpar Busca");
+        btnLimparBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparBuscaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlBuscaListagemProdutosLayout = new javax.swing.GroupLayout(pnlBuscaListagemProdutos);
+        pnlBuscaListagemProdutos.setLayout(pnlBuscaListagemProdutosLayout);
+        pnlBuscaListagemProdutosLayout.setHorizontalGroup(
+            pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscaListagemProdutosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(pnlBuscaListagemProdutosLayout.createSequentialGroup()
+                        .addComponent(txtIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarIDProduto)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBuscaListagemProdutosLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlBuscaListagemProdutosLayout.createSequentialGroup()
                         .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscarProduto)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnBuscarNomeProduto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimparBusca)))
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnlBuscaListagemProdutosLayout.setVerticalGroup(
+            pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscaListagemProdutosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlBuscaListagemProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarProduto))
+                    .addComponent(btnBuscarNomeProduto)
+                    .addComponent(btnBuscarIDProduto)
+                    .addComponent(btnLimparBusca))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
         tblListagemProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID", "Nome", "CPF", "Telefone"
+                "ID", "Nome", "Preço Unitário", "Qtd Estoque"
             }
         ));
         jScrollPane1.setViewportView(tblListagemProdutos);
@@ -188,7 +214,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlBuscaListagemProdutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -197,7 +223,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlBuscaListagemProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,14 +260,31 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarVendasActionPerformed
 
-    private void btnBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdutoActionPerformed
+    private static void recarregarTabelaProdutos() {
+        ///TODO: Chamar a DAO   
+        ArrayList<Produto> lista = ProdutoDAO.listarProdutos();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblListagemProdutos.getModel();
+        modelo.setRowCount(0);
+
+        //Para cada item na lista retornada do banco, adiciono a essa tabela
+        for (Produto item : lista) {
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdProduto()),
+                String.valueOf(item.getNomeProduto()),
+                String.valueOf(item.getPrecoProduto()),
+                String.valueOf(item.getQtdEstoqueProduto())
+            });
+        }
+    }
+    
+    private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
 
         /**
          * Intâncio um objeto da classe Validador para validar os campos de
          * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
         Validador validacao = new Validador();
-        validacao.validarTexto(txtIDProduto);
         validacao.validarTexto(txtNomeProduto);
 
         /**
@@ -254,9 +297,22 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
 
         } else {
 
-            //Realiza a busca no banco de dados.
+            String nomeProdutoBuscar = txtNomeProduto.getText();
+            Produto produto = ProdutoDAO.buscarPorNomeProduto(nomeProdutoBuscar);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblListagemProdutos.getModel();
+            modelo.setRowCount(0);
+
+            //Atualizar a tabela
+            modelo.addRow(new String[]{
+                //Pegar dados do objeto e passar para a tabela...
+                String.valueOf(produto.getIdProduto()),
+                String.valueOf(produto.getNomeProduto()),
+                String.valueOf(produto.getPrecoProduto()),
+                String.valueOf(produto.getQtdEstoqueProduto())
+            });
         }
-    }//GEN-LAST:event_btnBuscarProdutoActionPerformed
+    }//GEN-LAST:event_btnBuscarNomeProdutoActionPerformed
 
     private void btnNavBarProdutos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutos1ActionPerformed
         /**
@@ -292,8 +348,9 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
 
     private void txtIDProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDProdutoKeyTyped
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtNomeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Por
+         * fim, chama o método limitarEntradaNumerica para restringir a entrada
+         * de números no campo txtNomeProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtNomeProduto);
@@ -301,14 +358,51 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
 
     private void txtNomeProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeProdutoKeyTyped
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeProduto.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeProduto.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeProduto. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtNomeProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
         validacao.limitarEntradaTexto(evt, txtNomeProduto);
     }//GEN-LAST:event_txtNomeProdutoKeyTyped
+
+    private void btnBuscarIDProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDProdutoActionPerformed
+
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtIDProduto);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+
+        } else {
+
+            int idProduto = Integer.parseInt(txtIDProduto.getText());
+            Produto produto = ProdutoDAO.buscarPorIdProduto(idProduto);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblListagemProdutos.getModel();
+            modelo.setRowCount(0);
+
+            //Atualizar a tabela
+            modelo.addRow(new String[] {
+                //Pegar dados do objeto e passar para a tabela...
+                String.valueOf(produto.getIdProduto()),
+                String.valueOf(produto.getNomeProduto()),
+                String.valueOf(produto.getPrecoProduto()),
+                String.valueOf(produto.getQtdEstoqueProduto())
+            });
+        }
+    }//GEN-LAST:event_btnBuscarIDProdutoActionPerformed
+
+    private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
+
+        Utils utilitario = new Utils();
+        utilitario.limparCampos(pnlBuscaListagemProdutos);
+        recarregarTabelaProdutos();
+    }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -341,13 +435,16 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaListagemProdutos().setVisible(true);
+                recarregarTabelaProdutos();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarProduto;
-    private javax.swing.JButton btnBuscarProduto;
+    private javax.swing.JButton btnBuscarIDProduto;
+    private javax.swing.JButton btnBuscarNomeProduto;
+    private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnNavBarProdutos1;
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JLabel jLabel1;
@@ -355,9 +452,9 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblListagemProdutos;
+    private javax.swing.JPanel pnlBuscaListagemProdutos;
+    private static javax.swing.JTable tblListagemProdutos;
     private javax.swing.JTextField txtIDProduto;
     private javax.swing.JTextField txtNomeProduto;
     // End of variables declaration//GEN-END:variables

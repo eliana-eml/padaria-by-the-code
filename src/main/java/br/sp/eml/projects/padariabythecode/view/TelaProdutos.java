@@ -788,6 +788,7 @@ public class TelaProdutos extends javax.swing.JFrame {
             });
         }
     }
+    
     private void btnBuscarPorNomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorNomeProdActionPerformed
 
         /**
