@@ -4,14 +4,10 @@ import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
 import br.sp.eml.projects.padariabythecode.model.Produto;
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
-import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -85,6 +81,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         lblListaProdutos = new javax.swing.JLabel();
         btnExcluir = new javax.swing.JButton();
         btnEditarProduto = new javax.swing.JButton();
+        btnAtualizarTabela = new javax.swing.JButton();
         pnlRodape = new javax.swing.JPanel();
         lbDataAtual = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
@@ -526,6 +523,13 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
+        btnAtualizarTabela.setText("Atualizar Tabela");
+        btnAtualizarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlListaProdutosLayout = new javax.swing.GroupLayout(pnlListaProdutos);
         pnlListaProdutos.setLayout(pnlListaProdutosLayout);
         pnlListaProdutosLayout.setHorizontalGroup(
@@ -534,11 +538,12 @@ public class TelaProdutos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlListaProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListaProdutosLayout.createSequentialGroup()
-                        .addComponent(tblCadastroProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                        .addComponent(tblCadastroProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlListaProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnEditarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAtualizarTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlListaProdutosLayout.createSequentialGroup()
                         .addComponent(lblListaProdutos)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -556,6 +561,8 @@ public class TelaProdutos extends javax.swing.JFrame {
                         .addComponent(btnExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditarProduto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualizarTabela)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1056,6 +1063,10 @@ public class TelaProdutos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEditarProdutoActionPerformed
 
+    private void btnAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTabelaActionPerformed
+        recarregarTabelaProdutos();
+    }//GEN-LAST:event_btnAtualizarTabelaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1093,6 +1104,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizarTabela;
     private javax.swing.JButton btnBuscarPorID;
     private javax.swing.JButton btnBuscarPorNomeProd;
     private javax.swing.JButton btnCadastrar;

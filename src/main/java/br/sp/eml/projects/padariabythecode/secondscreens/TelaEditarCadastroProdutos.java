@@ -3,6 +3,7 @@ package br.sp.eml.projects.padariabythecode.secondscreens;
 import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
 import br.sp.eml.projects.padariabythecode.model.Produto;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import br.sp.eml.projects.padariabythecode.view.TelaProdutos;
 import javax.swing.JOptionPane;
 
 public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
@@ -171,7 +172,7 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
         String nomeProdutoAlterado = txtEditNomeProduto.getText();
-        Double valorProdutoAlterado = Double.parseDouble(txtEditValorUni.getText());
+        Double valorProdutoAlterado = Double.parseDouble(txtEditValorUni.getText().replace(',','.'));
         int qtdEstoqueProdutoAlterado = Integer.parseInt(txtEditQntdeProduto.getText());
 
         obj.setNomeProduto(nomeProdutoAlterado);
