@@ -71,8 +71,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlCabecalho" pref="1052" max="32767" attributes="0"/>
-                          <Component id="pnlRodape1" pref="1052" max="32767" attributes="0"/>
+                          <Component id="pnlCabecalho" pref="1068" max="32767" attributes="0"/>
+                          <Component id="pnlRodape1" pref="1068" max="32767" attributes="0"/>
                           <Component id="pnlClientes" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -864,7 +864,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tblCadastoCliente" pref="463" max="32767" attributes="0"/>
+                      <Component id="tblCadastoCliente" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="lblListaClientes" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -906,15 +906,14 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="0">
-                    <Column editable="true" title="ID Cliente" type="java.lang.Object"/>
-                    <Column editable="true" title="Nome" type="java.lang.Object"/>
-                    <Column editable="true" title="CPF" type="java.lang.Object"/>
-                    <Column editable="true" title="E-mail" type="java.lang.Object"/>
-                    <Column editable="true" title="Telefone" type="java.lang.Object"/>
+                    <Column editable="false" title="ID Cliente" type="java.lang.Object"/>
+                    <Column editable="false" title="Nome" type="java.lang.Object"/>
+                    <Column editable="false" title="CPF" type="java.lang.Object"/>
+                    <Column editable="false" title="E-mail" type="java.lang.Object"/>
+                    <Column editable="false" title="Telefone" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
                 </Property>
@@ -943,31 +942,40 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtBuscaCliente_Nome" max="32767" attributes="0"/>
-                              <Component id="lblBuscaCliente_Nome" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="0" pref="263" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="btnLimparBusca" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblBuscaClienteCPF" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBuscaCliente_CPF" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnBuscarCliente" min="-2" pref="179" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btnEditarCadastro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnExcluirCadastro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnAtualizarTabela" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaNome" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaCPF" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaDtNasc" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaTel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblBuscaEnd" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="btnLimparBusca" min="-2" pref="211" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnEditarCadastro" min="-2" pref="201" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtBuscaCliente_Nome" max="32767" attributes="0"/>
+                                      <Component id="lblBuscaCliente_Nome" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnBuscarPorNomeCliente" alignment="0" pref="263" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lblBuscaClienteCPF" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtBuscaCliente_CPF" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarCliente" min="-2" pref="179" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="lblBuscarCliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaNome" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaCPF" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaDtNasc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaTel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBuscaEnd" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -988,7 +996,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBuscarPorNomeCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBuscarCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -1005,6 +1013,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnEditarCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnLimparBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExcluirCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAtualizarTabela" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
@@ -1100,10 +1110,29 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparBuscaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnBuscarPorNomeCliente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar Por Nome"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarPorNomeClienteActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnExcluirCadastro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Excluir Cadastro"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirCadastroActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAtualizarTabela">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Atualizar Tabela"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarTabelaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

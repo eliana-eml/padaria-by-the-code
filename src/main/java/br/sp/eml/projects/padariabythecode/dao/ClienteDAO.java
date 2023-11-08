@@ -70,7 +70,7 @@ public class ClienteDAO {
 
         return retorno;
     }
-    
+
     public static ArrayList<Cliente> listarClientes() {
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -125,7 +125,7 @@ public class ClienteDAO {
 
         return listaClientes;
     }
-    
+
     public static Cliente buscarPorCPFCliente(String cpfCliente) {
 
         Cliente cliente = new Cliente();
@@ -151,13 +151,13 @@ public class ClienteDAO {
 
                 //Percorrer as linhas do result set
                 while (rs.next()) {
-                    
+
                     cliente.setIdCliente(rs.getInt("id_cliente"));
                     cliente.setNomeCliente(rs.getString("nome_cliente"));
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
-        
+
                 }
 
             }
@@ -177,5 +177,140 @@ public class ClienteDAO {
         }
 
         return cliente;
+    }
+
+    public static Cliente buscarPorNomeCliente(String nomeClienteBuscar) {
+
+        Cliente cliente = new Cliente();
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ResultSet rs = null;
+
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            //Passo 3 - Preparar o comando SQL
+            comandoSQL = conexao.prepareStatement("SELECT * FROM clientes WHERE nome_cliente = ?");
+            comandoSQL.setString(1, nomeClienteBuscar);
+
+            //Passo 4 - Executar o comando SQL
+            rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+
+                //Percorrer as linhas do result set
+                while (rs.next()) {
+
+                    cliente.setIdCliente(rs.getInt("id_cliente"));
+                    cliente.setNomeCliente(rs.getString("nome_cliente"));
+                    cliente.setCpfCliente(rs.getString("cpf_cliente"));
+                    cliente.setEmailCliente(rs.getString("email_cliente"));
+                    cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+
+                }
+
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return cliente;
+    }
+
+    public static boolean excluirCliente(int idCliente) {
+
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+
+        try {
+            //Passo 1 - carregar os drivers
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            comandoSQL = conexao.prepareStatement("DELETE FROM clientes WHERE id_cliente = ?");
+            comandoSQL.setInt(1, idCliente);
+
+            int linhasAfetadas = comandoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+        } catch (SQLException ex) {
+            retorno = false;
+        } finally {
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return retorno;
+    }
+
+    public static boolean verificarExistenciaCadastroCPF(String cpfCliente) {
+
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ResultSet rs = null;
+
+        try {
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            //Passo 3 - Preparar o comando SQL
+            comandoSQL = conexao.prepareStatement("SELECT * FROM clientes WHERE cpf_cliente = ?");
+            comandoSQL.setString(1, cpfCliente);
+
+            //Passo 4 - Executar o comando SQL
+            rs = comandoSQL.executeQuery();
+
+            if (rs != null) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return retorno;
     }
 }

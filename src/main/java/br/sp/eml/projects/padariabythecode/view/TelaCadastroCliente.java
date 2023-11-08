@@ -99,7 +99,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblBuscaEnd = new javax.swing.JLabel();
         btnEditarCadastro = new javax.swing.JButton();
         btnLimparBusca = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnBuscarPorNomeCliente = new javax.swing.JButton();
+        btnExcluirCadastro = new javax.swing.JButton();
+        btnAtualizarTabela = new javax.swing.JButton();
         pnlRodape1 = new javax.swing.JPanel();
         pnlDataAtual = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
@@ -613,9 +615,16 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             new String [] {
                 "ID Cliente", "Nome", "CPF", "E-mail", "Telefone"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblCadClientes.setToolTipText("");
-        tblCadClientes.setColumnSelectionAllowed(true);
         tblCadClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblCadastoCliente.setViewportView(tblCadClientes);
 
@@ -626,7 +635,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(pnlListaClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlListaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tblCadastoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                    .addComponent(tblCadastoCliente)
                     .addGroup(pnlListaClientesLayout.createSequentialGroup()
                         .addComponent(lblListaClientes)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -703,7 +712,26 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Buscar Por Nome");
+        btnBuscarPorNomeCliente.setText("Buscar Por Nome");
+        btnBuscarPorNomeCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorNomeClienteActionPerformed(evt);
+            }
+        });
+
+        btnExcluirCadastro.setText("Excluir Cadastro");
+        btnExcluirCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirCadastroActionPerformed(evt);
+            }
+        });
+
+        btnAtualizarTabela.setText("Atualizar Tabela");
+        btnAtualizarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarTabelaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlBuscarClienteLayout = new javax.swing.GroupLayout(pnlBuscarCliente);
         pnlBuscarCliente.setLayout(pnlBuscarClienteLayout);
@@ -713,26 +741,33 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
-                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBuscaCliente_Nome)
-                            .addComponent(lblBuscaCliente_Nome)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                        .addComponent(btnLimparBusca)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblBuscaClienteCPF)
-                            .addComponent(txtBuscaCliente_CPF)
-                            .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblBuscarCliente)
-                    .addComponent(lblBuscaNome)
-                    .addComponent(lblBuscaCPF)
-                    .addComponent(lblBuscaDtNasc)
-                    .addComponent(lblBuscaTel)
-                    .addComponent(lblBuscaEnd)
+                        .addComponent(btnEditarCadastro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluirCadastro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualizarTabela))
                     .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
-                        .addComponent(btnLimparBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
+                                .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtBuscaCliente_Nome)
+                                    .addComponent(lblBuscaCliente_Nome)
+                                    .addComponent(btnBuscarPorNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblBuscaClienteCPF)
+                                    .addComponent(txtBuscaCliente_CPF)
+                                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblBuscarCliente)
+                            .addComponent(lblBuscaNome)
+                            .addComponent(lblBuscaCPF)
+                            .addComponent(lblBuscaDtNasc)
+                            .addComponent(lblBuscaTel)
+                            .addComponent(lblBuscaEnd))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlBuscarClienteLayout.setVerticalGroup(
             pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,7 +784,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(txtBuscaCliente_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnBuscarPorNomeCliente)
                     .addComponent(btnBuscarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblBuscaNome)
@@ -764,7 +799,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditarCadastro)
-                    .addComponent(btnLimparBusca))
+                    .addComponent(btnLimparBusca)
+                    .addComponent(btnExcluirCadastro)
+                    .addComponent(btnAtualizarTabela))
                 .addGap(12, 12, 12))
         );
 
@@ -830,8 +867,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
-                            .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, 1052, Short.MAX_VALUE)
+                            .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                            .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
                             .addComponent(pnlClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -1006,9 +1043,16 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             Cliente cliente = new Cliente(nome, cpf, dataNascimento, genero, estadoCivil, telefone,
                     email, cep, logradouro, numero, complemento, bairro, cidade, uf);
 
-            Cliente cadastroExiste = ClienteDAO.buscarPorCPFCliente(cpf);
+            //Verifica se existe algum cadastro com o CPF informado pelo usuário.
+            boolean cadastroExiste = ClienteDAO.verificarExistenciaCadastroCPF(cpf);
 
-            if (cadastroExiste != null) {
+            /**
+             * Se existir um cadastro para o CPF informado, ele emite uma mensagem 
+             * informando a existência desse cadastro.
+             * Caso contrário, ele permite o novo cadastro ser gravado.
+             */
+            
+            if (cadastroExiste == true) {
 
                 JOptionPane.showMessageDialog(rootPane, "Cliente já cadastrado no sistema!");
 
@@ -1075,6 +1119,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         Utils limpar = new Utils();
         limpar.limparCampos(pnlBuscarCliente);
+        recarregarTabelaClientes();
 
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
@@ -1279,6 +1324,63 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         validacao.validarTexto(txtDtNascimentoCliente);
     }//GEN-LAST:event_txtDtNascimentoClienteKeyTyped
 
+    private void btnExcluirCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCadastroActionPerformed
+
+        int linhaSelecionada = tblCadClientes.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+
+            DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
+            int idClienteExcluir = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+
+            boolean retorno = ClienteDAO.excluirCliente(idClienteExcluir);
+
+            if (retorno == true) {
+                JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
+                recarregarTabelaClientes();
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possível excluir!");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um cadastro!");
+        }
+    }//GEN-LAST:event_btnExcluirCadastroActionPerformed
+
+    private void btnAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarTabelaActionPerformed
+        recarregarTabelaClientes();
+    }//GEN-LAST:event_btnAtualizarTabelaActionPerformed
+
+    private void btnBuscarPorNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorNomeClienteActionPerformed
+        
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtBuscaCliente_Nome);
+
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+        } else {
+
+            String nomeClienteBuscar = txtBuscaCliente_Nome.getText();
+            Cliente cliente = ClienteDAO.buscarPorNomeCliente(nomeClienteBuscar);
+
+            DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
+            modelo.setRowCount(0);
+
+            modelo.addRow(new String[]{
+                String.valueOf(cliente.getIdCliente()),
+                String.valueOf(cliente.getNomeCliente()),
+                String.valueOf(cliente.getCpfCliente()),
+                String.valueOf(cliente.getEmailCliente()),
+                String.valueOf(cliente.getTelefoneCliente())
+            });
+
+//            lblBuscaNome.setText("Cliente: " + txtBuscaCliente_Nome.getText());
+//            lblBuscaCPF.setText("CPF: " + txtBuscaCliente_CPF.getText());
+        }
+        
+    }//GEN-LAST:event_btnBuscarPorNomeClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1316,16 +1418,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizarTabela;
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnBuscarPorNomeCliente;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEditarCadastro;
+    private javax.swing.JButton btnExcluirCadastro;
     private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnLimparCampos;
     private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarRelatorio;
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JComboBox<String> cboUFCliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblBTCBakery;
     private javax.swing.JLabel lblBuscaCPF;
     private javax.swing.JLabel lblBuscaClienteCPF;
