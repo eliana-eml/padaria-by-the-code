@@ -179,9 +179,10 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public static Cliente buscarPorNomeCliente(String nomeClienteBuscar) {
+    public static ArrayList<Cliente> buscarPorNomeCliente(String nomeClienteBuscar) {
 
-        Cliente cliente = new Cliente();
+        ArrayList<Cliente> listaClientes = new ArrayList<>();
+        
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -205,11 +206,14 @@ public class ClienteDAO {
                 //Percorrer as linhas do result set
                 while (rs.next()) {
 
+                    Cliente cliente = new Cliente();
                     cliente.setIdCliente(rs.getInt("id_cliente"));
                     cliente.setNomeCliente(rs.getString("nome_cliente"));
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+
+                    listaClientes.add(cliente);
 
                 }
 
@@ -229,7 +233,7 @@ public class ClienteDAO {
             }
         }
 
-        return cliente;
+        return listaClientes;
     }
 
     public static boolean excluirCliente(int idCliente) {
@@ -292,7 +296,11 @@ public class ClienteDAO {
             rs = comandoSQL.executeQuery();
 
             if (rs != null) {
-                retorno = true;
+
+                while (rs.next()) {
+                    retorno = true;
+                }
+
             } else {
                 retorno = false;
             }

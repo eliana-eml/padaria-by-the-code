@@ -48,7 +48,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCadastro = new javax.swing.JLabel();
         pnlDadosBasicos = new javax.swing.JPanel();
         lblDadosBasicos = new javax.swing.JLabel();
-        lblCliente_ID = new javax.swing.JLabel();
         lblCliente_CPF = new javax.swing.JLabel();
         txtCPFCliente = new javax.swing.JFormattedTextField();
         lblCliente_dtNasc = new javax.swing.JLabel();
@@ -212,9 +211,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblDadosBasicos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDadosBasicos.setText("Dados Básicos");
 
-        lblCliente_ID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCliente_ID.setText("ID: 123");
-
         lblCliente_CPF.setText("CPF:");
 
         try {
@@ -317,10 +313,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                        .addComponent(lblDadosBasicos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCliente_ID))
+                    .addComponent(lblDadosBasicos)
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                         .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCliente_CPF)
@@ -354,9 +347,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosBasicosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCliente_ID, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDadosBasicos))
+                .addComponent(lblDadosBasicos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCliente_Nome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -635,10 +626,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(pnlListaClientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlListaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tblCadastoCliente)
                     .addGroup(pnlListaClientesLayout.createSequentialGroup()
                         .addComponent(lblListaClientes)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tblCadastoCliente))
                 .addContainerGap())
         );
         pnlListaClientesLayout.setVerticalGroup(
@@ -749,25 +740,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAtualizarTabela))
                     .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
-                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlBuscarClienteLayout.createSequentialGroup()
-                                .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtBuscaCliente_Nome)
-                                    .addComponent(lblBuscaCliente_Nome)
-                                    .addComponent(btnBuscarPorNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblBuscaClienteCPF)
-                                    .addComponent(txtBuscaCliente_CPF)
-                                    .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblBuscarCliente)
-                            .addComponent(lblBuscaNome)
-                            .addComponent(lblBuscaCPF)
-                            .addComponent(lblBuscaDtNasc)
-                            .addComponent(lblBuscaTel)
-                            .addComponent(lblBuscaEnd))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtBuscaCliente_Nome)
+                            .addComponent(lblBuscaCliente_Nome)
+                            .addComponent(btnBuscarPorNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblBuscaClienteCPF)
+                            .addComponent(txtBuscaCliente_CPF)
+                            .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblBuscarCliente)
+                    .addComponent(lblBuscaNome)
+                    .addComponent(lblBuscaCPF)
+                    .addComponent(lblBuscaDtNasc)
+                    .addComponent(lblBuscaTel)
+                    .addComponent(lblBuscaEnd))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlBuscarClienteLayout.setVerticalGroup(
             pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -865,20 +853,16 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
-                            .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
-                            .addComponent(pnlClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                    .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                    .addComponent(pnlClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlListaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pnlBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))))
+                            .addComponent(pnlBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlListaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1047,11 +1031,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             boolean cadastroExiste = ClienteDAO.verificarExistenciaCadastroCPF(cpf);
 
             /**
-             * Se existir um cadastro para o CPF informado, ele emite uma mensagem 
-             * informando a existência desse cadastro.
-             * Caso contrário, ele permite o novo cadastro ser gravado.
+             * Se existir um cadastro para o CPF informado, ele emite uma
+             * mensagem informando a existência desse cadastro. Caso contrário,
+             * ele permite o novo cadastro ser gravado.
              */
-            
             if (cadastroExiste == true) {
 
                 JOptionPane.showMessageDialog(rootPane, "Cliente já cadastrado no sistema!");
@@ -1352,7 +1335,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarTabelaActionPerformed
 
     private void btnBuscarPorNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorNomeClienteActionPerformed
-        
+
         Validador validacao = new Validador();
         validacao.validarTexto(txtBuscaCliente_Nome);
 
@@ -1362,23 +1345,26 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         } else {
 
             String nomeClienteBuscar = txtBuscaCliente_Nome.getText();
-            Cliente cliente = ClienteDAO.buscarPorNomeCliente(nomeClienteBuscar);
+            ArrayList<Cliente> listaClientesPorNome = ClienteDAO.buscarPorNomeCliente(nomeClienteBuscar);
 
             DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
             modelo.setRowCount(0);
 
-            modelo.addRow(new String[]{
-                String.valueOf(cliente.getIdCliente()),
-                String.valueOf(cliente.getNomeCliente()),
-                String.valueOf(cliente.getCpfCliente()),
-                String.valueOf(cliente.getEmailCliente()),
-                String.valueOf(cliente.getTelefoneCliente())
-            });
+            for (Cliente cliente : listaClientesPorNome) {
+                
+                modelo.addRow(new String[]{
+                    String.valueOf(cliente.getIdCliente()),
+                    String.valueOf(cliente.getNomeCliente()),
+                    String.valueOf(cliente.getCpfCliente()),
+                    String.valueOf(cliente.getEmailCliente()),
+                    String.valueOf(cliente.getTelefoneCliente())
+                });
+            }
 
 //            lblBuscaNome.setText("Cliente: " + txtBuscaCliente_Nome.getText());
 //            lblBuscaCPF.setText("CPF: " + txtBuscaCliente_CPF.getText());
         }
-        
+
     }//GEN-LAST:event_btnBuscarPorNomeClienteActionPerformed
 
     /**
@@ -1449,7 +1435,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblCliente_End;
     private javax.swing.JLabel lblCliente_EstCivil;
     private javax.swing.JLabel lblCliente_Genero;
-    private javax.swing.JLabel lblCliente_ID;
     private javax.swing.JLabel lblCliente_Log;
     private javax.swing.JLabel lblCliente_Nome;
     private javax.swing.JLabel lblCliente_Num;

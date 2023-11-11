@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.model.Cliente;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 
@@ -14,10 +15,22 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
      * Inicializa os componentes gráficos gerados automaticamente.
      * Em seguida, define a posição da janela ao centro da tela.
      */
+    Cliente obj = null;
     
     public TelaEditarCadastroClientes() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public TelaEditarCadastroClientes(Cliente objAlterar) {
+        initComponents();
+        setLocationRelativeTo(null);
+        
+        this.obj = objAlterar;
+        
+        lblCliente_ID.setText("ID: " + String.valueOf(obj.getIdCliente()));
+        txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
+        
     }
 
     /**
