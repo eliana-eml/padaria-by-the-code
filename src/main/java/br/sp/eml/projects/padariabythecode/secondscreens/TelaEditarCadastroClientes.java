@@ -9,28 +9,40 @@ import javax.swing.JOptionPane;
  * @author narum
  */
 public class TelaEditarCadastroClientes extends javax.swing.JFrame {
-    
+
     /**
-     * Construtor da classe TelaEditarCadastroClientes.
-     * Inicializa os componentes gráficos gerados automaticamente.
-     * Em seguida, define a posição da janela ao centro da tela.
+     * Construtor da classe TelaEditarCadastroClientes. Inicializa os
+     * componentes gráficos gerados automaticamente. Em seguida, define a
+     * posição da janela ao centro da tela.
      */
     Cliente obj = null;
-    
+
     public TelaEditarCadastroClientes() {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
+
     public TelaEditarCadastroClientes(Cliente objAlterar) {
         initComponents();
         setLocationRelativeTo(null);
-        
+
         this.obj = objAlterar;
-        
+
         lblCliente_ID.setText("ID: " + String.valueOf(obj.getIdCliente()));
         txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
-        
+        txtCPFCliente.setText(String.valueOf(obj.getCpfCliente()));
+        txtDtNascimentoCliente.setText(String.valueOf(obj.getDataNascimentoCliente()));
+        txtGeneroCliente.setText(String.valueOf(obj.getGeneroCliente()));
+        txtEstadoCivilCliente.setText(String.valueOf(obj.getEstadoCivilCliente()));
+        txtTelFixCliente.setText(String.valueOf(obj.getTelefoneCliente()));
+        txtEmailCliente.setText(String.valueOf(obj.getEmailCliente()));
+        txtCEPCliente.setText(String.valueOf(obj.getCepCliente()));
+        txtLogCliente.setText(String.valueOf(obj.getLogradouroCliente()));
+        txtNumCliente.setText(String.valueOf(obj.getNumeroCliente()));
+        txtComplementoCliente.setText(String.valueOf(obj.getComplementoCliente()));
+        txtBairroCliente.setText(String.valueOf(obj.getBairroCliente()));
+        txtCidadeCliente.setText(String.valueOf(obj.getCidadeCliente()));
+        cboUFCliente.setSelectedItem(String.valueOf(obj.getUfCliente()));
     }
 
     /**
@@ -57,8 +69,6 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         txtNomeCliente = new javax.swing.JTextField();
         lblCliente_TelFixo = new javax.swing.JLabel();
         txtTelFixCliente = new javax.swing.JFormattedTextField();
-        lblCliente_Celular = new javax.swing.JLabel();
-        txtCelCliente = new javax.swing.JFormattedTextField();
         lblCliente_Email = new javax.swing.JLabel();
         txtEmailCliente = new javax.swing.JTextField();
         pnlEndereco = new javax.swing.JPanel();
@@ -78,9 +88,9 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         lblCliente_UF = new javax.swing.JLabel();
         cboUFCliente = new javax.swing.JComboBox<>();
         btnAtualizar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         pnlDadosBasicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -88,7 +98,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         lblDadosBasicos.setText("Dados Básicos");
 
         lblCliente_ID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCliente_ID.setText("ID: 123");
+        lblCliente_ID.setText("ID: 000");
 
         lblCliente_CPF.setText("CPF:");
 
@@ -145,20 +155,11 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         lblCliente_TelFixo.setText("Telefone Fixo:");
 
         try {
-            txtTelFixCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
+            txtTelFixCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         txtTelFixCliente.setName("Telefone Fixo"); // NOI18N
-
-        lblCliente_Celular.setText("Celular:");
-
-        try {
-            txtCelCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtCelCliente.setName("Celular"); // NOI18N
 
         lblCliente_Email.setText("E-mail:");
 
@@ -175,89 +176,78 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
             pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                            .addComponent(lblDadosBasicos)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCliente_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                            .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCliente_CPF)
-                                .addComponent(txtCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCliente_TelFixo)
-                                .addComponent(txtTelFixCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCliente_dtNasc)
-                                .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCliente_Celular))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                    .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblCliente_Genero)
-                                        .addComponent(txtGeneroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblCliente_Email))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblCliente_EstCivil))
-                                .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(lblCliente_Nome))
-                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEstadoCivilCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtNomeCliente)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosBasicosLayout.createSequentialGroup()
+                        .addComponent(lblDadosBasicos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCliente_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosBasicosLayout.createSequentialGroup()
+                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblCliente_CPF)
+                            .addComponent(lblCliente_TelFixo)
+                            .addComponent(txtCPFCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(txtTelFixCliente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
+                                .addComponent(lblCliente_Email)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
+                                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCliente_dtNasc)
+                                    .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCliente_Genero)
+                                    .addComponent(txtGeneroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
+                                        .addComponent(lblCliente_EstCivil)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtEstadoCivilCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
+                            .addComponent(txtEmailCliente)))
+                    .addComponent(lblCliente_Nome, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDadosBasicosLayout.setVerticalGroup(
             pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosBasicosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCliente_ID, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDadosBasicos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCliente_Nome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtCelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosBasicosLayout.createSequentialGroup()
-                            .addComponent(lblCliente_Celular)
-                            .addGap(28, 28, 28)))
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCliente_ID, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDadosBasicos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblCliente_Nome)
+                        .addComponent(lblCliente_CPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
+                        .addComponent(lblCliente_dtNasc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                .addComponent(lblCliente_CPF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                .addComponent(lblCliente_dtNasc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                .addComponent(lblCliente_Genero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtGeneroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEstadoCivilCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                .addComponent(lblCliente_EstCivil)
-                                .addGap(28, 28, 28)))
-                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lblCliente_Email))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosBasicosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblCliente_TelFixo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTelFixCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
+                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCliente_Genero)
+                            .addComponent(lblCliente_EstCivil))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtGeneroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEstadoCivilCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCliente_TelFixo)
+                    .addComponent(lblCliente_Email))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTelFixCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
 
@@ -363,7 +353,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
                         .addGroup(pnlEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlEnderecoLayout.createSequentialGroup()
                                 .addComponent(lblCliente_Compl)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 145, Short.MAX_VALUE))
                             .addComponent(txtComplementoCliente)))
                     .addComponent(lblCliente_End)
                     .addGroup(pnlEnderecoLayout.createSequentialGroup()
@@ -432,13 +422,6 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir.setText("Excluir");
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -446,10 +429,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(pnlDadosBasicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -463,9 +443,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtualizar)
-                    .addComponent(btnExcluir))
+                .addComponent(btnAtualizar)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -484,44 +462,16 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         // TODO add your handling code here: 
     }//GEN-LAST:event_cboUFClienteActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
-        /**
-         * Exibe uma tela de diálogo com opção de confirmação para exclusão do cadastro.
-         * Em seguida, verifica a opção selecionada pelo usuário:
-         * Se a opção for SIM, exibe uma mensagem de sucesso e fecha a janela atual.
-         * Se a opção for NÃO, exibe uma mensagem de cancelamento e fecha a janela atual.
-         */
-        
-        int resposta = JOptionPane.showOptionDialog(null,
-                "Deseja realmente excluir?",
-                "Cadastro Cliente",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE,
-                null,
-                new String[]{"Sim", "Não"},
-                "default");
-
-        if (resposta == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Cadastro excluído com sucesso!");
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Cancelado");
-            dispose();
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
-
     private void btnAtualizarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnAtualizarKeyPressed
 
     }//GEN-LAST:event_btnAtualizarKeyPressed
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        
+
         /**
-         * Cria uma instância da classe Validador para validar os campos de texto.
-         * Em seguida, verifica se ocorreram erros durante a validação.
+         * Cria uma instância da classe Validador para validar os campos de
+         * texto. Em seguida, verifica se ocorreram erros durante a validação.
          */
-        
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPFCliente);
@@ -529,7 +479,6 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         validacao.validarTexto(txtGeneroCliente);
         validacao.validarTexto(txtEstadoCivilCliente);
         validacao.validarTexto(txtTelFixCliente);
-        validacao.validarTexto(txtCelCliente);
         validacao.validarTexto(txtEmailCliente);
         validacao.validarTexto(txtCEPCliente);
         validacao.validarTexto(txtLogCliente);
@@ -540,10 +489,9 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         validacao.validarSelecaoComboBox(cboUFCliente);
 
         /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela.
-         * Caso contrário, exibe uma mensagem de cadastro bem-sucedido.
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, exibe uma mensagem de cadastro bem-sucedido.
          */
-        
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
@@ -555,113 +503,120 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void txtNomeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNomeCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtNomeCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNomeCliente. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtNomeCliente.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtNomeCliente);
     }//GEN-LAST:event_txtNomeClienteKeyTyped
 
     private void txtGeneroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroClienteKeyTyped
-       
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtGeneroCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtGeneroCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtGeneroCliente. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtGeneroCliente.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtGeneroCliente, 20);
         validacao.limitarEntradaTexto(evt, txtGeneroCliente);
     }//GEN-LAST:event_txtGeneroClienteKeyTyped
 
     private void txtEstadoCivilClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEstadoCivilClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEstadoCivilCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtEstadoCivilCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtEstadoCivilCliente. Por
+         * fim, chama o método limitarEntradaTexto para restringir a entrada de
+         * texto no campo txtEstadoCivilCliente.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEstadoCivilCliente, 20);
         validacao.limitarEntradaTexto(evt, txtEstadoCivilCliente);
     }//GEN-LAST:event_txtEstadoCivilClienteKeyTyped
 
     private void txtEmailClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtEmailCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtEmailCliente.
          */
-                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtEmailCliente, 50);
     }//GEN-LAST:event_txtEmailClienteKeyTyped
 
     private void txtLogClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLogClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtLogCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtLogCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtLogCliente. Por fim, chama
+         * o método limitarEntradaTexto para restringir a entrada de texto no
+         * campo txtLogCliente.
          */
-                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtLogCliente, 50);
         validacao.limitarEntradaTexto(evt, txtLogCliente);
     }//GEN-LAST:event_txtLogClienteKeyTyped
 
     private void txtNumClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtNumCliente.
-         * Por fim, chama o método limitarEntradaNumerica para restringir a entrada de números no campo txtNumCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtNumCliente. Por fim, chama
+         * o método limitarEntradaNumerica para restringir a entrada de números
+         * no campo txtNumCliente.
          */
-                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNumCliente, 10);
         validacao.limitarEntradaNumerica(evt, txtNumCliente);
     }//GEN-LAST:event_txtNumClienteKeyTyped
 
     private void txtComplementoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtComplementoClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtComplementoCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtComplementoCliente.
          */
-        
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtComplementoCliente, 30);
     }//GEN-LAST:event_txtComplementoClienteKeyTyped
 
     private void txtBairroClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBairroClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtBairroCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtBairroCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtBairroCliente. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtBairroCliente.
          */
-                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtBairroCliente, 30);
         validacao.limitarEntradaTexto(evt, txtBairroCliente);
     }//GEN-LAST:event_txtBairroClienteKeyTyped
 
     private void txtCidadeClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCidadeClienteKeyTyped
-        
+
         /**
-         * Cria uma instância da classe Validador para realizar validações.
-         * Em seguida, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres inseridos no campo txtCidadeCliente.
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto no campo txtCidadeCliente.
+         * Cria uma instância da classe Validador para realizar validações. Em
+         * seguida, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtCidadeCliente. Por fim,
+         * chama o método limitarEntradaTexto para restringir a entrada de texto
+         * no campo txtCidadeCliente.
          */
-                
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtCidadeCliente, 50);
         validacao.limitarEntradaTexto(evt, txtCidadeCliente);
@@ -705,12 +660,10 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JComboBox<String> cboUFCliente;
     private javax.swing.JLabel lblCliente_Bairro;
     private javax.swing.JLabel lblCliente_CEP;
     private javax.swing.JLabel lblCliente_CPF;
-    private javax.swing.JLabel lblCliente_Celular;
     private javax.swing.JLabel lblCliente_Cid;
     private javax.swing.JLabel lblCliente_Compl;
     private javax.swing.JLabel lblCliente_Email;
@@ -730,7 +683,6 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtBairroCliente;
     private javax.swing.JFormattedTextField txtCEPCliente;
     private javax.swing.JFormattedTextField txtCPFCliente;
-    private javax.swing.JFormattedTextField txtCelCliente;
     private javax.swing.JTextField txtCidadeCliente;
     private javax.swing.JTextField txtComplementoCliente;
     private javax.swing.JFormattedTextField txtDtNascimentoCliente;

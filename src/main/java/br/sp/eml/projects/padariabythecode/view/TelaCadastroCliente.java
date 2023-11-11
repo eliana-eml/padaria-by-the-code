@@ -7,6 +7,7 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroClientes;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -604,11 +605,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Cliente", "Nome", "CPF", "E-mail", "Telefone"
+                "ID Cliente", "Nome", "CPF", "Data Nascimento", "Gênero", "Estado Civil", "Telefone", "E-mail", "CEP", "Logradouro", "Nº", "Complemento", "Bairro", "Cidade", "UF"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -616,6 +617,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
         tblCadClientes.setToolTipText("");
+        tblCadClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblCadClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblCadastoCliente.setViewportView(tblCadClientes);
 
@@ -957,20 +959,75 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 String.valueOf(cliente.getIdCliente()),
                 String.valueOf(cliente.getNomeCliente()),
                 String.valueOf(cliente.getCpfCliente()),
+                String.valueOf(cliente.getDataNascimentoCliente()),
+                String.valueOf(cliente.getGeneroCliente()),
+                String.valueOf(cliente.getEstadoCivilCliente()),
+                String.valueOf(cliente.getTelefoneCliente()),
                 String.valueOf(cliente.getEmailCliente()),
-                String.valueOf(cliente.getTelefoneCliente())
+                String.valueOf(cliente.getCepCliente()),
+                String.valueOf(cliente.getLogradouroCliente()),
+                String.valueOf(cliente.getNumeroCliente()),
+                String.valueOf(cliente.getComplementoCliente()),
+                String.valueOf(cliente.getBairroCliente()),
+                String.valueOf(cliente.getCidadeCliente()),
+                String.valueOf(cliente.getUfCliente())
             });
 
-//            lblBuscaNome.setText("Cliente: " + txtBuscaCliente_Nome.getText());
-//            lblBuscaCPF.setText("CPF: " + txtBuscaCliente_CPF.getText());
+            String enderecoCompleto = cliente.getLogradouroCliente() + ", " + cliente.getNumeroCliente() + " - " + 
+                                      cliente.getComplementoCliente() + " - " + cliente.getBairroCliente() + " - " +
+                                      cliente.getCidadeCliente() + " - " + cliente.getUfCliente();
+            
+            lblBuscaNome.setText("Cliente: " + cliente.getNomeCliente());
+            lblBuscaCPF.setText("CPF: " + cliente.getCpfCliente());
+            lblBuscaDtNasc.setText("Data de Nascimento: " + cliente.getDataNascimentoCliente());
+            lblBuscaTel.setText("Telefone: " + cliente.getTelefoneCliente());
+            lblBuscaEnd.setText("Endereço: " + enderecoCompleto);
         }
 
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnEditarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCadastroActionPerformed
 
-        //Instancia um novo objeto da classe TelaCadastroClientes e o torna visível.        
-        new TelaEditarCadastroClientes().setVisible(true);
+        int linhaSelecionada = tblCadClientes.getSelectedRow();
+
+        if (linhaSelecionada >= 0) {
+
+            DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
+
+//            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+//            Utils utilitario = new Utils();
+            int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            String nomeSelecionado = modelo.getValueAt(linhaSelecionada, 1).toString();
+            String cpfSelecionado = modelo.getValueAt(linhaSelecionada, 2).toString();
+            
+            LocalDate dataNascimentoSelecionada = LocalDate.parse(((modelo.getValueAt(linhaSelecionada, 3).toString())));
+            
+            String generoSelecionado = modelo.getValueAt(linhaSelecionada, 4).toString();
+            String estadoCivilSelecionado = modelo.getValueAt(linhaSelecionada, 5).toString();
+            String telefoneSelecionado = modelo.getValueAt(linhaSelecionada, 6).toString();
+            String emailSelecionado = modelo.getValueAt(linhaSelecionada, 7).toString();
+            String cepSelecionado = modelo.getValueAt(linhaSelecionada, 8).toString();
+            String logradouroSelecionado = modelo.getValueAt(linhaSelecionada, 9).toString();
+            String numeroSelecionado = modelo.getValueAt(linhaSelecionada, 10).toString();
+            String complementoSelecionado = modelo.getValueAt(linhaSelecionada, 11).toString();
+            String bairroSelecionado = modelo.getValueAt(linhaSelecionada, 12).toString();
+            String cidadeSelecionada = modelo.getValueAt(linhaSelecionada, 13).toString();
+            String ufSelecionado = modelo.getValueAt(linhaSelecionada, 14).toString();
+
+            Cliente objAlterar = new Cliente(idSelecionado, nomeSelecionado, cpfSelecionado,
+                    dataNascimentoSelecionada, generoSelecionado,
+                    estadoCivilSelecionado, telefoneSelecionado,
+                    emailSelecionado, cepSelecionado, logradouroSelecionado,
+                    numeroSelecionado, complementoSelecionado, bairroSelecionado,
+                    cidadeSelecionada, ufSelecionado);
+
+            TelaEditarCadastroClientes telaAlterar = new TelaEditarCadastroClientes(objAlterar);
+            telaAlterar.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+        }
+
     }//GEN-LAST:event_btnEditarCadastroActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -1070,14 +1127,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
         modelo.setRowCount(0);
 
-        //Para cada item na lista retornada do banco, adiciono a essa tabela
         for (Cliente cliente : lista) {
+
+//            LocalDate clienteDataNasc = LocalDate.parse(cliente.getDataNascimentoCliente().toString());
+//
+//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            LocalDate dataNasc = LocalDate.parse(clienteDataNasc.toString(), formato);
             modelo.addRow(new String[]{
                 String.valueOf(cliente.getIdCliente()),
                 String.valueOf(cliente.getNomeCliente()),
                 String.valueOf(cliente.getCpfCliente()),
+                String.valueOf(cliente.getDataNascimentoCliente()),
+                String.valueOf(cliente.getGeneroCliente()),
+                String.valueOf(cliente.getEstadoCivilCliente()),
+                String.valueOf(cliente.getTelefoneCliente()),
                 String.valueOf(cliente.getEmailCliente()),
-                String.valueOf(cliente.getTelefoneCliente())
+                String.valueOf(cliente.getCepCliente()),
+                String.valueOf(cliente.getLogradouroCliente()),
+                String.valueOf(cliente.getNumeroCliente()),
+                String.valueOf(cliente.getComplementoCliente()),
+                String.valueOf(cliente.getBairroCliente()),
+                String.valueOf(cliente.getCidadeCliente()),
+                String.valueOf(cliente.getUfCliente())
             });
         }
     }
@@ -1351,18 +1422,25 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             modelo.setRowCount(0);
 
             for (Cliente cliente : listaClientesPorNome) {
-                
+
                 modelo.addRow(new String[]{
                     String.valueOf(cliente.getIdCliente()),
                     String.valueOf(cliente.getNomeCliente()),
                     String.valueOf(cliente.getCpfCliente()),
+                    String.valueOf(cliente.getDataNascimentoCliente()),
+                    String.valueOf(cliente.getGeneroCliente()),
+                    String.valueOf(cliente.getEstadoCivilCliente()),
+                    String.valueOf(cliente.getTelefoneCliente()),
                     String.valueOf(cliente.getEmailCliente()),
-                    String.valueOf(cliente.getTelefoneCliente())
+                    String.valueOf(cliente.getCepCliente()),
+                    String.valueOf(cliente.getLogradouroCliente()),
+                    String.valueOf(cliente.getNumeroCliente()),
+                    String.valueOf(cliente.getComplementoCliente()),
+                    String.valueOf(cliente.getBairroCliente()),
+                    String.valueOf(cliente.getCidadeCliente()),
+                    String.valueOf(cliente.getUfCliente())
                 });
             }
-
-//            lblBuscaNome.setText("Cliente: " + txtBuscaCliente_Nome.getText());
-//            lblBuscaCPF.setText("CPF: " + txtBuscaCliente_CPF.getText());
         }
 
     }//GEN-LAST:event_btnBuscarPorNomeClienteActionPerformed

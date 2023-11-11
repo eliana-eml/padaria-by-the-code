@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,7 +86,7 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Passo 3 - Preparar o comando SQL
-            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, email_cliente, telefone_cliente  FROM clientes");
+            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, data_nascimento_cliente, genero_cliente, estado_civil_cliente, telefone_cliente, email_cliente, cep_cliente, logradouro_cliente, numero_cliente, complemento_cliente, bairro_cliente, cidade_cliente, uf_cliente FROM clientes");
 
             //Passo 4 - Executar comando SQL
             rs = comandoSQL.executeQuery();
@@ -102,6 +101,18 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setGeneroCliente(rs.getString("genero_cliente"));
+                    cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
+                    cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setEmailCliente(rs.getString("email_cliente"));
+                    cliente.setCepCliente(rs.getString("cep_cliente"));
+                    cliente.setLogradouroCliente(rs.getString("logradouro_cliente"));
+                    cliente.setNumeroCliente(rs.getString("numero_cliente"));
+                    cliente.setComplementoCliente(rs.getString("complemento_cliente"));
+                    cliente.setBairroCliente(rs.getString("bairro_cliente"));
+                    cliente.setCidadeCliente(rs.getString("cidade_cliente"));
+                    cliente.setUfCliente(rs.getString("uf_cliente"));
 
                     listaClientes.add(cliente);
 
@@ -141,7 +152,7 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Passo 3 - Preparar o comando SQL
-            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, email_cliente, telefone_cliente FROM clientes WHERE cpf_cliente = ?");
+            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, data_nascimento_cliente, genero_cliente, estado_civil_cliente, telefone_cliente, email_cliente, cep_cliente, logradouro_cliente, numero_cliente, complemento_cliente, bairro_cliente, cidade_cliente, uf_cliente FROM clientes WHERE cpf_cliente = ?");
             comandoSQL.setString(1, cpfCliente);
 
             //Passo 4 - Executar o comando SQL
@@ -157,6 +168,18 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setGeneroCliente(rs.getString("genero_cliente"));
+                    cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
+                    cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setEmailCliente(rs.getString("email_cliente"));
+                    cliente.setCepCliente(rs.getString("cep_cliente"));
+                    cliente.setLogradouroCliente(rs.getString("logradouro_cliente"));
+                    cliente.setNumeroCliente(rs.getString("numero_cliente"));
+                    cliente.setComplementoCliente(rs.getString("complemento_cliente"));
+                    cliente.setBairroCliente(rs.getString("bairro_cliente"));
+                    cliente.setCidadeCliente(rs.getString("cidade_cliente"));
+                    cliente.setUfCliente(rs.getString("uf_cliente"));
 
                 }
 
@@ -195,7 +218,7 @@ public class ClienteDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Passo 3 - Preparar o comando SQL
-            comandoSQL = conexao.prepareStatement("SELECT * FROM clientes WHERE nome_cliente = ?");
+            comandoSQL = conexao.prepareStatement("SELECT id_cliente, nome_cliente, cpf_cliente, data_nascimento_cliente, genero_cliente, estado_civil_cliente, telefone_cliente, email_cliente, cep_cliente, logradouro_cliente, numero_cliente, complemento_cliente, bairro_cliente, cidade_cliente, uf_cliente FROM clientes WHERE nome_cliente = ?");
             comandoSQL.setString(1, nomeClienteBuscar);
 
             //Passo 4 - Executar o comando SQL
@@ -212,6 +235,18 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setGeneroCliente(rs.getString("genero_cliente"));
+                    cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
+                    cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
+                    cliente.setEmailCliente(rs.getString("email_cliente"));
+                    cliente.setCepCliente(rs.getString("cep_cliente"));
+                    cliente.setLogradouroCliente(rs.getString("logradouro_cliente"));
+                    cliente.setNumeroCliente(rs.getString("numero_cliente"));
+                    cliente.setComplementoCliente(rs.getString("complemento_cliente"));
+                    cliente.setBairroCliente(rs.getString("bairro_cliente"));
+                    cliente.setCidadeCliente(rs.getString("cidade_cliente"));
+                    cliente.setUfCliente(rs.getString("uf_cliente"));
 
                     listaClientes.add(cliente);
 
