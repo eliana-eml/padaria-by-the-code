@@ -43,6 +43,7 @@ public class Venda {
         this.idClienteVenda = idClienteVenda;
         this.listaProdutos = listaProdutos;
     }*/
+    
     //Getters e Setters
     public int getIdVenda() {
         return idVenda;

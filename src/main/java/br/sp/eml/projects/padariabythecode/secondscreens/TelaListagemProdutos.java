@@ -47,7 +47,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         txtNomeProduto = new javax.swing.JTextField();
         btnBuscarNomeProduto = new javax.swing.JButton();
         btnBuscarIDProduto = new javax.swing.JButton();
-        btnLimparBusca = new javax.swing.JButton();
+        btnRecarregarTabela = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblListagemProdutos = new javax.swing.JTable();
         btnAdicionarProduto = new javax.swing.JButton();
@@ -135,10 +135,10 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
             }
         });
 
-        btnLimparBusca.setText("Limpar Busca");
-        btnLimparBusca.addActionListener(new java.awt.event.ActionListener() {
+        btnRecarregarTabela.setText("Recarregar Tabela");
+        btnRecarregarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparBuscaActionPerformed(evt);
+                btnRecarregarTabelaActionPerformed(evt);
             }
         });
 
@@ -164,7 +164,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarNomeProduto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimparBusca)))
+                        .addComponent(btnRecarregarTabela)))
                 .addContainerGap())
         );
         pnlBuscaListagemProdutosLayout.setVerticalGroup(
@@ -180,7 +180,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarNomeProduto)
                     .addComponent(btnBuscarIDProduto)
-                    .addComponent(btnLimparBusca))
+                    .addComponent(btnRecarregarTabela))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -397,12 +397,12 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarIDProdutoActionPerformed
 
-    private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
+    private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
 
         Utils utilitario = new Utils();
         utilitario.limparCampos(pnlBuscaListagemProdutos);
         recarregarTabelaProdutos();
-    }//GEN-LAST:event_btnLimparBuscaActionPerformed
+    }//GEN-LAST:event_btnRecarregarTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,9 +444,9 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnAdicionarProduto;
     private javax.swing.JButton btnBuscarIDProduto;
     private javax.swing.JButton btnBuscarNomeProduto;
-    private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnNavBarProdutos1;
     private javax.swing.JButton btnNavBarVendas;
+    private javax.swing.JButton btnRecarregarTabela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

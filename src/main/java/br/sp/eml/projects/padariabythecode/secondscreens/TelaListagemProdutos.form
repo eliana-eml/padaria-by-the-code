@@ -192,7 +192,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscarNomeProduto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnLimparBusca" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRecarregarTabela" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -213,7 +213,7 @@
                           <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBuscarNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnBuscarIDProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnLimparBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRecarregarTabela" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="11" max="32767" attributes="0"/>
                   </Group>
@@ -263,12 +263,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarIDProdutoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLimparBusca">
+            <Component class="javax.swing.JButton" name="btnRecarregarTabela">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Limpar Busca"/>
+                <Property name="text" type="java.lang.String" value="Recarregar Tabela"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparBuscaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecarregarTabelaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
