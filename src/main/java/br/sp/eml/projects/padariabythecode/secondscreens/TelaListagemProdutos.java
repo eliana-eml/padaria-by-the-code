@@ -16,14 +16,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TelaListagemProdutos extends javax.swing.JFrame {
 
-    /**
-     * Construtor da classe TelaListagemProdutos. Inicializa os componentes
-     * gráficos gerados automaticamente. Em seguida, define a posição da janela
-     * ao centro da tela.
-     */
+    public TelaPrincipalVendas telaPrincipal;
+    
     public TelaListagemProdutos() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public TelaListagemProdutos(TelaPrincipalVendas objTelaPrincipal) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.telaPrincipal = objTelaPrincipal;
     }
 
     /**
@@ -53,6 +56,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         btnAdicionarProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -332,11 +336,21 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
 
         //Verifico se o índice da linha selecionada é maior ou igual a 0
         if (linhaSelecionada >= 0) {
-            /**
-             * Busca pelo ID no banco de dados ao ter a linha de um registo de
-             * produto selecionada e renderiza o nome do produto e o valor do
-             * mesmo na tela principal de vendas.
-             */
+            
+            Produto produtoSelecionado = new Produto();
+            
+            int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            String nomeProdutoSelecionado = modelo.getValueAt(linhaSelecionada, 1).toString();
+            double precoProdutoSelecionado = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 2).toString());
+            int qtdEstoqueProdutoSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 3).toString());
+
+            produtoSelecionado.setIdProduto(idSelecionado);
+            produtoSelecionado.setNomeProduto(nomeProdutoSelecionado);
+            produtoSelecionado.setPrecoProduto(precoProdutoSelecionado);
+            produtoSelecionado.setQtdEstoqueProduto(qtdEstoqueProdutoSelecionado);
+            
+            telaPrincipal.produtoVenda = produtoSelecionado;
+            telaPrincipal.preencherDadosProduto();
 
             this.dispose();
 

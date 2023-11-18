@@ -15,7 +15,7 @@ public class ClienteDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "P@$$w0rd"; //Alterar conforme o usuário!!
+    static String senha = "root"; //Alterar conforme o usuário!!
 
     public static boolean cadastrarCliente(Cliente cliente) {
 
@@ -34,7 +34,7 @@ public class ClienteDAO {
             comandoSQL = conexao.prepareStatement("INSERT INTO clientes (nome_cliente, cpf_cliente, data_nascimento_cliente, genero_cliente, estado_civil_cliente, telefone_cliente, email_cliente, cep_cliente, logradouro_cliente, numero_cliente, complemento_cliente, bairro_cliente, cidade_cliente, uf_cliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             comandoSQL.setString(1, cliente.getNomeCliente());
             comandoSQL.setString(2, cliente.getCpfCliente());
-            comandoSQL.setDate(3, Date.valueOf(cliente.getDataNascimentoCliente()));
+            comandoSQL.setDate(3, new java.sql.Date(cliente.getDataNascimentoCliente().getTime()));
             comandoSQL.setString(4, cliente.getGeneroCliente());
             comandoSQL.setString(5, cliente.getEstadoCivilCliente());
             comandoSQL.setString(6, cliente.getTelefoneCliente());
@@ -101,7 +101,7 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
-                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente"));
                     cliente.setGeneroCliente(rs.getString("genero_cliente"));
                     cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
@@ -168,7 +168,7 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
-                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente"));
                     cliente.setGeneroCliente(rs.getString("genero_cliente"));
                     cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
@@ -235,7 +235,7 @@ public class ClienteDAO {
                     cliente.setCpfCliente(rs.getString("cpf_cliente"));
                     cliente.setEmailCliente(rs.getString("email_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));
-                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente").toLocalDate());
+                    cliente.setDataNascimentoCliente(rs.getDate("data_nascimento_cliente"));
                     cliente.setGeneroCliente(rs.getString("genero_cliente"));
                     cliente.setEstadoCivilCliente(rs.getString("estado_civil_cliente"));
                     cliente.setTelefoneCliente(rs.getString("telefone_cliente"));

@@ -101,8 +101,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="pnlBuscarPorData" max="32767" attributes="0"/>
-                          <Component id="pnlDetalhes" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <Component id="pnlBuscaPorID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlDetalhesVendasPorPeriodo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -123,9 +123,9 @@
                   <Group type="102" attributes="0">
                       <Component id="pnlBuscarPorData" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <Component id="pnlDetalhesVendasPorPeriodo" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlDetalhes" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlBuscaPorID" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="pnlDetalhes">
+    <Container class="javax.swing.JPanel" name="pnlBuscaPorID">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -637,7 +637,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="pnlDetalhesVendasPorPeriodo">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

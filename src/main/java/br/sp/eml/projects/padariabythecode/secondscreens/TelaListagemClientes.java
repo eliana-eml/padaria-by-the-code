@@ -17,11 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaListagemClientes extends javax.swing.JFrame {
 
     public TelaPrincipalVendas telaPrincipal;
-    /**
-     * Construtor da classe TelaListagemClientes. Inicializa os componentes
-     * gráficos gerados automaticamente. Em seguida, define a posição da janela
-     * ao centro da tela.
-     */
+
     public TelaListagemClientes() {
         initComponents();
         setLocationRelativeTo(null);
@@ -359,11 +355,17 @@ public class TelaListagemClientes extends javax.swing.JFrame {
              * cliente selecionada e renderiza o nome e CPF do cadastro na tela
              * principal de vendas.
              */
+            
             Cliente clienteSelecionado = new Cliente();
             int idCliente = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
             String nomeCliente = modelo.getValueAt(linhaSelecionada, 1).toString();
+            String cpfCliente = modelo.getValueAt(linhaSelecionada, 2).toString();
+            String telefoneSelecionado = modelo.getValueAt(linhaSelecionada, 6).toString();
+            
             clienteSelecionado.setIdCliente(idCliente);
             clienteSelecionado.setNomeCliente(nomeCliente);
+            clienteSelecionado.setCpfCliente(cpfCliente);
+            clienteSelecionado.setTelefoneCliente(telefoneSelecionado);
             
             telaPrincipal.clienteVenda = clienteSelecionado;
             telaPrincipal.preencherDadosCliente();

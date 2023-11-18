@@ -8,7 +8,7 @@ public class Cliente {
     private int idCliente;
     private String nomeCliente;
     private String cpfCliente;
-    private LocalDate dataNascimentoCliente;
+    private Date dataNascimentoCliente;
     private String generoCliente;
     private String estadoCivilCliente;
     private String telefoneCliente;
@@ -21,10 +21,9 @@ public class Cliente {
     private String cidadeCliente;
     private String ufCliente;
 
-    //Construtor vazio
     public Cliente() {}
 
-    public Cliente(String nomeCliente, String cpfCliente, LocalDate dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
+    public Cliente(String nomeCliente, String cpfCliente, Date dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
         this.dataNascimentoCliente = dataNascimentoCliente;
@@ -39,11 +38,9 @@ public class Cliente {
         this.bairroCliente = bairroCliente;
         this.cidadeCliente = cidadeCliente;
         this.ufCliente = ufCliente;
-    }   
+    }
 
-    //Construtor com parâmetros
-
-    public Cliente(int idCliente, String nomeCliente, String cpfCliente, LocalDate dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
+    public Cliente(int idCliente, String nomeCliente, String cpfCliente, Date dataNascimentoCliente, String generoCliente, String estadoCivilCliente, String telefoneCliente, String emailCliente, String cepCliente, String logradouroCliente, String numeroCliente, String complementoCliente, String bairroCliente, String cidadeCliente, String ufCliente) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
@@ -60,8 +57,6 @@ public class Cliente {
         this.cidadeCliente = cidadeCliente;
         this.ufCliente = ufCliente;
     }
-    
-    
 
     //Getters e Setters
     public int getIdCliente() {
@@ -88,11 +83,11 @@ public class Cliente {
         this.cpfCliente = cpfCliente;
     }
 
-    public LocalDate getDataNascimentoCliente() {
+    public Date getDataNascimentoCliente() {
         return dataNascimentoCliente;
     }
 
-    public void setDataNascimentoCliente(LocalDate dataNascimentoCliente) {
+    public void setDataNascimentoCliente(Date dataNascimentoCliente) {
         this.dataNascimentoCliente = dataNascimentoCliente;
     }
 

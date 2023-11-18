@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.dao;
 
+import br.sp.eml.projects.padariabythecode.model.ItemVenda;
 import br.sp.eml.projects.padariabythecode.model.Venda;
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +17,7 @@ public class VendaDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "P@$$w0rd"; //Alterar conforme o usuário!!
+    static String senha = "root"; //Alterar conforme o usuário!!
 
     public static boolean cadastrarVenda(Venda venda) {
 
@@ -31,30 +33,58 @@ public class VendaDAO {
             conexao = DriverManager.getConnection(url, login, senha);
 
             //Passo 3 - Preparar o comando SQL a ser executado
-            comandoSQL = conexao.prepareStatement("INSERT INTO vendas (data_venda, valor_total_venda, id_cliente) VALUES (?, ?, ?)");
-            comandoSQL.setDate(1, Date.valueOf(venda.getDataVenda()));
+            comandoSQL = conexao.prepareStatement("INSERT INTO vendas (data_venda, valor_total_venda, id_cliente) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            comandoSQL.setDate(1, new java.sql.Date(venda.getDataVenda().getTime()));
             comandoSQL.setDouble(2, venda.getValorTotalVenda());
             comandoSQL.setInt(3, venda.getIdClienteVenda());
 
             int linhasAfetadas = comandoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                retorno = true;
+
+                ResultSet rs = comandoSQL.getGeneratedKeys();
+
+                if (rs.next()) {
+
+                    int idVenda = rs.getInt(1);
+
+                    for (ItemVenda item : venda.getListaProdutos()) {
+                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO item_venda (id_venda, id_produto, qtd_produto, valor_unitario_item) VALUES (?,?,?,?)");
+                        comandoSQLItem.setInt(1, idVenda);
+                        comandoSQLItem.setInt(2, item.getIdProduto());
+                        comandoSQLItem.setInt(3, item.getQtdProduto());
+                        comandoSQL.setDouble(4, item.getValorUnitarioItem());
+                        
+
+                        int linhasAfetadasItem = comandoSQLItem.executeUpdate();
+
+                        if (linhasAfetadasItem > 0) {
+                            retorno = true;
+                        }
+
+                    }
+
+                }
+
             }
 
-        } catch (ClassNotFoundException ex) {
-            retorno = false;
-        } catch (SQLException ex) {
-            retorno = false;
-        } finally {
-            if (conexao != null) {
-                try {
-                    conexao.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
         }
+        
+//        catch (ClassNotFoundException ex) {
+//            retorno = false;
+//        } catch (SQLException ex) {
+//            retorno = false;
+//        } finally {
+//            if (conexao != null) {
+//                try {
+//                    conexao.close();
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
 
         return retorno;
     }
@@ -86,7 +116,7 @@ public class VendaDAO {
                 while (rs.next()) {
                     Venda item = new Venda();
                     item.setIdVenda(rs.getInt("id_venda"));
-                    item.setDataVenda(rs.getDate("data_venda").toLocalDate());
+                    item.setDataVenda(rs.getDate("data_venda"));
                     item.setValorTotalVenda(rs.getDouble("valor_total_venda"));
                     item.setIdClienteVenda(rs.getInt("id_cliente"));
 
@@ -140,7 +170,7 @@ public class VendaDAO {
                 while (rs.next()) {
 
                     venda.setIdVenda(rs.getInt("id_venda"));
-                    venda.setDataVenda(rs.getDate("data_venda").toLocalDate());
+                    venda.setDataVenda(rs.getDate("data_venda"));
                     venda.setValorTotalVenda(rs.getDouble("valor_total_venda"));
                     venda.setIdClienteVenda(rs.getInt("id_cliente"));
 

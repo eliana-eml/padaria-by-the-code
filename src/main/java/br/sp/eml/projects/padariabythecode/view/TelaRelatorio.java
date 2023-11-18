@@ -35,7 +35,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         scrollbar1 = new java.awt.Scrollbar();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        pnlDetalhes = new javax.swing.JPanel();
+        pnlBuscaPorID = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         btnVisualizarRelatorioAnalitico = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +63,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lbDataAtual1 = new javax.swing.JLabel();
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlDetalhesVendasPorPeriodo = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -85,7 +85,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        pnlDetalhes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlBuscaPorID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnVisualizarRelatorioAnalitico.setText("Visualizar Relatório Analítico");
         btnVisualizarRelatorioAnalitico.addActionListener(new java.awt.event.ActionListener() {
@@ -113,39 +113,39 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlDetalhesLayout = new javax.swing.GroupLayout(pnlDetalhes);
-        pnlDetalhes.setLayout(pnlDetalhesLayout);
-        pnlDetalhesLayout.setHorizontalGroup(
-            pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDetalhesLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlBuscaPorIDLayout = new javax.swing.GroupLayout(pnlBuscaPorID);
+        pnlBuscaPorID.setLayout(pnlBuscaPorIDLayout);
+        pnlBuscaPorIDLayout.setHorizontalGroup(
+            pnlBuscaPorIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscaPorIDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDetalhesLayout.createSequentialGroup()
-                        .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlBuscaPorIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBuscaPorIDLayout.createSequentialGroup()
+                        .addGroup(pnlBuscaPorIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel10))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnVisualizarRelatorioAnalitico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlDetalhesLayout.createSequentialGroup()
+                    .addGroup(pnlBuscaPorIDLayout.createSequentialGroup()
                         .addComponent(jSeparator1)
                         .addGap(271, 271, 271))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDetalhesLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscaPorIDLayout.createSequentialGroup()
                         .addComponent(txtIDVendaBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarVendaID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        pnlDetalhesLayout.setVerticalGroup(
-            pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDetalhesLayout.createSequentialGroup()
+        pnlBuscaPorIDLayout.setVerticalGroup(
+            pnlBuscaPorIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBuscaPorIDLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlDetalhesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlBuscaPorIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscarVendaID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlDetalhesLayout.createSequentialGroup()
+                    .addGroup(pnlBuscaPorIDLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(txtIDVendaBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)))
                 .addGap(11, 11, 11)
@@ -382,7 +382,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlDetalhesVendasPorPeriodo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel16.setText("01/12/2023");
@@ -405,46 +405,46 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("01/01/2023");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlDetalhesVendasPorPeriodoLayout = new javax.swing.GroupLayout(pnlDetalhesVendasPorPeriodo);
+        pnlDetalhesVendasPorPeriodo.setLayout(pnlDetalhesVendasPorPeriodoLayout);
+        pnlDetalhesVendasPorPeriodoLayout.setHorizontalGroup(
+            pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
+                        .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel16)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnlDetalhesVendasPorPeriodoLayout.setVerticalGroup(
+            pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel17))
                 .addContainerGap())
@@ -498,8 +498,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(pnlBuscaPorID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlDetalhesVendasPorPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -515,9 +515,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlBuscarPorData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlDetalhesVendasPorPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlBuscaPorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -722,7 +722,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
@@ -739,10 +738,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuItemCadastroClientes;
     private javax.swing.JMenuItem mnuItemCadastroProdutos;
     private javax.swing.JMenuItem mnuRelatorioVendas;
+    private javax.swing.JPanel pnlBuscaPorID;
     private javax.swing.JPanel pnlBuscarPorData;
     private javax.swing.JPanel pnlCabecalho;
     private javax.swing.JPanel pnlDadosVendas;
-    private javax.swing.JPanel pnlDetalhes;
+    private javax.swing.JPanel pnlDetalhesVendasPorPeriodo;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlRodape1;
     private java.awt.Scrollbar scrollbar1;

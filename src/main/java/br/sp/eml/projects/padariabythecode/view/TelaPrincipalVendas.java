@@ -1,6 +1,10 @@
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.dao.VendaDAO;
 import br.sp.eml.projects.padariabythecode.model.Cliente;
+import br.sp.eml.projects.padariabythecode.model.ItemVenda;
+import br.sp.eml.projects.padariabythecode.model.Produto;
+import br.sp.eml.projects.padariabythecode.model.Venda;
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 
@@ -12,18 +16,26 @@ import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaConfirmacaoPedido;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemClientes;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemProdutos;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JTable;
 
 /**
  *
  * @author emlel
  */
 public class TelaPrincipalVendas extends javax.swing.JFrame {
-
+    
     public Cliente clienteVenda;
+    public Produto produtoVenda;
+
     /**
-     * Construtor da classe TelaPrincipalVendas.
-     * Inicializa os componentes gráficos gerados automaticamente.
-     * Em seguida, define a posição da janela ao centro da tela.
+     * Construtor da classe TelaPrincipalVendas. Inicializa os componentes
+     * gráficos gerados automaticamente. Em seguida, define a posição da janela
+     * ao centro da tela.
      */
     public TelaPrincipalVendas() {
         initComponents();
@@ -32,12 +44,21 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 //        lblDataAtual.setText(dataAtual.toString());
     }
     
-    public void preencherDadosCliente(){
-    
-        if(clienteVenda != null){
+    public void preencherDadosCliente() {
+        
+        if (clienteVenda != null) {
             
             txtNomeCliente.setText(clienteVenda.getNomeCliente());
+            txtCPF.setText(clienteVenda.getCpfCliente());
+        }
         
+    }
+    
+    public void preencherDadosProduto() {
+        
+        if (produtoVenda != null) {
+            
+            txtNomeProduto.setText(produtoVenda.getNomeProduto());
         }
         
     }
@@ -93,6 +114,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lblDataPedido = new javax.swing.JLabel();
         lblValorTotalPedido = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        lblIDCliente = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
         mnuArquivos = new javax.swing.JMenu();
         mnuItemCadatroClientes = new javax.swing.JMenuItem();
@@ -463,7 +485,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         lblTelefoneCliente.setText("Telefone:");
 
         lblNumeroPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblNumeroPedido.setText("Nº PEDIDO: 1234");
+        lblNumeroPedido.setText("Nº PEDIDO: 0000");
 
         lblDataPedido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDataPedido.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -476,28 +498,36 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Valor Total:");
 
+        lblIDCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIDCliente.setText("ID Cliente:");
+
         javax.swing.GroupLayout pnlDadosClienteLayout = new javax.swing.GroupLayout(pnlDadosCliente);
         pnlDadosCliente.setLayout(pnlDadosClienteLayout);
         pnlDadosClienteLayout.setHorizontalGroup(
             pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosClienteLayout.createSequentialGroup()
+            .addGroup(pnlDadosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosClienteLayout.createSequentialGroup()
+                        .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlDadosClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
+                                .addComponent(lblNumeroPedido)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDataPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
+                                .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNomeCliente)
+                                    .addComponent(lblCPFCliente)
+                                    .addComponent(lblTelefoneCliente))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10))
                     .addGroup(pnlDadosClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblValorTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
-                        .addComponent(lblNumeroPedido)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblDataPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDadosClienteLayout.createSequentialGroup()
-                        .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNomeCliente)
-                            .addComponent(lblCPFCliente)
-                            .addComponent(lblTelefoneCliente))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(10, 10, 10))
+                        .addComponent(lblIDCliente)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlDadosClienteLayout.setVerticalGroup(
             pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,12 +537,14 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                     .addComponent(lblNumeroPedido)
                     .addComponent(lblDataPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblIDCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblNomeCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCPFCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTelefoneCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDadosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblValorTotalPedido))
@@ -618,8 +650,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void mnuItemCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadastroProdutosActionPerformed
         /**
-         * Instancia um novo objeto da classe TelaProdutos através do menubar e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaProdutos através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
@@ -627,8 +659,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarClienteActionPerformed
         /**
-         * Método de validação somente para a validação de campos e apresentação na tela estática.
-         * 
+         * Método de validação somente para a validação de campos e apresentação
+         * na tela estática.
+         *
          * O método atual só irá receber os parâmetros dos campos TextField de
          * Nome e CPF e apresentá-los na tela.
          *
@@ -636,7 +669,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
          * informações como idCliente, nomeCliente, cpfCliente e etc, do Banco
          * de Dados.
          */
-        
+
         //Instâncio um objeto da classe Utils
         Utils utilitario = new Utils();
 
@@ -650,7 +683,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-
+            
         } else {
 
             /**
@@ -658,8 +691,11 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
              * lblNomeCliente e lblCPFCliente e desabilito o botão
              * btnAdicionarCliente.
              */
-            lblNomeCliente.setText("Cliente: " + txtNomeCliente.getText());
-            lblCPFCliente.setText("CPF: " + txtCPF.getText());
+            lblIDCliente.setText("ID Cliente: " + clienteVenda.getIdCliente());
+            lblNomeCliente.setText("Cliente: " + clienteVenda.getNomeCliente());
+            lblCPFCliente.setText("CPF: " + clienteVenda.getCpfCliente());
+            lblTelefoneCliente.setText("Telefone: " + clienteVenda.getTelefoneCliente());
+            
             utilitario.desabilitarBotoes(btnAdicionarCliente);
         }
 
@@ -677,7 +713,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-
+            
         } else {
 
             //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
@@ -685,18 +721,15 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             formatarNumero.setMaximumFractionDigits(2);
 
             //Declaro variáveis auxiliares para cada campo da nova linha na tabela
-            int codProduto = 1;
-            double valorUniProdRandom = Math.random() * 20;
             int qtdProd = Integer.parseInt(txtQtdProduto.getText());
-            double totalProd = valorUniProdRandom * qtdProd;
 
             //Converto essas variáveis para Strings
-            String codigoProduto = String.valueOf(codProduto);
-            String nomeProduto = txtNomeProduto.getText();
+            String codigoProduto = String.valueOf(produtoVenda.getIdProduto());
+            String nomeProduto = produtoVenda.getNomeProduto();
             String qtdProduto = txtQtdProduto.getText();
-            String valorUniProd = String.valueOf(formatarNumero.format(valorUniProdRandom));
-            String valorTotalProd = String.valueOf(formatarNumero.format(totalProd));
-
+            String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
+            String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
+            
             DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
             //Adiciono uma linha à tabela
@@ -704,39 +737,47 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 codigoProduto,
                 nomeProduto,
                 qtdProduto,
-                valorUniProd,
-                valorTotalProd
+                valorUnitarioProduto,
+                valorTotalItensProduto
             });
+            
         }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
-
+    
     private void atualizarValorTotalPedido() {
-
-        //Instâncio um objeto da classe DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
+        
         DecimalFormat formatarNumero = new DecimalFormat();
         formatarNumero.setMaximumFractionDigits(2);
-//        formatarNumero.setRoundingMode(RoundingMode.UNNECESSARY);
-
-        //Declaro variáveis auxiliares para realizar o cálculo do valor total do pedido
-        double produtoValor, pedidoValorTotal = 0;
-        int produtoQuantidade;
-
-        //Percorro através do vetor todas as linhas da tabela de listaItensPedido
-        for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
-
-            //Busco o valor da linha i e coluna 3 (Valor Unitário) da tabela, substituo as vírgulas por pontos e converto o valor de String para double, atribuindo à variável produtoValor.
-            produtoValor = Double.parseDouble(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 3)).replace(",", "."));
-            //Busco o valor da linha i e coluna 2 (Qtd) da tabela, converto o valor de String para int, atribuindo à variável produtoQuantidade.
-            produtoQuantidade = Integer.parseInt(String.valueOf(tblListaItensPedido.getModel().getValueAt(i, 2)));
-
-            //Realizo o cálculo do valor total do pedido
-            pedidoValorTotal += (produtoQuantidade * produtoValor);
-        }
+        
+        double pedidoValorTotal = calcularValorTotalPedido(tblListaItensPedido);
 
         //Exibo o valor total do pedido no label lblValorTotalPedido, depois de o formatar e o converter para String.
         lblValorTotalPedido.setText("R$ " + String.valueOf(formatarNumero.format(pedidoValorTotal)).replace(".", ","));
     }
+    
+    public double calcularValorTotalPedido(JTable tabela) {
+        
+        DecimalFormat formatarNumero = new DecimalFormat();
+        formatarNumero.setMaximumFractionDigits(2);
+        
+        double produtoValor, pedidoValorTotal = 0;
+        int produtoQuantidade;
+        
+        for (int i = 0; i < tabela.getRowCount(); i++) {
+
+            //Busco o valor da linha i e coluna 3 (Valor Unitário) da tabela, substituo as vírgulas por pontos e converto o valor de String para double, atribuindo à variável produtoValor.
+            produtoValor = Double.parseDouble(String.valueOf(tabela.getModel().getValueAt(i, 3)).replace(",", "."));
+            //Busco o valor da linha i e coluna 2 (Qtd) da tabela, converto o valor de String para int, atribuindo à variável produtoQuantidade.
+            produtoQuantidade = Integer.parseInt(String.valueOf(tabela.getModel().getValueAt(i, 2)));
+
+            //Realizo o cálculo do valor total do pedido
+            pedidoValorTotal += (produtoQuantidade * produtoValor);
+        }
+        
+        return pedidoValorTotal;
+    }
+    
 
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
 
@@ -761,8 +802,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnNavBarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarClientesActionPerformed
         /**
-         * Instancia um novo objeto da classe TelaCadastroCliente e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaCadastroCliente e o torna
+         * visível. Em seguida, oculta a janela atual.
          */
         new TelaCadastroCliente().setVisible(true);
         this.setVisible(false);
@@ -770,8 +811,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
         /**
-         * Instancia um novo objeto da classe TelaProdutos e o torna visível.
-         * Em seguida, oculta a janela atual.
+         * Instancia um novo objeto da classe TelaProdutos e o torna visível. Em
+         * seguida, oculta a janela atual.
          */
         new TelaProdutos().setVisible(true);
         this.setVisible(false);
@@ -821,14 +862,56 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private void btnFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPedidoActionPerformed
 
         /**
-         * Além de realizar o insert do pedido no banco de dados
-         * o botão btnFinalizarPedido irá chamar a telinha de confirmação de pedido.
+         * Além de realizar o insert do pedido no banco de dados o botão
+         * btnFinalizarPedido irá chamar a telinha de confirmação de pedido.
          *
          * Como o banco de dados ainda não está implementado, o botão apenas
          * habilita a TelaConfirmacaoPedido e desabilita a TelaPrincipalVendas.
          */
-        new TelaConfirmacaoPedido().setVisible(true);
-        this.setVisible(false);
+        //Resgato os produtos
+        ArrayList<ItemVenda> listaItens = new ArrayList<ItemVenda>();
+        
+        if (tblListaItensPedido.getRowCount() > 0) {
+            
+            for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
+                ItemVenda item = new ItemVenda();
+                
+                item.setIdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 0).toString()));
+                item.setQtdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 2).toString()));
+                item.setValorUnitarioItem(Double.parseDouble(tblListaItensPedido.getValueAt(i, 3).toString()));
+
+                //Adiciono o objeto à listaItens
+                listaItens.add(item);
+                
+            }
+        }
+        
+        SimpleDateFormat formatadorDatas = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Date dataAtual = new Date();
+//        String dataAtualFormatada = formatadorDatas.format(dataAtual);
+        
+        double valorTotalVenda = calcularValorTotalPedido(tblListaItensPedido);
+        int idCliente = clienteVenda.getIdCliente();
+        
+        Venda objVenda = new Venda();
+        objVenda.setDataVenda(dataAtual);
+        objVenda.setValorTotalVenda(valorTotalVenda);
+        objVenda.setIdClienteVenda(idCliente);
+        objVenda.setListaProdutos(listaItens);
+        
+        boolean retorno = VendaDAO.cadastrarVenda(objVenda);
+        
+        if (retorno == true) {
+            JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
+            
+            new TelaConfirmacaoPedido().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Falha na venda!");
+        }
+        
+
     }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
 
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
@@ -866,7 +949,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
         //Instância um novo objeto da classe TelaListagemProdutos e o torna visível.
-        new TelaListagemProdutos().setVisible(true);
+        new TelaListagemProdutos(this).setVisible(true);
     }//GEN-LAST:event_btnBuscarNomeProdutoActionPerformed
 
     private void mnuItemCadatroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCadatroClientesActionPerformed
@@ -880,8 +963,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void mnuItemRelatorioVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemRelatorioVendasActionPerformed
         /**
-         * Instância um novo objeto da classe TelaRelatorio através do
-         * menubar e o torna visível. Em seguida, oculta a janela atual.
+         * Instância um novo objeto da classe TelaRelatorio através do menubar e
+         * o torna visível. Em seguida, oculta a janela atual.
          */
         new TelaRelatorio().setVisible(true);
         this.setVisible(false);
@@ -891,10 +974,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         /**
          * Cria uma instância da classe Validador para realizar validações. Em
          * seguida, chama o método limitarQuantidadeCaracteres para limitar o
-         * número de caracteres inseridos no campo txtNomeCliente. 
-         * 
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto
-         * no campo txtNomeCliente.
+         * número de caracteres inseridos no campo txtNomeCliente.
+         *
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada
+         * de texto no campo txtNomeCliente.
          */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeCliente, 50);
@@ -905,10 +988,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         /**
          * Cria uma instância da classe Validador para realizar validações. Em
          * seguida, chama o método limitarEntradaNumerica para restringir a
-         * entrada de números no campo txtQtdProduto. 
-         * 
-         * Por fim, chama o método limitarQuantidadeCaracteres para limitar o número de caracteres
-         * inseridos no campo txtQtdProduto.
+         * entrada de números no campo txtQtdProduto.
+         *
+         * Por fim, chama o método limitarQuantidadeCaracteres para limitar o
+         * número de caracteres inseridos no campo txtQtdProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarEntradaNumerica(evt, txtQtdProduto);
@@ -920,10 +1003,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         /**
          * Cria uma instância da classe Validador para realizar validações. Em
          * seguida, chama o método limitarQuantidadeCaracteres para limitar o
-         * número de caracteres inseridos no campo txtNomeProduto. 
-         * 
-         * Por fim, chama o método limitarEntradaTexto para restringir a entrada de texto
-         * no campo txtNomeProduto.
+         * número de caracteres inseridos no campo txtNomeProduto.
+         *
+         * Por fim, chama o método limitarEntradaTexto para restringir a entrada
+         * de texto no campo txtNomeProduto.
          */
         Validador validacao = new Validador();
         validacao.limitarQuantidadeCaracteres(evt, txtNomeProduto, 50);
@@ -990,6 +1073,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JLabel lblCPFCliente;
     private javax.swing.JLabel lblDataAtual;
     private javax.swing.JLabel lblDataPedido;
+    private javax.swing.JLabel lblIDCliente;
     private javax.swing.JLabel lblLogotipo;
     private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblNomePadaria;

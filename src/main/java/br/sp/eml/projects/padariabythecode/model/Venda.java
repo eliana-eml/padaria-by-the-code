@@ -1,50 +1,35 @@
 package br.sp.eml.projects.padariabythecode.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Venda {
 
     private int idVenda;
-    private LocalDate dataVenda;
+    private Date dataVenda;
     private double valorTotalVenda;
     private int idClienteVenda;
-    private ArrayList<Produto> listaProdutos;
+    private ArrayList<ItemVenda> listaProdutos;
 
     //Construtor vazio
     public Venda() {
     }
 
-    public Venda(LocalDate dataVenda, double valorTotalVenda, int idClienteVenda) {
-        this.dataVenda = dataVenda;
-        this.valorTotalVenda = valorTotalVenda;
-        this.idClienteVenda = idClienteVenda;
-    }
-
-    public Venda(int idVenda, LocalDate dataVenda, double valorTotalVenda, int idClienteVenda) {
-        this.idVenda = idVenda;
-        this.dataVenda = dataVenda;
-        this.valorTotalVenda = valorTotalVenda;
-        this.idClienteVenda = idClienteVenda;
-    }
-
-    //Construtores com parâmetros + ArrayLista listaProdutos
-    /*public Venda(LocalDate dataVenda, double valorTotalVenda, int idClienteVenda, ArrayList<Produto> listaProdutos) {
+    public Venda(Date dataVenda, double valorTotalVenda, int idClienteVenda, ArrayList<ItemVenda> listaProdutos) {
         this.dataVenda = dataVenda;
         this.valorTotalVenda = valorTotalVenda;
         this.idClienteVenda = idClienteVenda;
         this.listaProdutos = listaProdutos;
     }
-    
-    public Venda(int idVenda, LocalDate dataVenda, double valorTotalVenda, int idClienteVenda, ArrayList<Produto> listaProdutos) {
+
+    public Venda(int idVenda, Date dataVenda, double valorTotalVenda, int idClienteVenda, ArrayList<ItemVenda> listaProdutos) {
         this.idVenda = idVenda;
         this.dataVenda = dataVenda;
         this.valorTotalVenda = valorTotalVenda;
         this.idClienteVenda = idClienteVenda;
         this.listaProdutos = listaProdutos;
-    }*/
-    
-    //Getters e Setters
+    }
+
     public int getIdVenda() {
         return idVenda;
     }
@@ -53,11 +38,11 @@ public class Venda {
         this.idVenda = idVenda;
     }
 
-    public LocalDate getDataVenda() {
+    public Date getDataVenda() {
         return dataVenda;
     }
 
-    public void setDataVenda(LocalDate dataVenda) {
+    public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
     }
 
@@ -77,12 +62,13 @@ public class Venda {
         this.idClienteVenda = idClienteVenda;
     }
 
-    public ArrayList<Produto> getListaProdutos() {
+    public ArrayList<ItemVenda> getListaProdutos() {
         return listaProdutos;
     }
 
-    public void setListaProdutos(ArrayList<Produto> listaProdutos) {
+    public void setListaProdutos(ArrayList<ItemVenda> listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
 
+    
 }
