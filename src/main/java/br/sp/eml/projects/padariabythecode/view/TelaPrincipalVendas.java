@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.model.Cliente;
 import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 
@@ -18,6 +19,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaListagemProdutos;
  */
 public class TelaPrincipalVendas extends javax.swing.JFrame {
 
+    public Cliente clienteVenda;
     /**
      * Construtor da classe TelaPrincipalVendas.
      * Inicializa os componentes gráficos gerados automaticamente.
@@ -28,6 +30,16 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 //        Date dataAtual = new Date();
 //        lblDataAtual.setText(dataAtual.toString());
+    }
+    
+    public void preencherDadosCliente(){
+    
+        if(clienteVenda != null){
+            
+            txtNomeCliente.setText(clienteVenda.getNomeCliente());
+        
+        }
+        
     }
 
     /**
@@ -849,7 +861,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         //Instância um novo objeto da classe TelaListagemClientes e o torna visível.
-        new TelaListagemClientes().setVisible(true);
+        new TelaListagemClientes(this).setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     private void btnBuscarNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNomeProdutoActionPerformed
