@@ -904,10 +904,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         objVenda.setListaProdutos(listaItens);
 
         boolean retorno = VendaDAO.cadastrarVenda(objVenda);
-        atualizarEstoque(tblListaItensPedido);
 
         if (retorno == true) {
             JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
+            atualizarEstoque(tblListaItensPedido);
 
             new TelaConfirmacaoPedido().setVisible(true);
             this.setVisible(false);
