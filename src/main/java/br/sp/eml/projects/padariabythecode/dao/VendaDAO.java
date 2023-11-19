@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.dao;
 
+import br.sp.eml.projects.padariabythecode.model.Cliente;
 import br.sp.eml.projects.padariabythecode.model.ItemVenda;
 import br.sp.eml.projects.padariabythecode.model.Venda;
 import java.sql.Connection;
@@ -22,18 +23,18 @@ public class VendaDAO {
     public static boolean cadastrarVenda(Venda venda) {
 
         boolean retorno = false;
-        Connection conexao = null;
-        PreparedStatement comandoSQL = null;
+//         conexao = null;
+//         comandoSQL = null;
 
         try {
             //Passo 1 - Carregar o Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             //Passo2 - Abrir a conexão com o banco
-            conexao = DriverManager.getConnection(url, login, senha);
+            Connection conexao = DriverManager.getConnection(url, login, senha);
 
             //Passo 3 - Preparar o comando SQL a ser executado
-            comandoSQL = conexao.prepareStatement("INSERT INTO vendas (data_venda, valor_total_venda, id_cliente) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement comandoSQL = conexao.prepareStatement("INSERT INTO vendas (data_venda, valor_total_venda, id_cliente) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             comandoSQL.setDate(1, new java.sql.Date(venda.getDataVenda().getTime()));
             comandoSQL.setDouble(2, venda.getValorTotalVenda());
             comandoSQL.setInt(3, venda.getIdClienteVenda());
@@ -49,12 +50,11 @@ public class VendaDAO {
                     int idVenda = rs.getInt(1);
 
                     for (ItemVenda item : venda.getListaProdutos()) {
-                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO item_venda (id_venda, id_produto, qtd_produto, valor_unitario_item) VALUES (?,?,?,?)");
+                        PreparedStatement comandoSQLItem = conexao.prepareStatement("INSERT INTO item_venda (id_venda, id_produto, qtd_produto, valor_unitario_item) VALUES (?, ?, ?, ?)");
                         comandoSQLItem.setInt(1, idVenda);
                         comandoSQLItem.setInt(2, item.getIdProduto());
                         comandoSQLItem.setInt(3, item.getQtdProduto());
-                        comandoSQL.setDouble(4, item.getValorUnitarioItem());
-                        
+                        comandoSQLItem.setDouble(4, item.getValorUnitarioItem());
 
                         int linhasAfetadasItem = comandoSQLItem.executeUpdate();
 
@@ -71,11 +71,51 @@ public class VendaDAO {
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }
-        
-//        catch (ClassNotFoundException ex) {
-//            retorno = false;
+
+        return retorno;
+    }
+
+//    public static ArrayList<Venda> listarVendas() {
+//
+//        ArrayList<Venda> listaVendas = new ArrayList<>();
+//
+//        Connection conexao = null;
+//        PreparedStatement comandoSQL = null;
+//        ResultSet rs = null;
+//
+//        try {
+//            //Passo 1 - Carregar o Driver
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//
+//            //Passo 2 - Abrir Conexão com MYSQL
+//            conexao = DriverManager.getConnection(url, login, senha);
+//
+//            //Passo 3 - Preparar o comando SQL
+//            comandoSQL = conexao.prepareStatement("SELECT * FROM vendas");
+//
+//            //Passo 4 - Executar comando SQL
+//            rs = comandoSQL.executeQuery();
+//
+//            if (rs != null) {
+//
+//                //PERCORRE TODAS AS LINHAS DO RESULT
+//                while (rs.next()) {
+//                    Venda item = new Venda();
+//
+//                    item.setIdVenda(rs.getInt("id_venda"));
+//                    item.setDataVenda(rs.getDate("data_venda"));
+//                    item.setIdClienteVenda(rs.getInt("id_cliente"));
+//                    item.setValorTotalVenda(rs.getDouble("valor_total_venda"));
+//
+//                    listaVendas.add(item);
+//
+//                }
+//            }
+//
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (SQLException ex) {
-//            retorno = false;
+//            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
 //        } finally {
 //            if (conexao != null) {
 //                try {
@@ -84,64 +124,11 @@ public class VendaDAO {
 //                    Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
 //                }
 //            }
+//
 //        }
-
-        return retorno;
-    }
-
-    public static ArrayList<Venda> listarVendas() {
-
-        ArrayList<Venda> listaVendas = new ArrayList<>();
-
-        Connection conexao = null;
-        PreparedStatement comandoSQL = null;
-        ResultSet rs = null;
-
-        try {
-            //Passo 1 - Carregar o Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            //Passo 2 - Abrir Conexão com MYSQL
-            conexao = DriverManager.getConnection(url, login, senha);
-
-            //Passo 3 - Preparar o comando SQL
-            comandoSQL = conexao.prepareStatement("SELECT * FROM vendas");
-
-            //Passo 4 - Executar comando SQL
-            rs = comandoSQL.executeQuery();
-
-            if (rs != null) {
-
-                //PERCORRE TODAS AS LINHAS DO RESULT
-                while (rs.next()) {
-                    Venda item = new Venda();
-                    item.setIdVenda(rs.getInt("id_venda"));
-                    item.setDataVenda(rs.getDate("data_venda"));
-                    item.setValorTotalVenda(rs.getDouble("valor_total_venda"));
-                    item.setIdClienteVenda(rs.getInt("id_cliente"));
-
-                    listaVendas.add(item);
-
-                }
-            }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (conexao != null) {
-                try {
-                    conexao.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-
-        }
-
-        return listaVendas;
-    }
+//
+//        return listaVendas;
+//    }
 
     public static Venda buscarPorIdVenda(int idVenda) {
 

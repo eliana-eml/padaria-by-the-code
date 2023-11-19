@@ -7,6 +7,7 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroClientes;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -1000,7 +1001,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             String nomeSelecionado = modelo.getValueAt(linhaSelecionada, 1).toString();
             String cpfSelecionado = modelo.getValueAt(linhaSelecionada, 2).toString();
             
-            LocalDate dataNascimentoSelecionada = LocalDate.parse(((modelo.getValueAt(linhaSelecionada, 3).toString())));
+            Date dataNascimentoSelecionada = Date.valueOf(((modelo.getValueAt(linhaSelecionada, 3).toString())));
             
             String generoSelecionado = modelo.getValueAt(linhaSelecionada, 4).toString();
             String estadoCivilSelecionado = modelo.getValueAt(linhaSelecionada, 5).toString();
@@ -1077,9 +1078,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             String bairro = txtBairroCliente.getText();
             String cidade = txtCidadeCliente.getText();
             String uf = cboUFCliente.getSelectedItem().toString();
-
-            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate dataNascimento = LocalDate.parse(dtNascimentoCliente, formato);
+            
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
+            Date dataNascimento = Date.valueOf(sdf.format(dtNascimentoCliente));
 
             Cliente cliente = new Cliente(nome, cpf, dataNascimento, genero, estadoCivil, telefone,
                     email, cep, logradouro, numero, complemento, bairro, cidade, uf);

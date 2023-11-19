@@ -53,6 +53,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
+        btnRecarregarTabela = new javax.swing.JButton();
         pnlCabecalho = new javax.swing.JPanel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
@@ -162,7 +163,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel9.setText("BUSCA POR DATA");
 
-        btnBuscarPorData.setText("Visualizar Relatório");
+        btnBuscarPorData.setText("Visualizar Relatório do Período");
         btnBuscarPorData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPorDataActionPerformed(evt);
@@ -207,7 +208,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                                 .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
+                                .addComponent(btnBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -237,17 +238,20 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID Compra", "Cliente", "CPF Cliente", "Data da Compra", "Valor Total"
+                "ID Venda", "Data da Compra", "ID Cliente", "Cliente", "CPF Cliente", "Valor Total Venda"
             }
         ));
         jScrollPane3.setViewportView(tblVendas);
+
+        btnRecarregarTabela.setText("Recarregar Tabela");
+        btnRecarregarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecarregarTabelaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDadosVendasLayout = new javax.swing.GroupLayout(pnlDadosVendas);
         pnlDadosVendas.setLayout(pnlDadosVendasLayout);
@@ -259,7 +263,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 470, Short.MAX_VALUE)))
+                        .addGap(0, 436, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosVendasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnRecarregarTabela)))
                 .addContainerGap())
         );
         pnlDadosVendasLayout.setVerticalGroup(
@@ -268,7 +275,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRecarregarTabela)
                 .addContainerGap())
         );
 
@@ -666,6 +675,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnVisualizarRelatorioAnaliticoActionPerformed
 
+    private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
+
+        
+        
+        
+    }//GEN-LAST:event_btnRecarregarTabelaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -708,6 +724,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JButton btnNavBarClientes;
     private javax.swing.JButton btnNavBarProdutos;
     private javax.swing.JButton btnNavBarVendas;
+    private javax.swing.JButton btnRecarregarTabela;
     private javax.swing.JButton btnVisualizarRelatorioAnalitico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

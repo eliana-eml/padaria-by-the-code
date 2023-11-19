@@ -28,7 +28,7 @@ import javax.swing.JTable;
  * @author emlel
  */
 public class TelaPrincipalVendas extends javax.swing.JFrame {
-    
+
     public Cliente clienteVenda;
     public Produto produtoVenda;
 
@@ -43,24 +43,24 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 //        Date dataAtual = new Date();
 //        lblDataAtual.setText(dataAtual.toString());
     }
-    
+
     public void preencherDadosCliente() {
-        
+
         if (clienteVenda != null) {
-            
+
             txtNomeCliente.setText(clienteVenda.getNomeCliente());
             txtCPF.setText(clienteVenda.getCpfCliente());
         }
-        
+
     }
-    
+
     public void preencherDadosProduto() {
-        
+
         if (produtoVenda != null) {
-            
+
             txtNomeProduto.setText(produtoVenda.getNomeProduto());
         }
-        
+
     }
 
     /**
@@ -683,7 +683,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
 
             /**
@@ -695,7 +695,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             lblNomeCliente.setText("Cliente: " + clienteVenda.getNomeCliente());
             lblCPFCliente.setText("CPF: " + clienteVenda.getCpfCliente());
             lblTelefoneCliente.setText("Telefone: " + clienteVenda.getTelefoneCliente());
-            
+
             utilitario.desabilitarBotoes(btnAdicionarCliente);
         }
 
@@ -713,7 +713,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Se houver erro, busco as mensagens de erro geradas e as exibo na tela
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
 
             //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
@@ -729,7 +729,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             String qtdProduto = txtQtdProduto.getText();
             String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
             String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
             //Adiciono uma linha à tabela
@@ -740,30 +740,30 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
                 valorUnitarioProduto,
                 valorTotalItensProduto
             });
-            
+
         }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
-    
+
     private void atualizarValorTotalPedido() {
-        
+
         DecimalFormat formatarNumero = new DecimalFormat();
         formatarNumero.setMaximumFractionDigits(2);
-        
+
         double pedidoValorTotal = calcularValorTotalPedido(tblListaItensPedido);
 
         //Exibo o valor total do pedido no label lblValorTotalPedido, depois de o formatar e o converter para String.
         lblValorTotalPedido.setText("R$ " + String.valueOf(formatarNumero.format(pedidoValorTotal)).replace(".", ","));
     }
-    
+
     public double calcularValorTotalPedido(JTable tabela) {
-        
+
         DecimalFormat formatarNumero = new DecimalFormat();
         formatarNumero.setMaximumFractionDigits(2);
-        
+
         double produtoValor, pedidoValorTotal = 0;
         int produtoQuantidade;
-        
+
         for (int i = 0; i < tabela.getRowCount(); i++) {
 
             //Busco o valor da linha i e coluna 3 (Valor Unitário) da tabela, substituo as vírgulas por pontos e converto o valor de String para double, atribuindo à variável produtoValor.
@@ -774,10 +774,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Realizo o cálculo do valor total do pedido
             pedidoValorTotal += (produtoQuantidade * produtoValor);
         }
-        
+
         return pedidoValorTotal;
     }
-    
+
 
     private void btnExcluirItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirItemProdutoActionPerformed
 
@@ -870,47 +870,44 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
          */
         //Resgato os produtos
         ArrayList<ItemVenda> listaItens = new ArrayList<ItemVenda>();
-        
+
         if (tblListaItensPedido.getRowCount() > 0) {
-            
+
             for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
                 ItemVenda item = new ItemVenda();
-                
+
                 item.setIdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 0).toString()));
                 item.setQtdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 2).toString()));
-                item.setValorUnitarioItem(Double.parseDouble(tblListaItensPedido.getValueAt(i, 3).toString()));
+                item.setValorUnitarioItem(Double.parseDouble(tblListaItensPedido.getValueAt(i, 3).toString().replace(",", ".")));
 
                 //Adiciono o objeto à listaItens
                 listaItens.add(item);
-                
+
             }
         }
-        
-        SimpleDateFormat formatadorDatas = new SimpleDateFormat("dd/MM/yyyy");
-        
+
         Date dataAtual = new Date();
-//        String dataAtualFormatada = formatadorDatas.format(dataAtual);
-        
+
         double valorTotalVenda = calcularValorTotalPedido(tblListaItensPedido);
         int idCliente = clienteVenda.getIdCliente();
-        
+
         Venda objVenda = new Venda();
         objVenda.setDataVenda(dataAtual);
         objVenda.setValorTotalVenda(valorTotalVenda);
         objVenda.setIdClienteVenda(idCliente);
         objVenda.setListaProdutos(listaItens);
-        
+
         boolean retorno = VendaDAO.cadastrarVenda(objVenda);
-        
+
         if (retorno == true) {
             JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
-            
+
             new TelaConfirmacaoPedido().setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Falha na venda!");
         }
-        
+
 
     }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
 

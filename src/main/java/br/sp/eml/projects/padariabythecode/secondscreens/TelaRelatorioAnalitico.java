@@ -54,7 +54,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Produto", "Produto", "Quantidade", "Valor Unitário", "Valor Total"
+                "ID Venda", "ID Item Venda", "ID Produto", "Produto", "Quantidade", "Valor Unitário", "Valor Total"
             }
         ));
         tblRelAnalitco.setViewportView(tblRelatorioAnalitico);

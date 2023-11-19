@@ -8,6 +8,7 @@ import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
  */
 public class TelaConfirmacaoPedido extends javax.swing.JFrame {
 
+    TelaPrincipalVendas telaPrincipal;
     /**
      * Construtor da classe TelaConfirmacaoPedido.
      * Inicializa os componentes gráficos gerados automaticamente.
