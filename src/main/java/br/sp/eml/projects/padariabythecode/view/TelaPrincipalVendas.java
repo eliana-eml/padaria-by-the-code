@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
 import br.sp.eml.projects.padariabythecode.dao.VendaDAO;
 import br.sp.eml.projects.padariabythecode.model.Cliente;
 import br.sp.eml.projects.padariabythecode.model.ItemVenda;
@@ -723,23 +724,28 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             //Declaro variáveis auxiliares para cada campo da nova linha na tabela
             int qtdProd = Integer.parseInt(txtQtdProduto.getText());
 
-            //Converto essas variáveis para Strings
-            String codigoProduto = String.valueOf(produtoVenda.getIdProduto());
-            String nomeProduto = produtoVenda.getNomeProduto();
-            String qtdProduto = txtQtdProduto.getText();
-            String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
-            String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
+            if (produtoVenda.getQtdEstoqueProduto() >= qtdProd) {
+                //Converto essas variáveis para Strings
+                String codigoProduto = String.valueOf(produtoVenda.getIdProduto());
+                String nomeProduto = produtoVenda.getNomeProduto();
+                String qtdProduto = txtQtdProduto.getText();
+                String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
+                String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
 
-            DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+                DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
 
-            //Adiciono uma linha à tabela
-            modelo.addRow(new String[]{
-                codigoProduto,
-                nomeProduto,
-                qtdProduto,
-                valorUnitarioProduto,
-                valorTotalItensProduto
-            });
+                //Adiciono uma linha à tabela
+                modelo.addRow(new String[]{
+                    codigoProduto,
+                    nomeProduto,
+                    qtdProduto,
+                    valorUnitarioProduto,
+                    valorTotalItensProduto
+                });
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Estoque do produto selecionado é inferior a quantidade a ser vendida informada!");
+            }
 
         }
 
@@ -898,6 +904,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         objVenda.setListaProdutos(listaItens);
 
         boolean retorno = VendaDAO.cadastrarVenda(objVenda);
+        atualizarEstoque(tblListaItensPedido);
 
         if (retorno == true) {
             JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
@@ -910,6 +917,33 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
+
+    public void atualizarEstoque(JTable tabelaItensVenda) {
+
+        Produto produto = new Produto();
+        ProdutoDAO pd = new ProdutoDAO();
+
+        int idProdutoVenda;
+        int qtdVendidaProduto = 0, qtdNovoValorEstoque;
+        int qtdEstoqueProduto;
+
+        for (int i = 0; i < tabelaItensVenda.getRowCount(); i++) {
+
+            idProdutoVenda = Integer.parseInt(String.valueOf(tabelaItensVenda.getModel().getValueAt(i, 0)));
+            produto = pd.buscarPorIdProduto(idProdutoVenda);
+            qtdEstoqueProduto = produto.getQtdEstoqueProduto();
+
+            qtdVendidaProduto = Integer.parseInt(String.valueOf(tabelaItensVenda.getModel().getValueAt(i, 2)));
+            qtdNovoValorEstoque = qtdEstoqueProduto - qtdVendidaProduto;
+
+            produto.setQtdEstoqueProduto(qtdNovoValorEstoque);
+
+            pd.atualizarEstoqueProduto(produto);
+
+        }
+
+    }
+
 
     private void btnCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPedidoActionPerformed
 

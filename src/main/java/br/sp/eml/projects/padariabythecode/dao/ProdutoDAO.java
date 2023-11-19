@@ -302,5 +302,51 @@ public class ProdutoDAO {
 
         return produto;
     }
+    
+    public static boolean atualizarEstoqueProduto(Produto produtoEstoqueAlterar) {
+        
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ResultSet rs = null;
+
+        try {
+
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão com o banco
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            //Passo 3 - Preparar o comando SQL a ser executado
+            comandoSQL = conexao.prepareStatement("UPDATE produtos SET qtd_estoque_produto = ? WHERE id_produto = ?");
+            comandoSQL.setInt(1, produtoEstoqueAlterar.getQtdEstoqueProduto());
+            comandoSQL.setInt(2, produtoEstoqueAlterar.getIdProduto());
+
+            //Finalmente... vamos executar o comando!
+            int linhasAfetadas = comandoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+        } catch (SQLException ex) {
+            retorno = false;
+        } finally {
+
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return retorno;
+        
+    }
 
 }
