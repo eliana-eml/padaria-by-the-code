@@ -1,10 +1,21 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.dao.RelatorioDAO;
+import br.sp.eml.projects.padariabythecode.model.Relatorio;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author narum
  */
 public class TelaRelatorioAnalitico extends javax.swing.JFrame {
+
+    int idVenda = 0;
 
     /**
      * Construtor da classe TelaRelatorioAnalitico. Inicializa os componentes
@@ -14,6 +25,42 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
     public TelaRelatorioAnalitico() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    public TelaRelatorioAnalitico(int idVendaParam) {
+        initComponents();
+        this.idVenda = idVendaParam;
+        System.out.println(idVenda);
+
+        try {
+            ArrayList<Relatorio> lista = RelatorioDAO.listaItemPorId(this.idVenda);
+            DefaultTableModel modelo = (DefaultTableModel) tblRelatorioAnalitico.getModel();
+            modelo.setRowCount(0);
+
+            for (Relatorio item : lista) {
+                modelo.addRow(new String[]{
+                    String.valueOf(item.getIdVenda()),
+                    String.valueOf(item.getIdItemVenda()),
+                    String.valueOf(item.getIdProduto()),
+                    String.valueOf(item.getNomeProduto()),
+                    String.valueOf(item.getQtdItemProduto()),
+                    String.valueOf(item.getValorUnitarioItem()),
+                    String.valueOf(item.getValorTotalItemVenda())
+                     
+                });
+                
+                String dateFormated = DateFormat.getDateInstance().format(item.getDataVenda());
+                
+                lblNomeCliente.setText(item.getNomeCliente());
+                lblDatas.setText(dateFormated);
+                lblCPFCliente.setText(item.getCpfCliente());
+                lblValorTotalVenda.setText(Double.toString(item.getValorTotalItemVenda()));
+                lblIDVenda.setText(Integer.toString(item.getIdVenda()));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaRelatorioAnalitico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -87,16 +134,16 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblPeriodo.setText("Data da Venda:");
 
         lblDatas.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblDatas.setText("13/10/2023 14:28");
+        lblDatas.setText("--/--/---- --:--");
 
         lblCliente.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblCliente.setText("Cliente:");
 
         lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblNomeCliente.setText("Fernando Fernandes");
+        lblNomeCliente.setText("-");
 
         lblCPFCliente.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblCPFCliente.setText("888.888.888-88");
+        lblCPFCliente.setText("---.---.---.--");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setText("CPF:");
@@ -106,7 +153,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
         lblIDVenda.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblIDVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIDVenda.setText("1234");
+        lblIDVenda.setText("----");
 
         javax.swing.GroupLayout pnlDadosVendaLayout = new javax.swing.GroupLayout(pnlDadosVenda);
         pnlDadosVenda.setLayout(pnlDadosVendaLayout);
@@ -127,7 +174,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                         .addComponent(lblPeriodo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblDatas)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIDVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,7 +216,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setText("VALOR TOTAL:");
 
         lblValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblValorTotalVenda.setText("R$ 100,00");
+        lblValorTotalVenda.setText("R$ ---,--");
 
         javax.swing.GroupLayout pnlValorTotalLayout = new javax.swing.GroupLayout(pnlValorTotal);
         pnlValorTotal.setLayout(pnlValorTotalLayout);

@@ -80,6 +80,7 @@ br\sp\eml\projects\padariabythecode\view\TelaProdutos.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$3.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$9.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaListagemClientes$1.class
+br\sp\eml\projects\padariabythecode\view\TelaRelatorio$12.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$35.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$2.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroClientes.class
@@ -90,9 +91,12 @@ br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$5.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$18.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroClientes$13.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$10.class
+br\sp\eml\projects\padariabythecode\dao\RelatorioDAO.class
+br\sp\eml\projects\padariabythecode\model\ItemVenda.class
 br\sp\eml\projects\padariabythecode\model\Produto.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroProdutos$2.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroProdutos$5.class
+br\sp\eml\projects\padariabythecode\model\Relatorio.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$8.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$30.class
 br\sp\eml\projects\padariabythecode\view\TelaProdutos$1.class

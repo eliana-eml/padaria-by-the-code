@@ -1,9 +1,21 @@
 package br.sp.eml.projects.padariabythecode.view;
 
+import br.sp.eml.projects.padariabythecode.dao.RelatorioDAO;
+import br.sp.eml.projects.padariabythecode.model.Relatorio;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaRelatorioAnalitico;
+import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,8 +59,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnBuscarPorData = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtDataInicio = new javax.swing.JFormattedTextField();
-        txtDataFim = new javax.swing.JFormattedTextField();
+        txtDataInicio = new com.toedter.calendar.JDateChooser();
+        txtDataFim = new com.toedter.calendar.JDateChooser();
         pnlDadosVendas = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -65,13 +77,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
         pnlDetalhesVendasPorPeriodo = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
+        labelDataFinal = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        valorPorPeriodo = new javax.swing.JLabel();
+        labelDataInicio = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
         mnuArquivos = new javax.swing.JMenu();
         mnuItemCadastroClientes = new javax.swing.JMenuItem();
@@ -172,45 +184,32 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         jLabel1.setText("Data Final:");
 
-        try {
-            txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDataInicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDataInicio.setText("");
-        txtDataInicio.setName("Data Início"); // NOI18N
+        txtDataInicio.setDateFormatString("dd/MM/yyyy");
+        txtDataInicio.setMaxSelectableDate(new java.util.Date(253370779298000L));
 
-        try {
-            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/#/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDataFim.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDataFim.setName("Data Fim"); // NOI18N
+        txtDataFim.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout pnlBuscarPorDataLayout = new javax.swing.GroupLayout(pnlBuscarPorData);
         pnlBuscarPorData.setLayout(pnlBuscarPorDataLayout);
         pnlBuscarPorDataLayout.setHorizontalGroup(
             pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                        .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
                         .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addContainerGap()
+                                .addComponent(jLabel9))
                             .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                                .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(pnlBuscarPorDataLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                                .addComponent(jLabel8)
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -224,10 +223,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarPorData))
+                .addGroup(pnlBuscarPorDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDataFim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDataInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -260,10 +259,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
             .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDadosVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                     .addGroup(pnlDadosVendasLayout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 436, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDadosVendasLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnRecarregarTabela)))
@@ -393,8 +392,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         pnlDetalhesVendasPorPeriodo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel16.setText("01/12/2023");
+        labelDataFinal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelDataFinal.setText("--/--/----");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel11.setText("DETALHES VENDAS POR PERÍODO");
@@ -408,11 +407,11 @@ public class TelaRelatorio extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Total de Vendas por Período:");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel17.setText("R$ 50.000,00");
+        valorPorPeriodo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        valorPorPeriodo.setText("R$ ---.---,--");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("01/01/2023");
+        labelDataInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelDataInicio.setText("--/--/----");
 
         javax.swing.GroupLayout pnlDetalhesVendasPorPeriodoLayout = new javax.swing.GroupLayout(pnlDetalhesVendasPorPeriodo);
         pnlDetalhesVendasPorPeriodo.setLayout(pnlDetalhesVendasPorPeriodoLayout);
@@ -424,18 +423,18 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17))
+                        .addComponent(valorPorPeriodo))
                     .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                         .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
                             .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15))
+                                .addComponent(labelDataInicio))
                             .addGroup(pnlDetalhesVendasPorPeriodoLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16)))
+                                .addComponent(labelDataFinal)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -447,15 +446,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel15))
+                    .addComponent(labelDataInicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel16))
+                    .addComponent(labelDataFinal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlDetalhesVendasPorPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel17))
+                    .addComponent(valorPorPeriodo))
                 .addContainerGap())
         );
 
@@ -502,8 +501,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
                     .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(pnlDadosVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlDadosVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlBuscarPorData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -565,29 +564,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnNavBarProdutosActionPerformed
 
-    private void btnBuscarPorDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDataActionPerformed
-
-        /**
-         * Cria de uma instância da classe Validador para validar os campos de
-         * texto. Em seguida, verifica se ocorreram erros durante a validação.
-         */
-        Validador validacao = new Validador();
-        validacao.validarTexto(txtDataInicio);
-        validacao.validarTexto(txtDataFim);
-
-        /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
-         * contrário, buscará as informações no período informado no banco de
-         * dados.
-         */
-        if (validacao.hasErro()) {
-            String mensagensDeErro = validacao.getMensagensErro();
-            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-        } else {
-            //Busca no banco de dados as informações no período informado.
-        }
-    }//GEN-LAST:event_btnBuscarPorDataActionPerformed
-
     private void btnBuscarVendaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVendaIDActionPerformed
 
         /**
@@ -596,6 +572,27 @@ public class TelaRelatorio extends javax.swing.JFrame {
          */
         Validador validacao = new Validador();
         validacao.validarTexto(txtIDVendaBuscar);
+
+        try {
+            ArrayList<Relatorio> item = RelatorioDAO.listaRelatorioPorId(Integer.parseInt(txtIDVendaBuscar.getText()));
+
+            DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+            modelo.setRowCount(0);
+
+            for (Relatorio lista : item) {
+                modelo.addRow(new String[]{
+                    String.valueOf(lista.getIdVenda()),
+                    String.valueOf(lista.getDataVenda()),
+                    String.valueOf(lista.getIdCliente()),
+                    String.valueOf(lista.getNomeCliente()),
+                    String.valueOf(lista.getCpfCliente()),
+                    String.valueOf(lista.getValorTotalVenda()),});
+                //valorPorPeriodo.setText(String.valueOf(lista.getValorTotalVendasPeriodo()));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         /**
          * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
@@ -663,24 +660,92 @@ public class TelaRelatorio extends javax.swing.JFrame {
          * campo de Detalhes.
          */
         int linhaSelecionada = tblVendas.getSelectedRow();
-
+        
+        
         DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+        
+        int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
 
         if (linhaSelecionada >= 0) {
-            new TelaRelatorioAnalitico().setVisible(true);
+            TelaRelatorioAnalitico telaRelatorio = new TelaRelatorioAnalitico(idSelecionado);
+            telaRelatorio.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
         }
-
-
     }//GEN-LAST:event_btnVisualizarRelatorioAnaliticoActionPerformed
+
+    private static void listaRelatorioVendas() throws SQLException {
+        ArrayList<Relatorio> lista = RelatorioDAO.listaRelatorios();
+
+        DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+        //modelo.setRowCount(0);
+
+        for (Relatorio item : lista) {
+            modelo.addRow(new String[]{
+                String.valueOf(item.getIdVenda()),
+                String.valueOf(item.getDataVenda()),
+                String.valueOf(item.getIdCliente()),
+                String.valueOf(item.getNomeCliente()),
+                String.valueOf(item.getCpfCliente()),
+                String.valueOf(item.getValorTotalVenda())
+            });
+        }
+
+    }
 
     private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
 
-        
-        
-        
+        try {
+            listaRelatorioVendas();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRecarregarTabelaActionPerformed
+
+    private void btnBuscarPorDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDataActionPerformed
+        /**
+         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
+         * contrário, buscará as informações no período informado no banco de
+         * dados.
+         */
+        if (txtDataInicio.getDate() == null || txtDataFim.getDate() == null) {
+            JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos antes de realizar a busca!");
+        } else if (txtDataFim.getDate().before(txtDataInicio.getDate())) {
+            JOptionPane.showMessageDialog(rootPane, "Preencha uma data maior ou igual a de início!");
+        } else {
+            String dateFormated = DateFormat.getDateInstance(DateFormat.SHORT).format(txtDataInicio.getDate());
+            String finalDateFormated = DateFormat.getDateInstance(DateFormat.SHORT).format(txtDataFim.getDate());
+
+            //Formatando datas
+            labelDataInicio.setText(dateFormated);
+            labelDataFinal.setText(finalDateFormated);
+
+            Date formatDataInicioToSql = new java.sql.Date(txtDataInicio.getDate().getTime());
+            Date formatDataFinalToSql = new java.sql.Date(txtDataFim.getDate().getTime());
+
+            try {
+                ArrayList<Relatorio> item = RelatorioDAO.listaRelatorioPorData(formatDataInicioToSql.toString(), formatDataFinalToSql.toString());
+
+                DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+                modelo.setRowCount(0);
+
+                for (Relatorio lista : item) {
+                    modelo.addRow(new String[]{
+                        String.valueOf(lista.getIdVenda()),
+                        String.valueOf(lista.getDataVenda()),
+                        String.valueOf(lista.getIdCliente()),
+                        String.valueOf(lista.getNomeCliente()),
+                        String.valueOf(lista.getCpfCliente()),
+                        String.valueOf(lista.getValorTotalVenda())
+                    });
+                    valorPorPeriodo.setText(String.valueOf(lista.getValorTotalVendasPeriodo()));
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarPorDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -714,6 +779,12 @@ public class TelaRelatorio extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaRelatorio().setVisible(true);
+
+                try {
+                    listaRelatorioVendas();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -732,9 +803,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -745,6 +813,8 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labelDataFinal;
+    private javax.swing.JLabel labelDataInicio;
     private javax.swing.JLabel lbDataAtual1;
     private javax.swing.JLabel lbLogotipo;
     private javax.swing.JLabel lbNomePadaria;
@@ -763,9 +833,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlRodape1;
     private java.awt.Scrollbar scrollbar1;
-    private javax.swing.JTable tblVendas;
-    private javax.swing.JFormattedTextField txtDataFim;
-    private javax.swing.JFormattedTextField txtDataInicio;
+    private static javax.swing.JTable tblVendas;
+    private com.toedter.calendar.JDateChooser txtDataFim;
+    private com.toedter.calendar.JDateChooser txtDataInicio;
     private javax.swing.JTextField txtIDVendaBuscar;
+    private javax.swing.JLabel valorPorPeriodo;
     // End of variables declaration//GEN-END:variables
 }

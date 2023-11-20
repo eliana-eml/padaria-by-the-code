@@ -15,7 +15,7 @@ public class ProdutoDAO {
     //LOGIN PADRÃO DE ACESSO NO BANCO DE DADOS, VOCÊ VAI UTILIZAR ESSE MESMO LINK, DE ACORDO COM O NOME DA DATABASE 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "root"; //Alterar conforme o usuário!!
+    static String senha = "carlsagan10"; //Alterar conforme o usuário!!
 
     //Função de salvar produto
     public static boolean cadastrarProduto(Produto produto) {
