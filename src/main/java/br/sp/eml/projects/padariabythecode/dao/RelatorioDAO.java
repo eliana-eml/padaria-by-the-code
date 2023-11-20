@@ -14,7 +14,7 @@ public class RelatorioDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "carlsagan10"; //Alterar conforme o usuário!!
+    static String senha = "root"; //Alterar conforme o usuário!!
 
    
     public static ArrayList<Relatorio> listaRelatorios() throws SQLException {
@@ -69,8 +69,7 @@ public class RelatorioDAO {
     public static ArrayList<Relatorio> listaRelatorioPorData(String dataInicio, String dataFim) throws SQLException {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
-
-        Relatorio produto = new Relatorio();
+        
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -130,7 +129,7 @@ public class RelatorioDAO {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
 
-        Relatorio produto = new Relatorio();
+       
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -184,7 +183,7 @@ public class RelatorioDAO {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
 
-        Relatorio produto = new Relatorio();
+        
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
