@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
     int idVenda = 0;
+    double precoTotal = 0;
 
     /**
      * Construtor da classe TelaRelatorioAnalitico. Inicializa os componentes
@@ -27,10 +28,17 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public TelaRelatorioAnalitico(int idVendaParam) {
+    public TelaRelatorioAnalitico(int idVendaParam, double valorTotal) {
         initComponents();
+        
+        /**
+         * RECEBE COMO PARÂMETROS O VALOR TOTAL DA COMPRA E O ID PARA
+         * REALIZAR A BUSCA DAS DEVIDAS INFORMAÇÕES
+         */
+        
         this.idVenda = idVendaParam;
-        System.out.println(idVenda);
+        this.precoTotal = valorTotal;
+       
 
         try {
             ArrayList<Relatorio> lista = RelatorioDAO.listaItemPorId(this.idVenda);
@@ -54,7 +62,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 lblNomeCliente.setText(item.getNomeCliente());
                 lblDatas.setText(dateFormated);
                 lblCPFCliente.setText(item.getCpfCliente());
-                lblValorTotalVenda.setText(Double.toString(item.getValorTotalItemVenda()));
+                lblValorTotalVenda.setText(Double.toString(precoTotal));
                 lblIDVenda.setText(Integer.toString(item.getIdVenda()));
             }
 

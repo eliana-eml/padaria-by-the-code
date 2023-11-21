@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JTable;
 
@@ -76,7 +77,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         pnlVendas = new javax.swing.JPanel();
         lblTituloVendas = new javax.swing.JLabel();
         pnlRodape = new javax.swing.JPanel();
-        lblDataAtual = new javax.swing.JLabel();
+        pnlDataAtual = new javax.swing.JLabel();
         pnlPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNomeCliente = new javax.swing.JTextField();
@@ -150,10 +151,8 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         pnlRodape.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDataAtual.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDataAtual.setText("23/09/2023");
-        lblDataAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pnlDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pnlDataAtual.setText("26/09/2023");
 
         javax.swing.GroupLayout pnlRodapeLayout = new javax.swing.GroupLayout(pnlRodape);
         pnlRodape.setLayout(pnlRodapeLayout);
@@ -161,12 +160,12 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodapeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlDataAtual)
                 .addContainerGap())
         );
         pnlRodapeLayout.setVerticalGroup(
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+            .addComponent(pnlDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
         pnlPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -702,6 +701,39 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
+    public static void defineData() {
+        Calendar calendar = Calendar.getInstance();
+
+        int ano = calendar.get(Calendar.YEAR);
+        int mes = calendar.get(Calendar.MONTH) + 1;
+        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+        
+        pnlDataAtual.setText(data);
+
+      /*  try {
+            while (true) {
+
+                int horas = calendar.get(Calendar.HOUR);
+                int minutos = calendar.get(Calendar.MINUTE);
+                int segundos = calendar.get(Calendar.SECOND);
+
+                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
+
+                //pnlDataAtual.setText(data + " - " + horarioAtual);
+
+                System.out.println(data + " - " + horarioAtual);
+                
+                Thread.sleep(1000);
+            }
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    }
+    
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
         //Instâncio um objeto da classe Validador e valido os campos txtNomeProduto e txtQtdProduto.
@@ -1075,6 +1107,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipalVendas().setVisible(true);
+                defineData();
             }
         });
     }
@@ -1102,7 +1135,6 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCPFCliente;
-    private javax.swing.JLabel lblDataAtual;
     private javax.swing.JLabel lblDataPedido;
     private javax.swing.JLabel lblIDCliente;
     private javax.swing.JLabel lblLogotipo;
@@ -1120,6 +1152,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuItemRelatorioVendas;
     private javax.swing.JPanel pnlCabecalho;
     private javax.swing.JPanel pnlDadosCliente;
+    private static javax.swing.JLabel pnlDataAtual;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JPanel pnlResumoDoPedido;
     private javax.swing.JPanel pnlRodape;

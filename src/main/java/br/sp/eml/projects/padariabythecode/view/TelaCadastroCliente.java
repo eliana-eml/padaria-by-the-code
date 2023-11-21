@@ -8,10 +8,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroClientes;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -114,6 +118,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         mnuEditar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlCabecalho.setPreferredSize(new java.awt.Dimension(657, 63));
@@ -790,6 +799,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         pnlRodape1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlRodape1.setPreferredSize(new java.awt.Dimension(151, 36));
+        pnlRodape1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pnlRodape1ComponentShown(evt);
+            }
+        });
 
         pnlDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         pnlDataAtual.setText("26/09/2023");
@@ -883,6 +897,15 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pnlRodape1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pnlRodape1ComponentShown
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_pnlRodape1ComponentShown
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
+
     private void btnNavBarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnNavBarRelatorioActionPerformed
 
         /**
@@ -950,27 +973,27 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             DefaultTableModel modelo = (DefaultTableModel) tblCadClientes.getModel();
             modelo.setRowCount(0);
 
-            modelo.addRow(new String[] {
-                    String.valueOf(cliente.getIdCliente()),
-                    String.valueOf(cliente.getNomeCliente()),
-                    String.valueOf(cliente.getCpfCliente()),
-                    String.valueOf(cliente.getDataNascimentoCliente()),
-                    String.valueOf(cliente.getGeneroCliente()),
-                    String.valueOf(cliente.getEstadoCivilCliente()),
-                    String.valueOf(cliente.getTelefoneCliente()),
-                    String.valueOf(cliente.getEmailCliente()),
-                    String.valueOf(cliente.getCepCliente()),
-                    String.valueOf(cliente.getLogradouroCliente()),
-                    String.valueOf(cliente.getNumeroCliente()),
-                    String.valueOf(cliente.getComplementoCliente()),
-                    String.valueOf(cliente.getBairroCliente()),
-                    String.valueOf(cliente.getCidadeCliente()),
-                    String.valueOf(cliente.getUfCliente())
+            modelo.addRow(new String[]{
+                String.valueOf(cliente.getIdCliente()),
+                String.valueOf(cliente.getNomeCliente()),
+                String.valueOf(cliente.getCpfCliente()),
+                String.valueOf(cliente.getDataNascimentoCliente()),
+                String.valueOf(cliente.getGeneroCliente()),
+                String.valueOf(cliente.getEstadoCivilCliente()),
+                String.valueOf(cliente.getTelefoneCliente()),
+                String.valueOf(cliente.getEmailCliente()),
+                String.valueOf(cliente.getCepCliente()),
+                String.valueOf(cliente.getLogradouroCliente()),
+                String.valueOf(cliente.getNumeroCliente()),
+                String.valueOf(cliente.getComplementoCliente()),
+                String.valueOf(cliente.getBairroCliente()),
+                String.valueOf(cliente.getCidadeCliente()),
+                String.valueOf(cliente.getUfCliente())
             });
 
-            String enderecoCompleto = cliente.getLogradouroCliente() + ", " + cliente.getNumeroCliente() + " - " +
-                    cliente.getComplementoCliente() + " - " + cliente.getBairroCliente() + " - " +
-                    cliente.getCidadeCliente() + " - " + cliente.getUfCliente();
+            String enderecoCompleto = cliente.getLogradouroCliente() + ", " + cliente.getNumeroCliente() + " - "
+                    + cliente.getComplementoCliente() + " - " + cliente.getBairroCliente() + " - "
+                    + cliente.getCidadeCliente() + " - " + cliente.getUfCliente();
 
             lblBuscaNome.setText("Cliente: " + cliente.getNomeCliente());
             lblBuscaCPF.setText("CPF: " + cliente.getCpfCliente());
@@ -1129,22 +1152,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             //
             // DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             // LocalDate dataNasc = LocalDate.parse(clienteDataNasc.toString(), formato);
-            modelo.addRow(new String[] {
-                    String.valueOf(cliente.getIdCliente()),
-                    String.valueOf(cliente.getNomeCliente()),
-                    String.valueOf(cliente.getCpfCliente()),
-                    String.valueOf(cliente.getDataNascimentoCliente()),
-                    String.valueOf(cliente.getGeneroCliente()),
-                    String.valueOf(cliente.getEstadoCivilCliente()),
-                    String.valueOf(cliente.getTelefoneCliente()),
-                    String.valueOf(cliente.getEmailCliente()),
-                    String.valueOf(cliente.getCepCliente()),
-                    String.valueOf(cliente.getLogradouroCliente()),
-                    String.valueOf(cliente.getNumeroCliente()),
-                    String.valueOf(cliente.getComplementoCliente()),
-                    String.valueOf(cliente.getBairroCliente()),
-                    String.valueOf(cliente.getCidadeCliente()),
-                    String.valueOf(cliente.getUfCliente())
+            modelo.addRow(new String[]{
+                String.valueOf(cliente.getIdCliente()),
+                String.valueOf(cliente.getNomeCliente()),
+                String.valueOf(cliente.getCpfCliente()),
+                String.valueOf(cliente.getDataNascimentoCliente()),
+                String.valueOf(cliente.getGeneroCliente()),
+                String.valueOf(cliente.getEstadoCivilCliente()),
+                String.valueOf(cliente.getTelefoneCliente()),
+                String.valueOf(cliente.getEmailCliente()),
+                String.valueOf(cliente.getCepCliente()),
+                String.valueOf(cliente.getLogradouroCliente()),
+                String.valueOf(cliente.getNumeroCliente()),
+                String.valueOf(cliente.getComplementoCliente()),
+                String.valueOf(cliente.getBairroCliente()),
+                String.valueOf(cliente.getCidadeCliente()),
+                String.valueOf(cliente.getUfCliente())
             });
         }
     }
@@ -1397,6 +1420,39 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_btnExcluirCadastroActionPerformed
 
+    public static void defineData() {
+        Calendar calendar = Calendar.getInstance();
+
+        int ano = calendar.get(Calendar.YEAR);
+        int mes = calendar.get(Calendar.MONTH) + 1;
+        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+        
+        pnlDataAtual.setText(data);
+
+      /*  try {
+            while (true) {
+
+                int horas = calendar.get(Calendar.HOUR);
+                int minutos = calendar.get(Calendar.MINUTE);
+                int segundos = calendar.get(Calendar.SECOND);
+
+                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
+
+                //pnlDataAtual.setText(data + " - " + horarioAtual);
+
+                System.out.println(data + " - " + horarioAtual);
+                
+                Thread.sleep(1000);
+            }
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    }
+
     private void btnAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAtualizarTabelaActionPerformed
         recarregarTabelaClientes();
     }// GEN-LAST:event_btnAtualizarTabelaActionPerformed
@@ -1419,22 +1475,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             for (Cliente cliente : listaClientesPorNome) {
 
-                modelo.addRow(new String[] {
-                        String.valueOf(cliente.getIdCliente()),
-                        String.valueOf(cliente.getNomeCliente()),
-                        String.valueOf(cliente.getCpfCliente()),
-                        String.valueOf(cliente.getDataNascimentoCliente()),
-                        String.valueOf(cliente.getGeneroCliente()),
-                        String.valueOf(cliente.getEstadoCivilCliente()),
-                        String.valueOf(cliente.getTelefoneCliente()),
-                        String.valueOf(cliente.getEmailCliente()),
-                        String.valueOf(cliente.getCepCliente()),
-                        String.valueOf(cliente.getLogradouroCliente()),
-                        String.valueOf(cliente.getNumeroCliente()),
-                        String.valueOf(cliente.getComplementoCliente()),
-                        String.valueOf(cliente.getBairroCliente()),
-                        String.valueOf(cliente.getCidadeCliente()),
-                        String.valueOf(cliente.getUfCliente())
+                modelo.addRow(new String[]{
+                    String.valueOf(cliente.getIdCliente()),
+                    String.valueOf(cliente.getNomeCliente()),
+                    String.valueOf(cliente.getCpfCliente()),
+                    String.valueOf(cliente.getDataNascimentoCliente()),
+                    String.valueOf(cliente.getGeneroCliente()),
+                    String.valueOf(cliente.getEstadoCivilCliente()),
+                    String.valueOf(cliente.getTelefoneCliente()),
+                    String.valueOf(cliente.getEmailCliente()),
+                    String.valueOf(cliente.getCepCliente()),
+                    String.valueOf(cliente.getLogradouroCliente()),
+                    String.valueOf(cliente.getNumeroCliente()),
+                    String.valueOf(cliente.getComplementoCliente()),
+                    String.valueOf(cliente.getBairroCliente()),
+                    String.valueOf(cliente.getCidadeCliente()),
+                    String.valueOf(cliente.getUfCliente())
                 });
             }
         }
@@ -1481,6 +1537,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             public void run() {
                 new TelaCadastroCliente().setVisible(true);
                 recarregarTabelaClientes();
+                defineData();
             }
         });
     }
@@ -1537,7 +1594,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCadastroCliente;
     private javax.swing.JPanel pnlClientes;
     private javax.swing.JPanel pnlDadosBasicos;
-    private javax.swing.JLabel pnlDataAtual;
+    private static javax.swing.JLabel pnlDataAtual;
     private javax.swing.JPanel pnlEndereco;
     private javax.swing.JPanel pnlListaClientes;
     private javax.swing.JPanel pnlRodape1;

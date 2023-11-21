@@ -9,6 +9,7 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaRelatorioAnalitico;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,7 +70,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lbNomePadaria = new javax.swing.JLabel();
         lbLogotipo = new javax.swing.JLabel();
         pnlRodape1 = new javax.swing.JPanel();
-        lbDataAtual1 = new javax.swing.JLabel();
+        pnlDataAtual = new javax.swing.JLabel();
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
         pnlDetalhesVendasPorPeriodo = new javax.swing.JPanel();
@@ -346,22 +347,29 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         pnlRodape1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbDataAtual1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbDataAtual1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbDataAtual1.setText("23/09/2023");
-        lbDataAtual1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pnlDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pnlDataAtual.setText("26/09/2023");
+        pnlDataAtual.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnlDataAtualFocusGained(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRodape1Layout = new javax.swing.GroupLayout(pnlRodape1);
         pnlRodape1.setLayout(pnlRodape1Layout);
         pnlRodape1Layout.setHorizontalGroup(
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodape1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbDataAtual1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlDataAtual)
+                .addContainerGap())
         );
         pnlRodape1Layout.setVerticalGroup(
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbDataAtual1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlRodape1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pnlProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -655,26 +663,28 @@ public class TelaRelatorio extends javax.swing.JFrame {
          * com informações mais detalhadas da venda que foi buscada e exibida no
          * campo de Detalhes.
          */
-        int linhaSelecionada = tblVendas.getSelectedRow();
-        
-        
-        DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
-        
-        int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+        try {
+            int linhaSelecionada = tblVendas.getSelectedRow();
 
-        if (linhaSelecionada >= 0) {
-            TelaRelatorioAnalitico telaRelatorio = new TelaRelatorioAnalitico(idSelecionado);
+            DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+
+            int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            double precoTotal = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 5).toString());
+
+            TelaRelatorioAnalitico telaRelatorio = new TelaRelatorioAnalitico(idSelecionado, precoTotal);
             telaRelatorio.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha antes");
         }
+
+
     }//GEN-LAST:event_btnVisualizarRelatorioAnaliticoActionPerformed
 
     private static void listaRelatorioVendas() throws SQLException {
         ArrayList<Relatorio> lista = RelatorioDAO.listaRelatorios();
 
         DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
-        //modelo.setRowCount(0);
+        modelo.setRowCount(0);
 
         for (Relatorio item : lista) {
             modelo.addRow(new String[]{
@@ -689,6 +699,38 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
     }
 
+    public static void defineData() {
+        Calendar calendar = Calendar.getInstance();
+
+        int ano = calendar.get(Calendar.YEAR);
+        int mes = calendar.get(Calendar.MONTH) + 1;
+        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+        
+        pnlDataAtual.setText(data);
+
+      /*  try {
+            while (true) {
+
+                int horas = calendar.get(Calendar.HOUR);
+                int minutos = calendar.get(Calendar.MINUTE);
+                int segundos = calendar.get(Calendar.SECOND);
+
+                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
+
+                //pnlDataAtual.setText(data + " - " + horarioAtual);
+
+                System.out.println(data + " - " + horarioAtual);
+                
+                Thread.sleep(1000);
+            }
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    }
     private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
 
         try {
@@ -698,6 +740,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRecarregarTabelaActionPerformed
 
+    
     private void btnBuscarPorDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorDataActionPerformed
         /**
          * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
@@ -742,6 +785,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnBuscarPorDataActionPerformed
+
+    private void pnlDataAtualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnlDataAtualFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlDataAtualFocusGained
 
     /**
      * @param args the command line arguments
@@ -811,7 +858,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelDataFinal;
     private javax.swing.JLabel labelDataInicio;
-    private javax.swing.JLabel lbDataAtual1;
     private javax.swing.JLabel lbLogotipo;
     private javax.swing.JLabel lbNomePadaria;
     private javax.swing.JLabel lbTituloVendas2;
@@ -825,6 +871,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBuscarPorData;
     private javax.swing.JPanel pnlCabecalho;
     private javax.swing.JPanel pnlDadosVendas;
+    private static javax.swing.JLabel pnlDataAtual;
     private javax.swing.JPanel pnlDetalhesVendasPorPeriodo;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlRodape1;

@@ -14,7 +14,7 @@ public class RelatorioDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "root"; //Alterar conforme o usuário!!
+    static String senha = "carlsagan10"; //Alterar conforme o usuário!!
 
    
     public static ArrayList<Relatorio> listaRelatorios() throws SQLException {
@@ -64,7 +64,7 @@ public class RelatorioDAO {
 
     /**
     *  REALIZA A BUSCA COM  AS DATAS QUE ESTÃO
-    *  ENTRE O PERÍODO MENCIONADO 
+    *  ENTRE AS DATAS DO PERÍODO MENCIONADO 
     */
     public static ArrayList<Relatorio> listaRelatorioPorData(String dataInicio, String dataFim) throws SQLException {
 
@@ -122,9 +122,7 @@ public class RelatorioDAO {
     /**
     *   EXECUTA UMA LISTAGEM DE ITENS PELO ID INSERIDO
     *   **A LISTAGEM É SINTÉTICA**
-    *
     */
-    
     public static ArrayList<Relatorio> listaRelatorioPorId(int idVenda) throws SQLException {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();

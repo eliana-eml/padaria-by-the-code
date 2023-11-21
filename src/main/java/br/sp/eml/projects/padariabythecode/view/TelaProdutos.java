@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -40,10 +41,10 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
         pnlCabecalho = new javax.swing.JPanel();
+        lbNomePadaria = new javax.swing.JLabel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
         btnNavBarRelatorio = new javax.swing.JButton();
-        lbNomePadaria = new javax.swing.JLabel();
         lbLogotipo = new javax.swing.JLabel();
         pnlCadastroProdutos = new javax.swing.JPanel();
         lblCadastroProdutos = new javax.swing.JLabel();
@@ -83,7 +84,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         btnEditarProduto = new javax.swing.JButton();
         btnAtualizarTabela = new javax.swing.JButton();
         pnlRodape = new javax.swing.JPanel();
-        lbDataAtual = new javax.swing.JLabel();
+        pnlDataAtual = new javax.swing.JLabel();
         mnuBar = new javax.swing.JMenuBar();
         mnuArquivos = new javax.swing.JMenu();
         mnuItemCadastroClientes = new javax.swing.JMenuItem();
@@ -122,6 +123,9 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbNomePadaria.setText("By The Code Bakery");
+
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -146,9 +150,6 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
-        lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbNomePadaria.setText("By The Code Bakery");
-
         lbLogotipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbLogotipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbLogotipo.setText("LOGO");
@@ -159,37 +160,30 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlCabecalho.setLayout(pnlCabecalhoLayout);
         pnlCabecalhoLayout.setHorizontalGroup(
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
+            .addGroup(pnlCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbNomePadaria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(393, 393, 393)
+                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlCabecalhoLayout.setVerticalGroup(
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCabecalhoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlCabecalhoLayout.createSequentialGroup()
-                        .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lbNomePadaria, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                            .addComponent(lbLogotipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNomePadaria)
+                    .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnlCadastroProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -538,7 +532,7 @@ public class TelaProdutos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlListaProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlListaProdutosLayout.createSequentialGroup()
-                        .addComponent(tblCadastroProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                        .addComponent(tblCadastroProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlListaProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -569,10 +563,8 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         pnlRodape.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbDataAtual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbDataAtual.setText("23/09/2023");
-        lbDataAtual.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pnlDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pnlDataAtual.setText("26/09/2023");
 
         javax.swing.GroupLayout pnlRodapeLayout = new javax.swing.GroupLayout(pnlRodape);
         pnlRodape.setLayout(pnlRodapeLayout);
@@ -580,12 +572,15 @@ public class TelaProdutos extends javax.swing.JFrame {
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodapeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlDataAtual)
                 .addContainerGap())
         );
         pnlRodapeLayout.setVerticalGroup(
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+            .addGroup(pnlRodapeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         mnuArquivos.setText("Arquivos");
@@ -637,14 +632,14 @@ public class TelaProdutos extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(pnlDetalhes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlBuscaProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlRodape, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -720,6 +715,38 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+     public static void defineData() {
+        Calendar calendar = Calendar.getInstance();
+
+        int ano = calendar.get(Calendar.YEAR);
+        int mes = calendar.get(Calendar.MONTH) + 1;
+        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+        
+        pnlDataAtual.setText(data);
+
+      /*  try {
+            while (true) {
+
+                int horas = calendar.get(Calendar.HOUR);
+                int minutos = calendar.get(Calendar.MINUTE);
+                int segundos = calendar.get(Calendar.SECOND);
+
+                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
+
+                //pnlDataAtual.setText(data + " - " + horarioAtual);
+
+                System.out.println(data + " - " + horarioAtual);
+                
+                Thread.sleep(1000);
+            }
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    }
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         /**
@@ -1100,6 +1127,7 @@ public class TelaProdutos extends javax.swing.JFrame {
             public void run() {
                 new TelaProdutos().setVisible(true);
                 recarregarTabelaProdutos();
+                defineData();
             }
         });
     }
@@ -1124,7 +1152,6 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lbDataAtual;
     private javax.swing.JLabel lbLogotipo;
     private javax.swing.JLabel lbNomePadaria;
     private javax.swing.JLabel lbTituloVendas2;
@@ -1150,6 +1177,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBuscaProdutos;
     private javax.swing.JPanel pnlCabecalho;
     private javax.swing.JPanel pnlCadastroProdutos;
+    private static javax.swing.JLabel pnlDataAtual;
     private javax.swing.JPanel pnlDetalhes;
     private javax.swing.JPanel pnlListaProdutos;
     private javax.swing.JPanel pnlProdutos;
