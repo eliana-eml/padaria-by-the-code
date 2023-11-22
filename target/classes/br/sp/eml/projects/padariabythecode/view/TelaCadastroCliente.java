@@ -1430,27 +1430,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
         
         pnlDataAtual.setText(data);
-
-      /*  try {
-            while (true) {
-
-                int horas = calendar.get(Calendar.HOUR);
-                int minutos = calendar.get(Calendar.MINUTE);
-                int segundos = calendar.get(Calendar.SECOND);
-
-                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
-
-                //pnlDataAtual.setText(data + " - " + horarioAtual);
-
-                System.out.println(data + " - " + horarioAtual);
-                
-                Thread.sleep(1000);
-            }
-
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
     }
 
     private void btnAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAtualizarTabelaActionPerformed

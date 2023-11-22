@@ -34,7 +34,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
     public TelaRelatorio() {
         initComponents();
         setLocationRelativeTo(null);
-        getContentPane().setBackground(Color.decode("#f9f7dc"));
+        //getContentPane().setBackground(Color.decode("#f9f7dc"));
     }
 
     /**
@@ -108,7 +108,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
             }
         });
 
-        pnlBuscaPorID.setBackground(new java.awt.Color(249, 247, 220));
         pnlBuscaPorID.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnVisualizarRelatorioAnalitico.setText("Visualizar Relatório Analítico");
@@ -179,7 +178,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlBuscarPorData.setBackground(new java.awt.Color(249, 247, 220));
         pnlBuscarPorData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel8.setText("Data Início:");
@@ -242,7 +240,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlDadosVendas.setBackground(new java.awt.Color(249, 247, 220));
         pnlDadosVendas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -293,7 +290,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlCabecalho.setBackground(new java.awt.Color(249, 247, 220));
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnNavBarVendas.setText("Vendas");
@@ -362,11 +358,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlRodape1.setBackground(new java.awt.Color(249, 247, 220));
         pnlRodape1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         pnlHoraAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        pnlHoraAtual.setText("--:--");
+        pnlHoraAtual.setText("--:--:--");
         pnlHoraAtual.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         pnlHoraAtual.setAlignmentY(0.0F);
         pnlHoraAtual.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -389,25 +384,21 @@ public class TelaRelatorio extends javax.swing.JFrame {
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRodape1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodape1Layout.createSequentialGroup()
-                        .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodape1Layout.createSequentialGroup()
-                        .addComponent(pnlDataAtual)
-                        .addGap(32, 32, 32))))
+                .addComponent(pnlDataAtual)
+                .addGap(18, 18, 18)
+                .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         pnlRodape1Layout.setVerticalGroup(
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodape1Layout.createSequentialGroup()
+            .addGroup(pnlRodape1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlDataAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlDataAtual))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlProdutos.setBackground(new java.awt.Color(249, 247, 220));
         pnlProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbTituloVendas2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -430,7 +421,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlDetalhesVendasPorPeriodo.setBackground(new java.awt.Color(249, 247, 220));
         pnlDetalhesVendasPorPeriodo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         labelDataFinal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -554,7 +544,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -568,7 +558,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlBuscaPorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlRodape1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getAccessibleContext().setAccessibleDescription("");
