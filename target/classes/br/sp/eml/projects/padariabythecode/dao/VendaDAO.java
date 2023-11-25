@@ -18,7 +18,7 @@ public class VendaDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "root"; //Alterar conforme o usuário!!
+    static String senha = "P@$$w0rd"; //Alterar conforme o usuário!!
 
     public static boolean cadastrarVenda(Venda venda) {
 

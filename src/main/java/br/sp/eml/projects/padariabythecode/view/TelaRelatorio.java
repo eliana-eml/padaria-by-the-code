@@ -575,37 +575,44 @@ public class TelaRelatorio extends javax.swing.JFrame {
         Validador validacao = new Validador();
         validacao.validarTexto(txtIDVendaBuscar);
 
-        try {
-            ArrayList<Relatorio> item = RelatorioDAO.listaRelatorioPorId(Integer.parseInt(txtIDVendaBuscar.getText()));
-
-            DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
-            modelo.setRowCount(0);
-
-            for (Relatorio lista : item) {
-                modelo.addRow(new String[]{
-                    String.valueOf(lista.getIdVenda()),
-                    String.valueOf(lista.getDataVenda()),
-                    String.valueOf(lista.getIdCliente()),
-                    String.valueOf(lista.getNomeCliente()),
-                    String.valueOf(lista.getCpfCliente()),
-                    String.valueOf(lista.getValorTotalVenda()),});
-                //valorPorPeriodo.setText(String.valueOf(lista.getValorTotalVendasPeriodo()));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        /**
-         * Se houver erros, obtém as mensagens de erro e o exibe na tela. Caso
-         * contrário, buscará as informações da venda com o ID informado no
-         * banco de dados.
-         */
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+
         } else {
-            //Buscar no banco de dados o ID informado.
+
+            try {
+                ArrayList<Relatorio> item = RelatorioDAO.listaRelatorioPorId(Integer.parseInt(txtIDVendaBuscar.getText()));
+
+                DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+                modelo.setRowCount(0);
+
+                for (Relatorio lista : item) {
+                    modelo.addRow(new String[]{
+                        String.valueOf(lista.getIdVenda()),
+                        String.valueOf(lista.getDataVenda()),
+                        String.valueOf(lista.getIdCliente()),
+                        String.valueOf(lista.getNomeCliente()),
+                        String.valueOf(lista.getCpfCliente()),
+                        String.valueOf(lista.getValorTotalVenda()),});
+                    //valorPorPeriodo.setText(String.valueOf(lista.getValorTotalVendasPeriodo()));
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            /**
+             * Se houver erros, obtém as mensagens de erro e o exibe na tela.
+             * Caso contrário, buscará as informações da venda com o ID
+             * informado no banco de dados.
+             */
+            if (validacao.hasErro()) {
+                String mensagensDeErro = validacao.getMensagensErro();
+                JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+            } else {
+                //Buscar no banco de dados o ID informado.
+            }
         }
     }//GEN-LAST:event_btnBuscarVendaIDActionPerformed
 
@@ -698,19 +705,18 @@ public class TelaRelatorio extends javax.swing.JFrame {
     }
 
     public void defineData() {
-        
+
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         pnlDataAtual.setText(formato.format(dataSistema));
-        
-        
-       //.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
-        Timer timer = new Timer(1000, new hora()); 
+
+        //.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
+        Timer timer = new Timer(1000, new hora());
         timer.start();
-        
+
         Calendar calendar = Calendar.getInstance();
-        
-   /*
+
+        /*
     * 
     * int ano = calendar.get(Calendar.YEAR);
         int mes = calendar.get(Calendar.MONTH) + 1;
@@ -730,7 +736,7 @@ public class TelaRelatorio extends javax.swing.JFrame {
             System.out.println(data + " - " + horarioAtual);
             * 
             * 
-           */
+         */
     }
     private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
 
@@ -829,16 +835,17 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private void pnlDataAtualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnlDataAtualFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlDataAtualFocusGained
-    
-    class hora implements ActionListener{ 
-            @Override
-            public void actionPerformed(ActionEvent e){
-                Calendar calendar = Calendar.getInstance();
-               pnlHoraAtual.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
-                
-            }
+
+    class hora implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Calendar calendar = Calendar.getInstance();
+            pnlHoraAtual.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
+
+        }
     }
-    
+
     /**
      * @param args the command line arguments
      */

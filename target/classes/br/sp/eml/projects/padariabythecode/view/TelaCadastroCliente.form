@@ -339,7 +339,7 @@
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="lblCliente_dtNasc" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtDtNascimentoCliente" min="-2" pref="128" max="-2" attributes="0"/>
+                                                  <Component id="dtDataNascimento" min="-2" pref="129" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -384,7 +384,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblCliente_dtNasc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtDtNascimentoCliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="dtDataNascimento" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblCliente_Genero" min="-2" max="-2" attributes="0"/>
@@ -449,19 +449,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtDtNascimentoCliente">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##/##/####" subtype="-1" type="5"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="name" type="java.lang.String" value="Data de Nascimento" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDtNascimentoClienteActionPerformed"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDtNascimentoClienteKeyTyped"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCliente_Genero">
               <Properties>
@@ -532,6 +519,8 @@
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailClienteKeyTyped"/>
               </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtDataNascimento">
             </Component>
           </SubComponents>
         </Container>

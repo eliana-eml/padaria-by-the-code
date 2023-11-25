@@ -1,7 +1,10 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.dao.ClienteDAO;
 import br.sp.eml.projects.padariabythecode.model.Cliente;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,7 +34,14 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         lblCliente_ID.setText("ID: " + String.valueOf(obj.getIdCliente()));
         txtNomeCliente.setText(String.valueOf(obj.getNomeCliente()));
         txtCPFCliente.setText(String.valueOf(obj.getCpfCliente()));
-        txtDtNascimentoCliente.setText(String.valueOf(obj.getDataNascimentoCliente()));
+        
+//        txtDtNascimentoCliente.setText(String.valueOf(obj.getDataNascimentoCliente()));
+        java.util.Date dataFormatada = new java.util.Date(objAlterar.getDataNascimentoCliente().getTime());
+        
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        
+        txtDtNascimentoCliente.setText(formatador.format(dataFormatada));    
+        
         txtGeneroCliente.setText(String.valueOf(obj.getGeneroCliente()));
         txtEstadoCivilCliente.setText(String.valueOf(obj.getEstadoCivilCliente()));
         txtTelFixCliente.setText(String.valueOf(obj.getTelefoneCliente()));
@@ -497,8 +507,59 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Cadastro atualizado com sucesso!");
-            dispose();
+            
+            int id = obj.getIdCliente();
+            String nome = txtNomeCliente.getText();
+            String cpf = txtCPFCliente.getText();
+
+            java.util.Date dataFormatada = new java.util.Date(Date.parse(txtDtNascimentoCliente.getText()));
+
+            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date dtNascimentoCliente = Date.valueOf(formatador.format(dataFormatada));
+
+            String genero = txtGeneroCliente.getText();
+            String estadoCivil = txtEstadoCivilCliente.getText();
+            String telefone = txtTelFixCliente.getText();
+            String email = txtEmailCliente.getText();
+            String cep = txtCEPCliente.getText();
+            String logradouro = txtLogCliente.getText();
+            String numero = txtNumCliente.getText();
+            String complemento = txtComplementoCliente.getText();
+            String bairro = txtBairroCliente.getText();
+            String cidade = txtCidadeCliente.getText();
+            String uf = cboUFCliente.getSelectedItem().toString();
+
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//            Date dataNascimento = Date.valueOf(sdf.format(dtNascimentoCliente));
+            
+            Cliente cliente = new Cliente(id, nome, cpf, dtNascimentoCliente, genero, estadoCivil, telefone,
+                    email, cep, logradouro, numero, complemento, bairro, cidade, uf);
+
+            // Verifica se existe algum cadastro com o CPF informado pelo usuário.
+//            boolean cadastroExiste = ClienteDAO.verificarExistenciaCadastroCPF(cpf);
+
+            /**
+             * Se existir um cadastro para o CPF informado, ele emite uma
+             * mensagem informando a existência desse cadastro. Caso contrário,
+             * ele permite o novo cadastro ser gravado.
+             */
+//            if (cadastroExiste == true) {
+//
+//                JOptionPane.showMessageDialog(rootPane, "Cliente já cadastrado no sistema!");
+//
+//            } else {
+
+                boolean retorno = ClienteDAO.alterar(cliente);
+
+                if (retorno == true) {
+                    JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Falha no cadastro!");
+                }
+
+//            }
         }
     }//GEN-LAST:event_btnAtualizarActionPerformed
 

@@ -15,7 +15,7 @@ public class ClienteDAO {
 
     static String url = "jdbc:mysql://localhost:3306/padaria_by_the_code";
     static String login = "root"; //Alterar conforme o usuário!!
-    static String senha = "root"; //Alterar conforme o usuário!!
+    static String senha = "P@$$w0rd"; //Alterar conforme o usuário!!
 
     public static boolean cadastrarCliente(Cliente cliente) {
 
@@ -205,7 +205,7 @@ public class ClienteDAO {
     public static ArrayList<Cliente> buscarPorNomeCliente(String nomeClienteBuscar) {
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-        
+
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -269,6 +269,68 @@ public class ClienteDAO {
         }
 
         return listaClientes;
+    }
+
+    public static boolean alterar(Cliente clienteAlterar) {
+
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement comandoSQL = null;
+        ResultSet rs = null;
+
+        try {
+
+            //Passo 1 - Carregar o Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //Passo 2 - Abrir a conexão com o banco
+            conexao = DriverManager.getConnection(url, login, senha);
+
+            //Passo 3 - Preparar o comando SQL a ser executado
+            comandoSQL = conexao.prepareStatement("UPDATE clientes SET nome_cliente = ?, cpf_cliente = ?, data_nascimento_cliente = ?, "
+                    + "genero_cliente = ?, estado_civil_cliente = ?, telefone_cliente = ?, email_cliente = ?, cep_cliente = ?, "
+                    + "logradouro_cliente = ?, numero_cliente = ?, complemento_cliente = ?, bairro_cliente = ?, cidade_cliente = ?, "
+                    + "uf_cliente = ? WHERE id_cliente = ?;");
+            
+            comandoSQL.setString(1, clienteAlterar.getNomeCliente());
+            comandoSQL.setString(2, clienteAlterar.getCpfCliente());
+            comandoSQL.setDate(3, new java.sql.Date(clienteAlterar.getDataNascimentoCliente().getTime()));
+            comandoSQL.setString(4, clienteAlterar.getGeneroCliente());
+            comandoSQL.setString(5, clienteAlterar.getEstadoCivilCliente());
+            comandoSQL.setString(6, clienteAlterar.getTelefoneCliente());
+            comandoSQL.setString(7, clienteAlterar.getEmailCliente());
+            comandoSQL.setString(8, clienteAlterar.getCepCliente());
+            comandoSQL.setString(9, clienteAlterar.getLogradouroCliente());
+            comandoSQL.setString(10, clienteAlterar.getNumeroCliente());
+            comandoSQL.setString(11, clienteAlterar.getComplementoCliente());
+            comandoSQL.setString(12, clienteAlterar.getBairroCliente());
+            comandoSQL.setString(13, clienteAlterar.getCidadeCliente());
+            comandoSQL.setString(14, clienteAlterar.getUfCliente());
+            comandoSQL.setInt(15, clienteAlterar.getIdCliente());
+
+            //Finalmente... vamos executar o comando!
+            int linhasAfetadas = comandoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            }
+
+        } catch (ClassNotFoundException ex) {
+            retorno = false;
+        } catch (SQLException ex) {
+            retorno = false;
+        } finally {
+
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return retorno;
     }
 
     public static boolean excluirCliente(int idCliente) {

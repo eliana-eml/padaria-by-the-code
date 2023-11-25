@@ -58,7 +58,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         lblCliente_CPF = new javax.swing.JLabel();
         txtCPFCliente = new javax.swing.JFormattedTextField();
         lblCliente_dtNasc = new javax.swing.JLabel();
-        txtDtNascimentoCliente = new javax.swing.JFormattedTextField();
         lblCliente_Genero = new javax.swing.JLabel();
         txtGeneroCliente = new javax.swing.JTextField();
         lblCliente_EstCivil = new javax.swing.JLabel();
@@ -69,6 +68,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         txtTelFixCliente = new javax.swing.JFormattedTextField();
         lblCliente_Email = new javax.swing.JLabel();
         txtEmailCliente = new javax.swing.JTextField();
+        dtDataNascimento = new com.toedter.calendar.JDateChooser();
         pnlEndereco = new javax.swing.JPanel();
         lblCliente_End = new javax.swing.JLabel();
         lblCliente_CEP = new javax.swing.JLabel();
@@ -231,24 +231,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         lblCliente_dtNasc.setText("Data de Nascimento:");
 
-        try {
-            txtDtNascimentoCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDtNascimentoCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtDtNascimentoCliente.setName("Data de Nascimento"); // NOI18N
-        txtDtNascimentoCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDtNascimentoClienteActionPerformed(evt);
-            }
-        });
-        txtDtNascimentoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDtNascimentoClienteKeyTyped(evt);
-            }
-        });
-
         lblCliente_Genero.setText("Gênero:");
 
         txtGeneroCliente.setName("Gênero"); // NOI18N
@@ -331,7 +313,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                                         .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCliente_dtNasc)
-                                            .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(dtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblCliente_Genero)
@@ -364,7 +346,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                         .addComponent(lblCliente_dtNasc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDtNascimentoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                         .addComponent(lblCliente_Genero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -899,7 +881,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
     private void pnlRodape1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pnlRodape1ComponentShown
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_pnlRodape1ComponentShown
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -1057,7 +1039,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPFCliente);
-        validacao.validarTexto(txtDtNascimentoCliente);
         validacao.validarTexto(txtGeneroCliente);
         validacao.validarTexto(txtEstadoCivilCliente);
         validacao.validarTexto(txtTelFixCliente);
@@ -1083,7 +1064,13 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
             String nome = txtNomeCliente.getText();
             String cpf = txtCPFCliente.getText();
-            String dtNascimentoCliente = txtDtNascimentoCliente.getText();
+
+            java.util.Date dataFormatada = new java.util.Date(dtDataNascimento.getDate().getTime());
+
+            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
+
+            Date dtNascimentoCliente = Date.valueOf(formatador.format(dataFormatada));
+
             String genero = txtGeneroCliente.getText();
             String estadoCivil = txtEstadoCivilCliente.getText();
             String telefone = txtTelFixCliente.getText();
@@ -1096,10 +1083,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             String cidade = txtCidadeCliente.getText();
             String uf = cboUFCliente.getSelectedItem().toString();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-            Date dataNascimento = Date.valueOf(sdf.format(dtNascimentoCliente));
-
-            Cliente cliente = new Cliente(nome, cpf, dataNascimento, genero, estadoCivil, telefone,
+//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//            Date dataNascimento = Date.valueOf(sdf.format(dtNascimentoCliente));
+            Cliente cliente = new Cliente(nome, cpf, dtNascimentoCliente, genero, estadoCivil, telefone,
                     email, cep, logradouro, numero, complemento, bairro, cidade, uf);
 
             // Verifica se existe algum cadastro com o CPF informado pelo usuário.
@@ -1392,9 +1378,9 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }// GEN-LAST:event_txtDtNascimentoClienteActionPerformed
 
     private void txtDtNascimentoClienteKeyTyped(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txtDtNascimentoClienteKeyTyped
-        Validador validacao = new Validador();
-
-        validacao.validarTexto(txtDtNascimentoCliente);
+//        Validador validacao = new Validador();
+//
+//        validacao.validarTexto(txtDtNascimentoCliente);
     }// GEN-LAST:event_txtDtNascimentoClienteKeyTyped
 
     private void btnExcluirCadastroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnExcluirCadastroActionPerformed
@@ -1428,7 +1414,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
         String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
-        
+
         pnlDataAtual.setText(data);
     }
 
@@ -1534,6 +1520,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNavBarRelatorio;
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JComboBox<String> cboUFCliente;
+    private com.toedter.calendar.JDateChooser dtDataNascimento;
     private javax.swing.JLabel lblBTCBakery;
     private javax.swing.JLabel lblBuscaCPF;
     private javax.swing.JLabel lblBuscaClienteCPF;
@@ -1586,7 +1573,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCPFCliente;
     private javax.swing.JTextField txtCidadeCliente;
     private javax.swing.JTextField txtComplementoCliente;
-    private javax.swing.JFormattedTextField txtDtNascimentoCliente;
     private javax.swing.JTextField txtEmailCliente;
     private javax.swing.JTextField txtEstadoCivilCliente;
     private javax.swing.JTextField txtGeneroCliente;
