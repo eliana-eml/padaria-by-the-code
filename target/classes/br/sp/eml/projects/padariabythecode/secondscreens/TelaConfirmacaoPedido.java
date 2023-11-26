@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.secondscreens;
 
+import br.sp.eml.projects.padariabythecode.model.Venda;
 import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
 
 /**
@@ -8,7 +9,6 @@ import br.sp.eml.projects.padariabythecode.view.TelaPrincipalVendas;
  */
 public class TelaConfirmacaoPedido extends javax.swing.JFrame {
 
-    TelaPrincipalVendas telaPrincipal;
     /**
      * Construtor da classe TelaConfirmacaoPedido.
      * Inicializa os componentes gráficos gerados automaticamente.
@@ -43,7 +43,7 @@ public class TelaConfirmacaoPedido extends javax.swing.JFrame {
 
         lblPedidoRealizado.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lblPedidoRealizado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPedidoRealizado.setText("Pedido Nº 1234 realizado com sucesso!");
+        lblPedidoRealizado.setText("Pedido realizado com sucesso!");
         lblPedidoRealizado.setToolTipText("");
         lblPedidoRealizado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -68,12 +68,12 @@ public class TelaConfirmacaoPedido extends javax.swing.JFrame {
                         .addGap(85, 85, 85)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblPedidoRealizado))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(btnPedidoRealizadoOK, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addComponent(btnPedidoRealizadoOK, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(lblPedidoRealizado)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

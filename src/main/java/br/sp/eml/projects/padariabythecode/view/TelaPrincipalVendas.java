@@ -10,8 +10,6 @@ import br.sp.eml.projects.padariabythecode.utils.Utils;
 import br.sp.eml.projects.padariabythecode.utils.Validador;
 
 import java.text.DecimalFormat;
-//import java.time.LocalDateTime;
-//import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaConfirmacaoPedido;
@@ -782,39 +780,67 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
         } else {
 
-            //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
-            DecimalFormat formatarNumero = new DecimalFormat();
-            formatarNumero.setMaximumFractionDigits(2);
+            boolean produtoJaInserido = verificarProdutoTabelaItens(tblListaItensPedido);
 
-            //Declaro variáveis auxiliares para cada campo da nova linha na tabela
-            int qtdProd = Integer.parseInt(txtQtdProduto.getText());
-
-            if (produtoVenda.getQtdEstoqueProduto() >= qtdProd) {
-                //Converto essas variáveis para Strings
-                String codigoProduto = String.valueOf(produtoVenda.getIdProduto());
-                String nomeProduto = produtoVenda.getNomeProduto();
-                String qtdProduto = txtQtdProduto.getText();
-                String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
-                String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
-
-                DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
-
-                //Adiciono uma linha à tabela
-                modelo.addRow(new String[]{
-                    codigoProduto,
-                    nomeProduto,
-                    qtdProduto,
-                    valorUnitarioProduto,
-                    valorTotalItensProduto
-                });
-
+            if (produtoJaInserido == true) {
+                JOptionPane.showMessageDialog(rootPane, "Produto já inserido na tabela de itens!");
+                
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Estoque do produto selecionado é inferior a quantidade a ser vendida informada!");
+                //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
+                DecimalFormat formatarNumero = new DecimalFormat();
+                formatarNumero.setMaximumFractionDigits(2);
+
+                //Declaro variáveis auxiliares para cada campo da nova linha na tabela
+                int qtdProd = Integer.parseInt(txtQtdProduto.getText());
+
+                if (produtoVenda.getQtdEstoqueProduto() >= qtdProd) {
+                    //Converto essas variáveis para Strings
+                    String codigoProduto = String.valueOf(produtoVenda.getIdProduto());
+                    String nomeProduto = produtoVenda.getNomeProduto();
+                    String qtdProduto = txtQtdProduto.getText();
+                    String valorUnitarioProduto = String.valueOf(formatarNumero.format(produtoVenda.getPrecoProduto()));
+                    String valorTotalItensProduto = String.valueOf(formatarNumero.format(qtdProd * produtoVenda.getPrecoProduto()));
+
+                    DefaultTableModel modelo = (DefaultTableModel) tblListaItensPedido.getModel();
+
+                    //Adiciono uma linha à tabela
+                    modelo.addRow(new String[]{
+                        codigoProduto,
+                        nomeProduto,
+                        qtdProduto,
+                        valorUnitarioProduto,
+                        valorTotalItensProduto
+                    });
+
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Estoque do produto selecionado é inferior a quantidade a ser vendida informada!");
+                }
             }
 
         }
 
     }//GEN-LAST:event_btnAdicionarProdutoActionPerformed
+
+    private boolean verificarProdutoTabelaItens(JTable tabela) {
+
+        boolean retorno = false;
+        int idProdutoTabela;
+
+        for (int i = 0; i < tabela.getRowCount(); i++) {
+
+            idProdutoTabela = Integer.parseInt(String.valueOf(tabela.getModel().getValueAt(i, 0)));
+
+            if (idProdutoTabela == produtoVenda.getIdProduto()) {
+                retorno = true;
+                break;
+            } else {
+                retorno = false;
+            }
+
+        }
+
+        return retorno;
+    }
 
     private void atualizarValorTotalPedido() {
 
@@ -942,9 +968,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
-            
+
             ArrayList<ItemVenda> listaItens = new ArrayList<ItemVenda>();
 
             if (tblListaItensPedido.getRowCount() > 0) {
