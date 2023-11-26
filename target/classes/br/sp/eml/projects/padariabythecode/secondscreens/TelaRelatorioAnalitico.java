@@ -30,7 +30,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
     public TelaRelatorioAnalitico(int idVendaParam, double valorTotal) {
         initComponents();
-        
+        setLocationRelativeTo(null);
         /**
          * RECEBE COMO PARÂMETROS O VALOR TOTAL DA COMPRA E O ID PARA
          * REALIZAR A BUSCA DAS DEVIDAS INFORMAÇÕES
@@ -62,7 +62,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 lblNomeCliente.setText(item.getNomeCliente());
                 lblDatas.setText(dateFormated);
                 lblCPFCliente.setText(item.getCpfCliente());
-                lblValorTotalVenda.setText(Double.toString(precoTotal));
+                lblValorTotalVenda.setText("R$ " + Double.toString(precoTotal).replace(".", ","));
                 lblIDVenda.setText(Integer.toString(item.getIdVenda()));
             }
 
@@ -100,8 +100,10 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotalVenda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela de Relatório Analítico");
         setResizable(false);
 
+        pnlRelatorioAnalitico.setToolTipText("");
         pnlRelatorioAnalitico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tblRelatorioAnalitico.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,11 +114,14 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
                 "ID Venda", "ID Item Venda", "ID Produto", "Produto", "Quantidade", "Valor Unitário", "Valor Total"
             }
         ));
+        tblRelatorioAnalitico.setEnabled(false);
+        tblRelatorioAnalitico.setRowSelectionAllowed(false);
         tblRelAnalitco.setViewportView(tblRelatorioAnalitico);
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblRelatorioAnalitico.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRelatorioAnalitico.setForeground(new java.awt.Color(183, 68, 30));
         lblRelatorioAnalitico.setText("RELATÓRIO ANALÍTICO");
 
         javax.swing.GroupLayout pnlCabecalhoLayout = new javax.swing.GroupLayout(pnlCabecalho);
@@ -213,7 +218,10 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
 
         pnlValorTotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnFechar.setBackground(new java.awt.Color(183, 68, 30));
+        btnFechar.setForeground(new java.awt.Color(255, 255, 255));
         btnFechar.setText("Fechar");
+        btnFechar.setBorderPainted(false);
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharActionPerformed(evt);
@@ -224,7 +232,7 @@ public class TelaRelatorioAnalitico extends javax.swing.JFrame {
         lblValorTotal.setText("VALOR TOTAL:");
 
         lblValorTotalVenda.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        lblValorTotalVenda.setText("R$ ---,--");
+        lblValorTotalVenda.setText("R$ 00,00");
 
         javax.swing.GroupLayout pnlValorTotalLayout = new javax.swing.GroupLayout(pnlValorTotal);
         pnlValorTotal.setLayout(pnlValorTotalLayout);

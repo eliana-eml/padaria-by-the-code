@@ -48,7 +48,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarRelatorio = new javax.swing.JButton();
         btnNavBarProdutos = new javax.swing.JButton();
-        lblBTCBakery = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lbNomePadaria = new javax.swing.JLabel();
         pnlClientes = new javax.swing.JPanel();
         lblTituloClientes = new javax.swing.JLabel();
         pnlCadastroCliente = new javax.swing.JPanel();
@@ -118,6 +119,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         mnuEditar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela de Cadastro de Clientes");
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -125,35 +127,51 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         });
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlCabecalho.setPreferredSize(new java.awt.Dimension(657, 63));
+        pnlCabecalho.setPreferredSize(new java.awt.Dimension(665, 83));
 
+        btnNavBarVendas.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarVendas.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.setBorderPainted(false);
         btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarVendasActionPerformed(evt);
             }
         });
 
+        btnNavBarRelatorio.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarRelatorio.setText("Relatório de Vendas");
         btnNavBarRelatorio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarRelatorio.setBorderPainted(false);
         btnNavBarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarRelatorioActionPerformed(evt);
             }
         });
 
+        btnNavBarProdutos.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarProdutos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarProdutos.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarProdutos.setText("Produtos");
         btnNavBarProdutos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarProdutos.setBorderPainted(false);
         btnNavBarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarProdutosActionPerformed(evt);
             }
         });
 
-        lblBTCBakery.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblBTCBakery.setText("By The Code Bakery");
-        lblBTCBakery.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/sp/eml/projects/padariabythecode/utils/Logo Padaria.png"))); // NOI18N
+        jLabel3.setToolTipText("");
+
+        lbNomePadaria.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
+        lbNomePadaria.setForeground(new java.awt.Color(218, 111, 63));
+        lbNomePadaria.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbNomePadaria.setText("BY THE CODE BAKERY");
 
         javax.swing.GroupLayout pnlCabecalhoLayout = new javax.swing.GroupLayout(pnlCabecalho);
         pnlCabecalho.setLayout(pnlCabecalhoLayout);
@@ -161,8 +179,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblBTCBakery, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 622, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbNomePadaria, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,19 +192,21 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         );
         pnlCabecalhoLayout.setVerticalGroup(
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+            .addGroup(pnlCabecalhoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNavBarProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblBTCBakery, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(lbNomePadaria, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNavBarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblTituloClientes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTituloClientes.setForeground(new java.awt.Color(183, 68, 30));
         lblTituloClientes.setText("CLIENTES");
 
         javax.swing.GroupLayout pnlClientesLayout = new javax.swing.GroupLayout(pnlClientes);
@@ -207,6 +229,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pnlCadastroCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblCadastro.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblCadastro.setForeground(new java.awt.Color(183, 68, 30));
         lblCadastro.setText("CADASTRO");
 
         pnlDadosBasicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -356,18 +379,16 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
                         .addComponent(lblCliente_EstCivil)
                         .addGap(28, 28, 28)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCliente_TelFixo)
-                            .addComponent(lblCliente_Email))
+                        .addComponent(lblCliente_TelFixo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelFixCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlDadosBasicosLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(9, 9, 9))
+                        .addGroup(pnlDadosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTelFixCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblCliente_Email))
+                .addGap(15, 15, 15))
         );
 
         pnlEndereco.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -531,14 +552,22 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnCadastrar.setBackground(new java.awt.Color(183, 68, 30));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.setBorderPainted(false);
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
             }
         });
 
+        btnLimparCampos.setBackground(new java.awt.Color(217, 111, 64));
+        btnLimparCampos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorderPainted(false);
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -582,6 +611,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pnlListaClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblListaClientes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblListaClientes.setForeground(new java.awt.Color(183, 68, 30));
         lblListaClientes.setText("LISTA DE CLIENTES");
 
         tblCadClientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -631,6 +661,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pnlBuscarCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblBuscarCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblBuscarCliente.setForeground(new java.awt.Color(183, 68, 30));
         lblBuscarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBuscarCliente.setText("BUSCAR CLIENTE");
 
@@ -658,7 +689,10 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarCliente.setBackground(new java.awt.Color(183, 68, 30));
+        btnBuscarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarCliente.setText("Buscar Por CPF");
+        btnBuscarCliente.setBorderPainted(false);
         btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarClienteActionPerformed(evt);
@@ -675,35 +709,50 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         lblBuscaEnd.setText("Endereço:");
 
+        btnEditarCadastro.setBackground(new java.awt.Color(183, 68, 30));
+        btnEditarCadastro.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarCadastro.setText("Editar Cadastro");
+        btnEditarCadastro.setBorderPainted(false);
         btnEditarCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarCadastroActionPerformed(evt);
             }
         });
 
+        btnLimparBusca.setBackground(new java.awt.Color(217, 111, 64));
+        btnLimparBusca.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparBusca.setText("Limpar Busca");
+        btnLimparBusca.setBorderPainted(false);
         btnLimparBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparBuscaActionPerformed(evt);
             }
         });
 
+        btnBuscarPorNomeCliente.setBackground(new java.awt.Color(183, 68, 30));
+        btnBuscarPorNomeCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorNomeCliente.setText("Buscar Por Nome");
+        btnBuscarPorNomeCliente.setBorderPainted(false);
         btnBuscarPorNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPorNomeClienteActionPerformed(evt);
             }
         });
 
+        btnExcluirCadastro.setBackground(new java.awt.Color(183, 68, 30));
+        btnExcluirCadastro.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluirCadastro.setText("Excluir Cadastro");
+        btnExcluirCadastro.setBorderPainted(false);
         btnExcluirCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirCadastroActionPerformed(evt);
             }
         });
 
+        btnAtualizarTabela.setBackground(new java.awt.Color(217, 111, 64));
+        btnAtualizarTabela.setForeground(new java.awt.Color(255, 255, 255));
         btnAtualizarTabela.setText("Atualizar Tabela");
+        btnAtualizarTabela.setBorderPainted(false);
         btnAtualizarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarTabelaActionPerformed(evt);
@@ -741,7 +790,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                     .addComponent(lblBuscaDtNasc)
                     .addComponent(lblBuscaTel)
                     .addComponent(lblBuscaEnd))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         pnlBuscarClienteLayout.setVerticalGroup(
             pnlBuscarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -841,28 +890,26 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlRodape1, javax.swing.GroupLayout.DEFAULT_SIZE, 1137, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRodape1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1137, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pnlCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlListaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(pnlClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 1137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(pnlCabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, 1137, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1521,7 +1568,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNavBarVendas;
     private javax.swing.JComboBox<String> cboUFCliente;
     private com.toedter.calendar.JDateChooser dtDataNascimento;
-    private javax.swing.JLabel lblBTCBakery;
+    private static javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lbNomePadaria;
     private javax.swing.JLabel lblBuscaCPF;
     private javax.swing.JLabel lblBuscaClienteCPF;
     private javax.swing.JLabel lblBuscaCliente_Nome;

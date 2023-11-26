@@ -41,11 +41,11 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
         pnlCabecalho = new javax.swing.JPanel();
-        lbNomePadaria = new javax.swing.JLabel();
         btnNavBarVendas = new javax.swing.JButton();
         btnNavBarClientes = new javax.swing.JButton();
         btnNavBarRelatorio = new javax.swing.JButton();
-        lbLogotipo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lbNomePadaria1 = new javax.swing.JLabel();
         pnlCadastroProdutos = new javax.swing.JPanel();
         lblCadastroProdutos = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -97,11 +97,13 @@ public class TelaProdutos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Cadastro de Produtos");
         setBackground(new java.awt.Color(255, 255, 255));
 
         pnlProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbTituloVendas2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbTituloVendas2.setForeground(new java.awt.Color(183, 68, 30));
         lbTituloVendas2.setText("PRODUTOS");
 
         javax.swing.GroupLayout pnlProdutosLayout = new javax.swing.GroupLayout(pnlProdutos);
@@ -123,38 +125,49 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         pnlCabecalho.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbNomePadaria.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbNomePadaria.setText("By The Code Bakery");
-
+        btnNavBarVendas.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarVendas.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.setBorderPainted(false);
         btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarVendasActionPerformed(evt);
             }
         });
 
+        btnNavBarClientes.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarClientes.setText("Clientes");
         btnNavBarClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarClientes.setBorderPainted(false);
         btnNavBarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarClientesActionPerformed(evt);
             }
         });
 
+        btnNavBarRelatorio.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarRelatorio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarRelatorio.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarRelatorio.setText("Relatório de Vendas");
         btnNavBarRelatorio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarRelatorio.setBorderPainted(false);
         btnNavBarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarRelatorioActionPerformed(evt);
             }
         });
 
-        lbLogotipo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lbLogotipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbLogotipo.setText("LOGO");
-        lbLogotipo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lbLogotipo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/sp/eml/projects/padariabythecode/utils/Logo Padaria.png"))); // NOI18N
+        jLabel3.setToolTipText("");
+
+        lbNomePadaria1.setFont(new java.awt.Font("Bell MT", 1, 28)); // NOI18N
+        lbNomePadaria1.setForeground(new java.awt.Color(218, 111, 63));
+        lbNomePadaria1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbNomePadaria1.setText("BY THE CODE BAKERY");
 
         javax.swing.GroupLayout pnlCabecalhoLayout = new javax.swing.GroupLayout(pnlCabecalho);
         pnlCabecalho.setLayout(pnlCabecalhoLayout);
@@ -162,33 +175,39 @@ public class TelaProdutos extends javax.swing.JFrame {
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(lbNomePadaria)
-                .addGap(363, 363, 363)
-                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(lbNomePadaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlCabecalhoLayout.setVerticalGroup(
             pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCabecalhoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCabecalhoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNavBarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNavBarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNomePadaria)
-                    .addComponent(lbLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlCabecalhoLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(pnlCabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNavBarRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNavBarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNavBarVendas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnlCabecalhoLayout.createSequentialGroup()
+                                .addComponent(lbNomePadaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 1, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
 
         pnlCadastroProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblCadastroProdutos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblCadastroProdutos.setForeground(new java.awt.Color(183, 68, 30));
         lblCadastroProdutos.setText("CADASTRO DE PRODUTOS");
 
         lblNomeProduto1.setText("Nome do Produto:");
@@ -223,14 +242,22 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
+        btnCadastrar.setBackground(new java.awt.Color(183, 68, 30));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.setBorderPainted(false);
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
             }
         });
 
+        btnLimparCampos.setBackground(new java.awt.Color(217, 111, 64));
+        btnLimparCampos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLimparCampos.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparCampos.setText("Limpar Campos");
+        btnLimparCampos.setBorderPainted(false);
         btnLimparCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparCamposActionPerformed(evt);
@@ -300,6 +327,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlDetalhes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblDetalhes.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblDetalhes.setForeground(new java.awt.Color(183, 68, 30));
         lblDetalhes.setText("DETALHES");
 
         lblNomeProduto2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -317,7 +345,10 @@ public class TelaProdutos extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
 
+        btnLimparBusca.setBackground(new java.awt.Color(183, 68, 30));
+        btnLimparBusca.setForeground(new java.awt.Color(255, 255, 255));
         btnLimparBusca.setText("Limpar Busca");
+        btnLimparBusca.setBorderPainted(false);
         btnLimparBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparBuscaActionPerformed(evt);
@@ -369,6 +400,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         pnlBuscaProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblBuscaUnica.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblBuscaUnica.setForeground(new java.awt.Color(183, 68, 30));
         lblBuscaUnica.setText("BUSCA");
 
         lblCodigo1.setText("Código:");
@@ -394,21 +426,30 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarPorNomeProd.setBackground(new java.awt.Color(183, 68, 30));
+        btnBuscarPorNomeProd.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorNomeProd.setText("Buscar por Nome Produto");
+        btnBuscarPorNomeProd.setBorderPainted(false);
         btnBuscarPorNomeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPorNomeProdActionPerformed(evt);
             }
         });
 
+        btnLimpar.setBackground(new java.awt.Color(217, 111, 64));
+        btnLimpar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpar.setText("Limpar");
+        btnLimpar.setBorderPainted(false);
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
             }
         });
 
+        btnBuscarPorID.setBackground(new java.awt.Color(183, 68, 30));
+        btnBuscarPorID.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorID.setText("Buscar por ID");
+        btnBuscarPorID.setBorderPainted(false);
         btnBuscarPorID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPorIDActionPerformed(evt);
@@ -501,23 +542,33 @@ public class TelaProdutos extends javax.swing.JFrame {
         tblCadastroProdutos.setViewportView(tblCadProdutos);
 
         lblListaProdutos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblListaProdutos.setForeground(new java.awt.Color(183, 68, 30));
         lblListaProdutos.setText("LISTA DE PRODUTOS");
 
+        btnExcluir.setBackground(new java.awt.Color(183, 68, 30));
+        btnExcluir.setForeground(new java.awt.Color(255, 255, 255));
         btnExcluir.setText("Excluir Produto");
+        btnExcluir.setBorderPainted(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
             }
         });
 
+        btnEditarProduto.setBackground(new java.awt.Color(217, 111, 64));
+        btnEditarProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarProduto.setText("Editar Produto");
+        btnEditarProduto.setBorderPainted(false);
         btnEditarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarProdutoActionPerformed(evt);
             }
         });
 
+        btnAtualizarTabela.setBackground(new java.awt.Color(183, 68, 30));
+        btnAtualizarTabela.setForeground(new java.awt.Color(255, 255, 255));
         btnAtualizarTabela.setText("Atualizar Tabela");
+        btnAtualizarTabela.setBorderPainted(false);
         btnAtualizarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarTabelaActionPerformed(evt);
@@ -577,10 +628,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         );
         pnlRodapeLayout.setVerticalGroup(
             pnlRodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRodapeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(pnlDataAtual, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
         );
 
         mnuArquivos.setText("Arquivos");
@@ -639,7 +687,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(pnlCabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -653,7 +701,7 @@ public class TelaProdutos extends javax.swing.JFrame {
                         .addComponent(pnlBuscaProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRodape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1145,6 +1193,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JButton btnNavBarClientes;
     private javax.swing.JButton btnNavBarRelatorio;
     private javax.swing.JButton btnNavBarVendas;
+    private static javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -1152,8 +1201,7 @@ public class TelaProdutos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lbLogotipo;
-    private javax.swing.JLabel lbNomePadaria;
+    private javax.swing.JLabel lbNomePadaria1;
     private javax.swing.JLabel lbTituloVendas2;
     private javax.swing.JLabel lblBuscaUnica;
     private javax.swing.JLabel lblCadastroProdutos;
