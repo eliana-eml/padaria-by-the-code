@@ -56,6 +56,7 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         btnAdicionarProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela de Listagem de Produtos");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -63,18 +64,27 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(183, 68, 30));
         jLabel1.setText("LISTA DE PRODUTOS");
 
+        btnNavBarVendas.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarVendas.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.setBorderPainted(false);
         btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarVendasActionPerformed(evt);
             }
         });
 
+        btnNavBarProdutos1.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarProdutos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarProdutos1.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarProdutos1.setText("Produtos");
         btnNavBarProdutos1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarProdutos1.setBorderPainted(false);
         btnNavBarProdutos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarProdutos1ActionPerformed(evt);
@@ -125,21 +135,30 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarNomeProduto.setBackground(new java.awt.Color(217, 111, 64));
+        btnBuscarNomeProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarNomeProduto.setText("Buscar");
+        btnBuscarNomeProduto.setBorderPainted(false);
         btnBuscarNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarNomeProdutoActionPerformed(evt);
             }
         });
 
+        btnBuscarIDProduto.setBackground(new java.awt.Color(217, 111, 64));
+        btnBuscarIDProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarIDProduto.setText("Buscar");
+        btnBuscarIDProduto.setBorderPainted(false);
         btnBuscarIDProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarIDProdutoActionPerformed(evt);
             }
         });
 
+        btnRecarregarTabela.setBackground(new java.awt.Color(183, 68, 30));
+        btnRecarregarTabela.setForeground(new java.awt.Color(255, 255, 255));
         btnRecarregarTabela.setText("Recarregar Tabela");
+        btnRecarregarTabela.setBorderPainted(false);
         btnRecarregarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecarregarTabelaActionPerformed(evt);
@@ -198,7 +217,10 @@ public class TelaListagemProdutos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblListagemProdutos);
 
+        btnAdicionarProduto.setBackground(new java.awt.Color(183, 68, 30));
+        btnAdicionarProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnAdicionarProduto.setText("Adicionar Produto");
+        btnAdicionarProduto.setBorderPainted(false);
         btnAdicionarProduto.setPreferredSize(new java.awt.Dimension(125, 27));
         btnAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

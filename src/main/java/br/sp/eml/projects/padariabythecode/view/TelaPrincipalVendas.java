@@ -124,7 +124,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         mnuEditar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela Principal - Vendas");
+        setTitle("Tela Principal Vendas");
         setBackground(new java.awt.Color(255, 255, 255));
 
         pnlVendas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -742,10 +742,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         int dia = calendar.get(Calendar.DAY_OF_MONTH);
 
         String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
-        
+
         pnlDataAtual.setText(data);
 
-      /*  try {
+        /*  try {
             while (true) {
 
                 int horas = calendar.get(Calendar.HOUR);
@@ -764,9 +764,9 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+         */
     }
-    
+
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
 
         //Instâncio um objeto da classe Validador e valido os campos txtNomeProduto e txtQtdProduto.
@@ -932,55 +932,59 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
     private void btnFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarPedidoActionPerformed
 
-        /**
-         * Além de realizar o insert do pedido no banco de dados o botão
-         * btnFinalizarPedido irá chamar a telinha de confirmação de pedido.
-         *
-         * Como o banco de dados ainda não está implementado, o botão apenas
-         * habilita a TelaConfirmacaoPedido e desabilita a TelaPrincipalVendas.
-         */
-        //Resgato os produtos
-        ArrayList<ItemVenda> listaItens = new ArrayList<ItemVenda>();
+        Validador validacao = new Validador();
+        validacao.validarTexto(txtNomeCliente);
+        validacao.validarTexto(txtCPF);
+        validacao.validarTexto(txtNomeProduto);
+        validacao.validarNumero(txtQtdProduto);
+        validacao.validarPreenchimentoTabela(tblListaItensPedido);
 
-        if (tblListaItensPedido.getRowCount() > 0) {
+        if (validacao.hasErro()) {
+            String mensagensDeErro = validacao.getMensagensErro();
+            JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
+            
+        } else {
+            
+            ArrayList<ItemVenda> listaItens = new ArrayList<ItemVenda>();
 
-            for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
-                ItemVenda item = new ItemVenda();
+            if (tblListaItensPedido.getRowCount() > 0) {
 
-                item.setIdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 0).toString()));
-                item.setQtdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 2).toString()));
-                item.setValorUnitarioItem(Double.parseDouble(tblListaItensPedido.getValueAt(i, 3).toString().replace(",", ".")));
+                for (int i = 0; i < tblListaItensPedido.getRowCount(); i++) {
+                    ItemVenda item = new ItemVenda();
 
-                //Adiciono o objeto à listaItens
-                listaItens.add(item);
+                    item.setIdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 0).toString()));
+                    item.setQtdProduto(Integer.parseInt(tblListaItensPedido.getValueAt(i, 2).toString()));
+                    item.setValorUnitarioItem(Double.parseDouble(tblListaItensPedido.getValueAt(i, 3).toString().replace(",", ".")));
 
+                    //Adiciono o objeto à listaItens
+                    listaItens.add(item);
+
+                }
+            }
+
+            Date dataAtual = new Date();
+
+            double valorTotalVenda = calcularValorTotalPedido(tblListaItensPedido);
+            int idCliente = clienteVenda.getIdCliente();
+
+            Venda objVenda = new Venda();
+            objVenda.setDataVenda(dataAtual);
+            objVenda.setValorTotalVenda(valorTotalVenda);
+            objVenda.setIdClienteVenda(idCliente);
+            objVenda.setListaProdutos(listaItens);
+
+            boolean retorno = VendaDAO.cadastrarVenda(objVenda);
+
+            if (retorno == true) {
+                JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
+                atualizarEstoque(tblListaItensPedido);
+
+                new TelaConfirmacaoPedido().setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Falha na venda!");
             }
         }
-
-        Date dataAtual = new Date();
-
-        double valorTotalVenda = calcularValorTotalPedido(tblListaItensPedido);
-        int idCliente = clienteVenda.getIdCliente();
-
-        Venda objVenda = new Venda();
-        objVenda.setDataVenda(dataAtual);
-        objVenda.setValorTotalVenda(valorTotalVenda);
-        objVenda.setIdClienteVenda(idCliente);
-        objVenda.setListaProdutos(listaItens);
-
-        boolean retorno = VendaDAO.cadastrarVenda(objVenda);
-
-        if (retorno == true) {
-            JOptionPane.showMessageDialog(rootPane, "Venda efetuada com sucesso!");
-            atualizarEstoque(tblListaItensPedido);
-
-            new TelaConfirmacaoPedido().setVisible(true);
-            this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Falha na venda!");
-        }
-
-
     }//GEN-LAST:event_btnFinalizarPedidoActionPerformed
 
     public void atualizarEstoque(JTable tabelaItensVenda) {
@@ -1018,6 +1022,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
         utilitario.limparTabela(tblListaItensPedido);
 
         //Retorno os labels do pnlResumoDoPedido para o seu estado inicial.
+        lblIDCliente.setText("ID Cliente: ");
         lblNomeCliente.setText("Cliente: ");
         lblCPFCliente.setText("CPF: ");
         lblTelefoneCliente.setText("Telefone: ");

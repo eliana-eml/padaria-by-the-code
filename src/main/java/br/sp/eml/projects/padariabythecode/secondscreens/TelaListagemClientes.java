@@ -56,6 +56,7 @@ public class TelaListagemClientes extends javax.swing.JFrame {
         tblListagemClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela de Listagem de Clientes");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -63,18 +64,27 @@ public class TelaListagemClientes extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(183, 68, 30));
         jLabel1.setText("LISTA DE CLIENTES");
 
+        btnNavBarVendas.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarVendas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarVendas.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarVendas.setText("Vendas");
         btnNavBarVendas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarVendas.setBorderPainted(false);
         btnNavBarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarVendasActionPerformed(evt);
             }
         });
 
+        btnNavBarClientes.setBackground(new java.awt.Color(57, 56, 56));
+        btnNavBarClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNavBarClientes.setForeground(new java.awt.Color(255, 255, 255));
         btnNavBarClientes.setText("Clientes");
         btnNavBarClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNavBarClientes.setBorderPainted(false);
         btnNavBarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNavBarClientesActionPerformed(evt);
@@ -121,7 +131,10 @@ public class TelaListagemClientes extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarClienteNome.setBackground(new java.awt.Color(217, 111, 64));
+        btnBuscarClienteNome.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarClienteNome.setText("Buscar");
+        btnBuscarClienteNome.setBorderPainted(false);
         btnBuscarClienteNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarClienteNomeActionPerformed(evt);
@@ -140,14 +153,20 @@ public class TelaListagemClientes extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarClienteCPF.setBackground(new java.awt.Color(217, 111, 64));
+        btnBuscarClienteCPF.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarClienteCPF.setText("Buscar");
+        btnBuscarClienteCPF.setBorderPainted(false);
         btnBuscarClienteCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarClienteCPFActionPerformed(evt);
             }
         });
 
+        btnRecarregarTabela.setBackground(new java.awt.Color(183, 68, 30));
+        btnRecarregarTabela.setForeground(new java.awt.Color(255, 255, 255));
         btnRecarregarTabela.setText("Recarregar Tabela");
+        btnRecarregarTabela.setBorderPainted(false);
         btnRecarregarTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRecarregarTabelaActionPerformed(evt);
@@ -195,7 +214,10 @@ public class TelaListagemClientes extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
+        btnAdicionarCliente.setBackground(new java.awt.Color(183, 68, 30));
+        btnAdicionarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnAdicionarCliente.setText("Adicionar Cliente");
+        btnAdicionarCliente.setBorderPainted(false);
         btnAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarClienteActionPerformed(evt);

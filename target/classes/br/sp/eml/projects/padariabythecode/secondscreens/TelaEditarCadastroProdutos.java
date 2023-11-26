@@ -62,8 +62,10 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela de Edição de Cadastro de Produtos");
 
         lblAttProdutos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAttProdutos.setForeground(new java.awt.Color(183, 68, 30));
         lblAttProdutos.setText("ATUALIZAÇÃO DE PRODUTOS");
 
         lblNomeProduto.setText("Nome do Produto:");
@@ -98,7 +100,10 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
             }
         });
 
+        btnAtualizar.setBackground(new java.awt.Color(183, 68, 30));
+        btnAtualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.setBorderPainted(false);
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);

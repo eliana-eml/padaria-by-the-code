@@ -34,6 +34,7 @@ public class TelaConfirmacaoPedido extends javax.swing.JFrame {
         btnPedidoRealizadoOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Confirmação Pedido");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -46,8 +47,11 @@ public class TelaConfirmacaoPedido extends javax.swing.JFrame {
         lblPedidoRealizado.setToolTipText("");
         lblPedidoRealizado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        btnPedidoRealizadoOK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnPedidoRealizadoOK.setBackground(new java.awt.Color(183, 68, 30));
+        btnPedidoRealizadoOK.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnPedidoRealizadoOK.setForeground(new java.awt.Color(255, 255, 255));
         btnPedidoRealizadoOK.setText("OK");
+        btnPedidoRealizadoOK.setBorderPainted(false);
         btnPedidoRealizadoOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPedidoRealizadoOKActionPerformed(evt);

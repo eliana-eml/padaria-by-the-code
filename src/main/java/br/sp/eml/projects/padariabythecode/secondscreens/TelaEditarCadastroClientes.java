@@ -100,6 +100,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela de Edição de Cadastro de Clientes");
         setResizable(false);
 
         pnlDadosBasicos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -420,7 +421,10 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnAtualizar.setBackground(new java.awt.Color(183, 68, 30));
+        btnAtualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnAtualizar.setText("Atualizar");
+        btnAtualizar.setBorderPainted(false);
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);
