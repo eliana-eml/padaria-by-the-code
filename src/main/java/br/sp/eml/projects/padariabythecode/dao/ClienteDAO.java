@@ -17,6 +17,11 @@ public class ClienteDAO {
     static String login = "root"; //Alterar conforme o usuário!!
     static String senha = "root"; //Alterar conforme o usuário!!
 
+    /**
+     * Método de cadastro para acesso e inserção de registros de clientes no banco de dados.
+     * @param cliente objeto do tipo Cliente
+     * @return boolean - true: sucesso, false: falha.
+     */
     public static boolean cadastrarCliente(Cliente cliente) {
 
         boolean retorno = false;
@@ -70,6 +75,10 @@ public class ClienteDAO {
         return retorno;
     }
 
+    /**
+     * Método de listagem de clientes para acesso e consulta de todos os registros de clientes no banco de dados.
+     * @return ArrayList do tipo Cliente
+     */
     public static ArrayList<Cliente> listarClientes() {
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -137,6 +146,11 @@ public class ClienteDAO {
         return listaClientes;
     }
 
+    /**
+     * Método de busca por um registro de cliente no banco de dados com CPF correspondente ao passado por parâmetro.
+     * @param cpfCliente do tipo String
+     * @return objeto do tipo Cliente
+     */
     public static Cliente buscarPorCPFCliente(String cpfCliente) {
 
         Cliente cliente = new Cliente();
@@ -202,6 +216,11 @@ public class ClienteDAO {
         return cliente;
     }
 
+    /**
+     * Método de busca por um ou mais registros de clientes no banco de dados com nome(s) correspondente(s) ao passado por parâmetro.
+     * @param nomeClienteBuscar do tipo String
+     * @return ArrayList do tipo Cliente
+     */
     public static ArrayList<Cliente> buscarPorNomeCliente(String nomeClienteBuscar) {
 
         ArrayList<Cliente> listaClientes = new ArrayList<>();
@@ -271,7 +290,12 @@ public class ClienteDAO {
         return listaClientes;
     }
 
-    public static boolean alterar(Cliente clienteAlterar) {
+    /**
+     * Método de alteração para acesso e atualização de registros de clientes no banco de dados.
+     * @param clienteAlterar objeto do tipo Cliente
+     * @return boolean - true: sucesso, false: falha
+     */
+    public static boolean alterarCliente(Cliente clienteAlterar) {
 
         boolean retorno = false;
         Connection conexao = null;
@@ -333,6 +357,11 @@ public class ClienteDAO {
         return retorno;
     }
 
+    /**
+     * Método de exclusão para acesso e exclusão de registros de clientes no banco de dados.
+     * @param idCliente do tipo inteiro
+     * @return boolean - true: sucesso, false: falha
+     */
     public static boolean excluirCliente(int idCliente) {
 
         boolean retorno = false;
@@ -371,6 +400,11 @@ public class ClienteDAO {
         return retorno;
     }
 
+    /**
+     * Método de busca por um registro de cliente no banco de dados com CPF correspondente ao passado por parâmetro.
+     * @param cpfCliente do tipo String
+     * @return boolean - true: se houver um registro correspondente, false: se não houver um registro correspondente
+     */
     public static boolean verificarExistenciaCadastroCPF(String cpfCliente) {
 
         boolean retorno = false;

@@ -20,11 +20,14 @@ public class VendaDAO {
     static String login = "root"; //Alterar conforme o usuário!!
     static String senha = "root"; //Alterar conforme o usuário!!
 
+    /**
+     * Método de cadastro para acesso e inserção de registros de vendas no banco de dados.
+     * @param venda objeto do tipo Venda
+     * @return boolean - true: sucesso, false: falha.
+     */
     public static boolean cadastrarVenda(Venda venda) {
 
         boolean retorno = false;
-//         conexao = null;
-//         comandoSQL = null;
 
         try {
             //Passo 1 - Carregar o Driver
@@ -75,61 +78,11 @@ public class VendaDAO {
         return retorno;
     }
 
-//    public static ArrayList<Venda> listarVendas() {
-//
-//        ArrayList<Venda> listaVendas = new ArrayList<>();
-//
-//        Connection conexao = null;
-//        PreparedStatement comandoSQL = null;
-//        ResultSet rs = null;
-//
-//        try {
-//            //Passo 1 - Carregar o Driver
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//
-//            //Passo 2 - Abrir Conexão com MYSQL
-//            conexao = DriverManager.getConnection(url, login, senha);
-//
-//            //Passo 3 - Preparar o comando SQL
-//            comandoSQL = conexao.prepareStatement("SELECT * FROM vendas");
-//
-//            //Passo 4 - Executar comando SQL
-//            rs = comandoSQL.executeQuery();
-//
-//            if (rs != null) {
-//
-//                //PERCORRE TODAS AS LINHAS DO RESULT
-//                while (rs.next()) {
-//                    Venda item = new Venda();
-//
-//                    item.setIdVenda(rs.getInt("id_venda"));
-//                    item.setDataVenda(rs.getDate("data_venda"));
-//                    item.setIdClienteVenda(rs.getInt("id_cliente"));
-//                    item.setValorTotalVenda(rs.getDouble("valor_total_venda"));
-//
-//                    listaVendas.add(item);
-//
-//                }
-//            }
-//
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            if (conexao != null) {
-//                try {
-//                    conexao.close();
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//
-//        }
-//
-//        return listaVendas;
-//    }
-
+    /**
+     * Método de busca por um registro de venda no banco de dados com id correspondente ao passado por parâmetro.
+     * @param idVenda do tipo inteiro
+     * @return objeto do tipo Venda
+     */
     public static Venda buscarPorIdVenda(int idVenda) {
 
         Venda venda = new Venda();

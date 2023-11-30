@@ -17,7 +17,11 @@ public class ProdutoDAO {
     static String login = "root"; //Alterar conforme o usuário!!
     static String senha = "root"; //Alterar conforme o usuário!!
 
-    //Função de salvar produto
+    /**
+     * Método de cadastro para acesso e inserção de registros de produtos no banco de dados.
+     * @param produto objeto do tipo Produto
+     * @return boolean - true: sucesso, false: falha.
+     */
     public static boolean cadastrarProduto(Produto produto) {
 
         boolean retorno = false;
@@ -60,7 +64,12 @@ public class ProdutoDAO {
         return retorno;
     }
     
-    public static boolean alterar(Produto produtoAlterar) {
+    /**
+     * Método de alteração para acesso e atualização de registros de produtos no banco de dados.
+     * @param produtoAlterar objeto do tipo Produto
+     * @return boolean - true: sucesso, false: falha
+     */
+    public static boolean alterarProduto(Produto produtoAlterar) {
 
         boolean retorno = false;
         Connection conexao = null;
@@ -107,6 +116,11 @@ public class ProdutoDAO {
         return retorno;
     }
 
+    /**
+     * Método de exclusão para acesso e exclusão de registros de produtos no banco de dados.
+     * @param idProduto do tipo inteiro
+     * @return boolean - true: sucesso, false: falha
+     */
     public static boolean excluirProduto(int idProduto) {
 
         boolean retorno = false;
@@ -145,6 +159,10 @@ public class ProdutoDAO {
         return retorno;
     }
 
+    /**
+     * Método de listagem de produtos para acesso e consulta de todos os registros de produtos no banco de dados.
+     * @return ArrayList do tipo Produto
+     */
     public static ArrayList<Produto> listarProdutos() {
 
         ArrayList<Produto> listaProdutos = new ArrayList<>();
@@ -199,6 +217,11 @@ public class ProdutoDAO {
         return listaProdutos;
     }
     
+    /**
+     * Método de busca por um registro de produto no banco de dados com nome correspondente ao passado por parâmetro.
+     * @param nomeProdutoBuscar do tipo String
+     * @return objeto do tipo Produto
+     */
     public static Produto buscarPorNomeProduto(String nomeProdutoBuscar) {
 
         Produto produto = new Produto();
@@ -251,6 +274,11 @@ public class ProdutoDAO {
         return produto;
     }
     
+    /**
+     * Método de busca por um registro de produto no banco de dados com id correspondente ao passado por parâmetro.
+     * @param idProduto do tipo inteiro
+     * @return objeto do tipo Produto
+     */
     public static Produto buscarPorIdProduto(int idProduto) {
 
         Produto produto = new Produto();
@@ -303,6 +331,11 @@ public class ProdutoDAO {
         return produto;
     }
     
+    /**
+     * Metódo de atualização de valor de estoque para o objeto do tipo Produto passado por parâmetro.
+     * @param produtoEstoqueAlterar objeto do tipo Produto
+     * @return boolean - true: sucesso, false: falha
+     */
     public static boolean atualizarEstoqueProduto(Produto produtoEstoqueAlterar) {
         
         boolean retorno = false;

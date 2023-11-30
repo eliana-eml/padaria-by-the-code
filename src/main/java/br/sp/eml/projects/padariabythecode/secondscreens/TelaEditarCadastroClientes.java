@@ -554,7 +554,7 @@ public class TelaEditarCadastroClientes extends javax.swing.JFrame {
 //
 //            } else {
 
-                boolean retorno = ClienteDAO.alterar(cliente);
+                boolean retorno = ClienteDAO.alterarCliente(cliente);
 
                 if (retorno == true) {
                     JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");

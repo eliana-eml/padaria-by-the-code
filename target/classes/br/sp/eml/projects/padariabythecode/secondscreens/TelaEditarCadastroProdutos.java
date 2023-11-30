@@ -184,7 +184,7 @@ public class TelaEditarCadastroProdutos extends javax.swing.JFrame {
         obj.setPrecoProduto(valorProdutoAlterado);
         obj.setQtdEstoqueProduto(qtdEstoqueProdutoAlterado);
 
-        boolean retorno = ProdutoDAO.alterar(obj);
+        boolean retorno = ProdutoDAO.alterarProduto(obj);
 
         if (retorno) {
             JOptionPane.showMessageDialog(rootPane, "Cadastro de produto alterado com sucesso!");

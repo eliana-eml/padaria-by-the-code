@@ -16,7 +16,11 @@ public class RelatorioDAO {
     static String login = "root"; //Alterar conforme o usuário!!
     static String senha = "root"; //Alterar conforme o usuário!!
 
-   
+    /**
+     * Método para listar todos os relatórios de vendas efetuadas registradas no banco de dados.
+     * @return ArrayList do tipo Relatorio
+     * @throws SQLException 
+     */
     public static ArrayList<Relatorio> listaRelatorios() throws SQLException {
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
 
@@ -63,13 +67,16 @@ public class RelatorioDAO {
     }
 
     /**
-    *  REALIZA A BUSCA COM  AS DATAS QUE ESTÃO
-    *  ENTRE AS DATAS DO PERÍODO MENCIONADO 
-    */
+     * Método de listagem de relatório com determinado período (data de início e data fim), informado por parâmetro.
+     * @param dataInicio do tipo String
+     * @param dataFim do tipo String
+     * @return ArrayList do tipo Relatorio
+     * @throws SQLException 
+     */
     public static ArrayList<Relatorio> listaRelatorioPorData(String dataInicio, String dataFim) throws SQLException {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
-        
+
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -118,16 +125,16 @@ public class RelatorioDAO {
         return listaDeRelatorios;
     }
 
-    
     /**
-    *   EXECUTA UMA LISTAGEM DE ITENS PELO ID INSERIDO
-    *   **A LISTAGEM É SINTÉTICA**
-    */
+     * Método de listagem de uma venda simples (relatório sintético), buscando pelo id da venda passado por parâmetro.
+     * @param idVenda do tipo inteiro
+     * @return ArrayList do tipo Relatorio
+     * @throws SQLException 
+     */
     public static ArrayList<Relatorio> listaRelatorioPorId(int idVenda) throws SQLException {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
 
-       
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -172,16 +179,17 @@ public class RelatorioDAO {
 
         return listaDeRelatorios;
     }
-
+    
     /**
-     *  REALIZA UMA LISTAGEM ANALÍTICA DE TODOS OS ITENS
-     *  COM  O ID IGUAL AO INFORMADO
-    */
+     * Método de listagem detalhada de uma venda e seus itens (relatório analítico), buscando pelo id da venda passado por parâmetro.
+     * @param idVenda do tipo inteiro
+     * @return ArrayList do tipo Relatorio
+     * @throws SQLException 
+     */
     public static ArrayList<Relatorio> listaItemPorId(int idVenda) throws SQLException {
 
         ArrayList<Relatorio> listaDeRelatorios = new ArrayList<>();
 
-        
         Connection conexao = null;
         PreparedStatement comandoSQL = null;
         ResultSet rs = null;
@@ -204,7 +212,6 @@ public class RelatorioDAO {
 
             comandoSQL.setInt(1, idVenda);
 
-
             //Passo 4 - Executar comando SQL
             rs = comandoSQL.executeQuery();
 
@@ -220,8 +227,7 @@ public class RelatorioDAO {
                     item.setQtdItemProduto(rs.getInt("qtd_produto"));
                     item.setValorUnitarioItem(rs.getDouble("valor_unitario_item"));
                     item.setValorTotalItemVenda(rs.getDouble("valor_total_item"));
-                    
-                    
+
                     //ITENS SEPARADOS POIS NÃO FAZEM PARTE DO DETALHAMENTO PRINCIPAL
                     item.setCpfCliente(rs.getString("cpf_cliente"));
                     item.setNomeCliente(rs.getString("nome_cliente"));
