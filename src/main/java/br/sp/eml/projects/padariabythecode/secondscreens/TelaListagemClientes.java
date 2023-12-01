@@ -474,10 +474,6 @@ public class TelaListagemClientes extends javax.swing.JFrame {
 
         for (Cliente cliente : lista) {
 
-//            LocalDate clienteDataNasc = LocalDate.parse(cliente.getDataNascimentoCliente().toString());
-//
-//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//            LocalDate dataNasc = LocalDate.parse(clienteDataNasc.toString(), formato);
             modelo.addRow(new String[]{
                 String.valueOf(cliente.getIdCliente()),
                 String.valueOf(cliente.getNomeCliente()),

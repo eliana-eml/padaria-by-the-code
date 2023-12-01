@@ -18,8 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.Timer;
 
 /**
  *
@@ -35,7 +33,13 @@ public class TelaRelatorio extends javax.swing.JFrame {
     public TelaRelatorio() {
         initComponents();
         setLocationRelativeTo(null);
-        //getContentPane().setBackground(Color.decode("#f9f7dc"));
+        
+        try {
+            listaRelatorioVendas();
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        defineData();
     }
 
     /**
@@ -78,7 +82,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         lbNomePadaria = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         pnlRodape1 = new javax.swing.JPanel();
-        pnlHoraAtual = new javax.swing.JLabel();
         pnlDataAtual = new javax.swing.JLabel();
         pnlProdutos = new javax.swing.JPanel();
         lbTituloVendas2 = new javax.swing.JLabel();
@@ -387,16 +390,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
 
         pnlRodape1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        pnlHoraAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        pnlHoraAtual.setText("--:--:--");
-        pnlHoraAtual.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        pnlHoraAtual.setAlignmentY(0.0F);
-        pnlHoraAtual.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnlHoraAtualFocusGained(evt);
-            }
-        });
-
         pnlDataAtual.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         pnlDataAtual.setText("26/09/2023");
         pnlDataAtual.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -409,19 +402,15 @@ public class TelaRelatorio extends javax.swing.JFrame {
         pnlRodape1.setLayout(pnlRodape1Layout);
         pnlRodape1Layout.setHorizontalGroup(
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRodape1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRodape1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlDataAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlRodape1Layout.setVerticalGroup(
             pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlRodape1Layout.createSequentialGroup()
-                .addGroup(pnlRodape1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pnlDataAtual)
-                    .addComponent(pnlHoraAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlDataAtual)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -624,7 +613,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
                         String.valueOf(lista.getNomeCliente()),
                         String.valueOf(lista.getCpfCliente()),
                         String.valueOf(lista.getValorTotalVenda()),});
-                    //valorPorPeriodo.setText(String.valueOf(lista.getValorTotalVendasPeriodo()));
                 }
 
             } catch (SQLException ex) {
@@ -738,35 +726,9 @@ public class TelaRelatorio extends javax.swing.JFrame {
         Date dataSistema = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         pnlDataAtual.setText(formato.format(dataSistema));
-
-        //.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
-        Timer timer = new Timer(1000, new hora());
-        timer.start();
-
-        Calendar calendar = Calendar.getInstance();
-
-        /*
-    * 
-    * int ano = calendar.get(Calendar.YEAR);
-        int mes = calendar.get(Calendar.MONTH) + 1;
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
-
-       
-
-            int horas = calendar.get(Calendar.HOUR);
-            int minutos = calendar.get(Calendar.MINUTE);
-            int segundos = calendar.get(Calendar.SECOND);
-
-            String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
-
-            pnlDataAtual.setText(data + " - " + horarioAtual);
-            System.out.println(data + " - " + horarioAtual);
-            * 
-            * 
-         */
+        
     }
+    
     private void btnRecarregarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecarregarTabelaActionPerformed
 
         try {
@@ -774,10 +736,10 @@ public class TelaRelatorio extends javax.swing.JFrame {
             labelDataInicio.setText("--/--/----");
             labelDataFinal.setText("--/--/----");
             valorPorPeriodo.setText("R$ 00,00");
-            
+
             Utils utilitario = new Utils();
             utilitario.limparCampos(pnlBuscaPorID);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(TelaRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -829,10 +791,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarPorDataActionPerformed
 
-    private void pnlHoraAtualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnlHoraAtualFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlHoraAtualFocusGained
-
     private void btnNavBarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavBarProdutosActionPerformed
 
         /**
@@ -872,15 +830,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlDataAtualFocusGained
 
-    class hora implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Calendar calendar = Calendar.getInstance();
-            pnlHoraAtual.setText(String.format("%1$tH:%1$tM:%1$tS", calendar));
-
-        }
-    }
 
     /**
      * @param args the command line arguments
@@ -964,7 +913,6 @@ public class TelaRelatorio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDadosVendas;
     private static javax.swing.JLabel pnlDataAtual;
     private javax.swing.JPanel pnlDetalhesVendasPorPeriodo;
-    private static javax.swing.JLabel pnlHoraAtual;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlRodape1;
     private java.awt.Scrollbar scrollbar1;

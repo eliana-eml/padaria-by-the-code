@@ -1,5 +1,6 @@
 package br.sp.eml.projects.padariabythecode.utils;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -97,6 +98,13 @@ public class Validador {
 
         if (comboBox.getSelectedIndex() == 0) {
             this.mensagensErro.add("Selecione uma opção para o seletor: " + comboBox.getName());
+        }
+    }
+    
+    public void validarPreenchimentoJDateChooser(JDateChooser seletorData) {
+        
+        if (seletorData.getDate() == null) {
+            this.mensagensErro.add("Selecione uma data para o seletor: " + seletorData.getName());
         }
     }
 

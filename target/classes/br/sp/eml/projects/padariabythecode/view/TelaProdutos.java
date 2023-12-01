@@ -7,8 +7,10 @@ import br.sp.eml.projects.padariabythecode.utils.Validador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroProdutos;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -24,6 +26,8 @@ public class TelaProdutos extends javax.swing.JFrame {
     public TelaProdutos() {
         initComponents();
         setLocationRelativeTo(null);
+        recarregarTabelaProdutos();
+        defineData();
     }
 
     /**
@@ -710,36 +714,6 @@ public class TelaProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-
-        /**
-         * Exibe uma tela de diálogo com opção de confirmação para exclusão do
-         * cadastro. Em seguida, verifica a opção selecionada pelo usuário:
-         */
-        
-        /**
-         * JANELA DE DIÁLOGO COMENTADA POIS ESTAVA GERANDO ERROS NA HORA
-         * DE EXECUTAR A EXCLUSÃO DE UM CADASTRO; NÃO ESTAVA ACEITANDO
-         * O TRATAMENTO DE ERROS NO IF-ELSE.
-         * 
-         * JANELA SUBSTITUÍDA POR MENSAGEM EXIGINDO A SELEÇÃO DE UM
-         * CADASTRO DAS LINHAS DA TABELA PARA PODER EXECUTAR A EXCLUSÃO.
-         **/
-        
-        
-//        int resposta = JOptionPane.showOptionDialog(null,
-//                "Deseja realmente excluir?",
-//                "Cadastro Produto",
-//                JOptionPane.OK_CANCEL_OPTION,
-//                JOptionPane.INFORMATION_MESSAGE,
-//                null,
-//                new String[]{"Sim", "Não"},
-//                "default");
-
-
-        /**
-         * Obtém o índice da linha selecionada na tabela tblCadProdutos. Em
-         * seguida, obtém o modelo de tabela associado à tabela tblCadProdutos.
-         */
         
         int linhaSelecionada = tblCadProdutos.getSelectedRow();
 
@@ -763,38 +737,14 @@ public class TelaProdutos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-     public static void defineData() {
-        Calendar calendar = Calendar.getInstance();
-
-        int ano = calendar.get(Calendar.YEAR);
-        int mes = calendar.get(Calendar.MONTH) + 1;
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+    public static void defineData() {
         
-        pnlDataAtual.setText(data);
-
-      /*  try {
-            while (true) {
-
-                int horas = calendar.get(Calendar.HOUR);
-                int minutos = calendar.get(Calendar.MINUTE);
-                int segundos = calendar.get(Calendar.SECOND);
-
-                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
-
-                //pnlDataAtual.setText(data + " - " + horarioAtual);
-
-                System.out.println(data + " - " + horarioAtual);
-                
-                Thread.sleep(1000);
-            }
-
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
+        Date dataSistema = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        pnlDataAtual.setText(formato.format(dataSistema));
+        
     }
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
         /**
@@ -863,7 +813,7 @@ public class TelaProdutos extends javax.swing.JFrame {
             });
         }
     }
-    
+
     private void btnBuscarPorNomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorNomeProdActionPerformed
 
         /**
@@ -877,28 +827,28 @@ public class TelaProdutos extends javax.swing.JFrame {
          * contrário, exibe os valores válidos nos rótulos correspondentes
          * (lblCodigo2 & lblNomeProduto2).
          */
-        
+
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
-           
+
             String nomeProdutoBuscar = txtNomeProdutoBusca.getText();
             Produto produto = ProdutoDAO.buscarPorNomeProduto(nomeProdutoBuscar);
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
             modelo.setRowCount(0);
-            
+
             //Atualizar a tabela
-                modelo.addRow(new String[]{
-                    //Pegar dados do objeto e passar para a tabela...
-                    String.valueOf(produto.getIdProduto()),
-                    String.valueOf(produto.getNomeProduto()),
-                    String.valueOf(produto.getPrecoProduto()),
-                    String.valueOf(produto.getQtdEstoqueProduto())
-                });
-            
+            modelo.addRow(new String[]{
+                //Pegar dados do objeto e passar para a tabela...
+                String.valueOf(produto.getIdProduto()),
+                String.valueOf(produto.getNomeProduto()),
+                String.valueOf(produto.getPrecoProduto()),
+                String.valueOf(produto.getQtdEstoqueProduto())
+            });
+
             lblCodigo2.setText("Código: " + produto.getIdProduto());
             lblNomeProduto2.setText("Nome do Produto: " + produto.getNomeProduto());
             lblQtdeEstoque.setText("Quantidade Estoque: " + produto.getQtdEstoqueProduto());
@@ -973,7 +923,7 @@ public class TelaProdutos extends javax.swing.JFrame {
         lblNomeProduto2.setText("Nome do Produto:");
         lblQtdeEstoque.setText("Quantidade Estoque:");
         lblValorUni.setText("Valor Unitário:");
-        
+
         recarregarTabelaProdutos();
 
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
@@ -1082,35 +1032,35 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         Validador validacao = new Validador();
         validacao.validarTexto(txtCodProdutoBusca);
-        
+
         if (validacao.hasErro()) {
             String mensagensDeErro = validacao.getMensagensErro();
             JOptionPane.showMessageDialog(rootPane, mensagensDeErro);
-            
+
         } else {
-           
+
             int idProduto = Integer.parseInt(txtCodProdutoBusca.getText());
             Produto produto = ProdutoDAO.buscarPorIdProduto(idProduto);
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tblCadProdutos.getModel();
             modelo.setRowCount(0);
-            
+
             //Atualizar a tabela
-                modelo.addRow(new String[]{
-                    //Pegar dados do objeto e passar para a tabela...
-                    String.valueOf(produto.getIdProduto()),
-                    String.valueOf(produto.getNomeProduto()),
-                    String.valueOf(produto.getPrecoProduto()),
-                    String.valueOf(produto.getQtdEstoqueProduto())
-                });
-            
+            modelo.addRow(new String[]{
+                //Pegar dados do objeto e passar para a tabela...
+                String.valueOf(produto.getIdProduto()),
+                String.valueOf(produto.getNomeProduto()),
+                String.valueOf(produto.getPrecoProduto()),
+                String.valueOf(produto.getQtdEstoqueProduto())
+            });
+
             lblCodigo2.setText("Código: " + produto.getIdProduto());
             lblNomeProduto2.setText("Nome do Produto: " + produto.getNomeProduto());
             lblQtdeEstoque.setText("Quantidade Estoque: " + produto.getQtdEstoqueProduto());
             lblValorUni.setText("Valor Unitário: " + produto.getPrecoProduto());
         }
-        
-        
+
+
     }//GEN-LAST:event_btnBuscarPorIDActionPerformed
 
     private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed

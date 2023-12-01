@@ -16,7 +16,6 @@ br\sp\eml\projects\padariabythecode\secondscreens\TelaListagemClientes$9.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$11.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroClientes$14.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroProdutos$4.class
-br\sp\eml\projects\padariabythecode\view\TelaRelatorio$hora.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$4.class
 br\sp\eml\projects\padariabythecode\dao\ClienteDAO.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio$3.class
@@ -155,7 +154,6 @@ br\sp\eml\projects\padariabythecode\utils\Utils.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaListagemClientes.class
 br\sp\eml\projects\padariabythecode\view\TelaPrincipalVendas$13.class
 br\sp\eml\projects\padariabythecode\view\TelaRelatorio.class
-br\sp\eml\projects\padariabythecode\view\TelaRelatorio$15.class
 br\sp\eml\projects\padariabythecode\view\TelaProdutos$9.class
 br\sp\eml\projects\padariabythecode\secondscreens\TelaEditarCadastroClientes$15.class
 br\sp\eml\projects\padariabythecode\view\TelaCadastroCliente$15.class

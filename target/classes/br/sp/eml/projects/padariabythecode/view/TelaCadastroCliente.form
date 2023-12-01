@@ -569,6 +569,9 @@
               </Events>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="dtDataNascimento">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="Data de Nascimento" noResource="true"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

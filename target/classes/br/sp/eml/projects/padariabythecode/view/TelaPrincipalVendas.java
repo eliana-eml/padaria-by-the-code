@@ -40,8 +40,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     public TelaPrincipalVendas() {
         initComponents();
         setLocationRelativeTo(null);
-//        Date dataAtual = new Date();
-//        lblDataAtual.setText(dataAtual.toString());
+        defineData();
     }
 
     public void preencherDadosCliente() {
@@ -733,36 +732,10 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarClienteActionPerformed
 
     public static void defineData() {
-        Calendar calendar = Calendar.getInstance();
 
-        int ano = calendar.get(Calendar.YEAR);
-        int mes = calendar.get(Calendar.MONTH) + 1;
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
-
-        pnlDataAtual.setText(data);
-
-        /*  try {
-            while (true) {
-
-                int horas = calendar.get(Calendar.HOUR);
-                int minutos = calendar.get(Calendar.MINUTE);
-                int segundos = calendar.get(Calendar.SECOND);
-
-                String horarioAtual = Integer.toString(horas) + ":" + Integer.toString(minutos) + ":" + Integer.toString(segundos);
-
-                //pnlDataAtual.setText(data + " - " + horarioAtual);
-
-                System.out.println(data + " - " + horarioAtual);
-                
-                Thread.sleep(1000);
-            }
-
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         */
+        Date dataSistema = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        pnlDataAtual.setText(formato.format(dataSistema));
     }
 
     private void btnAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarProdutoActionPerformed
@@ -784,7 +757,7 @@ public class TelaPrincipalVendas extends javax.swing.JFrame {
 
             if (produtoJaInserido == true) {
                 JOptionPane.showMessageDialog(rootPane, "Produto já inserido na tabela de itens!");
-                
+
             } else {
                 //Caso contrário, instâncio um objeto da clase DecimalFormat e aplico a máxima de apenas 2 dígitos depois da vírgula
                 DecimalFormat formatarNumero = new DecimalFormat();

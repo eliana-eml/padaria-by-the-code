@@ -2,6 +2,7 @@ package br.sp.eml.projects.padariabythecode.utils;
 
 import br.sp.eml.projects.padariabythecode.dao.ProdutoDAO;
 import br.sp.eml.projects.padariabythecode.model.Produto;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.awt.Container;
 import java.sql.Date;
@@ -21,35 +22,6 @@ import javax.swing.table.DefaultTableModel;
  * @author emlel
  */
 public class Utils {
-
-//    public java.sql.Date converterDataEmDataSQL(Date data) {
-//
-//        java.util.Date dataDoJava = data;
-//        java.sql.Date dataDoSQL = null;
-//
-//        try {
-//            dataDoSQL = new Date(dataDoJava.getTime());
-//        } catch (IllegalArgumentException e) {
-//            e = new IllegalArgumentException("Erro data invalida: " + data);
-//        }
-//
-//        return dataDoSQL;
-//    }
-//    
-//    public String converterDataEmString(LocalDate data) {
-//        
-//        String dataFormatada = "";
-//        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-//        formato.setLenient(false);
-//        
-//        try {
-//            dataFormatada = formato.format(data);
-//        } catch (IllegalArgumentException e) {
-//            e = new IllegalArgumentException("Erro de conversão\nData: " + data + " inválida");
-//        }
-//        
-//        return dataFormatada;
-//    }
 
     /**
      * Recebe um objeto do tipo Container, neste caso, um painel, por parâmetro,
@@ -81,6 +53,10 @@ public class Utils {
 
         DefaultTableModel tblModelo = (DefaultTableModel) tabela.getModel();
         tblModelo.setRowCount(0);
+    }
+    
+    public void limparJDateChooser(JDateChooser seletorData) {
+        seletorData.setDate(null);
     }
 
     //Recebe um objeto do tipo JButton por parâmetro e o habilita para ser pressionado.

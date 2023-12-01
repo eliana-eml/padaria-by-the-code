@@ -10,8 +10,6 @@ import br.sp.eml.projects.padariabythecode.secondscreens.TelaEditarCadastroClien
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -31,6 +29,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     public TelaCadastroCliente() {
         initComponents();
         setLocationRelativeTo(null);
+        recarregarTabelaClientes();
+        defineData();
     }
 
     /**
@@ -313,6 +313,8 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 txtEmailClienteKeyTyped(evt);
             }
         });
+
+        dtDataNascimento.setName("Data de Nascimento"); // NOI18N
 
         javax.swing.GroupLayout pnlDadosBasicosLayout = new javax.swing.GroupLayout(pnlDadosBasicos);
         pnlDadosBasicos.setLayout(pnlDadosBasicosLayout);
@@ -1086,6 +1088,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         Validador validacao = new Validador();
         validacao.validarTexto(txtNomeCliente);
         validacao.validarTexto(txtCPFCliente);
+        validacao.validarPreenchimentoJDateChooser(dtDataNascimento);
         validacao.validarTexto(txtGeneroCliente);
         validacao.validarTexto(txtEstadoCivilCliente);
         validacao.validarTexto(txtTelFixCliente);
@@ -1130,8 +1133,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
             String cidade = txtCidadeCliente.getText();
             String uf = cboUFCliente.getSelectedItem().toString();
 
-//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//            Date dataNascimento = Date.valueOf(sdf.format(dtNascimentoCliente));
             Cliente cliente = new Cliente(nome, cpf, dtNascimentoCliente, genero, estadoCivil, telefone,
                     email, cep, logradouro, numero, complemento, bairro, cidade, uf);
 
@@ -1153,6 +1154,12 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
                 if (retorno == true) {
                     JOptionPane.showMessageDialog(rootPane, "Cadastro efetuado com sucesso!");
+
+                     Utils limpar = new Utils();
+                     limpar.limparCampos(pnlDadosBasicos);
+                     limpar.limparCampos(pnlEndereco);
+                     limpar.limparJDateChooser(dtDataNascimento);
+                     
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Falha no cadastro!");
                 }
@@ -1160,14 +1167,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
                 recarregarTabelaClientes();
             }
 
-            /**
-             * Cria uma instância da classe Utils para utilização dos métodos de
-             * limpeza de campos. Utiliza dos métodos limparCampos para "apagar"
-             * os dados digitados nos painéis pnlDadosBasicos e pnlEndereco.
-             */
-            // Utils limpar = new Utils();
-            // limpar.limparCampos(pnlDadosBasicos);
-            // limpar.limparCampos(pnlEndereco);
         }
     }// GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -1243,6 +1242,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         Utils limpar = new Utils();
         limpar.limparCampos(pnlDadosBasicos);
         limpar.limparCampos(pnlEndereco);
+        limpar.limparJDateChooser(dtDataNascimento);
 
     }// GEN-LAST:event_btnLimparCamposActionPerformed
 
@@ -1454,15 +1454,19 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }// GEN-LAST:event_btnExcluirCadastroActionPerformed
 
     public static void defineData() {
-        Calendar calendar = Calendar.getInstance();
+//        Calendar calendar = Calendar.getInstance();
+//
+//        int ano = calendar.get(Calendar.YEAR);
+//        int mes = calendar.get(Calendar.MONTH) + 1;
+//        int dia = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+//
+//        pnlDataAtual.setText(data);
 
-        int ano = calendar.get(Calendar.YEAR);
-        int mes = calendar.get(Calendar.MONTH) + 1;
-        int dia = calendar.get(Calendar.DAY_OF_MONTH);
-
-        String data = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
-
-        pnlDataAtual.setText(data);
+        java.util.Date dataSistema = new java.util.Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        pnlDataAtual.setText(formato.format(dataSistema));
     }
 
     private void btnAtualizarTabelaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAtualizarTabelaActionPerformed
