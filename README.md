@@ -40,7 +40,7 @@ git clone https://github.com/eliana-eml/padaria-by-the-code.git
 ```bash
 cd padaria-by-the-code
 ```
-3. Configure o banco de dados MySQL utilizando o arquivo schema.sql no diretório /resources.
+3. Configure o banco de dados MySQL utilizando o arquivo padaria_by_the_code.sql no diretório /resources.
 4. Atualize o arquivo de configuração application.properties com as credenciais do seu banco de dados MySQL:
 ```properties
 jdbc.url=jdbc:mysql://localhost:3306/padaria_by_the_code
