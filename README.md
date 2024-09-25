@@ -47,7 +47,7 @@ jdbc.url=jdbc:mysql://localhost:3306/padaria_by_the_code
 jdbc.username=seu-usuario
 jdbc.password=sua-senha
 ```
-5. Compile e execute o projeto utilizando sua IDE Java (IntelliJ ou Eclipse recomendados).
+5. Compile e execute o projeto utilizando sua IDE Java (Apache NetBeans IDE recomendada).
 
 ## Como Usar
 - Ao iniciar o sistema, você terá acesso ao painel principal, onde poderá gerenciar produtos, clientes e pedidos, além de visualizar o controle de caixa.
